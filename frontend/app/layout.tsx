@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import Navbar from "./_components/Navbar";
 import Footer from "./_components/Footer";
 import Providers from "./_components/Providers";
+import NextTopLoader from "nextjs-toploader";
 
 const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -42,6 +43,7 @@ export default function RootLayout({
             )}
         >
             <body className="flex min-h-full flex-col">
+                <NextTopLoader color="#2D3F08" showSpinner={false} />
                 <Providers>
                     <Navbar />
                     {children}
