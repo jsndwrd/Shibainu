@@ -12,6 +12,7 @@ from routers import (
     briefs,
     reference,
     policy_level,
+    admin
 )
 
 
@@ -55,3 +56,4 @@ app.include_router(scores.router, prefix="/api/scores", tags=["Scores"])
 app.include_router(briefs.router, prefix="/api/briefs", tags=["Briefs"])
 app.include_router(reference.router, prefix="/api/ref", tags=["Reference"])
 app.include_router(policy_level.router, prefix="/api/policy-level", tags=["Policy Level"])
+app.include_router(admin.router, prefix="/api/admin",tags=["Admin"])
