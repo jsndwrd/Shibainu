@@ -4,29 +4,28 @@
 
 0. Concurrent Running
 
-   ```bash
-   (cd frontend && bun dev) & (cd backend && python -m fastapi dev)
-   ```
+````bash
+(cd frontend && bun dev) & (cd backend && python -m fastapi dev)
 
 1. Frontend
 
-   ```bash
-   bun dev
-   ```
+ ```bash
+ bun dev
+ ```
 
 2. Backend
 
 - Dependencies Update:
 
-  ```bash
-  pip freeze > requirements.txt
-  ```
+ ```bash
+ pip freeze > requirements.txt
+ ```
 
 - Runnning the project:
 
 ```bash
 fastapi dev
-```
+````
 
 ## CROSSCHECK LAGII
 
