@@ -1,0 +1,121 @@
+{
+  "generated_at": "2026-04-25T16:36:12.679522",
+  "input_path": "../data/seed_aspirations.csv",
+  "input_rows": 609,
+  "input_columns": [
+    "id",
+    "description",
+    "category",
+    "register",
+    "province",
+    "urgency",
+    "asta_cita",
+    "legislative_target",
+    "impact_scope",
+    "sub_topic",
+    "source"
+  ],
+  "steps": {
+    "step1_duplicates": {
+      "duplicate_ids_fixed": 0,
+      "duplicate_descriptions_dropped": 0,
+      "rows_after": 609
+    },
+    "step2_nulls": {
+      "null_counts_before": {
+        "id": 0,
+        "description": 0,
+        "category": 0,
+        "register": 0,
+        "province": 0,
+        "urgency": 0,
+        "asta_cita": 0,
+        "legislative_target": 0,
+        "impact_scope": 0,
+        "sub_topic": 0,
+        "source": 0
+      },
+      "actions": [
+        "No nulls found"
+      ],
+      "rows_after": 609
+    },
+    "step3_types": {
+      "actions": [
+        "urgency cast to Int64",
+        "Stripped whitespace on: ['category', 'register', 'province', 'impact_scope', 'legislative_target', 'sub_topic', 'source', 'asta_cita']"
+      ]
+    },
+    "step4_enums": {
+      "issues": [],
+      "rows_dropped": 0,
+      "rows_after": 609
+    },
+    "step5_description_quality": {
+      "checks": [],
+      "total_dropped": 0,
+      "rows_after": 609
+    },
+    "step6_urgency_imbalance": {
+      "distribution": {
+        "1": 1,
+        "2": 26,
+        "3": 115,
+        "4": 240,
+        "5": 227
+      },
+      "warnings": [
+        {
+          "urgency": 1,
+          "count": 1,
+          "pct": 0.16,
+          "status": "imbalanced"
+        }
+      ]
+    },
+    "step7_category_distribution": {
+      "actual_distribution": {
+        "Infrastruktur": 150,
+        "Pendidikan": 110,
+        "Kesehatan": 100,
+        "Ekonomi": 80,
+        "Lingkungan": 60,
+        "Keamanan": 60,
+        "Sosial": 49
+      },
+      "prd_targets": {
+        "Infrastruktur": 150,
+        "Kesehatan": 100,
+        "Pendidikan": 110,
+        "Ekonomi": 80,
+        "Lingkungan": 60,
+        "Keamanan": 60,
+        "Sosial": 50
+      },
+      "shortfall_warnings": [
+        {
+          "category": "Sosial",
+          "actual": 49,
+          "target": 50,
+          "diff": -1
+        }
+      ],
+      "formal_pct_warnings": []
+    }
+  },
+  "output_rows": 609,
+  "output_columns": [
+    "id",
+    "description",
+    "category",
+    "register",
+    "province",
+    "urgency",
+    "asta_cita",
+    "legislative_target",
+    "impact_scope",
+    "sub_topic",
+    "source"
+  ],
+  "rows_removed": 0
+}
