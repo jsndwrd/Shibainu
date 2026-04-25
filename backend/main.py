@@ -3,7 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from core.config import settings
 from core.database import Base, engine
-
 from routers import auth, aspirations, clusters, scores, briefs, reference
 
 app = FastAPI(
@@ -12,10 +11,8 @@ app = FastAPI(
     debug=settings.DEBUG,
 )
 
-# ganti Alembic ntar
 Base.metadata.create_all(bind=engine)
 
-# CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.CORS_ORIGINS,
@@ -35,7 +32,7 @@ def root():
 @app.get("/health")
 def health():
     return {
-        "status": "ok"
+        "status": "ok",
     }
 
 

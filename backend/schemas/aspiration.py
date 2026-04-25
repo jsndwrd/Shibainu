@@ -1,32 +1,42 @@
-from pydantic import BaseModel, Field
-from uuid import UUID
 from datetime import datetime
-from typing import Optional, List
+from typing import Optional
+from uuid import UUID
+
+from pydantic import BaseModel, Field
+
 
 class AspirationCreate(BaseModel):
-    description: str = Field(min_length=15, max_length=500)
+    description: str = Field(min_length=15, max_length=1000)
     category: Optional[str] = None
-    urgency: Optional[int] = Field(default=None, ge=1, le=5)
     province: str
     regency: str
-    impact_scope: str
-    target_level: str
+    impact_scope: str = "Community"
+    target_level: str = "DPRD"
+
 
 class AspirationResponse(BaseModel):
     id: UUID
     citizen_id: UUID
     description: str
-    cleaned_description: str
-    predicted_category: str
-    predicted_urgency: int
-    cluster_id: UUID
-    priority_score: float
+    cleaned_description: Optional[str]
+    predicted_category: Optional[str]
+    predicted_asta_cita: Optional[str]
+    asta_confidence: Optional[float]
+    cluster_id: Optional[UUID]
     status: str
     submitted_at: datetime
 
+    class Config:
+        from_attributes = True
+
+
 class AspirationListItem(BaseModel):
     id: UUID
-    category: str
-    urgency: int
-    cluster_id: UUID
+    predicted_category: Optional[str]
+    predicted_asta_cita: Optional[str]
+    cluster_id: Optional[UUID]
+    status: str
     submitted_at: datetime
+
+    class Config:
+        from_attributes = True

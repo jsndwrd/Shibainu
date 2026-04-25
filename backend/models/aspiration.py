@@ -1,18 +1,16 @@
 import uuid
+
 from sqlalchemy import (
     Column,
+    DateTime,
+    Float,
+    ForeignKey,
     String,
     Text,
-    Integer,
-    DateTime,
-    ForeignKey,
-    Float
 )
-from sqlalchemy.dialects.postgresql import UUID, ARRAY
-from sqlalchemy.sql import func
+from sqlalchemy.dialects.postgresql import ARRAY, UUID
 from sqlalchemy.orm import relationship
-
-from pgvector.sqlalchemy import Vector
+from sqlalchemy.sql import func
 
 from core.database import Base
 
@@ -25,7 +23,7 @@ class Aspiration(Base):
     citizen_id = Column(
         UUID(as_uuid=True),
         ForeignKey("citizens.id", ondelete="CASCADE"),
-        nullable=False
+        nullable=False,
     )
 
     description = Column(Text, nullable=False)
@@ -34,8 +32,8 @@ class Aspiration(Base):
     category_user_input = Column(String(50), nullable=True)
     predicted_category = Column(String(50), nullable=True)
 
-    urgency_user_input = Column(Integer, nullable=True)
-    predicted_urgency = Column(Integer, nullable=True)
+    predicted_asta_cita = Column(String(50), nullable=True)
+    asta_confidence = Column(Float, default=0.75)
 
     province = Column(String(100), nullable=False)
     regency = Column(String(100), nullable=False)
@@ -43,28 +41,27 @@ class Aspiration(Base):
     impact_scope = Column(String(30), nullable=False)
     target_level = Column(String(30), nullable=False)
 
-    # embedding = Column(Vector(768), nullable=True)
     embedding = Column(ARRAY(Float), nullable=True)
 
     cluster_id = Column(
         UUID(as_uuid=True),
         ForeignKey("clusters.id", ondelete="SET NULL"),
-        nullable=True
+        nullable=True,
     )
 
-    status = Column(String(30), default="received")
+    status = Column(String(30), default="processed")
 
     submitted_at = Column(
         DateTime(timezone=True),
-        server_default=func.now()
+        server_default=func.now(),
     )
 
     citizen = relationship(
         "Citizen",
-        back_populates="aspirations"
+        back_populates="aspirations",
     )
 
     cluster = relationship(
         "Cluster",
-        back_populates="aspirations"
+        back_populates="aspirations",
     )
