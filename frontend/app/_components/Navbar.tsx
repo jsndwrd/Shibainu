@@ -4,7 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation"; // Import usePathname
 import GreenLogo from "@/public/green-nobg.png";
+import { useAuthStore } from "@/store/useAuthStore";
 import Fingerprint from "@/public/fingerprint.svg";
+import { useRouter } from "next/navigation";
+import { LogOut, UserCircle } from "lucide-react";
 
 type NavbarItem = { item: string; link: string };
 
@@ -16,7 +19,14 @@ const NavbarItems: NavbarItem[] = [
 ];
 
 const Navbar = () => {
-    const pathname = usePathname(); // Ambil path URL saat ini
+    const pathname = usePathname();
+    const router = useRouter();
+    const { isAuthenticated, user, logout } = useAuthStore();
+
+    const handleLogout = () => {
+        logout();
+        router.push("/");
+    };
 
     return (
         <nav className="flex items-center justify-between border-b bg-white px-10 py-4">
@@ -56,21 +66,46 @@ const Navbar = () => {
                     })}
                 </ul>
             </div>
-
             <div className="flex items-center gap-3">
-                <button className="border-primary text-primary hover:bg-primary/5 flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-medium hover:cursor-pointer">
-                    <Image
-                        src={Fingerprint}
-                        alt="Fingerprint"
-                        width={19}
-                        height={20}
-                    />
-                    <span>Login NIK</span>
-                </button>
-                <button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-md px-4 py-2 text-sm font-medium hover:cursor-pointer">
-                    Lapor Sekarang
-                </button>
-            </div>
+                {isAuthenticated ? (
+                    <>
+                        <div className="flex items-center gap-2 rounded-md bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700">
+                            <UserCircle className="text-primary h-5 w-5" />
+                            <span>
+                                NIK: {user?.nik.slice(0, 4)}********
+                                {user?.nik.slice(-4)}
+                            </span>
+                        </div>
+                        <button
+                            onClick={handleLogout}
+                            className="flex items-center gap-2 rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50"
+                        >
+                            <LogOut className="h-4 w-4" /> Keluar
+                        </button>
+                    </>
+                ) : (
+                    <>
+                        <Link
+                            href="/login"
+                            className="border-primary text-primary hover:bg-primary/5 flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-medium transition-colors"
+                        >
+                            <Image
+                                src={Fingerprint}
+                                alt="Fingerprint"
+                                width={19}
+                                height={20}
+                            />
+                            <span>Login NIK</span>
+                        </Link>
+                        <Link
+                            href="/laporan"
+                            className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-md px-4 py-2 text-sm font-medium transition-colors"
+                        >
+                            Lapor Sekarang
+                        </Link>
+                    </>
+                )}
+            </div>{" "}
         </nav>
     );
 };
