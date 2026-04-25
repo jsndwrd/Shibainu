@@ -9,22 +9,30 @@ class CleanerService:
             "nggak": "tidak",
             "ngga": "tidak",
             "tdk": "tidak",
+            "tak": "tidak",
             "blm": "belum",
             "belom": "belum",
             "udh": "sudah",
             "sdh": "sudah",
+            "udah": "sudah",
             "bgt": "sangat",
             "banget": "sangat",
+            "bngt": "sangat",
             "jln": "jalan",
             "jl": "jalan",
             "yg": "yang",
             "dgn": "dengan",
             "krn": "karena",
+            "karna": "karena",
             "utk": "untuk",
+            "kpd": "kepada",
+            "dr": "dari",
+            "sm": "sama",
             "rs": "rumah sakit",
             "rsud": "rumah sakit umum daerah",
             "puskes": "puskesmas",
             "pkm": "puskesmas",
+            "pskms": "puskesmas",
             "bansos": "bantuan sosial",
         }
 
@@ -42,6 +50,7 @@ class CleanerService:
 
         text = text.lower()
         text = self.normalize_repeated_chars(text)
+
         text = re.sub(r"([!?.,]){2,}", r"\1", text)
         text = re.sub(r"[^a-zA-Z0-9À-ÿ\s.,!?/-]", " ", text)
 

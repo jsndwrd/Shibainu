@@ -1,48 +1,56 @@
-from sqlalchemy.orm import Session
-from models import Citizen
 from datetime import date
 
+from sqlalchemy.orm import Session
+
 from core.security import create_access_token
+from models import Citizen
+
 
 class AuthService:
     def __init__(self, db: Session):
         self.db = db
 
     def loginByNIK(self, nik: str, dob: date):
-        cz = self.createDemoCitizens(nik, dob)
+        citizen = self.createDemoCitizens(nik, dob)
 
-        if cz.dob != dob:
+        if citizen.dob != dob:
             return None
-        
+
         token = create_access_token({
-            "sub": str(cz.id),
-            "role": "citizen"
+            "sub": str(citizen.id),
+            "role": "citizen",
         })
 
         return {
             "access_token": token,
             "token_type": "bearer",
-            "citizen_id": cz.id
+            "citizen_id": citizen.id,
         }
 
-        
     def getMe(self, citizen_id):
-        return (self.db.query(Citizen).filter(Citizen.id == citizen_id).first())
+        return (
+            self.db.query(Citizen)
+            .filter(Citizen.id == citizen_id)
+            .first()
+        )
 
-    def createDemoCitizens(self, nik:str, dob: date):
-        cz = (self.db.query(Citizen).filter(Citizen.nik == nik).first())
+    def createDemoCitizens(self, nik: str, dob: date):
+        citizen = (
+            self.db.query(Citizen)
+            .filter(Citizen.nik == nik)
+            .first()
+        )
 
-        if cz:
-            return cz
-        
-        cz = Citizen(nik=nik, dob=dob)
+        if citizen:
+            return citizen
 
-        self.db.add(cz)
+        citizen = Citizen(
+            nik=nik,
+            dob=dob,
+        )
+
+        self.db.add(citizen)
         self.db.commit()
-        self.db.refersh(cz)
+        self.db.refresh(citizen)
 
-        return cz
-
-
-
-    
+        return citizen

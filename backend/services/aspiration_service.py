@@ -35,6 +35,7 @@ class AspirationService:
             cleaned_description=clean,
             category_user_input=payload.category,
             predicted_category=prediction["category"],
+            category_confidence=prediction.get("category_confidence", 0.0),
             predicted_asta_cita=prediction["asta_cita"],
             asta_confidence=prediction["asta_confidence"],
             province=payload.province,

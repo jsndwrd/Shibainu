@@ -12,9 +12,6 @@ class AspirationCreate(BaseModel):
     regency: str
     impact_scope: str = "Community"
     target_level: str = "DPRD"
-
-    # Untuk PAVI.
-    # Bisa diisi dari referensi wilayah nanti.
     population: Optional[int] = Field(default=100000, ge=1)
 
 
@@ -24,6 +21,7 @@ class AspirationResponse(BaseModel):
     description: str
     cleaned_description: Optional[str]
     predicted_category: Optional[str]
+    category_confidence: Optional[float]
     predicted_asta_cita: Optional[str]
     asta_confidence: Optional[float]
     cluster_id: Optional[UUID]

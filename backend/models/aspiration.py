@@ -31,6 +31,7 @@ class Aspiration(Base):
 
     category_user_input = Column(String(50), nullable=True)
     predicted_category = Column(String(50), nullable=True)
+    category_confidence = Column(Float, default=0.0)
 
     predicted_asta_cita = Column(String(50), nullable=True)
     asta_confidence = Column(Float, default=0.75)

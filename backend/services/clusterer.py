@@ -139,7 +139,6 @@ class ClustererService:
     def recompute_clusters(self):
         return True
 
-    # Compatibility alias
     def assignCluster(self, *args, **kwargs):
         return self.assign_cluster(*args, **kwargs)
 

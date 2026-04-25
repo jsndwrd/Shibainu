@@ -51,7 +51,7 @@ Komponen Perhitungan:
 - Population Basis: {raw_metrics["population"]}
 
 Analisis Kebijakan:
-Priority score dihitung dari tiga sinyal utama. GDI menangkap sebaran geografis isu, PAVI menangkap intensitas laporan relatif terhadap jumlah penduduk, dan Asta Cita mengukur relevansi isu terhadap agenda pembangunan nasional. Dengan pendekatan ini, sistem tidak hanya memprioritaskan isu yang paling ramai, tetapi isu yang representatif, tersebar, dan relevan secara kebijakan.
+Priority score dihitung dari tiga sinyal utama. GDI menangkap sebaran geografis isu, PAVI menangkap intensitas laporan relatif terhadap jumlah penduduk, dan Asta Cita mengukur relevansi isu terhadap agenda pembangunan nasional.
 
 Rekomendasi:
 1. Pemerintah perlu melakukan verifikasi lapangan terhadap cluster isu ini.
@@ -79,7 +79,6 @@ Rekomendasi:
 
         for cluster_id in cluster_ids:
             brief = self.generateBrief(cluster_id)
-
             if brief:
                 results.append(brief)
 
