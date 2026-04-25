@@ -20,4 +20,5 @@ class MeResponse(BaseModel):
     id: UUID
     nik: str
     province: str | None = None
+    full_name: str | None = None
     role: Literal["user", "admin"] = "user"

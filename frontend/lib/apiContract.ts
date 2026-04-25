@@ -16,10 +16,11 @@ export interface LoginResponse {
 }
 
 export interface MeResponse {
-  id: UUID;
+  id: string;
   nik: string;
   province: string | null;
-  role: UserRole;
+  full_name: string | null;
+  role?: "user" | "admin";
 }
 
 export interface AspirationCreatePayload {
