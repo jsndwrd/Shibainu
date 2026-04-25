@@ -27,6 +27,10 @@ class Cluster(Base):
     member_count = Column(Integer, default=1)
     top_provinces = Column(ARRAY(String), default=[])
 
+    # Population dipakai untuk PAVI.
+    # Untuk sekarang boleh fallback 100000 di scorer jika kosong.
+    population = Column(Integer, nullable=True)
+
     dominant_asta_cita = Column(String(50), nullable=True)
     asta_confidence = Column(Float, default=0.75)
 

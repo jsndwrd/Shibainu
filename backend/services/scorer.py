@@ -6,28 +6,26 @@ from sqlalchemy.orm import Session
 from models import Cluster, ClusterScore
 
 
+GDI_WEIGHT = 0.35
+PAVI_WEIGHT = 0.35
+ASTA_CITA_WEIGHT = 0.30
+
+
 def clamp(value: float, min_value: float = 0.0, max_value: float = 1.0) -> float:
     return max(min_value, min(float(value), max_value))
 
 
-def normalize_volume(report_count: int, max_report_count: int = 100) -> float:
+def normalize_gdi(unique_regions: int, max_regions: int = 10) -> float:
     """
-    Volume laporan serupa dalam satu cluster.
-    Dipakai log scaling agar cluster besar tidak terlalu mendominasi.
-    """
-    if report_count is None or report_count <= 0:
-        return 0.0
+    GDI atau Geographic Distribution Index.
 
-    if max_report_count <= 1:
-        max_report_count = max(report_count, 2)
+    GDI mengukur seberapa luas isu tersebar secara geografis.
+    Nilai dinormalisasi ke rentang 0 sampai 1.
 
-    score = math.log1p(report_count) / math.log1p(max_report_count)
-    return clamp(score)
-
-
-def normalize_spread(unique_regions: int, max_regions: int = 10) -> float:
-    """
-    Spread wilayah berdasarkan jumlah daerah/provinsi/kabupaten unik.
+    Contoh:
+    unique_regions = 5
+    max_regions = 10
+    gdi_score = 0.5
     """
     if unique_regions is None or unique_regions <= 0:
         return 0.0
@@ -35,8 +33,50 @@ def normalize_spread(unique_regions: int, max_regions: int = 10) -> float:
     if max_regions <= 0:
         max_regions = 10
 
-    score = unique_regions / max_regions
-    return clamp(score)
+    return clamp(unique_regions / max_regions)
+
+
+def calculate_reports_per_100k(report_count: int, population: int) -> float:
+    """
+    Menghitung jumlah laporan per 100.000 penduduk.
+
+    PAVI tidak memakai volume mentah agar tidak bias terhadap wilayah
+    berpenduduk besar.
+    """
+    if report_count is None or report_count <= 0:
+        return 0.0
+
+    if population is None or population <= 0:
+        return 0.0
+
+    return (report_count / population) * 100000
+
+
+def normalize_pavi(
+    report_count: int,
+    population: int,
+    max_reports_per_100k: float = 30.0,
+) -> Dict[str, float]:
+    """
+    PAVI atau Population-Adjusted Voice Index.
+
+    PAVI mengukur intensitas laporan relatif terhadap jumlah penduduk.
+    Dipakai log scaling supaya nilai ekstrem tidak terlalu mendominasi.
+    """
+    reports_per_100k = calculate_reports_per_100k(
+        report_count=report_count,
+        population=population,
+    )
+
+    if max_reports_per_100k <= 0:
+        max_reports_per_100k = 30.0
+
+    pavi_score = math.log1p(reports_per_100k) / math.log1p(max_reports_per_100k)
+
+    return {
+        "reports_per_100k": round(reports_per_100k, 4),
+        "pavi_score": round(clamp(pavi_score), 4),
+    }
 
 
 def normalize_asta_cita(
@@ -44,11 +84,12 @@ def normalize_asta_cita(
     asta_confidence: Optional[float] = None,
 ) -> float:
     """
-    Asta Cita sebagai policy relevance factor.
-    Kalau confidence model ada, pakai confidence.
-    Kalau tidak ada, fallback:
-    - mapped Asta Cita = 0.75
-    - unknown = 0.30
+    Asta Cita digunakan sebagai policy relevance factor.
+
+    Kalau confidence model tersedia, gunakan confidence.
+    Kalau tidak tersedia:
+    - Asta Cita terdeteksi = 0.75
+    - Unknown = 0.30
     """
     if asta_confidence is not None:
         return clamp(float(asta_confidence))
@@ -56,15 +97,18 @@ def normalize_asta_cita(
     if not asta_cita:
         return 0.30
 
-    text = str(asta_cita).strip().lower()
+    asta_text = str(asta_cita).strip().lower()
 
-    if text in ["unknown", "misi unknown", "none", "-", ""]:
+    if asta_text in ["unknown", "misi unknown", "none", "-", ""]:
         return 0.30
 
     return 0.75
 
 
 def get_priority_level(priority_score: float) -> str:
+    """
+    Level prioritas untuk dashboard.
+    """
     if priority_score >= 80:
         return "critical"
     if priority_score >= 65:
@@ -74,41 +118,47 @@ def get_priority_level(priority_score: float) -> str:
     return "low"
 
 
-def should_trigger_policy_brief(
-    priority_score: float,
-    report_count: int,
-    unique_regions: int,
-) -> bool:
+def should_trigger_policy_brief(priority_score: float) -> bool:
     """
-    Policy brief dibuat kalau skor tinggi,
-    atau kalau laporan sudah banyak dan tersebar.
+    Policy brief dibuat jika isu sudah masuk prioritas tinggi.
     """
-    if priority_score >= 65:
-        return True
-
-    if report_count >= 20 and unique_regions >= 3:
-        return True
-
-    return False
+    return priority_score >= 65
 
 
 def calculate_priority_score(
     report_count: int,
+    population: int,
     unique_regions: int,
     asta_cita: Optional[str],
     asta_confidence: Optional[float] = None,
-    max_report_count: int = 100,
     max_regions: int = 10,
+    max_reports_per_100k: float = 30.0,
 ) -> Dict[str, Any]:
-    volume_score = normalize_volume(
-        report_count=report_count,
-        max_report_count=max_report_count,
-    )
+    """
+    Formula final SuaraRakyat AI:
 
-    spread_score = normalize_spread(
+    Priority Score =
+    0.35 * GDI
+    + 0.35 * PAVI
+    + 0.30 * Asta Cita Relevance
+
+    Komponen:
+    - GDI mengukur sebaran geografis isu.
+    - PAVI mengukur intensitas laporan per 100.000 penduduk.
+    - Asta Cita mengukur relevansi isu terhadap agenda pembangunan.
+    """
+    gdi_score = normalize_gdi(
         unique_regions=unique_regions,
         max_regions=max_regions,
     )
+
+    pavi_result = normalize_pavi(
+        report_count=report_count,
+        population=population,
+        max_reports_per_100k=max_reports_per_100k,
+    )
+
+    pavi_score = pavi_result["pavi_score"]
 
     asta_cita_score = normalize_asta_cita(
         asta_cita=asta_cita,
@@ -116,9 +166,9 @@ def calculate_priority_score(
     )
 
     normalized_score = (
-        0.45 * volume_score
-        + 0.35 * spread_score
-        + 0.20 * asta_cita_score
+        GDI_WEIGHT * gdi_score
+        + PAVI_WEIGHT * pavi_score
+        + ASTA_CITA_WEIGHT * asta_cita_score
     )
 
     priority_score = round(normalized_score * 100, 2)
@@ -126,29 +176,27 @@ def calculate_priority_score(
     return {
         "priority_score": priority_score,
         "priority_level": get_priority_level(priority_score),
-        "should_generate_brief": should_trigger_policy_brief(
-            priority_score=priority_score,
-            report_count=report_count,
-            unique_regions=unique_regions,
-        ),
+        "should_generate_brief": should_trigger_policy_brief(priority_score),
         "normalized_score": round(normalized_score, 4),
         "components": {
-            "volume_score": round(volume_score, 4),
-            "spread_score": round(spread_score, 4),
+            "gdi_score": round(gdi_score, 4),
+            "pavi_score": round(pavi_score, 4),
             "asta_cita_score": round(asta_cita_score, 4),
         },
-        "weights": {
-            "volume": 0.45,
-            "spread": 0.35,
-            "asta_cita": 0.20,
-        },
-        "raw_inputs": {
+        "raw_metrics": {
             "report_count": report_count,
+            "population": population,
+            "reports_per_100k": pavi_result["reports_per_100k"],
             "unique_regions": unique_regions,
             "asta_cita": asta_cita,
             "asta_confidence": asta_confidence,
-            "max_report_count": max_report_count,
             "max_regions": max_regions,
+            "max_reports_per_100k": max_reports_per_100k,
+        },
+        "weights": {
+            "gdi": GDI_WEIGHT,
+            "pavi": PAVI_WEIGHT,
+            "asta_cita": ASTA_CITA_WEIGHT,
         },
     }
 
@@ -158,15 +206,26 @@ class ScorerService:
         self.db = db
 
     def compute_priority_score(self, cluster: Cluster) -> Dict[str, Any]:
+        """
+        Hitung priority score dari object cluster.
+
+        Catatan:
+        - report_count diambil dari member_count.
+        - unique_regions diambil dari jumlah top_provinces.
+        - population idealnya berasal dari cluster.population.
+        - Kalau population belum ada, fallback 100000 agar endpoint tetap jalan.
+        """
         unique_regions = len(cluster.top_provinces or [])
+        population = getattr(cluster, "population", None) or 100000
 
         return calculate_priority_score(
             report_count=cluster.member_count or 0,
+            population=population,
             unique_regions=unique_regions,
             asta_cita=cluster.dominant_asta_cita,
             asta_confidence=cluster.asta_confidence,
-            max_report_count=100,
             max_regions=10,
+            max_reports_per_100k=30.0,
         )
 
     def score_cluster(self, cluster_id):
@@ -181,12 +240,15 @@ class ScorerService:
 
         result = self.compute_priority_score(cluster)
         components = result["components"]
+        raw_metrics = result["raw_metrics"]
 
         score = ClusterScore(
             cluster_id=cluster.id,
-            volume_score=components["volume_score"],
-            spread_score=components["spread_score"],
+            gdi_score=components["gdi_score"],
+            pavi_score=components["pavi_score"],
             asta_cita_score=components["asta_cita_score"],
+            reports_per_100k=raw_metrics["reports_per_100k"],
+            population=raw_metrics["population"],
             total_score=result["priority_score"],
             priority_level=result["priority_level"],
             should_generate_brief=result["should_generate_brief"],
@@ -204,6 +266,7 @@ class ScorerService:
 
         for cluster in clusters:
             score = self.score_cluster(cluster.id)
+
             if score:
                 results.append(score)
 
