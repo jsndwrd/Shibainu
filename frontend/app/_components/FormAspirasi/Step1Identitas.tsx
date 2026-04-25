@@ -1,4 +1,6 @@
-import { useEffect } from "react";
+"use client";
+
+import { useEffect, useState } from "react";
 import { step1Schema } from "@/schemas/aspirasiSchema";
 import { useAspirasiStore } from "@/store/useAspirasiStore";
 import { useAuthStore } from "@/store/useAuthStore"; // <-- IMPORT AUTH STORE
@@ -16,6 +18,12 @@ const Step1Identitas = () => {
     const { isAuthenticated, user } = useAuthStore(); // <-- CEK AUTH
     const router = useRouter();
 
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
     const {
         register,
         handleSubmit,
@@ -25,14 +33,52 @@ const Step1Identitas = () => {
         resolver: zodResolver(step1Schema),
         defaultValues: {
             ...formData,
-            // Jika user login, otomatis gunakan NIK dari auth store
             nik: user?.nik || formData.nik || "",
-            // Nama di-mocking karena di sistem riil akan ditarik via API Dukcapil berdasarkan NIK
             namaLengkap: user ? "Warga Terverifikasi" : "",
         } as Step1FormValues,
     });
+    useEffect(() => {
+        setIsMounted(true);
 
-    // Jika user belum login, kita bisa memberitahu mereka
+        if (user) {
+            setValue("nik", user.nik, { shouldValidate: true });
+            setValue("namaLengkap", "Warga Terverifikasi", {
+                shouldValidate: true,
+            });
+        }
+    }, [user, setValue]);
+
+    if (!isAuthenticated) {
+        return (
+            <div className="flex flex-col items-center justify-center rounded-xl border border-gray-200 bg-gray-50 py-12 text-center">
+                <AlertCircle className="mb-4 h-12 w-12 text-gray-400" />
+                <h3 className="mb-2 text-lg font-bold text-gray-900">
+                    Autentikasi Diperlukan
+                </h3>
+                <p className="mb-6 text-sm text-gray-500">
+                    Anda harus masuk menggunakan NIK untuk dapat mengirim
+                    aspirasi.
+                </p>
+                <Link
+                    href="/login"
+                    className="bg-primary hover:bg-primary/90 rounded-lg px-6 py-3 font-medium text-white transition-colors"
+                >
+                    Login Sekarang
+                </Link>
+            </div>
+        );
+    }
+
+    if (!isMounted) {
+        return (
+            <div className="flex animate-pulse flex-col items-center justify-center rounded-xl border border-gray-200 bg-gray-50 py-12 text-center">
+                <div className="mb-4 h-12 w-12 rounded-full bg-gray-200"></div>
+                <div className="mb-2 h-6 w-48 rounded bg-gray-200"></div>
+                <div className="h-4 w-64 rounded bg-gray-200"></div>
+            </div>
+        );
+    }
+
     if (!isAuthenticated) {
         return (
             <div className="flex flex-col items-center justify-center rounded-xl border border-gray-200 bg-gray-50 py-12 text-center">
@@ -74,7 +120,7 @@ const Step1Identitas = () => {
                     </label>
                     <input
                         {...register("namaLengkap")}
-                        className="w-full cursor-not-allowed rounded-lg border border-gray-200 bg-gray-100 p-3 text-gray-600 outline-none"
+                        className="w-full rounded-lg border border-gray-200 bg-gray-100 p-3 text-gray-600 outline-none"
                     />
                 </div>
                 <div>

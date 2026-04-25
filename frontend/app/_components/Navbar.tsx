@@ -1,5 +1,6 @@
 "use client"; // Tambahkan ini di paling atas
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation"; // Import usePathname
@@ -27,6 +28,11 @@ const Navbar = () => {
         logout();
         router.push("/");
     };
+
+    const [isMounted, setIsMounted] = useState(false);
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
     return (
         <nav className="flex items-center justify-between border-b bg-white px-10 py-4">
