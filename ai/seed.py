@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-seed.py (V2.1 - Robust Strategic Generator)
+seed.py (V2.2 - Final Strategic Generator)
 SuaraRakyat AI — Strategic Synthetic Aspiration Generator
-Fix: Menjamin kuota data terpenuhi & validasi panjang teks.
+Status: Production-Ready for Training Data Generation
 """
 
 import os, json, uuid, time, random
@@ -10,6 +10,7 @@ import pandas as pd
 from openai import OpenAI
 from dotenv import load_dotenv
 
+# Load Environment Variables
 load_dotenv()
 API_KEY = os.getenv("GROQ_API_KEY")
 
@@ -19,7 +20,7 @@ client = OpenAI(
 )
 
 # ─────────────────────────────────────────────
-# DEFINISI STRATEGIS (ASTA CITA)
+# 1. DEFINISI STRATEGIS (ASTA CITA)
 # ─────────────────────────────────────────────
 ASTA_CITA = {
     1: "Ideologi, Demokrasi, dan HAM",
@@ -33,7 +34,7 @@ ASTA_CITA = {
 }
 
 # ─────────────────────────────────────────────
-# KONFIGURASI DATASET (Target Total: 610)
+# 2. KONFIGURASI DATASET (Target Total: ~610)
 # ─────────────────────────────────────────────
 CATEGORY_CONFIG = {
     "Infrastruktur": {"total": 150, "asta_cita": [3, 6]},
@@ -48,34 +49,44 @@ CATEGORY_CONFIG = {
 PROVINCE_POOL = ["Jambi", "Jawa Timur", "Jawa Barat", "Papua", "Sumatera Utara", "Kalimantan Timur", "NTT"]
 
 # ─────────────────────────────────────────────
-# GENERATOR FUNCTION DENGAN RETRY LOGIC
+# 3. GENERATOR ENGINE DENGAN HIGH-CONTEXT PROMPT
 # ─────────────────────────────────────────────
 def generate_batch(kategori, register, n, asta_ids):
     asta_targets = ", ".join([f"Misi {i}: {ASTA_CITA[i]}" for i in asta_ids])
     
-    style = ("INFORMAL (singkatan, typo, gaya WA/Tweet)" if register == "informal" 
-             else "FORMAL (Bahasa Indonesia baku, struktur surat resmi)")
+    # Panduan gaya bahasa
+    if register == "informal":
+        style_desc = "Gaya WhatsApp/Tweet/SMS (singkatan spt 'yg', 'gak', 'jln', typo, emosional). Panjang 50-180 karakter."
+        example = "Contoh: 'Jalan di desa kami rusak parah bgt pak, udah 3 thn gak dibenerin kalo ujan jadi kubangan lumpur, kasian anak sekolah lewatnya susah.'"
+    else:
+        style_desc = "Bahasa Indonesia baku, struktur surat resmi, sopan, deskriptif. Panjang 150-400 karakter."
+        example = "Contoh: 'Melaporkan kondisi infrastruktur jalan di Kecamatan X yang mengalami kerusakan berat sepanjang 2km. Hal ini sangat menghambat akses ekonomi petani lokal menuju pasar induk dan perlu penanganan segera.'"
 
-    prompt = f"""Generate {n} aspirasi warga Indonesia unik untuk KATEGORI: {kategori}.
-GAYA: {style}.
-KRITERIA:
+    prompt = f"""Generate {n} aspirasi warga Indonesia UNIK untuk KATEGORI: {kategori}.
+GAYA: {style_desc}.
+{example}
+
+KRITERIA WAJIB:
 1. Hubungkan secara logis dengan salah satu: {asta_targets}.
-2. Tentukan legislative_target: 'DPR RI' (pusat/nasional), 'DPRD Provinsi', atau 'DPRD Kab/Kota' (lokal).
-3. Urgensi 1-5.
-4. Panjang teks 30-200 karakter.
+2. Tentukan legislative_target: 
+   - 'DPR RI' (Isu nasional, strategis nasional, atau lintas provinsi).
+   - 'DPRD Provinsi' (Isu skala provinsi).
+   - 'DPRD Kab/Kota' (Isu lokal/desa/puskesmas/sampah/jalan lingkungan).
+3. Urgensi 1-5 (sebagai label latihan model).
+4. JANGAN membuat kalimat terlalu pendek. Tambahkan detail lokasi anonim, durasi masalah, atau dampak spesifik ke warga.
+5. Gunakan variasi register yang kontras.
 
-Return JSON valid:
+Return JSON Valid:
 {{"data": [{{"description": "...", "urgency": int, "asta_cita": "Misi X", "legislative_target": "...", "sub_topic": "..."}}]}}"""
 
-    # Retry loop untuk menjamin batch berhasil
     for attempt in range(3):
         try:
             resp = client.chat.completions.create(
                 model="llama-3.3-70b-versatile",
                 messages=[{"role": "user", "content": prompt}],
-                temperature=0.8,
+                temperature=0.85, 
                 response_format={"type": "json_object"},
-                timeout=30
+                timeout=45
             )
             data = json.loads(resp.choices[0].message.content).get("data", [])
             if data: return data
@@ -85,10 +96,10 @@ Return JSON valid:
     return []
 
 # ─────────────────────────────────────────────
-# EXECUTION ENGINE
+# 4. MAIN EXECUTION (ROBUST QUOTA ENFORCEMENT)
 # ─────────────────────────────────────────────
 def main():
-    print("🚀 Starting Strategic Seed Generation (Target: 610 Rows)...")
+    print("🚀 Starting Strategic Seed Generation (V2.2 - High Context)...")
     all_rows = []
 
     for kategori, cfg in CATEGORY_CONFIG.items():
@@ -100,32 +111,34 @@ def main():
             collected_for_reg = 0
             print(f"  → Progress: {kategori} ({reg}) - Target: {target_n}")
             
-            # Loop sampai kuota per kategori/register terpenuhi
+            # Loop sampai kuota terpenuhi
             while collected_for_reg < target_n:
-                needed = min(10, target_n - collected_for_reg)
+                needed = min(8, target_n - collected_for_reg) 
                 batch = generate_batch(kategori, reg, needed, cfg['asta_cita'])
                 
                 for item in batch:
                     desc = item.get("description", "").strip()
-                    # Validasi panjang teks > 15 karakter
-                    if len(desc) > 15:
+                    # Filter panjang teks minimal
+                    min_char = 45 if reg == "informal" else 120
+                    
+                    if len(desc) >= min_char:
                         all_rows.append({
                             "id": str(uuid.uuid4()),
                             "description": desc,
                             "category": kategori,
                             "register": reg,
                             "province": random.choice(PROVINCE_POOL),
-                            "urgency": item.get("urgency", 3),
+                            "urgency": item.get("urgency", 3), # Teacher label
                             "asta_cita": item.get("asta_cita"),
                             "legislative_target": item.get("legislative_target"),
                             "impact_scope": random.choice(["Individual", "Community", "Regional", "National"]),
                             "sub_topic": item.get("sub_topic"),
-                            "source": "synthetic_strategic_v2"
+                            "source": "synthetic_strategic_v2.2"
                         })
                         collected_for_reg += 1
                 
-                print(f"    ✅ Current count for {kategori}-{reg}: {collected_for_reg}/{target_n}")
-                time.sleep(1.5) # Rate limit protection
+                print(f"    ✅ Progress: {collected_for_reg}/{target_n}")
+                time.sleep(1.5) # Rate limiting
 
     # Final Post-Processing
     df = pd.DataFrame(all_rows)
@@ -135,9 +148,9 @@ def main():
     df.to_csv('data/seed_aspirations.csv', index=False)
     
     print(f"\n{'='*40}")
-    print(f"✅ FINAL SUCCESS: {len(df)} rows saved!")
+    print(f"✅ SUCCESS: {len(df)} High-Quality rows saved!")
     print(f"{'='*40}")
-    print(df['category'].value_counts())
+    print(df.groupby(['category', 'register']).size())
 
 if __name__ == "__main__":
     main()
