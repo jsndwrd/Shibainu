@@ -33,25 +33,6 @@ class BriefGeneratorService:
         if hasattr(model, field):
             setattr(model, field, value)
 
-    def _get_nested_value(
-        self,
-        data: dict,
-        path: list[str],
-        default=None,
-    ):
-        current = data
-
-        for key in path:
-            if not isinstance(current, dict):
-                return default
-
-            current = current.get(key)
-
-            if current is None:
-                return default
-
-        return current
-
     def _normalize_brief_content(self, content) -> str:
         if content is None:
             return ""
@@ -60,7 +41,10 @@ class BriefGeneratorService:
             clean_content = content.strip()
 
             if clean_content == "[object Object]":
-                return "Konten policy brief tidak valid karena LLM mengembalikan object yang belum dinormalisasi."
+                return (
+                    "Konten policy brief tidak valid karena LLM mengembalikan "
+                    "object yang belum dinormalisasi."
+                )
 
             return clean_content
 
@@ -91,6 +75,35 @@ class BriefGeneratorService:
             ).strip()
 
         return str(content)
+
+    def _strip_markdown_artifacts(self, content: str) -> str:
+        """
+        Membersihkan sisa format markdown jika LLM tetap menghasilkan markdown.
+        """
+        if not content:
+            return ""
+
+        text = str(content)
+
+        # Hapus heading markdown seperti #, ##, ###
+        text = re.sub(r"^\s{0,3}#{1,6}\s*", "", text, flags=re.MULTILINE)
+
+        # Hapus bold/italic markdown
+        text = text.replace("**", "")
+        text = text.replace("__", "")
+        text = text.replace("*", "")
+
+        # Ubah bullet markdown menjadi baris formal biasa
+        text = re.sub(r"^\s*[-+]\s+", "", text, flags=re.MULTILINE)
+
+        # Hapus blockquote markdown
+        text = re.sub(r"^\s*>\s*", "", text, flags=re.MULTILINE)
+
+        # Rapikan spasi berlebih
+        text = re.sub(r"\n{3,}", "\n\n", text)
+        text = text.strip()
+
+        return text
 
     def _safe_score_value(
         self,
@@ -135,70 +148,91 @@ class BriefGeneratorService:
         label = getattr(cluster, "label", "Isu Aspirasi Publik")
         category = getattr(cluster, "category", "Tidak tersedia")
         member_count = getattr(cluster, "member_count", 0)
-        dominant_asta_cita = getattr(cluster, "dominant_asta_cita", None) or "Misi UNKNOWN"
+        dominant_asta_cita = (
+            getattr(cluster, "dominant_asta_cita", None)
+            or "Misi UNKNOWN"
+        )
         asta_confidence = getattr(cluster, "asta_confidence", 0)
 
         priority_score = self._safe_score_value(score, "priority_score", 0)
-        priority_level = self._safe_score_value(score, "priority_level", "Tidak tersedia")
+        priority_level = self._safe_score_value(
+            score,
+            "priority_level",
+            "Tidak tersedia",
+        )
 
         gdi_score = components.get("gdi_score", 0)
         pavi_score = components.get("pavi_score", 0)
         asta_cita_score = components.get("asta_cita_score", 0)
 
         reports_per_100k = raw_metrics.get("reports_per_100k", 0)
-        population = raw_metrics.get("population", getattr(cluster, "population", 0))
+        population = raw_metrics.get(
+            "population",
+            getattr(cluster, "population", 0),
+        )
 
         return f"""
-Buat POLICY BRIEF final dalam Bahasa Indonesia yang formal, jelas, dan siap dibaca oleh pemerintah daerah atau DPRD.
+Anda adalah analis kebijakan publik pemerintah.
 
-Gunakan data berikut. Jangan menambahkan data di luar input.
+Tugas Anda adalah menyusun dokumen formal policy brief berbasis data aspirasi warga. Anggap output ini sebagai dokumen resmi untuk pemerintah daerah atau DPRD, bukan konten markdown, bukan catatan teknis, dan bukan artikel blog.
+
+Gunakan hanya data yang tersedia pada input. Jangan menambahkan data, angka, nama wilayah, atau fakta baru di luar input.
 
 DATA CLUSTER ASPIRASI
-- Judul isu: {label}
-- Kategori isu: {category}
-- Jumlah laporan serupa: {member_count}
-- Jumlah wilayah terdampak: {len(top_provinces)}
-- Wilayah utama: {provinces}
-- Asta Cita terkait: {dominant_asta_cita}
-- Confidence Asta Cita: {asta_confidence}
-- Priority Score: {priority_score}
-- Priority Level: {priority_level}
-- GDI Score: {gdi_score}
-- PAVI Score: {pavi_score}
-- Asta Cita Score: {asta_cita_score}
-- Reports per 100.000 penduduk: {reports_per_100k}
-- Population basis: {population}
+Judul isu: {label}
+Kategori isu: {category}
+Jumlah laporan serupa: {member_count}
+Jumlah wilayah terdampak: {len(top_provinces)}
+Wilayah utama: {provinces}
+Asta Cita terkait: {dominant_asta_cita}
+Confidence Asta Cita: {asta_confidence}
+Priority Score: {priority_score}
+Priority Level: {priority_level}
+GDI Score: {gdi_score}
+PAVI Score: {pavi_score}
+Asta Cita Score: {asta_cita_score}
+Reports per 100.000 penduduk: {reports_per_100k}
+Population basis: {population}
 
-FORMAT WAJIB OUTPUT MARKDOWN
-# Policy Brief: [judul singkat]
+FORMAT WAJIB DOKUMEN FORMAL
 
-## 1. Ringkasan Eksekutif
-Tuliskan ringkasan inti isu, jumlah laporan, sebaran wilayah, kategori, dan relevansi Asta Cita.
+POLICY BRIEF ASPIRASI PUBLIK
 
-## 2. Latar Belakang Isu
-Jelaskan mengapa isu ini penting sebagai aspirasi publik.
+Judul:
+[tulis judul singkat dan formal]
 
-## 3. Analisis Prioritas
-Jelaskan Priority Score berdasarkan GDI, PAVI, dan Asta Cita. Gunakan angka yang tersedia.
+1. RINGKASAN EKSEKUTIF
+Tuliskan satu sampai dua paragraf ringkas yang menjelaskan inti isu, jumlah laporan, sebaran wilayah, kategori isu, dan relevansi terhadap Asta Cita.
 
-## 4. Keterkaitan dengan Asta Cita
-Jelaskan keterkaitan isu dengan Asta Cita terkait.
+2. LATAR BELAKANG ISU
+Jelaskan konteks isu sebagai aspirasi publik yang perlu diperhatikan oleh pemerintah. Gunakan gaya bahasa formal dan faktual.
 
-## 5. Dampak Kebijakan
-Jelaskan dampak jika isu tidak ditindaklanjuti.
+3. ANALISIS PRIORITAS
+Jelaskan Priority Score berdasarkan GDI, PAVI, dan Asta Cita Score. Gunakan hanya angka yang tersedia pada data input.
 
-## 6. Rekomendasi Kebijakan
-Buat 3 sampai 5 rekomendasi yang realistis, operasional, dan relevan.
+4. KETERKAITAN DENGAN ASTA CITA
+Jelaskan hubungan isu dengan Asta Cita terkait sebagai dasar penyelarasan kebijakan.
 
-## 7. Target Tindak Lanjut
-Sebutkan siapa pihak yang sebaiknya menindaklanjuti secara umum, misalnya dinas teknis, pemerintah daerah, DPRD, atau unit layanan.
+5. DAMPAK KEBIJAKAN
+Jelaskan potensi dampak apabila isu tidak ditindaklanjuti oleh pemerintah.
 
-ATURAN
-- Jangan mengarang nama wilayah selain yang tersedia.
-- Jangan mengarang angka baru.
-- Jangan menyebut urgency karena sistem final tidak menggunakan urgency.
-- Gunakan bahasa formal dan profesional.
-- Maksimal 900 kata.
+6. REKOMENDASI KEBIJAKAN
+Tuliskan 3 sampai 5 rekomendasi kebijakan dalam bentuk penomoran biasa. Rekomendasi harus realistis, operasional, dan relevan dengan data.
+
+7. TARGET TINDAK LANJUT
+Sebutkan pihak yang dapat menindaklanjuti secara umum, misalnya pemerintah daerah, DPRD, dinas teknis, atau unit layanan terkait.
+
+ATURAN PENULISAN
+1. Jangan gunakan format Markdown.
+2. Jangan gunakan tanda pagar seperti # atau ##.
+3. Jangan gunakan bold markdown seperti **teks**.
+4. Jangan gunakan bullet markdown seperti "-".
+5. Jangan menulis dalam bentuk JSON.
+6. Jangan menyebut urgency karena sistem final tidak menggunakan urgency.
+7. Jangan mengarang nama wilayah selain yang tersedia.
+8. Jangan mengarang angka baru.
+9. Gunakan Bahasa Indonesia formal, baku, dan profesional.
+10. Maksimal 900 kata.
 """.strip()
 
     def generate_template_brief(self, cluster: Cluster, score: dict) -> str:
@@ -211,52 +245,61 @@ ATURAN
         label = getattr(cluster, "label", "Isu Aspirasi Publik")
         category = getattr(cluster, "category", "Tidak tersedia")
         member_count = getattr(cluster, "member_count", 0)
-        dominant_asta_cita = getattr(cluster, "dominant_asta_cita", None) or "Misi UNKNOWN"
+        dominant_asta_cita = (
+            getattr(cluster, "dominant_asta_cita", None)
+            or "Misi UNKNOWN"
+        )
 
         priority_score = self._safe_score_value(score, "priority_score", 0)
-        priority_level = self._safe_score_value(score, "priority_level", "Tidak tersedia")
+        priority_level = self._safe_score_value(
+            score,
+            "priority_level",
+            "Tidak tersedia",
+        )
 
         gdi_score = components.get("gdi_score", 0)
         pavi_score = components.get("pavi_score", 0)
         asta_cita_score = components.get("asta_cita_score", 0)
 
         reports_per_100k = raw_metrics.get("reports_per_100k", 0)
-        population = raw_metrics.get("population", getattr(cluster, "population", 0))
+        population = raw_metrics.get(
+            "population",
+            getattr(cluster, "population", 0),
+        )
 
         return f"""
-# Policy Brief: {label}
+POLICY BRIEF ASPIRASI PUBLIK
 
-## 1. Ringkasan Eksekutif
+Judul:
+{label}
 
-Isu ini masuk dalam kategori **{category}** dan dihimpun dari **{member_count} laporan warga** yang memiliki kemiripan substansi. Isu ini tersebar di **{len(top_provinces)} wilayah**, dengan wilayah utama: **{provinces}**.
+1. RINGKASAN EKSEKUTIF
 
-Sistem mengaitkan isu ini dengan **{dominant_asta_cita}** sebagai agenda pembangunan yang relevan. Berdasarkan perhitungan prioritas, isu ini memperoleh **Priority Score {priority_score}** dengan level **{priority_level}**.
+Isu ini masuk dalam kategori {category} dan dihimpun dari {member_count} laporan warga yang memiliki kemiripan substansi. Isu ini tersebar di {len(top_provinces)} wilayah, dengan wilayah utama: {provinces}.
 
-## 2. Latar Belakang Isu
+Sistem mengaitkan isu ini dengan {dominant_asta_cita} sebagai agenda pembangunan yang relevan. Berdasarkan perhitungan prioritas, isu ini memperoleh Priority Score {priority_score} dengan level {priority_level}.
+
+2. LATAR BELAKANG ISU
 
 Aspirasi warga yang terkumpul menunjukkan adanya pola masalah yang perlu diperhatikan secara lebih terstruktur. Pengelompokan dilakukan berdasarkan kemiripan makna laporan, kategori isu, dan keterkaitan terhadap agenda pembangunan.
 
-## 3. Analisis Prioritas
+3. ANALISIS PRIORITAS
 
-Priority Score dihitung menggunakan tiga komponen utama:
+Priority Score dihitung menggunakan tiga komponen utama, yaitu GDI Score, PAVI Score, dan Asta Cita Score.
 
-- **GDI Score**: {gdi_score}
-- **PAVI Score**: {pavi_score}
-- **Asta Cita Score**: {asta_cita_score}
-- **Reports per 100.000 penduduk**: {reports_per_100k}
-- **Population Basis**: {population}
+GDI Score pada isu ini adalah {gdi_score}. PAVI Score pada isu ini adalah {pavi_score}. Asta Cita Score pada isu ini adalah {asta_cita_score}. Reports per 100.000 penduduk tercatat sebesar {reports_per_100k}, dengan population basis sebesar {population}.
 
 GDI menunjukkan sebaran geografis isu. PAVI menunjukkan intensitas laporan relatif terhadap populasi. Asta Cita Score menunjukkan relevansi isu terhadap agenda pembangunan nasional.
 
-## 4. Keterkaitan dengan Asta Cita
+4. KETERKAITAN DENGAN ASTA CITA
 
-Isu ini dikaitkan dengan **{dominant_asta_cita}**. Keterkaitan ini digunakan sebagai policy alignment layer agar aspirasi warga dapat diterjemahkan menjadi agenda kebijakan yang lebih mudah dipahami oleh pemerintah.
+Isu ini dikaitkan dengan {dominant_asta_cita}. Keterkaitan ini digunakan sebagai policy alignment layer agar aspirasi warga dapat diterjemahkan menjadi agenda kebijakan yang lebih mudah dipahami oleh pemerintah.
 
-## 5. Dampak Kebijakan
+5. DAMPAK KEBIJAKAN
 
 Jika isu ini tidak ditindaklanjuti, potensi masalah dapat terus berkembang dan menurunkan kepercayaan publik terhadap respons pemerintah. Pola laporan yang terkumpul menunjukkan perlunya verifikasi dan tindak lanjut berbasis data.
 
-## 6. Rekomendasi Kebijakan
+6. REKOMENDASI KEBIJAKAN
 
 1. Pemerintah daerah perlu melakukan verifikasi lapangan terhadap cluster isu ini.
 2. Dinas teknis terkait perlu menyusun tindak lanjut sesuai kategori isu.
@@ -264,19 +307,21 @@ Jika isu ini tidak ditindaklanjuti, potensi masalah dapat terus berkembang dan m
 4. Sistem perlu terus memantau pertambahan laporan serupa untuk melihat perubahan prioritas.
 5. Hasil tindak lanjut perlu dipublikasikan agar warga mengetahui status penyelesaian.
 
-## 7. Target Tindak Lanjut
+7. TARGET TINDAK LANJUT
 
 Isu ini dapat diteruskan kepada pemerintah daerah, dinas teknis terkait, dan DPRD sesuai kategori masalah serta wilayah terdampak.
 """.strip()
 
     def save_brief_file(self, brief: PolicyBrief, cluster: Cluster) -> str:
         content = self._normalize_brief_content(getattr(brief, "content", ""))
+        content = self._strip_markdown_artifacts(content)
 
         filename_base = self._safe_filename(
-            f"{getattr(cluster, 'category', 'kategori')}_{getattr(cluster, 'label', 'cluster')}_{brief.id}"
+            f"{getattr(cluster, 'category', 'kategori')}_"
+            f"{getattr(cluster, 'label', 'cluster')}_{brief.id}"
         )
 
-        file_path = self.output_dir / f"{filename_base}.md"
+        file_path = self.output_dir / f"{filename_base}.txt"
         file_path.write_text(content, encoding="utf-8")
 
         return str(file_path)
@@ -290,6 +335,7 @@ Isu ini dapat diteruskan kepada pemerintah daerah, dinas teknis terkait, dan DPR
         priority_score: float,
     ) -> PolicyBrief:
         normalized_content = self._normalize_brief_content(content)
+        normalized_content = self._strip_markdown_artifacts(normalized_content)
 
         brief = PolicyBrief()
 
@@ -331,13 +377,18 @@ Isu ini dapat diteruskan kepada pemerintah daerah, dinas teknis terkait, dan DPR
         score = scorer.compute_priority_score(cluster)
 
         priority_score = self._safe_score_value(score, "priority_score", 0)
-        priority_level = self._safe_score_value(score, "priority_level", "Tidak tersedia")
+        priority_level = self._safe_score_value(
+            score,
+            "priority_level",
+            "Tidak tersedia",
+        )
 
         if self.llm.is_available():
             try:
                 system = (
-                    "Anda adalah analis kebijakan publik. "
-                    "Tugas Anda adalah menyusun policy brief berbasis data aspirasi warga. "
+                    "Anda adalah analis kebijakan publik pemerintah. "
+                    "Tugas Anda adalah menyusun dokumen formal policy brief berbasis data aspirasi warga. "
+                    "Output harus berbentuk dokumen resmi, bukan markdown, bukan JSON, dan bukan catatan teknis. "
                     "Anda harus faktual, formal, dan tidak boleh mengarang data di luar input."
                 )
 
@@ -349,6 +400,7 @@ Isu ini dapat diteruskan kepada pemerintah daerah, dinas teknis terkait, dan DPR
                 )
 
                 content = self._normalize_brief_content(raw_content)
+                content = self._strip_markdown_artifacts(content)
                 generated_by = "ollama_local_llm"
 
                 if not content or content == "[object Object]":
@@ -420,15 +472,17 @@ Isu ini dapat diteruskan kepada pemerintah daerah, dinas teknis terkait, dan DPR
             return None
 
         filename_base = self._safe_filename(
-            f"{getattr(cluster, 'category', 'kategori')}_{getattr(cluster, 'label', 'cluster')}_{brief.id}"
+            f"{getattr(cluster, 'category', 'kategori')}_"
+            f"{getattr(cluster, 'label', 'cluster')}_{brief.id}"
         )
 
-        file_path = self.output_dir / f"{filename_base}.md"
+        file_path = self.output_dir / f"{filename_base}.txt"
 
         if not file_path.exists():
             content = self._normalize_brief_content(
                 getattr(brief, "content", "")
             )
+            content = self._strip_markdown_artifacts(content)
             file_path.write_text(content, encoding="utf-8")
 
         return file_path

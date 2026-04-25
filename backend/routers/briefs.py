@@ -50,6 +50,6 @@ async def download_brief_file(brief_id: UUID, db: Session = Depends(get_db)):
 
     return FileResponse(
         path=str(file_path),
-        media_type="text/markdown",
+        media_type="text/plain",
         filename=file_path.name,
     )
