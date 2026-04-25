@@ -16,17 +16,6 @@ def clamp(value: float, min_value: float = 0.0, max_value: float = 1.0) -> float
 
 
 def normalize_gdi(unique_regions: int, max_regions: int = 10) -> float:
-    """
-    GDI atau Geographic Distribution Index.
-
-    GDI mengukur seberapa luas isu tersebar secara geografis.
-    Nilai dinormalisasi ke rentang 0 sampai 1.
-
-    Contoh:
-    unique_regions = 5
-    max_regions = 10
-    gdi_score = 0.5
-    """
     if unique_regions is None or unique_regions <= 0:
         return 0.0
 
@@ -37,12 +26,6 @@ def normalize_gdi(unique_regions: int, max_regions: int = 10) -> float:
 
 
 def calculate_reports_per_100k(report_count: int, population: int) -> float:
-    """
-    Menghitung jumlah laporan per 100.000 penduduk.
-
-    PAVI tidak memakai volume mentah agar tidak bias terhadap wilayah
-    berpenduduk besar.
-    """
     if report_count is None or report_count <= 0:
         return 0.0
 
@@ -57,12 +40,6 @@ def normalize_pavi(
     population: int,
     max_reports_per_100k: float = 30.0,
 ) -> Dict[str, float]:
-    """
-    PAVI atau Population-Adjusted Voice Index.
-
-    PAVI mengukur intensitas laporan relatif terhadap jumlah penduduk.
-    Dipakai log scaling supaya nilai ekstrem tidak terlalu mendominasi.
-    """
     reports_per_100k = calculate_reports_per_100k(
         report_count=report_count,
         population=population,
@@ -83,14 +60,6 @@ def normalize_asta_cita(
     asta_cita: Optional[str],
     asta_confidence: Optional[float] = None,
 ) -> float:
-    """
-    Asta Cita digunakan sebagai policy relevance factor.
-
-    Kalau confidence model tersedia, gunakan confidence.
-    Kalau tidak tersedia:
-    - Asta Cita terdeteksi = 0.75
-    - Unknown = 0.30
-    """
     if asta_confidence is not None:
         return clamp(float(asta_confidence))
 
@@ -106,9 +75,6 @@ def normalize_asta_cita(
 
 
 def get_priority_level(priority_score: float) -> str:
-    """
-    Level prioritas untuk dashboard.
-    """
     if priority_score >= 80:
         return "critical"
     if priority_score >= 65:
@@ -119,9 +85,6 @@ def get_priority_level(priority_score: float) -> str:
 
 
 def should_trigger_policy_brief(priority_score: float) -> bool:
-    """
-    Policy brief dibuat jika isu sudah masuk prioritas tinggi.
-    """
     return priority_score >= 65
 
 
@@ -134,19 +97,6 @@ def calculate_priority_score(
     max_regions: int = 10,
     max_reports_per_100k: float = 30.0,
 ) -> Dict[str, Any]:
-    """
-    Formula final SuaraRakyat AI:
-
-    Priority Score =
-    0.35 * GDI
-    + 0.35 * PAVI
-    + 0.30 * Asta Cita Relevance
-
-    Komponen:
-    - GDI mengukur sebaran geografis isu.
-    - PAVI mengukur intensitas laporan per 100.000 penduduk.
-    - Asta Cita mengukur relevansi isu terhadap agenda pembangunan.
-    """
     gdi_score = normalize_gdi(
         unique_regions=unique_regions,
         max_regions=max_regions,
@@ -206,15 +156,6 @@ class ScorerService:
         self.db = db
 
     def compute_priority_score(self, cluster: Cluster) -> Dict[str, Any]:
-        """
-        Hitung priority score dari object cluster.
-
-        Catatan:
-        - report_count diambil dari member_count.
-        - unique_regions diambil dari jumlah top_provinces.
-        - population idealnya berasal dari cluster.population.
-        - Kalau population belum ada, fallback 100000 agar endpoint tetap jalan.
-        """
         unique_regions = len(cluster.top_provinces or [])
         population = getattr(cluster, "population", None) or 100000
 
@@ -227,6 +168,9 @@ class ScorerService:
             max_regions=10,
             max_reports_per_100k=30.0,
         )
+
+    def computePriorityScore(self, cluster: Cluster) -> Dict[str, Any]:
+        return self.compute_priority_score(cluster)
 
     def score_cluster(self, cluster_id):
         cluster = (
@@ -260,17 +204,22 @@ class ScorerService:
 
         return score
 
+    def scoreCluster(self, cluster_id):
+        return self.score_cluster(cluster_id)
+
     def score_all_clusters(self):
         clusters = self.db.query(Cluster).all()
         results = []
 
         for cluster in clusters:
             score = self.score_cluster(cluster.id)
-
             if score:
                 results.append(score)
 
         return results
+
+    def scoreAllClusters(self):
+        return self.score_all_clusters()
 
     def get_top_scores(self, limit: int = 10):
         return (

@@ -11,6 +11,7 @@ class ClusterResponse(BaseModel):
     category: str
     member_count: int
     top_provinces: List[str]
+    population: Optional[int]
     dominant_asta_cita: Optional[str]
     asta_confidence: Optional[float]
     created_at: datetime
