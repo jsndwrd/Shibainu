@@ -108,7 +108,7 @@ const Step2Detail = () => {
                 <input
                     type="file"
                     {...register("lampiran")}
-                    className="file:text-primary hover:file:bg-accent text-sm file:mr-4 file:rounded-lg file:border-0 file:bg-emerald-50 file:px-4 file:py-2 file:text-sm file:font-semibold"
+                    className="file:text-primary hover:file:bg-accent file:bg-accent/50 text-sm file:mr-4 file:rounded-lg file:border-0 file:px-4 file:py-2 file:text-sm file:font-semibold"
                 />
             </div>
 
