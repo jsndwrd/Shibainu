@@ -14,8 +14,6 @@ interface FormState {
 export const useAspirasiStore = create<FormState>((set) => ({
     step: 1,
     formData: {
-        namaLengkap: "Ananda Rizky Pratama",
-        nik: "3275238291323001",
         tingkatUrgensi: "Sedang",
     },
     setStep: (step) => set({ step }),
@@ -23,5 +21,5 @@ export const useAspirasiStore = create<FormState>((set) => ({
     prevStep: () => set((state) => ({ step: Math.max(1, state.step - 1) })),
     updateData: (data) =>
         set((state) => ({ formData: { ...state.formData, ...data } })),
-    resetForm: () => set({ step: 1, formData: {} }),
+    resetForm: () => set({ step: 1, formData: { tingkatUrgensi: "Sedang" } }),
 }));
