@@ -15,6 +15,10 @@ import type {
   UUID,
 } from "@/lib/apiContract";
 
+type RawBriefResponse = Omit<BriefResponse, "content"> & {
+  content: unknown;
+};
+
 interface AdminStoreState {
   aspirations: AspirationListItem[];
   clusters: ClusterResponse[];
@@ -70,6 +74,45 @@ const initialStats: AdminStats = {
   averagePriorityScore: 0,
   criticalReports: 0,
 };
+
+function normalizeBriefContent(content: unknown): string {
+  if (content === null || content === undefined) {
+    return "";
+  }
+
+  if (typeof content === "string") {
+    return content;
+  }
+
+  if (Array.isArray(content)) {
+    return content
+      .map((item) =>
+        typeof item === "string" ? item : JSON.stringify(item, null, 2),
+      )
+      .join("\n\n");
+  }
+
+  if (typeof content === "object") {
+    const obj = content as Record<string, any>;
+
+    if (typeof obj.content === "string") return obj.content;
+    if (typeof obj.summary === "string") return obj.summary;
+    if (typeof obj.text === "string") return obj.text;
+    if (typeof obj.result === "string") return obj.result;
+    if (typeof obj.message === "string") return obj.message;
+
+    return JSON.stringify(obj, null, 2);
+  }
+
+  return String(content);
+}
+
+function normalizeBrief(brief: RawBriefResponse): BriefResponse {
+  return {
+    ...brief,
+    content: normalizeBriefContent(brief.content),
+  };
+}
 
 function calculateStats(params: {
   aspirations: AspirationListItem[];
@@ -399,19 +442,27 @@ export const useAdminStore = create<AdminStoreState>((set, get) => ({
     try {
       set({ isLoadingBriefs: true, error: null });
 
-      const response = await apiFetch<BriefResponse[]>(API_ROUTES.briefs.list, {
-        method: "GET",
-      });
+      const response = await apiFetch<RawBriefResponse[]>(
+        API_ROUTES.briefs.list,
+        {
+          method: "GET",
+        },
+      );
+
+      const briefs = response.map(normalizeBrief);
 
       set({
-        briefs: response,
+        briefs,
         isLoadingBriefs: false,
       });
 
-      return response;
+      return briefs;
     } catch (error) {
       set({
-        error: getErrorMessage(error, "Gagal mengambil policy brief."),
+        error:
+          error instanceof Error
+            ? error.message
+            : "Gagal mengambil policy brief.",
         isLoadingBriefs: false,
       });
 
@@ -423,22 +474,27 @@ export const useAdminStore = create<AdminStoreState>((set, get) => ({
     try {
       set({ isLoadingBriefs: true, error: null });
 
-      const response = await apiFetch<BriefResponse>(
+      const response = await apiFetch<RawBriefResponse>(
         API_ROUTES.briefs.detail(briefId),
         {
           method: "GET",
         },
       );
 
+      const brief = normalizeBrief(response);
+
       set({
-        selectedBrief: response,
+        selectedBrief: brief,
         isLoadingBriefs: false,
       });
 
-      return response;
+      return brief;
     } catch (error) {
       set({
-        error: getErrorMessage(error, "Gagal mengambil detail brief."),
+        error:
+          error instanceof Error
+            ? error.message
+            : "Gagal mengambil detail brief.",
         isLoadingBriefs: false,
       });
 
@@ -450,7 +506,7 @@ export const useAdminStore = create<AdminStoreState>((set, get) => ({
     try {
       set({ isGeneratingBrief: true, error: null });
 
-      const response = await apiFetch<BriefResponse[]>(
+      const response = await apiFetch<RawBriefResponse[]>(
         API_ROUTES.briefs.generate,
         {
           method: "POST",
@@ -458,14 +514,19 @@ export const useAdminStore = create<AdminStoreState>((set, get) => ({
         },
       );
 
+      const generatedBriefs = response.map(normalizeBrief);
+
       await get().fetchBriefs();
 
       set({ isGeneratingBrief: false });
 
-      return response;
+      return generatedBriefs;
     } catch (error) {
       set({
-        error: getErrorMessage(error, "Gagal membuat policy brief."),
+        error:
+          error instanceof Error
+            ? error.message
+            : "Gagal membuat policy brief.",
         isGeneratingBrief: false,
       });
 

@@ -8,21 +8,94 @@ import {
   Share2,
   CheckCircle,
   ShieldAlert,
-  AlertCircle,
   Loader2,
 } from "lucide-react";
 import Link from "next/link";
-import { useEffect } from "react";
-
+import React, { useEffect } from "react";
 interface PolicyBriefDetailPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
+}
+
+function renderMarkdownText(content: unknown): string {
+  if (typeof content === "string") return content;
+
+  if (content === null || content === undefined) return "";
+
+  if (typeof content === "object") {
+    const obj = content as Record<string, any>;
+
+    if (typeof obj.content === "string") return obj.content;
+    if (typeof obj.summary === "string") return obj.summary;
+    if (typeof obj.text === "string") return obj.text;
+    if (typeof obj.result === "string") return obj.result;
+    if (typeof obj.message === "string") return obj.message;
+
+    return JSON.stringify(obj, null, 2);
+  }
+
+  return String(content);
+}
+
+function formatBriefContent(content: string) {
+  return content.split("\n").map((line, index) => {
+    const key = `${index}-${line}`;
+
+    if (line.startsWith("# ")) {
+      return (
+        <h1 key={key} className="mb-6 text-3xl font-bold text-gray-900">
+          {line.replace("# ", "")}
+        </h1>
+      );
+    }
+
+    if (line.startsWith("## ")) {
+      return (
+        <h2 key={key} className="mt-8 mb-3 text-xl font-bold text-gray-900">
+          {line.replace("## ", "")}
+        </h2>
+      );
+    }
+
+    if (line.startsWith("- ")) {
+      return (
+        <li
+          key={key}
+          className="ml-6 list-disc text-sm leading-relaxed text-gray-700"
+        >
+          {line.replace("- ", "")}
+        </li>
+      );
+    }
+
+    if (/^\d+\.\s/.test(line)) {
+      return (
+        <li
+          key={key}
+          className="ml-6 list-decimal text-sm leading-relaxed text-gray-700"
+        >
+          {line.replace(/^\d+\.\s/, "")}
+        </li>
+      );
+    }
+
+    if (line.trim() === "") {
+      return <div key={key} className="h-3" />;
+    }
+
+    return (
+      <p key={key} className="text-sm leading-7 text-gray-700">
+        {line}
+      </p>
+    );
+  });
 }
 
 export default function PolicyBriefDetailPage({
   params,
 }: PolicyBriefDetailPageProps) {
+  const { id } = React.use(params);
   const {
     selectedBrief,
     error,
@@ -32,12 +105,14 @@ export default function PolicyBriefDetailPage({
   } = useAdminStore();
 
   useEffect(() => {
-    fetchBriefDetail(params.id).catch(() => {});
+    fetchBriefDetail(id).catch(() => {
+      // error sudah masuk ke store
+    });
 
     return () => {
       clearSelectedBrief();
     };
-  }, [params.id, fetchBriefDetail, clearSelectedBrief]);
+  }, [id, fetchBriefDetail, clearSelectedBrief]);
 
   if (isLoadingBriefs) {
     return (
@@ -64,6 +139,8 @@ export default function PolicyBriefDetailPage({
     );
   }
 
+  const content = renderMarkdownText(selectedBrief.content);
+
   return (
     <div className="mx-auto max-w-4xl space-y-6 pb-20">
       <div className="flex items-center justify-between">
@@ -87,7 +164,7 @@ export default function PolicyBriefDetailPage({
         </div>
       </div>
 
-      <div className="rounded-xl border border-gray-200 bg-white p-10 shadow-sm md:p-16">
+      <div className="rounded-xl border border-gray-200 bg-white p-8 shadow-sm md:p-12">
         <div className="mb-8 border-b-2 border-gray-900 pb-6 text-center">
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-gray-200">
             <ShieldAlert className="h-8 w-8 text-gray-500" />
@@ -106,11 +183,7 @@ export default function PolicyBriefDetailPage({
           </p>
         </div>
 
-        <h1 className="border-primary mb-6 border-l-4 pl-4 text-2xl leading-snug font-bold text-gray-900 md:text-3xl">
-          Brief Kebijakan Cluster {selectedBrief.cluster_id.slice(0, 8)}
-        </h1>
-
-        <div className="mb-10 flex flex-wrap gap-6 text-sm font-medium text-gray-600">
+        <div className="mb-8 flex flex-wrap gap-6 text-sm font-medium text-gray-600">
           <p>Nomor: {selectedBrief.id.slice(0, 8).toUpperCase()}</p>
 
           <p>
@@ -126,72 +199,11 @@ export default function PolicyBriefDetailPage({
           </p>
         </div>
 
-        <div className="bg-primary/5 border-primary/20 mb-10 rounded-xl border p-6">
-          <h3 className="text-primary mb-3 flex items-center gap-2 text-lg font-bold">
-            <Sparkles className="h-5 w-5" />
-            Ringkasan Eksekutif
-          </h3>
+        <article className="prose prose-sm max-w-none">
+          {formatBriefContent(content)}
+        </article>
 
-          <p className="text-sm leading-relaxed whitespace-pre-line text-gray-700">
-            {selectedBrief.content}
-          </p>
-        </div>
-
-        <h3 className="mb-4 flex items-center gap-2 text-lg font-bold text-gray-900">
-          <AlertCircle className="h-5 w-5 text-gray-400" />
-          Informasi Brief
-        </h3>
-
-        <div className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-2">
-          <InfoCard
-            title="Cluster ID"
-            value={selectedBrief.cluster_id.slice(0, 8)}
-            desc="Cluster sumber analisis kebijakan."
-          />
-
-          <InfoCard
-            title="Urgensi"
-            value={selectedBrief.urgency_classification}
-            desc="Klasifikasi urgensi hasil analisis sistem."
-          />
-
-          <InfoCard
-            title="Generator"
-            value={selectedBrief.generated_by}
-            desc="Pihak atau sistem pembuat policy brief."
-          />
-
-          <InfoCard
-            title="Tanggal"
-            value={new Date(selectedBrief.generated_at).toLocaleDateString(
-              "id-ID",
-            )}
-            desc="Waktu policy brief dibuat."
-          />
-        </div>
-
-        <h3 className="mb-4 flex items-center gap-2 text-lg font-bold text-gray-900">
-          <CheckCircle className="h-5 w-5 text-gray-400" />
-          Tindak Lanjut
-        </h3>
-
-        <div className="mb-10 space-y-4">
-          {[
-            "Verifikasi cluster dan sampel aspirasi terkait.",
-            "Kirim brief kepada instansi yang berwenang.",
-            "Pantau perubahan status aspirasi setelah tindak lanjut.",
-          ].map((item, idx) => (
-            <div key={item} className="flex items-start gap-4">
-              <div className="bg-primary/10 text-primary flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold">
-                {idx + 1}
-              </div>
-
-              <p className="text-sm text-gray-600">{item}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="flex items-center justify-between border-t border-gray-200 pt-8">
+        <div className="mt-10 flex items-center justify-between border-t border-gray-200 pt-8">
           <div className="text-xs text-gray-400">
             Dokumen dicetak pada: {new Date().toLocaleDateString("id-ID")}
           </div>
@@ -207,7 +219,7 @@ export default function PolicyBriefDetailPage({
         </div>
       </div>
 
-      <div className="flex justify-center gap-4">
+      <div className="flex flex-wrap justify-center gap-4">
         <button className="flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-6 py-3 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50">
           <Download className="h-4 w-4" />
           Unduh PDF
@@ -223,24 +235,6 @@ export default function PolicyBriefDetailPage({
           Tandai Selesai
         </button>
       </div>
-    </div>
-  );
-}
-
-function InfoCard({
-  title,
-  value,
-  desc,
-}: {
-  title: string;
-  value: string;
-  desc: string;
-}) {
-  return (
-    <div className="rounded-xl border border-gray-200 p-5">
-      <h4 className="text-primary mb-1 text-xl font-bold">{value}</h4>
-      <p className="mb-1 text-sm font-bold text-gray-900">{title}</p>
-      <p className="text-xs text-gray-500">{desc}</p>
     </div>
   );
 }
