@@ -1,5 +1,6 @@
 "use client";
 
+import { getBriefTitle } from "@/lib/brief";
 import { useAdminStore } from "@/store/useAdminStore";
 import {
   AlertCircle,
@@ -13,6 +14,23 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useEffect } from "react";
+
+function shortId(value?: string | null, length = 8): string {
+  if (!value) return "N/A";
+  return value.slice(0, length);
+}
+
+function safeDate(value?: string | null): string {
+  if (!value) return "Tanggal tidak tersedia";
+
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return "Tanggal tidak tersedia";
+  }
+
+  return date.toLocaleDateString("id-ID");
+}
 
 export default function AdminOverviewPage() {
   const {
@@ -54,7 +72,7 @@ export default function AdminOverviewPage() {
             brief dari data backend secara langsung.
           </p>
         </div>
-
+        {/* 
         <button
           onClick={handleRecompute}
           disabled={isRecomputing || isLoading}
@@ -66,7 +84,7 @@ export default function AdminOverviewPage() {
             <RefreshCcw className="h-4 w-4" />
           )}
           Recompute Data
-        </button>
+        </button> */}
       </div>
 
       {error && (
@@ -90,12 +108,12 @@ export default function AdminOverviewPage() {
           caption="Kelompok isu terdeteksi"
         />
 
-        <StatCard
+        {/* <StatCard
           title="Aspirasi Kritis"
           value={stats.criticalReports}
           icon={ShieldAlert}
           caption="Urgensi tinggi dan kritis"
-        />
+        /> */}
 
         <StatCard
           title="Policy Brief"
@@ -175,7 +193,7 @@ export default function AdminOverviewPage() {
               >
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-semibold text-gray-900">
-                    Cluster {score.cluster_id.slice(0, 8)}
+                    Cluster {shortId(score.cluster_id)}
                   </p>
                   <TrendingUp className="text-primary h-4 w-4" />
                 </div>
@@ -219,8 +237,8 @@ export default function AdminOverviewPage() {
                 <div>
                   <p className="font-semibold text-gray-900">{item.category}</p>
                   <p className="mt-1 text-xs text-gray-500">
-                    Cluster {item.cluster_id.slice(0, 8)} ·{" "}
-                    {new Date(item.submitted_at).toLocaleDateString("id-ID")}
+                    Cluster {shortId(item.cluster_id)} ·{" "}
+                    {safeDate(item.submitted_at)}
                   </p>
                 </div>
 
@@ -261,7 +279,7 @@ export default function AdminOverviewPage() {
                 className="block rounded-lg border border-gray-100 p-4 transition-colors hover:bg-gray-50"
               >
                 <p className="font-semibold text-gray-900">
-                  Brief Cluster {brief.cluster_id.slice(0, 8)}
+                  Brief Cluster {getBriefTitle(brief.content)}
                 </p>
                 <p className="mt-1 text-xs text-gray-500">
                   {brief.urgency_classification} ·{" "}

@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { getBriefTitle } from "@/lib/brief";
 
 export default function AdminLaporanPage() {
   const {
@@ -183,10 +184,10 @@ export default function AdminLaporanPage() {
 
                 <div>
                   <p className="font-bold text-gray-900">
-                    Brief Cluster {brief.cluster_id.slice(0, 8)}
+                    Brief Cluster {getBriefTitle(brief.content)}
                   </p>
                   <p className="mt-1 line-clamp-2 text-sm text-gray-500">
-                    {brief.content}
+                    {brief.content.slice(0, 100)}...
                   </p>
                 </div>
               </div>
