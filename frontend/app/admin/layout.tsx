@@ -18,6 +18,7 @@ import {
     LogOut,
     Menu,
     X,
+    House,
 } from "lucide-react";
 
 type MenuItem = {
@@ -227,6 +228,14 @@ function SidebarContent({
                     <HelpCircle className="h-4 w-4" />
                     Bantuan
                 </button>
+
+                <Link
+                    className="flex w-full items-center gap-3 rounded-lg px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                    href="/"
+                >
+                    <House className="h-4 w-4" />
+                    Home
+                </Link>
 
                 <button
                     onClick={onLogout}

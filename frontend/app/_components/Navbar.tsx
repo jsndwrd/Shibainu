@@ -20,8 +20,6 @@ type NavbarItem = {
 const baseNavbarItems: NavbarItem[] = [
     { item: "Beranda", link: "/" },
     { item: "Laporan", link: "/laporan" },
-    { item: "Statistik", link: "/stats" },
-    { item: "Peta Aspirasi", link: "/peta" },
 ];
 
 const Navbar = () => {
