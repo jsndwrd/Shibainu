@@ -1,5 +1,3 @@
-# <<<<<<< Updated upstream
-
 # SHIBAINU @ UC HACKFEST 2026
 
 ## Quick Commands
@@ -28,4 +26,3 @@
   ```bash
   fastapi dev
   ```
-  > > > > > > > Stashed changes
