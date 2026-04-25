@@ -49,29 +49,6 @@ const Step2Detail = () => {
                         </p>
                     )}
                 </div>
-                <div>
-                    <label className="mb-2 block text-sm font-medium text-gray-700">
-                        Tingkat Pemerintahan
-                    </label>
-                    <div className="flex rounded-lg bg-gray-100 p-1">
-                        {["Nasional", "Provinsi", "Kota/Kab"].map((lvl) => (
-                            <label
-                                key={lvl}
-                                className="flex-1 cursor-pointer text-center"
-                            >
-                                <input
-                                    type="radio"
-                                    value={lvl}
-                                    {...register("tingkatPemerintahan")}
-                                    className="peer sr-only"
-                                />
-                                <div className="peer-checked:text-primary rounded-md py-2 text-sm font-medium text-gray-500 transition-all peer-checked:bg-white peer-checked:shadow-sm">
-                                    {lvl}
-                                </div>
-                            </label>
-                        ))}
-                    </div>
-                </div>
             </div>
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">

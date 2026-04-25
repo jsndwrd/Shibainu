@@ -86,15 +86,15 @@ const Step3Lokasi = () => {
                     <input
                         type="range"
                         min="0"
-                        max="2"
+                        max="4"
                         step="1"
                         {...register("tingkatUrgensi")}
                         className="accent-primary w-full"
                     />
                     <div className="mt-1 flex justify-between text-xs text-gray-500">
-                        <span>Rendah</span>
+                        <span>Sangat Rendah</span>
                         <span>Sedang</span>
-                        <span>Kritis</span>
+                        <span>Sangat Kritis</span>
                     </div>
                 </div>
 
@@ -107,40 +107,6 @@ const Step3Lokasi = () => {
                         placeholder="Contoh: Kementerian PUPR"
                         className="focus:ring-accent w-full rounded-lg border border-gray-300 p-3 outline-none focus:ring-2"
                     />
-                </div>
-            </div>
-
-            <div>
-                <label className="mb-3 block text-sm font-medium text-gray-700">
-                    Cakupan Dampak
-                </label>
-                <div className="grid grid-cols-2 gap-4">
-                    {[
-                        { id: "Individu", desc: "Berdampak pada diri sendiri" },
-                        { id: "Komunitas", desc: "Lingkungan RT/RW/Desa" },
-                        { id: "Wilayah", desc: "Satu Kota atau Provinsi" },
-                        { id: "Nasional", desc: "Berdampak ke seluruh RI" },
-                    ].map((item) => (
-                        <label
-                            key={item.id}
-                            className="relative block cursor-pointer"
-                        >
-                            <input
-                                type="radio"
-                                value={item.id}
-                                {...register("cakupanDampak")}
-                                className="peer sr-only"
-                            />
-                            <div className="peer-checked:border-accent rounded-lg border border-gray-200 p-4 transition-colors peer-checked:bg-emerald-50">
-                                <p className="text-sm font-semibold text-gray-900">
-                                    {item.id}
-                                </p>
-                                <p className="mt-1 text-xs text-gray-500">
-                                    {item.desc}
-                                </p>
-                            </div>
-                        </label>
-                    ))}
                 </div>
             </div>
 

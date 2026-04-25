@@ -9,7 +9,6 @@ export const step1Schema = z.object({
 
 export const step2Schema = z.object({
     kategoriAspirasi: z.string().min(1, "Pilih kategori"),
-    tingkatPemerintahan: z.enum(["Nasional", "Provinsi", "Kota/Kab"]),
     judulLaporan: z.string().min(5, "Judul minimal 5 karakter"), // Dari Panduan
     deskripsi: z.string().min(20, "Deskripsi minimal 20 karakter").max(2000),
     tanggalKejadian: z.string().min(1, "Tanggal kejadian wajib diisi"), // Dari Panduan
@@ -22,7 +21,6 @@ export const step3Schema = z.object({
     lokasiDetail: z.string().min(5, "Detail lokasi kejadian wajib diisi"), // Dari Panduan
     instansiTujuan: z.string().optional(), // Dari Panduan (Opsional)
     tingkatUrgensi: z.enum(["Rendah", "Sedang", "Kritis"]),
-    cakupanDampak: z.enum(["Individu", "Komunitas", "Wilayah", "Nasional"]),
 });
 
 export const finalSchema = step1Schema.merge(step2Schema).merge(step3Schema);

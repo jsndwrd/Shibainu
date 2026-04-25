@@ -14,12 +14,9 @@ interface FormState {
 export const useAspirasiStore = create<FormState>((set) => ({
     step: 1,
     formData: {
-        // Mock data untuk Identitas (sesuai UI yang ter-verified)
         namaLengkap: "Ananda Rizky Pratama",
         nik: "3275238291323001",
-        tingkatPemerintahan: "Nasional",
         tingkatUrgensi: "Sedang",
-        cakupanDampak: "Individu",
     },
     setStep: (step) => set({ step }),
     nextStep: () => set((state) => ({ step: state.step + 1 })),

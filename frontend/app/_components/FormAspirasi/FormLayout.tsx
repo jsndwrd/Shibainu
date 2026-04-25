@@ -42,7 +42,7 @@ export default function FormLayout({
                                             isPast
                                                 ? "border-primary bg-primary text-white"
                                                 : isActive
-                                                  ? "border-primary text-primary bg-emerald-50"
+                                                  ? "border-primary text-primary bg-accent/50"
                                                   : "border-gray-300 text-gray-400"
                                         }`}
                                     >
@@ -71,7 +71,7 @@ export default function FormLayout({
                 </div>
 
                 {/* Info Keamanan Box */}
-                <div className="border-accent flex gap-3 rounded-xl border bg-emerald-50 p-6">
+                <div className="border-accent bg-accent/50 flex gap-3 rounded-xl border p-6">
                     <ShieldCheck className="text-primary/90 h-6 w-6 shrink-0" />
                     <div>
                         <h3 className="text-primary mb-1 text-sm font-semibold">
