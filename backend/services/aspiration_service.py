@@ -1,27 +1,31 @@
 from sqlalchemy.orm import Session
-from services.cleaner import CleanerService
-from services.embedder import EmbedderService
-from services.clusterer import ClustererService
-from services.scorer import ScorerService
+
 from models import Aspiration
+from services.cleaner import CleanerService
+from services.clusterer import ClustererService
+from services.embedder import EmbedderService
+from services.scorer import ScorerService
+
 
 class AspirationService:
     def __init__(self, db: Session):
         self.db = db
         self.cleaner = CleanerService()
-        self.embedder = EmbedderService()
+        self.embedder = EmbedderService(db)
 
     def createAspiration(self, citizen_id, payload):
         clean = self.cleaner.cleanDesc(payload.description)
-        pred = self.embedder.predictAll(clean)
-        clusterServ = ClustererService(self.db)
+        prediction = self.embedder.predict_all(clean)
 
-        cluster = clusterServ.assign_cluster(
-            embedding=pred["embedding"],
-            category=pred["category"],
-            urgency=pred["urgency"],
+        cluster_service = ClustererService(self.db)
+
+        cluster = cluster_service.assign_cluster(
+            embedding=prediction["embedding"],
+            category=prediction["category"],
             province=payload.province,
             impact_scope=payload.impact_scope,
+            asta_cita=prediction["asta_cita"],
+            asta_confidence=prediction["asta_confidence"],
         )
 
         aspiration = Aspiration(
@@ -29,16 +33,16 @@ class AspirationService:
             description=payload.description,
             cleaned_description=clean,
             category_user_input=payload.category,
-            predicted_category=pred["category"],
-            urgency_user_input=payload.urgency,
-            predicted_urgency=pred["urgency"],
+            predicted_category=prediction["category"],
+            predicted_asta_cita=prediction["asta_cita"],
+            asta_confidence=prediction["asta_confidence"],
             province=payload.province,
             regency=payload.regency,
             impact_scope=payload.impact_scope,
             target_level=payload.target_level,
-            embedding=pred["embedding"],
+            embedding=prediction["embedding"],
             cluster_id=cluster.id,
-            status="processed"
+            status="processed",
         )
 
         self.db.add(aspiration)
@@ -46,27 +50,40 @@ class AspirationService:
         self.db.refresh(aspiration)
 
         scorer = ScorerService(self.db)
-        scorer.scoreCluster(cluster.id)
+        scorer.score_cluster(cluster.id)
 
         return aspiration
-    
+
     def getMyAspiration(self, citizen_id):
-        return (self.db.query(Aspiration).filter(Aspiration.citizen_id == citizen_id).order_by(Aspiration.submitted_at.desc()).all())
+        return (
+            self.db.query(Aspiration)
+            .filter(Aspiration.citizen_id == citizen_id)
+            .order_by(Aspiration.submitted_at.desc())
+            .all()
+        )
 
     def getAllAspirations(self):
-        return (self.db.query(Aspiration).order_by(Aspiration.submitted_at.desc()).all())
+        return (
+            self.db.query(Aspiration)
+            .order_by(Aspiration.submitted_at.desc())
+            .all()
+        )
 
     def getAspirationById(self, aspiration_id):
-        return (self.db.query(Aspiration).filter(Aspiration.id == aspiration_id).first())
+        return (
+            self.db.query(Aspiration)
+            .filter(Aspiration.id == aspiration_id)
+            .first()
+        )
 
     def updateStatus(self, aspiration_id, status):
-        asp = self.getAspirationById(aspiration_id)
+        aspiration = self.getAspirationById(aspiration_id)
 
-        if not asp:
+        if not aspiration:
             return None
 
-        asp.status = status
+        aspiration.status = status
         self.db.commit()
-        self.db.refresh(asp)
+        self.db.refresh(aspiration)
 
-        return asp
+        return aspiration
