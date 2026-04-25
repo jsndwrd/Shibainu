@@ -1,0 +1,12 @@
+true_category,pred_category,count
+Kesehatan,Sosial,8
+Kesehatan,Pendidikan,7
+Sosial,Infrastruktur,3
+Ekonomi,Infrastruktur,2
+Ekonomi,Sosial,2
+Infrastruktur,Ekonomi,2
+Ekonomi,Lingkungan,1
+Keamanan,Pendidikan,1
+Sosial,Keamanan,1
+Sosial,Kesehatan,1
+Sosial,Lingkungan,1

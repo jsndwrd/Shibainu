@@ -1,0 +1,30 @@
+
+SuaraRakyat AI — Evaluation Summary
+
+Model Version:
+v3.2 Baseline Multi-Task IndoBERTweet
+
+Key Results:
+1. Urgency Scoring
+   - MAE: 0.6173
+   - Target: <= 0.7
+   - Status: PASS
+   - Interpretation: Model sudah mampu membaca tingkat urgensi aspirasi warga pada skala 1–5.
+
+2. Asta Cita Alignment
+   - Macro F1: 0.8519
+   - Status: STRONG
+   - Interpretation: Model mampu menghubungkan aspirasi publik dengan prioritas pembangunan nasional.
+
+3. Category Classification
+   - Macro F1: 0.6688
+   - Status: BASELINE ESTABLISHED
+   - Interpretation: Klasifikasi kategori isu sudah berjalan, tetapi masih menjadi fokus peningkatan melalui contrastive data augmentation.
+
+Pitch Narrative:
+SuaraRakyat AI bukan sekadar aplikasi pengaduan, tetapi civic intelligence system yang mengubah aspirasi warga tidak terstruktur menjadi tiga sinyal kebijakan: sektor isu, tingkat urgensi, dan keterkaitan dengan Asta Cita.
+
+Model v3.2 membuktikan bahwa pipeline AI sudah feasible. Urgency Scoring telah melampaui target dengan MAE 0.6173, sementara Asta Cita Alignment menunjukkan performa kuat dengan Macro F1 0.8519. Category Classification menjadi fokus iterasi berikutnya melalui error-pair mining dan contrastive category refinement.
+
+Recommended PPT Line:
+"Baseline ini membuktikan bahwa SuaraRakyat AI sudah mampu mengubah suara warga menjadi insight kebijakan yang terstruktur, terukur, dan siap diprioritaskan."
