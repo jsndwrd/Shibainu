@@ -1,6 +1,7 @@
 export type UUID = string;
 export type ISODate = string;
 export type ISODateTime = string;
+export type UserRole = "user" | "admin";
 
 export interface LoginRequest {
   nik: string;
@@ -11,14 +12,14 @@ export interface LoginResponse {
   access_token: string;
   token_type: string;
   citizen_id: UUID;
+  role: UserRole;
 }
 
 export interface MeResponse {
   id: UUID;
   nik: string;
   province: string | null;
-  nama_lengkap?: string;
-  name?: string;
+  role: UserRole;
 }
 
 export interface AspirationCreatePayload {
