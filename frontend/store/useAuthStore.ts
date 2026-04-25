@@ -207,7 +207,7 @@ export const useAuthStore = create<AuthStoreState>((set, get) => ({
     const role = get().role;
 
     if (role === "admin") {
-      return "/dashboard";
+      return "/admin";
     }
 
     return "/aspirasi";
