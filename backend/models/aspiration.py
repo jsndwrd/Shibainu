@@ -36,6 +36,12 @@ class Aspiration(Base):
     predicted_asta_cita = Column(String(50), nullable=True)
     asta_confidence = Column(Float, default=0.75)
 
+    # New policy routing fields
+    policy_level = Column(String(30), nullable=True)  # operational / strategic
+    policy_level_confidence = Column(Float, default=0.0)
+    policy_level_reason = Column(Text, nullable=True)
+    routing_target = Column(String(50), nullable=True)  # operational_ticket / policy_priority_pipeline
+
     province = Column(String(100), nullable=False)
     regency = Column(String(100), nullable=False)
 
