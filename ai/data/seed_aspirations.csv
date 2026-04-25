@@ -1,179 +1,577 @@
-id,description,category,province,urgency,impact_scope,target_level,sub_topic,source
-96bb8aa8-e2d3-4069-8abd-25d36a883264,"jln maluku rusak parah, macet terus",Infrastruktur,Maluku,4,Individual,Regency,jalan berlubang/rusak parah,synthetic_fewshot
-b0fb6f37-70ee-42a2-b9e4-3c0d0b373c64,"lampu jln mati, gelap abis",Infrastruktur,Maluku,3,Community,Regency,lampu jalan mati,synthetic_fewshot
-ba24650a-2691-4301-b5fb-57c77fd2c14f,"jembatan ambon retak, takut roboh",Infrastruktur,Maluku,5,Individual,Regency,jembatan retak/roboh,synthetic_fewshot
-e4d39559-2165-4afa-a992-52367d85a3d0,"drainase mampet, banjir bandang",Infrastruktur,Maluku,5,National,Regency,drainase mampet,synthetic_fewshot
-507bbf08-d0e3-4b3d-b1a1-a727f7a23569,"trotoar rusak, bahaya buat pejalan kaki",Infrastruktur,Maluku,3,National,Provincial,trotoar rusak,synthetic_fewshot
-c88bcc39-b965-4ecc-8e8f-02a753ed7993,"gedung sekolah rusak, bahaya buat siswa",Infrastruktur,Maluku,4,Individual,Regency,gedung sekolah/puskesmas retak,synthetic_fewshot
-698a2541-ae98-4980-ade5-f55b689dc705,"akses jln desa terisolir, susah keluar masuk",Infrastruktur,Maluku,4,National,Provincial,akses jalan desa terisolir,synthetic_fewshot
-ec38a7b5-0a3f-455d-8a71-d6a3edb45651,"irigasi sawah rusak, petani rugi",Infrastruktur,Maluku,3,Regional,Regency,irigasi sawah rusak,synthetic_fewshot
-f8e4f211-4e57-4368-a767-d7780d5a17b7,"jln desa kami rusak parah, butuh perbaikan",Infrastruktur,NTT,4,Community,Provincial,jalan berlubang/rusak parah,synthetic_fewshot
-fe11f79a-73cf-48cb-a6ab-e177beb1814e,"Jembatan di dekat rumah saya retak, takut roboh",Infrastruktur,NTT,5,Individual,Regency,jembatan retak/roboh,synthetic_fewshot
-4ee661fd-73c3-44c2-a8e1-701f56fc263d,"Lampu jalan di sini udah mati bertahun2, gelap banget",Infrastruktur,NTT,3,National,Regency,lampu jalan mati,synthetic_fewshot
-1ef5f091-2631-46c2-b2aa-ec97e4f12126,"Drainase mampet, banjir terus di kampung kami",Infrastruktur,NTT,4,Regional,Provincial,drainase mampet,synthetic_fewshot
-3824c012-1cae-400b-a0b5-f6ee207217cf,"Trotoar di depan sekolah rusak, anak2 jatuh",Infrastruktur,NTT,3,Regional,Regency,trotoar rusak,synthetic_fewshot
-f14383aa-3203-44b3-bd94-d0c633e5260e,"Gedung puskesmas retak, butuh renovasi darurat",Infrastruktur,NTT,5,National,Regency,gedung sekolah/puskesmas retak,synthetic_fewshot
-221ba917-19fe-4e36-b874-efe8acbc7e2d,"Akses jalan desa terisolir, susah keluar masuk",Infrastruktur,NTT,4,National,Regency,akses jalan desa terisolir,synthetic_fewshot
-1ba56667-7578-49ee-994e-b2b55367065f,"Irigasi sawah rusak, petani rugi",Infrastruktur,NTT,3,Regional,Provincial,irigasi sawah rusak,synthetic_fewshot
-282e3407-9f4f-4a17-8273-44f9dfae3263,"jalan rusak parah di riau, capek dah",Infrastruktur,Riau,4,Community,Regency,jalan berlubang,synthetic_fewshot
-e3941ff3-fbeb-4624-b4bb-c71b26611477,"jembatan retak, takut roboh nih",Infrastruktur,Riau,5,Individual,Regency,jembatan retak/roboh,synthetic_fewshot
-f446ae31-a218-4fd9-858d-48ef4ef01f02,"lampu jalan mati aja, gelap bgt malem2",Infrastruktur,Riau,3,Regional,Regency,lampu jalan mati,synthetic_fewshot
-2de9dd7b-285a-47cf-a3ea-dd0e680d0862,"drainase mampet, banjir terus",Infrastruktur,Riau,4,Community,Regency,drainase mampet,synthetic_fewshot
-9e025dd2-ee98-4f1d-98cc-1dd1de6294d3,"trotoar rusak, jatuh2",Infrastruktur,Riau,3,National,Provincial,trotoar rusak,synthetic_fewshot
-c68b96a5-4167-4791-97a5-b5da119606e8,"gedung sekolah retak, khawatir roboh",Infrastruktur,Riau,5,National,Provincial,gedung sekolah/puskesmas retak,synthetic_fewshot
-9ee5eca7-7444-42de-9022-dccf32168d78,"akses jalan desa terisolir, susah aja kesana",Infrastruktur,Riau,4,Community,Provincial,akses jalan desa terisolir,synthetic_fewshot
-fc960336-8f69-4979-b100-ebc8c9cf61ee,"irigasi sawah rusak, petani resah",Infrastruktur,Riau,4,Regional,Regency,irigasi sawah rusak,synthetic_fewshot
-8730dae3-2e8b-4319-9c8a-c88f55be629d,"Jalan desa rusak parah, udh 5 thn belum diperbaiki",Infrastruktur,Jawa Timur,4,Regional,Regency,jalan berlubang,synthetic_fewshot
-d1a86d9c-9ab0-4e67-a5da-5f3c423b779e,"Gedung puskesmas retak, takut roboh",Infrastruktur,Jawa Timur,5,Community,Regency,gedung puskesmas retak,synthetic_fewshot
-b87579e0-5d8e-4d0c-a383-0044bb02d894,"Lampu jalan mati, gelap banget malem2",Infrastruktur,Jawa Timur,3,Community,Provincial,lampu jalan mati,synthetic_fewshot
-6a4a0d20-26e1-4119-b1f9-d8211dd8f3c8,"Banjir terus krn drainase mampet, ribet ah",Infrastruktur,Jawa Timur,4,National,Provincial,drainase mampet,synthetic_fewshot
-10f4855a-82fd-446a-ab9c-35137d2365c8,"Trotoar rusak, bikin susah jalan kaki",Infrastruktur,Jawa Timur,3,Individual,Regency,trotoar rusak,synthetic_fewshot
-b7f74aed-faa3-4479-8e9d-bacd52ce3f50,"Jembatan retak, khawatir roboh kalo lewat",Infrastruktur,Jawa Timur,5,National,Provincial,jembatan retak,synthetic_fewshot
-b7ebab79-092e-4369-9272-74a450ebbea4,"Jln di Sulsel rusak parah, macet trs",Infrastruktur,Sulawesi Selatan,4,Individual,Regency,jalan berlubang,synthetic_fewshot
-e76ae139-3070-4fc0-af01-cb625ed4baa6,"Jembatan di desa roboh, akses terisolir",Infrastruktur,Sulawesi Selatan,5,Regional,Regency,jembatan retak/roboh,synthetic_fewshot
-55158e2c-1ae0-4a94-b6a9-64071093ada4,"Lampu jalan mati td, bahaya banget malam2",Infrastruktur,Sulawesi Selatan,3,National,Provincial,lampu jalan mati,synthetic_fewshot
-3e8fcb5d-9400-4155-b82c-515ce7259602,"Drainase mampet, banjir setiap hujan",Infrastruktur,Sulawesi Selatan,4,National,Regency,drainase mampet,synthetic_fewshot
-79e0e913-54ca-45f7-899d-f90d51ce34f8,"Trotoar rusak, buat pejalan kaki bahaya",Infrastruktur,Sulawesi Selatan,3,Regional,Regency,trotoar rusak,synthetic_fewshot
-8884584c-a614-4907-8571-0ea804537e56,"Gedung sekolah retak, takut runtuh",Infrastruktur,Sulawesi Selatan,5,Community,Provincial,gedung sekolah retak,synthetic_fewshot
-c79a2386-5aa1-4964-b5cb-ed572877adf8,"Akses jln desa putus, susah keluar masuk",Infrastruktur,Sulawesi Selatan,4,Regional,Regency,akses jalan desa terisolir,synthetic_fewshot
-ce94a7bc-bc22-4ab9-9e79-067cd2fd5bef,"ambulans ga ada pas aku butuh, harus naik ojek ke rs",Kesehatan,DKI Jakarta,5,National,National,Ambulans tidak tersedia,synthetic_fewshot
-40c9a5e9-1525-4d9e-b2f1-2738b7ddcee3,"dokter di puskesmas jakbar ga pernah ada, apa kabar?",Kesehatan,DKI Jakarta,4,Regional,National,Dokter tidak pernah ada di puskesmas,synthetic_fewshot
-0d7cf896-a2c3-47f9-9620-14441cbaf3cb,"antri bpjs di rs jakarta timur kaya gila, sampe 3 jam",Kesehatan,DKI Jakarta,3,Individual,National,Antrian sangat panjang,synthetic_fewshot
-dac66810-dbae-466f-a2da-e9ffc381ac34,"bpjs aku ditolak di rs, katanya kuota udah habis deh",Kesehatan,DKI Jakarta,5,Individual,National,BPJS ditolak RS,synthetic_fewshot
-95657d14-11ad-4043-a520-9031d549ad33,"obat untuk stunting anak ga ada di puskesmas, gimana ini?",Kesehatan,DKI Jakarta,4,Regional,National,Obat habis/langka di faskes,synthetic_fewshot
-1e5f9497-e809-41b8-ab0d-877f3571ca8a,antri bpjs di rs jakarta timur kaga abis2,Kesehatan,DKI Jakarta,4,Regional,Regency,antrian sangat panjang,synthetic_fewshot
-2a42a979-789c-43d4-a580-3085d8b4c2f5,dokter puskesmas jagakarsa gak pernah ada,Kesehatan,DKI Jakarta,5,Regional,Provincial,dokter tidak pernah ada di puskesmas,synthetic_fewshot
-bf54080c-6d0f-4e81-8e2f-a9385450709b,"bpjs ditolak di igd rs jakarta pusat, katanya kuota penuh deh",Kesehatan,DKI Jakarta,5,Community,Provincial,BPJS ditolak RS/puskesmas,synthetic_fewshot
-e52d3665-6852-4334-938e-7bf7e1eaaf38,"obat di puskesmas cempaka putih habis terus, gatau apa2",Kesehatan,DKI Jakarta,3,Individual,National,obat habis/langka di faskes,synthetic_fewshot
-4211a7b5-aac2-4fe2-b8b4-d91c70df6698,"petugas puskesmas Palmerah kasar banget, gak sopan",Kesehatan,DKI Jakarta,4,Regional,National,pelayanan kasar,synthetic_fewshot
-f3f73866-77f9-4595-b963-ecafb15b7002,"dokter gak ada di puskesmas kabupaten, kudu pergi ke rsu",Kesehatan,NTT,4,Community,National,dokter tidak pernah ada di puskesmas,synthetic_fewshot
-1f5bc531-1007-4956-9b1f-880868b8b531,"antri obat di puskesmas ngntung sampe pagi, capek",Kesehatan,NTT,3,Individual,National,antrian sangat panjang,synthetic_fewshot
-2804634f-f252-42e3-9c81-74b63be3e26f,"bpjs saya ditolak di rs, katanya kuota udah habis, gimana nih?",Kesehatan,NTT,5,Regional,National,BPJS ditolak RS/puskesmas,synthetic_fewshot
-7d83a550-afa2-462d-8a09-33ce805c6ab7,apotek di puskesmas kabupaten ntt gak punya obat yang dibutuhin,Kesehatan,NTT,4,Community,Regency,obat habis/langka di faskes,synthetic_fewshot
-077a60ec-a2f9-4a72-aa07-785de69f0c58,"ambulans gak ada pas ibu saya sakit, kudu nebeng truk",Kesehatan,NTT,5,Regional,Regency,ambulans tidak tersedia,synthetic_fewshot
-1c669978-19eb-4e46-9da7-f6349ee7062f,"BPJS gw ditolak di RS Jayapura, katanya kuota udah habis",Kesehatan,Papua,4,Individual,National,BPJS ditolak RS,synthetic_fewshot
-3153a34e-d136-4ccc-9241-1b6846cbc3c9,"Obat di puskesmas kab Jayapura langka banget, harus beli sendiri",Kesehatan,Papua,3,Regional,Provincial,obat habis/langka di faskes,synthetic_fewshot
-2550321c-2728-46f0-bb87-14f6fcd4c55b,"Antri di puskesmas Merauke sampe 3 jam, capek bgt",Kesehatan,Papua,4,Individual,Regency,antrian sangat panjang,synthetic_fewshot
-b7b2b525-7326-4757-ac26-f436af3850c5,"Dokter di puskesmas kab Nabire ga pernah ada, tutup aja",Kesehatan,Papua,5,Regional,Provincial,dokter tidak pernah ada di puskesmas,synthetic_fewshot
-66cf89d2-ea83-4893-bf28-9b609aba647f,"Ambulans di kab Jayawijaya ga ada, gw kena bawa orang sakit pake ojek",Kesehatan,Papua,5,Community,Regency,ambulans tidak tersedia,synthetic_fewshot
-848bf16a-c52a-43f3-bbe6-a93e4b6f52e3,"bpjs ditolak rs medan, bilang kuota penuh deh",Kesehatan,Sumatera Utara,4,Community,National,BPJS ditolak RS,synthetic_fewshot
-cc3eeb04-6dbf-437a-b703-651ffb7b5773,"antri puskesmas kec sama lama banget, capek",Kesehatan,Sumatera Utara,3,Individual,Regency,antrian sangat panjang,synthetic_fewshot
-650d9d5f-8a2c-480b-a7d6-09e7b35c174a,"obat untuk stunting anak langka, gimana nih?",Kesehatan,Sumatera Utara,5,National,Regency,obat habis/langka di faskes,synthetic_fewshot
-df15cbba-e863-40a3-9e49-ab61b1482a87,"dokter di puskesmas tanah pinem ngga pernah ada, emangnya sibuk apa?",Kesehatan,Sumatera Utara,4,Community,Regency,dokter tidak pernah ada di puskesmas,synthetic_fewshot
-d811ca0f-504e-4fe3-bcd8-3cd3e9914ce9,"ambulans ga ada, terpaksa bawa sendiri ke rs",Kesehatan,Sumatera Utara,5,National,National,ambulans tidak tersedia,synthetic_fewshot
-b7fa5ef8-e163-46b6-8bcf-5ad2ede97e1b,sd di desa kami bocor parah,Pendidikan,Sulawesi Tengah,3,Regional,Provincial,sekolah rusak/bocor,synthetic_fewshot
-c87bcd1a-1fc5-4b31-b214-f03521494644,"guru ngga pernah hadir, anak sy jadi gagal",Pendidikan,Sulawesi Tengah,4,National,Regency,guru tidak pernah hadir,synthetic_fewshot
-b9068b5e-4cc4-4e3a-a43d-a499329d9c1d,"kip anak sy blm cair, tolong bantu",Pendidikan,Sulawesi Tengah,2,Community,Regency,KIP tidak cair,synthetic_fewshot
-cd252f2e-c998-40ec-9404-791e276ed25d,"jauh bgt sekolahnya, anak sy capek",Pendidikan,Sulawesi Tengah,3,Individual,Provincial,jarak sekolah terlalu jauh,synthetic_fewshot
-f72e1ac5-1005-4541-bc28-213e02a75a4b,guru sd di sini sering gak masuk,Pendidikan,Maluku,3,Individual,Regency,guru tidak pernah hadir,synthetic_fewshot
-f448f965-b2a2-40fb-b27d-6e65152dbb01,kip anak saya blm cair nih,Pendidikan,Maluku,2,Community,Regency,KIP tidak cair,synthetic_fewshot
-3003adfe-adc8-4a8a-8b78-2c8d0ecfe0d7,sekolah anak saya bocor parah,Pendidikan,Maluku,4,Individual,Regency,sekolah rusak/bocor,synthetic_fewshot
-50f8c4e9-3693-4d67-85c5-fbe092eac83e,jarak sekolah anak saya kejauhan bnget,Pendidikan,Maluku,3,Community,Regency,jarak sekolah terlalu jauh,synthetic_fewshot
-6ee2c423-f326-4ac7-9548-5f5d2e0d0ca4,sekolah anak sy bocor parah,Pendidikan,NTT,3,Individual,Provincial,sekolah rusak,synthetic_fewshot
-39ad1cf6-8978-447e-801e-df30bf9b828f,"guru sj ngga pernah hadir, apa kabar?",Pendidikan,NTT,2,Individual,Regency,guru tidak pernah hadir,synthetic_fewshot
-d3168800-df64-4a0a-94b6-bb5926e6f7ea,"pungutan liar oleh oknum di sekolah anak sy, tolong dibantu",Pendidikan,NTT,4,Regional,Provincial,pungutan liar oleh oknum,synthetic_fewshot
-e37ae43a-c7bb-46d8-8312-fb7bccf5d7a5,"kip anak sy blm cair, sudah berapa bulan",Pendidikan,NTT,3,Community,Regency,KIP tidak cair,synthetic_fewshot
-c15c002b-da86-4e95-82b4-88eb61cab15a,smkn 3 ambon atapnya bocor parah,Pendidikan,Maluku,3,National,Regency,sekolah rusak/bocor,synthetic_fewshot
-910a8b85-ad1a-45ec-9e54-0c47caf95e5c,"guru di sd inpres tiak hadir2, anak2 terlantar",Pendidikan,Maluku,4,National,Provincial,guru tidak pernah hadir,synthetic_fewshot
-99e2b8c5-188e-468d-89b9-101a918b010c,"pungutan liar di sma 1 masohi, capek dah",Pendidikan,Maluku,2,Community,Regency,pungutan liar oleh oknum,synthetic_fewshot
-d979fa41-88d0-40cf-9051-6361dcaa3810,"kip anak2 blm cair, butuh bgt",Pendidikan,Maluku,3,Individual,Provincial,KIP tidak cair,synthetic_fewshot
-8539867f-332b-4902-b5d2-875ef271dbbc,"guru sj ngajar, anak sy bingung",Pendidikan,Sumatera Utara,3,Regional,Provincial,guru tidak pernah hadir,synthetic_fewshot
-8a3d316f-7f67-45a3-9611-51de378ddce1,"kip blm cair, anak sy udh mau ujian",Pendidikan,Sumatera Utara,4,National,Provincial,KIP tidak cair,synthetic_fewshot
-5e808b0b-e598-4beb-9ce8-b8da95aab17b,"sekolah bocor, anak sy kehujanan",Pendidikan,Sumatera Utara,2,Individual,Regency,sekolah rusak/bocor,synthetic_fewshot
-161d3bd5-0ffa-407e-8c07-acfdfdb2031a,"Harga beras skrg mahal bgt di Bali, ntah knp",Ekonomi,Bali,4,Individual,National,harga sembako naik drastis,synthetic_fewshot
-c1a501b6-b705-4f61-a440-d60d4b1e1db6,"UMKM gw sulit banget dapet izin usaha, bingung",Ekonomi,Bali,5,Individual,Regional,UMKM sulit izin usaha,synthetic_fewshot
-aa3d9510-ba0a-48b7-b5ea-c5babf90900e,"Nelayan di jimbaran ga dapat bantuan, sedih bgt",Ekonomi,Bali,3,Individual,Regional,nelayan tidak dapat bantuan,synthetic_fewshot
-777b2855-33e1-4d4b-804e-44dfb1c4f757,"Pasar tradisional badung sepi, minimarket jadi pesaing",Ekonomi,Bali,4,Community,Regional,pasar tradisional sepi karena minimarket,synthetic_fewshot
-f9c8f46b-bdb0-4765-b927-5644619b5319,"Harg sembako di jakarta naik gila2, gaji tetep aja",Ekonomi,DKI Jakarta,4,National,National,harga sembako naik drastis,synthetic_fewshot
-1ccadce5-c3a9-4cc3-8666-80be0e1bf459,"UMKM gw di jakpus susah banget dapet izin usaha, ribet bgt",Ekonomi,DKI Jakarta,3,National,Regional,UMKM sulit izin usaha,synthetic_fewshot
-6dd187e2-a5f7-4066-8999-6944976ff544,"PHK massal di jakarta makin parah, gw aja udh 3 bln ga kerja",Ekonomi,DKI Jakarta,5,National,Regional,PHK massal,synthetic_fewshot
-6a5d3851-82b3-4999-a9e0-51eb2a68fc5f,"Pupuk mahal bgt di jakarta, petani kayak gw jadi susah",Ekonomi,DKI Jakarta,4,Community,National,pupuk langka/mahal,synthetic_fewshot
-2d53cd86-de93-4838-beec-c552435ebc1b,"Harga sembako di jakarta naik gila2, gw jadi susah buat beli beras",Ekonomi,DKI Jakarta,4,Individual,National,harga sembako naik drastis,synthetic_fewshot
-11912f1d-c948-45a1-a434-0b9bcd2c43b9,"UMKM gw di jakarta susah banget dapet izin usaha, pemerintah harus bantu",Ekonomi,DKI Jakarta,5,Regional,National,UMKM sulit izin usaha,synthetic_fewshot
-1bfcc2a6-9288-4fd3-8c8b-b7c99eeac9e8,"PHK massal di jakarta makin parah, gw khawatir jadi korban selanjutnya",Ekonomi,DKI Jakarta,5,Regional,National,PHK massal,synthetic_fewshot
-cce8c86f-ece5-4563-ac9b-5e2384ac7c8b,"Pasar tradisional di jakarta sepi, semua pada belanja di minimarket",Ekonomi,DKI Jakarta,3,National,Regional,pasar tradisional sepi karena minimarket,synthetic_fewshot
-dd2dd233-5f11-4f99-8f5f-1d210055a719,"Harga sembako di makassar naik gila2, gaji tetep aja",Ekonomi,Sulawesi Selatan,4,Community,National,harga sembako naik drastis,synthetic_fewshot
-e8312fdc-a2df-4dd4-8567-0d69f60ce1cc,"UMKM di sulsel susah banget dapat izin usaha, ribet bgt",Ekonomi,Sulawesi Selatan,3,Community,Regional,UMKM sulit izin usaha,synthetic_fewshot
-ba132f33-9edf-4dd6-8a29-fb8371691feb,"Pengusaha ga bayar UMR, kita karyawan menderita",Ekonomi,Sulawesi Selatan,5,Individual,National,UMR tidak dibayar pengusaha,synthetic_fewshot
-81997792-aa2e-4a2b-b86b-611733c29ef0,"Nelayan di sulsel tidak dapat bantuan, nasibnya apa",Ekonomi,Sulawesi Selatan,4,Individual,Regional,nelayan tidak dapat bantuan,synthetic_fewshot
-7a2bf25e-fa46-45bc-9859-48818715f878,"Harga sembako naik drastis di Riau, gak kebayang mau beli apa",Ekonomi,Riau,4,National,Regional,harga sembako naik drastis,synthetic_fewshot
-8705c4b7-b89b-42be-a6fe-2515c6bb1f0b,"UMKM gw susah banget dapat izin usaha, pemerintah bantu donk",Ekonomi,Riau,5,Individual,Regional,UMKM sulit izin usaha,synthetic_fewshot
-0f9ddc7d-e23b-47b6-a378-81e465b37935,"Pupuk langka, harga mahal, petani Riau gimana nasibnya?",Ekonomi,Riau,3,Community,Regional,pupuk langka/mahal,synthetic_fewshot
-a069c919-111a-4d2a-b74c-43f67a8cf144,"Pengusaha gak bayar UMR, karyawan menderita, tolong ditindak",Ekonomi,Riau,5,Individual,Regional,UMR tidak dibayar pengusaha,synthetic_fewshot
-8fc4dfc1-b541-4ae5-9861-71bb515c299d,Banjir tahunan di Jawa Timur gak pernah ditangani,Lingkungan,Jawa Timur,4,Regional,Regency,banjir tahunan,synthetic_fewshot
-b7814967-058c-4f04-81d3-81deea5b397c,"Pabrik di sekitar rumah gw buang limbah sembarangan, polusi udara parah",Lingkungan,Jawa Timur,5,Regional,Regency,polusi udara,synthetic_fewshot
-fc5d4b3b-e3ee-4c7a-bc69-301da47477d0,"Sungai di kampung gw penuh sampah, sudah berbulan2 gak dibersihin",Lingkungan,Jawa Timur,3,Regional,Regional,sampah menumpuk,synthetic_fewshot
-3cf8e461-88db-4840-a35d-736c26ad6892,"banjir tiap thn gak ada solusi, Jatim kapan beres?",Lingkungan,Jawa Timur,4,Community,Regional,banjir tahunan tidak ditangani,synthetic_fewshot
-acaaf0cd-8b04-420a-abcf-2c7cbe46fcb3,"polusi udara pabrik di Sidoarjo parah banget, gak tahan",Lingkungan,Jawa Timur,5,National,Regional,polusi udara dari pabrik,synthetic_fewshot
-344f57e9-ae25-4506-b28e-38bd6fe9e664,"sungai di Malang kotor, limbah pabrik merusak lingk",Lingkungan,Jawa Timur,3,Individual,Regency,sungai tercemar limbah,synthetic_fewshot
-b9684842-ef76-4983-83c7-23f313e24a47,"bro, sungai di sini udah tercemar limbah parah!",Lingkungan,NTT,4,National,Regency,sungai tercemar limbah,synthetic_fewshot
-3ad2332e-9113-4bbb-8fa3-4138c712da5d,"kekeringan di ntt parah banged, tanaman gagal panen",Lingkungan,NTT,5,Individual,Regency,kekeringan ekstrem,synthetic_fewshot
-1a6e39c8-627d-4e4b-9c51-4f388f610e49,"pantai di sini abrasi parah, rumah warga rawan longsor",Lingkungan,NTT,3,Regional,Regency,abrasi pantai,synthetic_fewshot
-9629597c-4372-400b-a7c1-4091287666b2,"Banjir thn ini parah bgt di Kuta, Bali!?",Lingkungan,Bali,4,Regional,Regency,banjir tahunan tidak ditangani,synthetic_fewshot
-2393f4ac-df09-49a2-bc51-1fdf2c7c5b97,"Sungai di Ubud kotor bgt, limbah pabrik kyk ga ada tindakan",Lingkungan,Bali,3,Community,Regional,sungai tercemar limbah,synthetic_fewshot
-f7949a12-43ae-43d6-b723-5e30850cdd5d,"Abrasi pantai di Nusa Dua makin parah, rumah2 warga terancam!",Lingkungan,Bali,5,Regional,Regency,abrasi pantai mengancam rumah,synthetic_fewshot
-c766b018-1b46-4b57-a5d7-4e963b8a635e,Banjir tahunan di Jateng gak diperhatiin,Lingkungan,Jawa Tengah,4,National,Regional,banjir tahunan tidak ditangani,synthetic_fewshot
-b6ab9d9e-c82f-43a2-9f69-8fb189639361,"Sungai kotor, limbah pabrik merusak lingkungan",Lingkungan,Jawa Tengah,5,Individual,Regional,sungai tercemar limbah,synthetic_fewshot
-c32729a3-b99e-4e97-b42e-0b1571f3ba7d,"Polusi udara di kota semakin parah, gak ada tindakan",Lingkungan,Jawa Tengah,3,Individual,Regency,polusi udara dari pabrik,synthetic_fewshot
-7dc0bda1-f0f2-4384-a6d4-f463f91160ab,"Jl abepura papua rawan begal, polisi di mana?",Keamanan,Papua,4,National,Provincial,rawan begal/copet di area gelap,synthetic_fewshot
-ff205f2d-ed2b-40cb-9ce6-1abb89df872a,"preman2 di pasar tradisional jayapura meresahkan warga, kenapa polisi tidak bertindak?",Keamanan,Papua,5,Individual,Regency,premanisme di pasar,synthetic_fewshot
-cecb8dad-fcd6-44f1-a0b4-5fb4cb7de1e0,"tawuran remaja sdh 3x, polisi belum tanggapi laporan, kpn polisi serius?",Keamanan,Papua,3,National,Provincial,tawuran remaja tidak ditindak polisi,synthetic_fewshot
-cc3acb74-c597-4c66-a2d8-fd34c57fbc62,"malam2 gelap bgt, rawan begal",Keamanan,Maluku,4,Individual,Regency,jalan gelap tanpa penerangan,synthetic_fewshot
-41cb477c-2519-4ba1-8a8f-aa5cf33680ad,preman di pasar Ambon terlalu berani,Keamanan,Maluku,5,Regional,Regency,premanisme di pasar,synthetic_fewshot
-48676967-c260-4a6c-8588-7d6e19876e78,"polisi lama banget responnya, capek!",Keamanan,Maluku,3,Regional,Regency,respon polisi lambat saat laporan,synthetic_fewshot
-0328bd57-0106-4fe8-8c2c-28772e6976ec,"Jl gelap di bandung gak ada penerangan, sering begal",Keamanan,Jawa Barat,4,National,Provincial,jalan gelap tanpa penerangan,synthetic_fewshot
-0af6c932-a194-4af9-afcc-eeca2eafd1a2,"Polisi lambat tanggap saat laporan, preman bebas berkeliaran",Keamanan,Jawa Barat,5,Individual,Regency,respon polisi lambat,synthetic_fewshot
-681dac3e-3032-4034-9cf2-40697171eaa3,"Di pasar ada preman, warga takut, butuh penanganan serius",Keamanan,Jawa Barat,3,Individual,Regency,premanisme di pasar,synthetic_fewshot
-3e66bef1-ac56-4557-8176-6ce5656d7990,"Jln gelap di Sentani, Papuanya bikin was-was, sering dengar suara bentrokan",Keamanan,Papua,4,Individual,Provincial,jalan gelap tanpa penerangan,synthetic_fewshot
-6e2e7de3-d162-4ff6-8f78-1af67e87fdeb,"Preman di pasar tradisional Jayapura seenaknya aja, polisi di mana?",Keamanan,Papua,5,Community,Provincial,premanisme di pasar,synthetic_fewshot
-4344c824-4143-4488-a089-210b66ecbb0e,"Lapor polisi soal begal di Abepura, sampe skr blm ada respon",Keamanan,Papua,3,Community,Regency,respon polisi lambat,synthetic_fewshot
-206f44cb-108f-40ae-a76e-f4dc240fe6f2,"jalan gelap dekat pasar tanpa penerangan, rawan begal nih",Keamanan,Jawa Barat,4,Regional,Provincial,jalan gelap tanpa penerangan,synthetic_fewshot
-fddf1949-2342-41fd-8507-64d5d7775fd0,"preman di pasar bandung suka pukuli orang, polisi diam aja",Keamanan,Jawa Barat,5,Individual,Provincial,premanisme di pasar,synthetic_fewshot
-11ee1a0d-178c-47f9-b725-a5a062d85cf7,"tawuran remaja di bogor gak ditindak polisi, kayaknya polisi pada tidur",Keamanan,Jawa Barat,3,Community,Regency,tawuran remaja tidak ditindak polisi,synthetic_fewshot
-6ea2d6b1-dea5-4797-a4d1-36eadf093aa5,"bansos di sulteng kok gak merata, ada yg dapet 2x",Sosial,Sulawesi Tengah,3,Individual,Regency,bansos tidak merata/salah sasaran,synthetic_fewshot
-86dc2cac-da8f-40e4-9a2c-789a07996915,"lansia di desa gw terlantar, gak ada yg peduli",Sosial,Sulawesi Tengah,4,Regional,National,lansia terlantar,synthetic_fewshot
-9d93032c-43c1-4388-9efd-09e9ba8f9434,"BPNT gw dipotong oknum, bikin susah buat beli beras",Sosial,Kalimantan Barat,3,Community,National,BPNT dipotong oknum,synthetic_fewshot
-014e53ca-c75e-435f-86ea-06ab5f400b10,"Lansia di kampung gw terlantar, gak ada yang peduli",Sosial,Kalimantan Barat,4,Community,Regency,lansia terlantar,synthetic_fewshot
-c3e1be81-6c42-4c80-82d9-a1f782f6eef1,"BPNT gw dipotong oknum, gk tau knp",Sosial,Nusa Tenggara Barat,3,National,Regency,BPNT dipotong oknum,synthetic_fewshot
-7d8aa4d2-cc7e-461f-bdc8-90a492e70c5a,"difabel di NTB gk ada fasilitas layak, parah bnget",Sosial,Nusa Tenggara Barat,4,National,Regency,difabel tidak dapat fasilitas layak,synthetic_fewshot
-29ded3cb-0a83-4a87-a51a-d66c6d29392a,"BPNT di Aceh dipotong oknum, kita merugi",Sosial,Aceh,3,Community,National,BPNT dipotong oknum,synthetic_fewshot
-0151fb4d-e37f-420d-816a-768cebf218cc,"Anak2 di Aceh putus sekolah, gak terdata",Sosial,Aceh,2,Regional,National,anak putus sekolah tidak terdata,synthetic_fewshot
-0a46c795-d6a9-42d8-8820-78e170390a67,"BPNT di Riau dipotong oknum, gk adil!",Sosial,Riau,3,Community,Regency,BPNT dipotong oknum,synthetic_fewshot
-a201373d-e91d-43a7-a732-1afd5b2643c4,"Anak2 di Riau gk terdata, jd putus sekolah",Sosial,Riau,4,Individual,Regency,anak putus sekolah tidak terdata,synthetic_fewshot
-440ec6dc-7487-480a-8e47-782a5e107d8a,Rumah tangga di Desa saya ingin mendapatkan kartu KIP dan kartu HP keluarga saya tolong ya beri saya bantuan...?,Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-f3599f1f-dbda-4800-8399-e0f6aba909a2,"Mohon maaf Kenapa, Rumah Tangga saya tidak menerima Kartu Indonesia Pintar, {KIP} Mohon penjelasan nya, trima kasih ,{Penerima KKS}",Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-2dbd00ad-fb75-410d-9641-96241bb7dfe4,"KELUARGA SAYA HANYA MENDAPAT KKS,KIS dan SIM CARD,untuk KIP kok tidak ada?",Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-f805eb65-a640-4db5-bb28-bb5414ea2eff,menrima katru KIP dan bagaimana cara membuat kartu KIP (penerima KKS),Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-6bd4dbaa-d3a5-4b8a-898b-3f9c9c19bc72,"Rumah tangga di desa saya tidak menerima KIP, Tolong di proses lagi. (penerima KKS)",Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-ee5dcc4d-a8be-4a4a-9225-5ecab99e7ed2,keluarga saya hanya menerima 2kip sedangkan saya mempunyai 3anak pelajar yang menerima kip(linda suciyanti dan dita ashari) yang tidak menerima {gina amalia},Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-33a94f4d-a844-49db-b045-583db28569ef,"di keluarga saya ko tdak ada yg mndapt kip sedngkan yg sklah ada 3 anak 2 sd ,1 smp mkasih?",Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-59cebf37-7953-494b-ab77-ac33aa76f7cf,3209302509070588. Kenapa saya tida menerima KIP untuk ana saya yang bernama DIMAS PRATAMA kls 2 SDN2 gebang kulon KEC GEBANG KAB CIREBON.,Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-7ea10cd2-5a31-4aee-b7e2-23e1db35da2d,Pa kenapa kartu kip anak sy smp sd ko engga dapet sedang kan yg lain dapet,Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-054f5a46-a3f6-4b48-8c5b-3b1c8d6b6f0d,saya penerima kks.tetapi saya tdk mendapat kartu indonesia pintar padahal anak saya sudah sekolah semua.bagaimana?,Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-6642a04b-6854-46f7-9996-4195d3181331,"BAPAK/IBU YANG SAYA HORMATI ANAK SAYA TIDAK MENDAPATKAN KARTU KIP,ANAK SAYA SKOLAH D SMA UANG GEDUNG AJA MASIH NUNGGAK",Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-71d6f623-17a7-42ce-93de-645bb97bb45c,Rumah tangga di desa karang maLang tidak menerima KIP sedangakan saya anak nya 2 yg bernama:1.RAMANDA SUJIWO2.ERPAN LESMANA,Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-5a7db904-a779-419d-8d20-43bbabf7772b,"Yth. Kementerian Pendidikan dan Kebudayaan 
- 
-Sampai dengan hari ini (11 Mei 2015) uang tunjangan sertifikasi guru SD Kutai Barat masa Triwulan Pertama (Januari, Februari, dan Maret) 2015 belum dicairkan oleh Pemerintah Daerah Kabupaten Kota/Din",Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-904c0010-e818-4f46-bc40-9227396d10ab,"38lyt145167001, Kami KRT, di desa babakan kec ciwaringin kab cirebon, Anak Sya Sekolah Namun Tidak Mendapatkan KIP, Sementara Kmi Sangat Membutukan Adanya KIP, Anak Sya Yg 1 Putus Sekola Krna Ter Bentur Biaya, Intinya Sya Mohon Sangat KIP Itu,",Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-c13dad5b-a1d7-4daa-8953-548a7a79f27e,anak saya 3 semua masih sekolah tapi semua belum dapat KIP,Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-89ef469d-fc6f-4d92-9210-7a820a8cdbe7,Gmana no kks ini bsa dapat indonesia pintar nanyain semua orang dapet sdngkan nama anak  tercantum di kks dan masih skolah dasar,Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-47c409bf-cdbe-442c-83d0-7f7c9f75c75b,di blok saya banyak keluarga yang tidak ada KIP nya,Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-c8f9caf1-e157-40d5-9352-a6e692c58603,saya tidak menerima KIP buat anak yg masih sekolahKKS 38JDOJ45172001 saya tidak menerima KIP buat anak yg masih sekolah,Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-18e52a93-2430-4a9e-a65f-666daac4d3e5,KENAPA KELUARGA SAYA TIDAK MENDAPATKAN KIP (PENERIMA KKS},Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-278eb787-d361-41aa-a7af-66f6832cb4f3,rumah tangga di desa karang malang kabupaten cirebon tidak menerima KIP sedangkan saya anak nya 2:1.ROYANAH2.SAHRONI,Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-bbc66105-9863-4612-9cae-a37766ad2faa,"Rumah tangga di desa saya tidak menerima kartu KIP,sedangkan saya punya anak yang masih sekolah di SMPN 1 PLUMBON,itu bagai mana pak.",Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-adf401ed-7f76-40f9-9bfd-d432332694f8,Orang tua kami belum mendapatkan kartu KIP dan KSKS tolong beri keluwarga kmi pertolongan makasih....,Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-1607eccb-a792-4041-a863-70f1b92f36bc,"3741T410650A00  maaf,bpk/ibu sy mo tanya td sy dpt kks tp ko  ga dpt KIPnya,mksh ditunggu jwbannya",Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-b6c345f1-ca9f-4f3b-800c-a6a76c61ec80,dua anak sekolah saya tidak mendapatkan KIP(KADIM) dgn nama AZIS Darmawan di SMA 1 WALED kelas 10 dan APGI RAFFAEL di SDN 2 Ciledug wetan tidak mendapatkan KIP(kartu indonesia pintar),Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-018b162e-994e-4977-a503-26e4fe60cdc3,Bagaimana cr mendapatkan KIP? Anak sy kls 2SD.(Adhika Trimaryanto),Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-f62d6a11-9eba-446d-89a4-dbb7555ab7a8,keluarga saya hanya menerima 2 KIPsedangkan anak saya ada 3 pelajar penerima kip linda suciyanti dan dita ashari yang tidak menerima gina amalia,Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-6a7e000b-60c6-464e-9643-920be87d2879,Kenapa yang mendapat KIP hanya beberapa orang ?,Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-a6e74b57-2ad5-4409-b560-5dcada378a22,Rumah tangga saya belum menerima Kartu Indonesia Pintar KIP kapan kami akan mendapatkan KIP? di keluarga ku ada 3 siswa yang sekolah (ABDULROJIN),Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-5a326622-9aa7-40a0-a2ee-fc4d9f377ce2,atas nama seniman bangun kami belum dapat kip atas nama renaldi bangun dan rema br bangun mohon bantuan.,Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
-37d78eaa-2aef-4554-bd2e-569d8a0371cf,"Yth. Kementerian Pendidikan dan Kebudayaan 
- 
-Dana sertifikasi triwulan 1 2015 belum dibayar hingga hari ini.  
-Sebo Vitalys 3463740641200012 SDI Meti Kab.Manggarai NTT bulan Januari sampai Maret 2015. 
- 
-Mohon ditindaklanjuti, te",Pendidikan,Nasional,3,Community,Regency,KIP/BSM,real_lapor_2015
+id,description,category,register,province,urgency,asta_cita,legislative_target,impact_scope,sub_topic,source
+5388ed07-af46-41f2-9c8e-9823446502f0,butuh jalan tol ke desa,Infrastruktur,informal,Jambi,4,Misi 6,DPRD Kab/Kota,Regional,infrastruktur desa,synthetic_strategic_v2
+43ee599e-85d0-4aa4-aeb1-90f7950579ed,perlu wifi di desa,Infrastruktur,informal,Papua,3,Misi 3,DPRD Provinsi,Community,infrastruktur teknologi,synthetic_strategic_v2
+d41d8196-34d9-40e2-a96a-c31fecfa8161,desa butuh listrik 24 jam,Infrastruktur,informal,Kalimantan Timur,5,Misi 6,DPRD Kab/Kota,Regional,infrastruktur energi,synthetic_strategic_v2
+2bacbe5f-e4fa-4e45-999a-3724654c76ed,"jalan rusak, butuh perbaikan",Infrastruktur,informal,Kalimantan Timur,4,Misi 3,DPRD Provinsi,Regional,infrastruktur jalan,synthetic_strategic_v2
+1f1d6524-7919-4245-88a4-cabd79c3afc3,perlukan bandara di daerah,Infrastruktur,informal,Papua,4,Misi 6,DPR RI,Regional,infrastruktur transportasi,synthetic_strategic_v2
+7e1ba786-e827-4337-8c9e-211c17b604dd,butuh pelabuhan ikan modern,Infrastruktur,informal,Jawa Timur,4,Misi 3,DPRD Kab/Kota,Community,infrastruktur kelautan,synthetic_strategic_v2
+838c2bc6-6fc3-42c2-b177-3172594e421e,desa butuh air bersih,Infrastruktur,informal,NTT,5,Misi 6,DPRD Kab/Kota,Regional,infrastruktur air,synthetic_strategic_v2
+491a042f-6be1-4504-926c-098a5a90c38e,butuh jembatan darurat,Infrastruktur,informal,Sumatera Utara,5,Misi 3,DPRD Provinsi,Regional,infrastruktur jembatan,synthetic_strategic_v2
+613a7fbb-fd2d-4bb5-9972-4ac675337aff,butuh fasilitas olahraga,Infrastruktur,informal,Kalimantan Timur,3,Misi 6,DPRD Kab/Kota,Community,infrastruktur olahraga,synthetic_strategic_v2
+9c29fd66-61cf-45ef-aa5d-f5e967eb9b05,butuh pusat budaya daerah,Infrastruktur,informal,Jawa Barat,3,Misi 6,DPRD Provinsi,National,infrastruktur budaya,synthetic_strategic_v2
+154548e1-4d7f-4531-b77f-98d4e0cac775,perbaiki jalan kampung,Infrastruktur,informal,Jawa Barat,4,Misi 6,DPRD Kab/Kota,National,Infrastruktur,synthetic_strategic_v2
+1c1b8d29-2d5c-4c07-98b7-403051ef6d0a,bikin lapangan pekerja untuk anak muda,Infrastruktur,informal,Jawa Timur,5,Misi 3,DPR RI,Individual,Infrastruktur,synthetic_strategic_v2
+16791ac6-58a6-413e-9265-ae9ffef0b76f,tambah angkutan umum,Infrastruktur,informal,Papua,3,Misi 3,DPRD Provinsi,National,Infrastruktur,synthetic_strategic_v2
+d3ccf41e-97ce-4353-b86f-5764bf3f3156,kembangkan pelabuhan perikanan,Infrastruktur,informal,Sumatera Utara,4,Misi 6,DPRD Kab/Kota,National,Infrastruktur,synthetic_strategic_v2
+a8f9ae7c-faa6-4c87-83dc-0dfd44f4153c,perluat jaringan internet desa,Infrastruktur,informal,Sumatera Utara,5,Misi 6,DPRD Kab/Kota,Individual,Infrastruktur,synthetic_strategic_v2
+eb2170fa-305e-456a-b34a-ec4bf77b071d,bangun pusat bisnis UKM,Infrastruktur,informal,Papua,4,Misi 3,DPRD Provinsi,Regional,Infrastruktur,synthetic_strategic_v2
+4d1d4854-d76d-438b-8b66-6057e64e9c0e,tambah jalur pejalan kaki,Infrastruktur,informal,Jawa Timur,2,Misi 6,DPRD Kab/Kota,Community,Infrastruktur,synthetic_strategic_v2
+a17d0aba-30e2-4653-843a-c76f49c192d6,perbaiki fasilitas olahraga,Infrastruktur,informal,Papua,3,Misi 6,DPRD Kab/Kota,Regional,Infrastruktur,synthetic_strategic_v2
+6cfac87a-d928-463e-988c-9425f2143a76,kembangkan energi terbarukan,Infrastruktur,informal,Kalimantan Timur,5,Misi 3,DPR RI,Regional,Infrastruktur,synthetic_strategic_v2
+51ddf582-893b-4570-9d9c-312abd95d76b,bikin akses jalan ke bandara,Infrastruktur,informal,Kalimantan Timur,4,Misi 3,DPRD Provinsi,Regional,Infrastruktur,synthetic_strategic_v2
+a41439e8-eef6-4f1f-a083-57de794c57e7,perlu jalan tol baru,Infrastruktur,informal,Sumatera Utara,4,Misi 3,DPR RI,National,infrastruktur jalan,synthetic_strategic_v2
+ea141621-b486-43d2-859b-738f5c6a2452,butuh pelabuhan baru di kota,Infrastruktur,informal,Kalimantan Timur,5,Misi 6,DPRD Provinsi,Community,pelabuhan,synthetic_strategic_v2
+adce514d-5f42-4514-9d05-f3b9b126c988,listrik di desa kurang stabil,Infrastruktur,informal,Kalimantan Timur,3,Misi 3,DPRD Kab/Kota,Individual,listrik,synthetic_strategic_v2
+9c20e631-0b34-40c3-9aac-f3bb378108e4,kota butuh Bandara baru,Infrastruktur,informal,NTT,5,Misi 3,DPR RI,Community,bandara,synthetic_strategic_v2
+34cea585-18e2-4851-9c37-9f9deef3199c,jalan rusak perlu diperbaiki,Infrastruktur,informal,NTT,2,Misi 6,DPRD Kab/Kota,Community,infrastruktur jalan,synthetic_strategic_v2
+7a87d19b-a36f-4e87-84ed-11f28800c805,kebutuhan jaringan internet desa,Infrastruktur,informal,Jambi,4,Misi 6,DPRD Provinsi,Community,jaringan internet,synthetic_strategic_v2
+e0358af4-03b1-4918-95f0-cce0f8264bc1,butuh stasiun kereta baru,Infrastruktur,informal,Jambi,5,Misi 3,DPR RI,National,stasiun kereta,synthetic_strategic_v2
+c59bd687-67f6-4207-ae30-028179c72ed5,infrastruktur irigasi kurang,Infrastruktur,informal,Sumatera Utara,3,Misi 6,DPRD Kab/Kota,Regional,irigasi,synthetic_strategic_v2
+a4a3960f-64e3-4175-b897-392d873cc50a,kota butuh jembatan baru,Infrastruktur,informal,Jawa Barat,4,Misi 3,DPRD Provinsi,National,jembatan,synthetic_strategic_v2
+ad7d68d4-f266-417e-9984-fb193a20c0a9,listrik di kota sering padam,Infrastruktur,informal,NTT,5,Misi 3,DPRD Kab/Kota,Community,listrik,synthetic_strategic_v2
+3503e697-e814-4c3c-a2b9-2570807ae817,butuh jalan tol ke pedesaan,Infrastruktur,informal,Jawa Timur,4,Misi 3,DPRD Kab/Kota,Individual,Infrastruktur,synthetic_strategic_v2
+8e2bf002-f0f3-47ee-a7fd-1916eea80f41,perbaiki jembatan rusak di desa,Infrastruktur,informal,Papua,5,Misi 6,DPRD Kab/Kota,Community,Infrastruktur,synthetic_strategic_v2
+5e48d1d3-7359-44a6-b410-f3e5326a20b2,bikin lapangan kerja baru di kota,Infrastruktur,informal,Papua,3,Misi 3,DPR RI,Individual,Infrastruktur,synthetic_strategic_v2
+6a0a92fc-bfc5-48c0-b35c-7dce954e2088,koneksikan desa2 ke internet,Infrastruktur,informal,Sumatera Utara,2,Misi 6,DPRD Provinsi,National,Infrastruktur,synthetic_strategic_v2
+4d5c279d-cbc8-4a9b-a045-cbc56a8c0edd,bangun rumah sakit di pelosok,Infrastruktur,informal,Jambi,5,Misi 6,DPRD Kab/Kota,Regional,Infrastruktur,synthetic_strategic_v2
+bc9f7be2-aed5-4331-8df7-81c9d610842b,perluat listrik di desa terpencil,Infrastruktur,informal,NTT,1,Misi 6,DPRD Provinsi,Individual,Infrastruktur,synthetic_strategic_v2
+18281ab5-aed8-436f-bcfe-45ac987868b8,buka lowongan kerja baru di desa,Infrastruktur,informal,Kalimantan Timur,4,Misi 3,DPRD Kab/Kota,Community,Infrastruktur,synthetic_strategic_v2
+2946839d-8ace-49bd-9173-860bb96fed65,aspal jalan desa yang rusak,Infrastruktur,informal,Kalimantan Timur,3,Misi 6,DPRD Kab/Kota,Individual,Infrastruktur,synthetic_strategic_v2
+21db5e92-f11f-4dfb-b59c-1c0f35ccf0f7,bikin pelabuhan baru di pesisir,Infrastruktur,informal,Kalimantan Timur,2,Misi 3,DPR RI,National,Infrastruktur,synthetic_strategic_v2
+43b5546c-8112-4a60-bf51-7dfdded8fead,kembangkan wisata desa,Infrastruktur,informal,Jawa Timur,1,Misi 6,DPRD Kab/Kota,National,Infrastruktur,synthetic_strategic_v2
+837cc0cf-bfe4-4645-a556-fbfd3e1fac0b,perbaiki jalan rusak di desa,Infrastruktur,informal,NTT,4,Misi 6,DPRD Kab/Kota,National,infrastruktur jalan,synthetic_strategic_v2
+2a25d5a8-ab65-4632-8842-7d0f8507684e,bikin lapangan kerja di desa,Infrastruktur,informal,Kalimantan Timur,5,Misi 3,DPR RI,Individual,lapangan kerja,synthetic_strategic_v2
+d61f56c1-cd7b-4568-9381-39209417395d,sambungkan internet ke desa terpencil,Infrastruktur,informal,Jawa Barat,3,Misi 6,DPRD Provinsi,Individual,infrastruktur digital,synthetic_strategic_v2
+18f12f98-d9c1-4b12-8f03-b7ec02763ce8,perluas jaringan listrik ke pedesaan,Infrastruktur,informal,Sumatera Utara,4,Misi 3,DPR RI,Community,infrastruktur energi,synthetic_strategic_v2
+0904ee2c-8302-4f5b-95ba-b168b9dc749a,bantu pengusaha kecil di desa,Infrastruktur,informal,Papua,5,Misi 3,DPRD Kab/Kota,National,kewirausahaan,synthetic_strategic_v2
+5661871e-7cfe-489d-bba5-f341d7f732ad,buat jalan akses ke pasar tradisional,Infrastruktur,informal,Kalimantan Timur,3,Misi 6,DPRD Kab/Kota,Community,infrastruktur perdagangan,synthetic_strategic_v2
+d92325ba-a10e-4eeb-bea3-6ea760de2c7e,sediakan air bersih di desa,Infrastruktur,informal,NTT,5,Misi 6,DPRD Provinsi,Regional,infrastruktur air,synthetic_strategic_v2
+1d9f4b86-614e-42c4-8df6-e38762616a25,bangun pusat pelatihan kerja,Infrastruktur,informal,NTT,4,Misi 3,DPR RI,National,lapangan kerja,synthetic_strategic_v2
+54bc2a3e-fa5a-4234-a57f-bf5909b26952,perbaiki drainase di desa,Infrastruktur,informal,Sumatera Utara,3,Misi 6,DPRD Kab/Kota,Individual,infrastruktur lingkungan,synthetic_strategic_v2
+5504f842-a400-498b-bd8d-54772e8c8f29,dukung UMKM di desa,Infrastruktur,informal,Jawa Timur,5,Misi 3,DPRD Provinsi,National,kewirausahaan,synthetic_strategic_v2
+eae10a7f-cba7-4f2e-973b-6ec51b2ed94c,bikin lapangan kerja baru,Infrastruktur,informal,NTT,5,Misi 3,DPR RI,Regional,pengembangan infrastruktur,synthetic_strategic_v2
+b388a414-c0ae-4bb9-ac6c-e62b17fb9497,Tambah angkutan umum,Infrastruktur,informal,Jambi,3,Misi 3,DPRD Provinsi,National,transportasi,synthetic_strategic_v2
+b3d61ae9-2552-4a11-87d7-3d9ffb1c450a,perluas jaringan internet,Infrastruktur,informal,Sumatera Utara,4,Misi 6,DPRD Kab/Kota,National,infrastruktur digital,synthetic_strategic_v2
+a6eb2069-f9b2-467b-9dfd-c48b863e969e,buka lowongan kerja,Infrastruktur,informal,Jawa Barat,5,Misi 3,DPR RI,National,lapangan kerja,synthetic_strategic_v2
+90a024e9-4e16-44d1-b6af-2939abafd20d,bangun infrastruktur pedesaan,Infrastruktur,informal,Jawa Barat,4,Misi 6,DPRD Kab/Kota,Individual,infrastruktur dasar,synthetic_strategic_v2
+4d8b09f6-9007-4098-9e7c-7bcedce8459c,tingkatkan kualitas jalan,Infrastruktur,informal,Jawa Timur,4,Misi 3,DPRD Provinsi,National,infrastruktur jalan,synthetic_strategic_v2
+04e9f0f4-7e48-43b2-9ca3-481380ae53b3,tambah tempat wisata,Infrastruktur,informal,Sumatera Utara,3,Misi 6,DPRD Kab/Kota,Individual,pariwisata,synthetic_strategic_v2
+741fe458-5df2-4a9d-abcf-2259929c8b4f,perluas layanan kesehatan,Infrastruktur,informal,Papua,5,Misi 6,DPRD Kab/Kota,Regional,infrastruktur kesehatan,synthetic_strategic_v2
+62c33cc5-b380-412d-b384-0df10c47490c,bikin kawasan industri baru,Infrastruktur,informal,Papua,4,Misi 3,DPR RI,National,pengembangan industri,synthetic_strategic_v2
+941bfbca-312b-4ec7-9d2a-f5d25bfc8c99,Butuh jalan tol baru buat kurangin kemacetan,Infrastruktur,informal,Jawa Timur,4,Misi 3,DPR RI,Community,infrastruktur jalan,synthetic_strategic_v2
+1becce34-d199-4172-add1-efd7e92f6838,Desa butuh jaringan internet cepat,Infrastruktur,informal,Jawa Barat,5,Misi 6,DPRD Kab/Kota,Community,infrastruktur digital,synthetic_strategic_v2
+412e807b-07f5-4957-9455-775fbb83af22,Buat tempat olahraga yang representative di kabupaten,Infrastruktur,informal,Jawa Timur,3,Misi 3,DPRD Kab/Kota,Regional,infrastruktur olahraga,synthetic_strategic_v2
+cd703f4b-db97-4cee-96a5-8194796bbde7,Penambahan bandara di daerah terpencil,Infrastruktur,informal,Jambi,5,Misi 6,DPR RI,National,infrastruktur transportasi,synthetic_strategic_v2
+083a9a72-01cd-488e-b228-2ef1fb5230e5,Perluadukan jalan raya yang rusak di kota,Infrastruktur,informal,Jambi,4,Misi 3,DPRD Kab/Kota,Community,infrastruktur jalan,synthetic_strategic_v2
+d3060d08-01e7-40c6-91fd-2bb7a1b28610,Butuh pusat bisnis baru di kota kecil,Infrastruktur,informal,NTT,4,Misi 6,DPRD Kab/Kota,National,infrastruktur ekonomi,synthetic_strategic_v2
+b148b0f5-9380-4d5f-a39d-afbd77420dd4,Pembangunan pelabuhan baru di pesisir,Infrastruktur,informal,Jawa Barat,5,Misi 3,DPR RI,Community,infrastruktur transportasi,synthetic_strategic_v2
+0b580deb-2c49-42ea-aafb-ead582190f34,Pembangunan gedung sekolah yang memadai,Infrastruktur,informal,Kalimantan Timur,5,Misi 6,DPRD Kab/Kota,Regional,infrastruktur pendidikan,synthetic_strategic_v2
+88236361-fccd-4928-8d70-567faf09d4f8,Membangun jaringan irigasi yang baik,Infrastruktur,informal,NTT,4,Misi 6,DPRD Kab/Kota,National,infrastruktur pertanian,synthetic_strategic_v2
+dd335ab9-d18b-4e74-be56-c06a9084819f,Perluasan pusat kesehatan di daerah,Infrastruktur,informal,Jawa Barat,5,Misi 3,DPRD Kab/Kota,Regional,infrastruktur kesehatan,synthetic_strategic_v2
+f2bf0695-88b3-421b-96b9-b5703f708c19,Buat jalan desa lebih bagus,Infrastruktur,informal,Jawa Barat,4,Misi 6,DPRD Kab/Kota,Regional,Infrastruktur Jalan,synthetic_strategic_v2
+7696373f-691c-4055-9001-dcc65864d7f1,Perbaiki jembatan rusak,Infrastruktur,informal,Papua,5,Misi 3,DPRD Provinsi,Individual,Infrastruktur Jembatan,synthetic_strategic_v2
+6416c7bd-b7d3-4a89-8425-a9db05137800,Bangun pusat kerja di desa,Infrastruktur,informal,Sumatera Utara,3,Misi 3,DPR RI,National,Pusat Kerja,synthetic_strategic_v2
+39c5ccec-6cd2-4b7c-a027-7a0e3d2d7e7b,Buat internet lebih cepat,Infrastruktur,informal,Sumatera Utara,2,Misi 6,DPRD Kab/Kota,Individual,Infrastruktur Internet,synthetic_strategic_v2
+f17fbe89-ebb6-487f-8c11-5bdd8e56ceec,Perluaskan jaringan listrik,Infrastruktur,informal,Jawa Barat,4,Misi 3,DPRD Provinsi,Regional,Infrastruktur Listrik,synthetic_strategic_v2
+46defa8d-0ab9-4794-89fd-32467d9ef382,Buat fasilitas air bersih,Infrastruktur,informal,Jawa Timur,5,Misi 6,DPRD Kab/Kota,Regional,Infrastruktur Air Bersih,synthetic_strategic_v2
+dc434e20-cc2c-4b06-ba76-db1bf9c2e34f,Perbaiki drainase kota,Infrastruktur,informal,Jawa Timur,4,Misi 3,DPRD Provinsi,Community,Infrastruktur Drainase,synthetic_strategic_v2
+a34aeba8-1c74-4ea6-956b-fa65b7efc073,Bangun tempat ibadah,Infrastruktur,informal,NTT,3,Misi 6,DPRD Kab/Kota,Regional,Infrastruktur Ibadah,synthetic_strategic_v2
+e5c5254a-35ed-4be1-91b1-b502ac8d905c,Buat jalur sepeda,Infrastruktur,informal,NTT,2,Misi 3,DPRD Kab/Kota,Individual,Infrastruktur Sepeda,synthetic_strategic_v2
+7ee90c82-4019-434b-9bda-8803cb269f06,Perluas akses transportasi,Infrastruktur,informal,Jawa Barat,4,Misi 6,DPR RI,Community,Infrastruktur Transportasi,synthetic_strategic_v2
+8a149bbb-a0db-4051-9457-41dc1ae8406f,Buat jalan tol di desa,Infrastruktur,informal,NTT,4,Misi 3,DPRD Kab/Kota,Community,Infrastruktur,synthetic_strategic_v2
+c238e6fe-6f2c-4792-bf92-7c985c89182c,Buat lapangan kerja baru,Infrastruktur,informal,Sumatera Utara,3,Misi 3,DPR RI,Community,Infrastruktur,synthetic_strategic_v2
+7f522207-9b5c-4612-806c-d4cebb0bf7d0,Dukung UMKM dengan infrastruktur,Infrastruktur,informal,Sumatera Utara,2,Misi 6,DPRD Kab/Kota,Individual,Infrastruktur,synthetic_strategic_v2
+bc503c75-94ae-401c-ac77-0c25c88c2e41,Perluas jaringan internet desa,Infrastruktur,informal,Jawa Barat,4,Misi 6,DPRD Provinsi,Regional,Infrastruktur,synthetic_strategic_v2
+cd80cec2-547f-47a8-a7c0-2739c86e7cb7,Buat pelabuhan baru,Infrastruktur,informal,Jawa Barat,5,Misi 3,DPR RI,National,Infrastruktur,synthetic_strategic_v2
+fbe5c7ac-8822-4f35-aeff-387ff3d4b192,Dukung pariwisata dengan infrastruktur,Infrastruktur,informal,Jawa Barat,3,Misi 6,DPRD Provinsi,Regional,Infrastruktur,synthetic_strategic_v2
+acb5a4a0-0e92-4835-939f-873b073fee99,Perluas layanan transportasi umum,Infrastruktur,informal,Jambi,5,Misi 3,DPR RI,Community,Infrastruktur,synthetic_strategic_v2
+3456c87a-94d6-42ac-af6c-613758dc14cc,perlu jalan tol di desa,Infrastruktur,informal,Jambi,4,Misi 3,DPRD Kab/Kota,Regional,infrastruktur desa,synthetic_strategic_v2
+263786ba-7370-4e15-9340-4b4062f6b0c3,butuh wifi di sekolah,Infrastruktur,informal,NTT,5,Misi 6,DPRD Provinsi,National,infrastruktur pendidikan,synthetic_strategic_v2
+edc7df18-860f-4397-8dc8-c5454f98a838,perlukan listrik yang stabil,Infrastruktur,informal,Jambi,5,Misi 6,DPRD Provinsi,National,infrastruktur energi,synthetic_strategic_v2
+80aac984-fc05-4de9-ba29-9e8dcccb10df,butuh tempat wisata baru,Infrastruktur,informal,Jawa Timur,2,Misi 3,DPRD Kab/Kota,Community,infrastruktur pariwisata,synthetic_strategic_v2
+9aadbdda-58ca-4bcb-8920-c9f8c368bd18,jembatan rusak perlu diperbaiki,Infrastruktur,informal,Jawa Timur,4,Misi 3,DPRD Kab/Kota,Regional,infrastruktur jembatan,synthetic_strategic_v2
+52076d6c-9fad-4d6a-a580-9f23d5e46f62,perlu penambahan armada bus,Infrastruktur,informal,Jawa Barat,4,Misi 6,DPRD Provinsi,Regional,infrastruktur transportasi,synthetic_strategic_v2
+d9ef352e-437b-45f7-a717-05b34f8df03e,butuh fasilitas olah raga,Infrastruktur,informal,Papua,3,Misi 3,DPRD Kab/Kota,Individual,infrastruktur olah raga,synthetic_strategic_v2
+b58af870-83a3-42da-b653-7154c5d9f78c,jalan lingkungan perlu diperlebar,Infrastruktur,informal,Papua,2,Misi 6,DPRD Kab/Kota,National,infrastruktur lingkungan,synthetic_strategic_v2
+00ba30e1-9dc9-4352-b85f-02e7e4bb6acd,perlu pembangunan bandara baru,Infrastruktur,informal,Papua,5,Misi 3,DPR RI,National,infrastruktur bandara,synthetic_strategic_v2
+8282075b-50c5-47a3-bce6-33c89c8f0723,Butuh jalan tol baru di desa,Infrastruktur,informal,Kalimantan Timur,4,Misi 3,DPRD Kab/Kota,Community,infrastruktur desa,synthetic_strategic_v2
+3b1680b7-582e-4b46-93ca-1e390d57fe6e,Perlu wifi di setiap kelurahan,Infrastruktur,informal,Sumatera Utara,3,Misi 6,DPRD Kab/Kota,National,infrastruktur digital,synthetic_strategic_v2
+c27dd47f-f739-4c7d-96b9-bb96b771df52,Buka lowongan kerja di proyek infrastruktur,Infrastruktur,informal,Jawa Barat,5,Misi 3,DPR RI,Regional,lapangan kerja,synthetic_strategic_v2
+5aec6665-8876-4c9d-aa32-5ec41ab0f621,Tingkatkan kualitas jalan kabupaten,Infrastruktur,informal,Kalimantan Timur,4,Misi 6,DPRD Kab/Kota,Individual,infrastruktur jalan,synthetic_strategic_v2
+6e2393ce-2c06-43a9-8095-c65ad9007412,Dukung wirausaha di bidang infrastruktur,Infrastruktur,informal,Jawa Timur,3,Misi 3,DPR RI,National,kewirausahaan,synthetic_strategic_v2
+866f38b3-04b4-47c1-a1ce-5d4b80484ed8,Perlu pencahayaan jalan yang lebih baik,Infrastruktur,informal,Sumatera Utara,2,Misi 6,DPRD Kab/Kota,Regional,infrastruktur pencahayaan,synthetic_strategic_v2
+374e786d-bd83-41a7-8745-0c30535e89c6,Buat sistem transportasi umum yang efisien,Infrastruktur,informal,Jawa Timur,5,Misi 3,DPR RI,Community,infrastruktur transportasi,synthetic_strategic_v2
+c9d41bc0-69e1-4f0e-b40f-2b1a1cd2dd9d,Tingkatkan akses internet di daerah terpencil,Infrastruktur,informal,Sumatera Utara,4,Misi 6,DPRD Provinsi,Community,infrastruktur digital,synthetic_strategic_v2
+2e0c1604-68b2-44e4-beb0-cdef0574b290,Perlu fasilitas umum yang memadai di desa,Infrastruktur,informal,NTT,3,Misi 6,DPRD Kab/Kota,Individual,infrastruktur desa,synthetic_strategic_v2
+a231000e-65bb-4895-a6c3-582a18be5441,Dukung pembangunan infrastruktur hijau,Infrastruktur,informal,Sumatera Utara,4,Misi 3,DPR RI,Community,infrastruktur hijau,synthetic_strategic_v2
+065c5e3e-66e4-46de-9a4d-7765eda3964d,butuh jalan tol baru buat kurangi macet,Infrastruktur,informal,Jambi,4,Misi 3,DPR RI,Regional,Infrastruktur,synthetic_strategic_v2
+a15f36a0-800b-429a-a1c2-358fdb02d9a7,perlu penambahan jalur kereta api,Infrastruktur,informal,Jawa Barat,5,Misi 3,DPR RI,Community,Infrastruktur,synthetic_strategic_v2
+0ebd62e7-8529-489d-a97e-180e8fe7c1d8,desa butuh jaringan internet cepat,Infrastruktur,informal,Kalimantan Timur,3,Misi 6,DPRD Kab/Kota,Individual,Infrastruktur,synthetic_strategic_v2
+4271cae8-c3b6-4b23-81a0-87be6ef04b72,perlukan bandara baru di daerah terpencil,Infrastruktur,informal,Jambi,5,Misi 3,DPR RI,Regional,Infrastruktur,synthetic_strategic_v2
+1ce329c2-b9c5-4c82-b542-bbf9f1e70043,jalan rusak butuh perbaikan,Infrastruktur,informal,Jambi,4,Misi 6,DPRD Kab/Kota,Community,Infrastruktur,synthetic_strategic_v2
+bf8050c1-c93a-42d5-8dce-9308dac2c5e7,butuh pelabuhan baru untuk ekspor,Infrastruktur,informal,Jambi,5,Misi 3,DPR RI,National,Infrastruktur,synthetic_strategic_v2
+e4a48266-bb9c-473a-a761-b6ff22315780,kota butuh sistem drainase yang baik,Infrastruktur,informal,Jawa Barat,4,Misi 6,DPRD Kab/Kota,Community,Infrastruktur,synthetic_strategic_v2
+418e4b3c-0f4f-4084-b6d6-0c1cdba6eac1,desa butuh listrik yang stabil,Infrastruktur,informal,NTT,3,Misi 6,DPRD Kab/Kota,National,Infrastruktur,synthetic_strategic_v2
+3d831601-6b19-49df-b0d1-d12b4b7fce24,kota butuh taman kota yang lebih banyak,Infrastruktur,informal,Papua,2,Misi 6,DPRD Kab/Kota,Regional,Infrastruktur,synthetic_strategic_v2
+4455fbd0-be7a-407f-86e2-2741277c4c99,jalan tol harusnya ada di setiap provinsi,Infrastruktur,informal,Jawa Timur,5,Misi 3,DPR RI,National,Infrastruktur,synthetic_strategic_v2
+c3b46c93-0e2e-4cfc-aab5-4e0e36f62492,Membangun jalan tol untuk meningkatkan akses ke sentra industri,Infrastruktur,formal,NTT,4,Misi 3,DPR RI,Regional,Infrastruktur Transportasi,synthetic_strategic_v2
+f99e289a-bc7b-4b9f-abdb-3487854a9809,Mengembangkan infrastruktur pendukung usaha mikro di desa,Infrastruktur,formal,Jawa Barat,3,Misi 6,DPRD Kab/Kota,Community,Pengembangan Ekonomi Desa,synthetic_strategic_v2
+56f9f866-86da-45dd-ba2b-6e452aff9cbc,Pembangunan sistem irigasi yang efektif untuk meningkatkan produksi pertanian,Infrastruktur,formal,Sumatera Utara,5,Misi 3,DPRD Provinsi,Regional,Infrastruktur Pertanian,synthetic_strategic_v2
+e19f7d30-31df-4686-a28c-8854361fac37,Membangun pusat pelatihan vokasional untuk meningkatkan keterampilan kerja,Infrastruktur,formal,Jawa Timur,4,Misi 3,DPR RI,Regional,Pengembangan Sumber Daya Manusia,synthetic_strategic_v2
+935aa82c-66f4-477b-966f-1fe05531dd63,Mengembangkan infrastruktur digital di daerah terpencil,Infrastruktur,formal,Kalimantan Timur,4,Misi 6,DPRD Provinsi,Community,Infrastruktur Digital,synthetic_strategic_v2
+bc74f5db-5156-4b78-a87f-ea1320a7e49d,Pembangunan fasilitas umum yang ramah lingkungan di kota,Infrastruktur,formal,Jambi,3,Misi 3,DPRD Kab/Kota,Community,Infrastruktur Kota,synthetic_strategic_v2
+e9efe6de-31eb-4f9c-ae33-fded02be813c,Mengembangkan sistem transportasi umum yang efisien dan terintegrasi,Infrastruktur,formal,Kalimantan Timur,5,Misi 3,DPR RI,National,Infrastruktur Transportasi,synthetic_strategic_v2
+4c8b6b6b-9fc5-4144-aa79-5934e4a32410,Pembangunan infrastruktur penunjang pariwisata di daerah wisata,Infrastruktur,formal,Sumatera Utara,4,Misi 6,DPRD Kab/Kota,Regional,Pengembangan Pariwisata,synthetic_strategic_v2
+ddf73b20-032d-47cb-b09a-3e8343b4f940,Mengembangkan sistem energi terbarukan untuk meningkatkan kemandirian energi,Infrastruktur,formal,Jambi,5,Misi 3,DPR RI,Regional,Energi Terbarukan,synthetic_strategic_v2
+b92d8956-f6b0-4969-b5b1-7261080681fb,Pembangunan fasilitas olahraga dan rekreasi untuk meningkatkan kualitas hidup,Infrastruktur,formal,Kalimantan Timur,3,Misi 6,DPRD Kab/Kota,Regional,Fasilitas Olahraga dan Rekreasi,synthetic_strategic_v2
+9361141d-3f4d-4f3c-98b6-7fe97ad11940,Membangun jalan tol baru,Infrastruktur,formal,Papua,4,Misi 3,DPR RI,Regional,Infrastruktur Transportasi,synthetic_strategic_v2
+d50e5ff0-6275-45f4-a606-25bd35b690f8,Perluasan bandara,Infrastruktur,formal,Jawa Barat,5,Misi 3,DPRD Provinsi,Regional,Infrastruktur Transportasi,synthetic_strategic_v2
+eb3f992b-d0f2-4e09-9621-9d434ec04e6b,Pembangunan pelabuhan baru,Infrastruktur,formal,Jawa Timur,4,Misi 3,DPR RI,Regional,Infrastruktur Transportasi,synthetic_strategic_v2
+89c56c20-baf8-439c-bf95-55718cfca436,Pengembangan infrastruktur desa,Infrastruktur,formal,Papua,3,Misi 6,DPRD Kab/Kota,Regional,Infrastruktur Desa,synthetic_strategic_v2
+be27de5b-7629-4829-ae4e-ce61781bfb81,Pembangunan jaringan internet desa,Infrastruktur,formal,Sumatera Utara,2,Misi 6,DPRD Kab/Kota,Individual,Infrastruktur Teknologi,synthetic_strategic_v2
+a071cf8a-397f-4367-a51c-33d71bd489b6,Membangun rumah sakit umum,Infrastruktur,formal,Sumatera Utara,5,Misi 3,DPRD Provinsi,Regional,Infrastruktur Kesehatan,synthetic_strategic_v2
+10bfaef3-7c08-4310-8a4f-619c3123b53e,Pengembangan infrastruktur pariwisata,Infrastruktur,formal,Kalimantan Timur,4,Misi 3,DPRD Provinsi,National,Infrastruktur Pariwisata,synthetic_strategic_v2
+559ca24f-2fd4-4135-8e7b-5ea0156d23f2,Pembangunan pusat pendidikan,Infrastruktur,formal,Sumatera Utara,3,Misi 6,DPRD Kab/Kota,Regional,Infrastruktur Pendidikan,synthetic_strategic_v2
+0c3a735b-bafb-4105-b1b1-5e848aad16b7,Pengembangan infrastruktur olahraga,Infrastruktur,formal,Kalimantan Timur,2,Misi 3,DPRD Kab/Kota,Community,Infrastruktur Olahraga,synthetic_strategic_v2
+c2e41047-36a9-44b9-9464-e68defaf69de,Membangun sistem pembuangan limbah,Infrastruktur,formal,NTT,5,Misi 6,DPRD Kab/Kota,Community,Infrastruktur Lingkungan,synthetic_strategic_v2
+ec9cb544-1ff2-44ef-91f5-0d1b26bfca1c,Membangun jalan tol untuk meningkatkan akses,Infrastruktur,formal,Jawa Barat,4,Misi 3,DPR RI,Regional,Infrastruktur,synthetic_strategic_v2
+916c59eb-a088-44bc-9868-f11e982d1acb,Pembangunan pelabuhan untuk meningkatkan ekspor,Infrastruktur,formal,Papua,5,Misi 3,DPR RI,National,Infrastruktur,synthetic_strategic_v2
+b3b1064e-18e2-4402-8949-c51495e7285d,Mengembangkan infrastruktur desa,Infrastruktur,formal,Jawa Barat,3,Misi 6,DPRD Kab/Kota,National,Infrastruktur,synthetic_strategic_v2
+62c1d540-efab-46d3-8e7d-3939cf13977a,Meningkatkan kualitas jalan raya,Infrastruktur,formal,Papua,4,Misi 3,DPRD Provinsi,Community,Infrastruktur,synthetic_strategic_v2
+780062db-56f0-4d52-a833-ee0c45ebcea9,Pembangunan bandara untuk meningkatkan pariwisata,Infrastruktur,formal,Jambi,5,Misi 3,DPR RI,National,Infrastruktur,synthetic_strategic_v2
+5f73ae05-9b76-48a9-ac93-f61a61e27980,Mengembangkan sistem transportasi umum,Infrastruktur,formal,Jambi,4,Misi 3,DPRD Kab/Kota,Individual,Infrastruktur,synthetic_strategic_v2
+64b0e6b0-a081-430f-9536-fa9a423c4400,Pembangunan infrastruktur pendukung UMKM,Infrastruktur,formal,NTT,3,Misi 6,DPRD Provinsi,Regional,Infrastruktur,synthetic_strategic_v2
+5cb90ef4-8f21-421c-9187-fd52194f9bd1,Mengembangkan infrastruktur teknologi informasi,Infrastruktur,formal,Jawa Timur,4,Misi 3,DPR RI,National,Infrastruktur,synthetic_strategic_v2
+823b9b05-df18-4e79-9684-eadab2fea4a5,Pembangunan infrastruktur irigasi untuk pertanian,Infrastruktur,formal,Jawa Barat,4,Misi 6,DPRD Kab/Kota,National,Infrastruktur,synthetic_strategic_v2
+88af69e9-cbbe-43b3-b401-1a9ab4acc4a1,Mengembangkan infrastruktur penunjang pariwisata,Infrastruktur,formal,Jawa Barat,4,Misi 3,DPRD Provinsi,Community,Infrastruktur,synthetic_strategic_v2
+43eccf06-bb70-47fb-9842-f3926ec4123f,Vaksin gratis buat semua!,Kesehatan,informal,Sumatera Utara,5,Misi 4: Kesehatan,DPR RI,Community,Kesehatan Masyarakat,synthetic_strategic_v2
+8428eec0-23ef-42bc-958c-8843b4c260cc,Perlu fasilitas kesehatan lebih,Kesehatan,informal,NTT,4,Misi 4: Kesehatan,DPRD Kab/Kota,Community,Fasilitas Kesehatan,synthetic_strategic_v2
+55645808-cd3d-4cd3-8471-f44523d69415,"Biaya medis mahal, tolong bantu!",Kesehatan,informal,Jambi,5,Misi 4: Kesehatan,DPR RI,Individual,Asuransi Kesehatan,synthetic_strategic_v2
+5e0a5480-93b2-4e19-9c2f-9a7895853df2,Butuh dokter spesialis lebih,Kesehatan,informal,Jawa Timur,4,Misi 4: SDM,DPRD Provinsi,Community,Tenaga Kesehatan,synthetic_strategic_v2
+0d243acf-7f38-4253-ac5f-ffc70c6d3114,"Obat-obatan mahal, apa solusinya?",Kesehatan,informal,Sumatera Utara,4,Misi 4: Kesehatan,DPR RI,Regional,Distribusi Obat,synthetic_strategic_v2
+712c6cf3-d442-4b16-bd07-c3a52656c0ca,Pendidikan kesehatan untuk semua,Kesehatan,informal,Jawa Barat,3,Misi 4: Pendidikan,DPRD Kab/Kota,Individual,Pendidikan Kesehatan,synthetic_strategic_v2
+bb2506fc-0a6c-4e2e-88bf-6061f5c6c579,Fasilitas kesehatan mental perlu,Kesehatan,informal,NTT,4,Misi 4: Kesehatan,DPRD Provinsi,Individual,Kesehatan Mental,synthetic_strategic_v2
+a3014b23-27b9-422c-80a2-a657b31c0231,Tolak merokok di tempat umum,Kesehatan,informal,Jawa Timur,4,Misi 4: Kesehatan,DPRD Kab/Kota,National,Kesehatan Lingkungan,synthetic_strategic_v2
+cf79a885-e6a6-4463-b54b-1550168b31c0,Butuh penelitian penyakit langka,Kesehatan,informal,Kalimantan Timur,4,Misi 4: Sains,DPR RI,Individual,Penelitian Kesehatan,synthetic_strategic_v2
+4f564179-ac5a-4c97-bb3c-e45ec01e923c,Bantu penyandang disabilitas,Kesehatan,informal,Kalimantan Timur,5,Misi 4: Kesehatan,DPRD Provinsi,National,Kesejahteraan Disabilitas,synthetic_strategic_v2
+c2458df9-279d-4ee7-8fa9-78f40e8a9a6f,perlu vaksin gratis buat warga miskin,Kesehatan,informal,Jambi,5,Misi 4: Kesehatan,DPRD Kab/Kota,Regional,Kesehatan Masyarakat,synthetic_strategic_v2
+2db47252-4e8d-4795-b544-cbd7600ff0f0,butuh rumah sakit yang lebih banyak di pedesaan,Kesehatan,informal,Sumatera Utara,4,Misi 4: Kesehatan,DPRD Provinsi,Individual,Fasilitas Kesehatan,synthetic_strategic_v2
+48bce134-1c2f-4d67-907e-d79afc29fc9d,perlindungan kesehatan untuk pekerja informal,Kesehatan,informal,Jawa Barat,3,Misi 4: SDM,DPR RI,National,Kesejahteraan Pekerja,synthetic_strategic_v2
+b04b3523-3971-4194-979d-3519228287b1,edukasi kesehatan mental untuk anak muda,Kesehatan,informal,Papua,2,Misi 4: Pendidikan,DPRD Kab/Kota,Community,Kesehatan Mental,synthetic_strategic_v2
+27ec4611-a82f-4eb9-9a4e-21e487bfbe91,peningkatan kualitas air minum di seluruh wilayah,Kesehatan,informal,Kalimantan Timur,5,Misi 4: Kesehatan,DPRD Provinsi,Individual,Lingkungan Sehat,synthetic_strategic_v2
+ce19ed25-42b7-4914-82e5-18b3ec42913d,bantuan untuk pasien penyakit langka,Kesehatan,informal,Jawa Barat,4,Misi 4: Kesehatan,DPR RI,National,Bantuan Kesehatan,synthetic_strategic_v2
+b8e57e8b-1488-490d-bea8-0196c55d7a9e,pemeriksaan kesehatan gratis untuk lansia,Kesehatan,informal,NTT,3,Misi 4: Kesehatan,DPRD Kab/Kota,Individual,Kesehatan Lansia,synthetic_strategic_v2
+d414ce0a-39f7-4067-b167-6a14633618cb,pengembangan teknologi kesehatan modern,Kesehatan,informal,Jawa Barat,2,"Misi 4: Sains, Teknologi",DPR RI,Regional,Teknologi Kesehatan,synthetic_strategic_v2
+b050bda5-ae45-4b37-9ac7-f906c154a517,penyuluhan tentang bahaya merokok,Kesehatan,informal,Jawa Barat,1,Misi 4: Pendidikan,DPRD Kab/Kota,Regional,Pendidikan Kesehatan,synthetic_strategic_v2
+004a14a1-ce18-49bb-911c-b9c343a00c60,pelayanan kesehatan 24 jam di rumah sakit,Kesehatan,informal,Jawa Barat,5,Misi 4: Kesehatan,DPRD Provinsi,Individual,Pelayanan Kesehatan,synthetic_strategic_v2
+8af72b00-cc46-4fce-8cb6-1e4e0f3e427b,perlindungan kesehatan mental,Kesehatan,informal,NTT,5,Misi 4: Kesehatan,DPR RI,Regional,Kesehatan Jiwa,synthetic_strategic_v2
+80c79467-22e5-46e7-aee9-096cf6c77216,fasilitas kesehatan di pelosok,Kesehatan,informal,Jambi,4,Misi 4: Kesehatan,DPRD Kab/Kota,Regional,Kesehatan Dasar,synthetic_strategic_v2
+4436973f-7405-4f89-a4a5-99abf60e82df,edukasi kesehatan reproduksi,Kesehatan,informal,NTT,3,Misi 4: Pendidikan,DPRD Provinsi,Community,Kesehatan Reproduksi,synthetic_strategic_v2
+34fd5d11-57eb-442d-ae7d-19dfe775f3ac,ketersediaan obat murah,Kesehatan,informal,NTT,5,Misi 4: Kesehatan,DPR RI,National,Kesehatan Farmasi,synthetic_strategic_v2
+8867268c-4d1b-419f-9b64-fd846ec0123a,peningkatan gizi anak,Kesehatan,informal,NTT,4,Misi 4: Kesehatan,DPRD Kab/Kota,Regional,Kesehatan Anak,synthetic_strategic_v2
+3bab56f5-e6c0-45ed-85e9-6fda3815dbeb,pencegahan penyakit menular,Kesehatan,informal,Jambi,5,Misi 4: Kesehatan,DPR RI,Individual,Kesehatan Masyarakat,synthetic_strategic_v2
+03e3fbc1-2fbe-4ea7-b728-dcfaf0cf28a5,kesehatan ibu & anak,Kesehatan,informal,Jawa Timur,4,Misi 4: Kesehatan,DPRD Provinsi,Individual,Kesehatan Ibu dan Anak,synthetic_strategic_v2
+949b4b72-68a8-441e-852c-9df594b94377,pemeriksaan kesehatan gratis,Kesehatan,informal,Jambi,3,Misi 4: Kesehatan,DPRD Kab/Kota,Regional,Kesehatan Masyarakat,synthetic_strategic_v2
+3d39206c-f16d-45ec-8253-0556febce1f2,penanganan kesehatan darurat,Kesehatan,informal,Sumatera Utara,5,Misi 4: Kesehatan,DPR RI,Individual,Kesehatan Darurat,synthetic_strategic_v2
+c5d26c6d-bf97-4f8e-84a6-272ffb35756c,kesehatan jiwa di sekolah,Kesehatan,informal,Kalimantan Timur,4,Misi 4: Pendidikan,DPRD Provinsi,Individual,Kesehatan Jiwa,synthetic_strategic_v2
+8d95ccbb-0aee-411d-89d6-7c218ae532fa,Perlukan fasilitas kesehatan lebih baik,Kesehatan,informal,Jambi,5,Misi 4: Kesehatan,DPRD Kab/Kota,National,Kesehatan,synthetic_strategic_v2
+6b1b470d-1182-430e-8709-0f116602bc58,Butuh dokter spesialis lebih banyak,Kesehatan,informal,Kalimantan Timur,4,Misi 4: SDM,DPR RI,Regional,Kesehatan,synthetic_strategic_v2
+e906ff8b-c79a-492a-9bcc-9cc8588e66d0,Vaksin gratis untuk semua,Kesehatan,informal,NTT,5,Misi 4: Kesehatan,DPR RI,National,Kesehatan,synthetic_strategic_v2
+185c275e-1ddc-4248-be55-81348a195231,Perlu peningkatan gizi masyarakat,Kesehatan,informal,Papua,3,Misi 4: Kesehatan,DPRD Provinsi,National,Kesehatan,synthetic_strategic_v2
+ced9c128-997e-4571-ac71-471f34ba9e84,Klinik 24 jam di setiap kecamatan,Kesehatan,informal,Papua,4,Misi 4: Kesehatan,DPRD Kab/Kota,Regional,Kesehatan,synthetic_strategic_v2
+c34ac7aa-9bae-48f9-bfc0-94e7bb2edb5d,Pemeriksaan kesehatan gratis untuk Lansia,Kesehatan,informal,Jawa Timur,4,Misi 4: Kesehatan,DPRD Kab/Kota,Regional,Kesehatan,synthetic_strategic_v2
+4269859d-acf9-4ec7-95c7-a98ffaf97471,Penyuluhan kesehatan di sekolah,Kesehatan,informal,NTT,3,Misi 4: Pendidikan,DPRD Provinsi,Community,Kesehatan,synthetic_strategic_v2
+820420d2-294a-4b0f-85a6-e395c8844fdc,Fasilitas olahraga untuk kesehatan masyarakat,Kesehatan,informal,Kalimantan Timur,3,Misi 4: Kesehatan,DPRD Kab/Kota,Community,Kesehatan,synthetic_strategic_v2
+fe1fb181-37a2-4820-ae97-e0972b65f217,Asuransi kesehatan untuk semua,Kesehatan,informal,Sumatera Utara,5,Misi 4: Kesehatan,DPR RI,Community,Kesehatan,synthetic_strategic_v2
+16a6a598-b7a4-43f7-bbf2-c0726014004c,Pengobatan alternatif yang terjamin,Kesehatan,informal,Jawa Barat,2,"Misi 4: Sains, Teknologi",DPR RI,Individual,Kesehatan,synthetic_strategic_v2
+a533ff00-b542-4448-886c-521360545c3f,perbaiki rs rujukan,Kesehatan,informal,Jawa Timur,4,Misi 4: Kesehatan,DPRD Kab/Kota,Regional,Kesehatan,synthetic_strategic_v2
+eb820ae3-62c7-4204-bb66-a57291cf4842,obat gratis untuk anak,Kesehatan,informal,Jambi,3,Misi 4: Kesehatan,DPRD Provinsi,Individual,Kesehatan,synthetic_strategic_v2
+7c5ab649-3e83-4c13-bd03-8f4d6701abc6,fasilitas kesehatan modern,Kesehatan,informal,Sumatera Utara,4,"Misi 4: Sains, Teknologi",DPR RI,Community,Kesehatan,synthetic_strategic_v2
+95daf762-7cac-4b7c-8717-17e9574a1b89,edukasi kesehatan mental,Kesehatan,informal,Papua,2,Misi 4: Pendidikan,DPRD Kab/Kota,Individual,Kesehatan,synthetic_strategic_v2
+3da0927a-a55a-45ac-9fbf-22154b20d7a9,penyuluhan kesehatan reproduksi,Kesehatan,informal,Kalimantan Timur,3,Misi 4: Kesehatan,DPRD Provinsi,Regional,Kesehatan,synthetic_strategic_v2
+6e388fa7-cec1-4477-8b80-60ad1599c266,biaya pengobatan murah,Kesehatan,informal,Papua,5,Misi 4: Kesehatan,DPR RI,Regional,Kesehatan,synthetic_strategic_v2
+bc17a3e6-be62-43d2-95b6-1dee6b4f4cae,peningkatan gizi masyarakat,Kesehatan,informal,Sumatera Utara,4,Misi 4: Kesehatan,DPRD Kab/Kota,Individual,Kesehatan,synthetic_strategic_v2
+8f87abd0-e26c-4c53-bc55-dd8fab4f6a51,fasilitas olahraga umum,Kesehatan,informal,Jawa Timur,2,Misi 4: Kesehatan,DPRD Provinsi,Community,Kesehatan,synthetic_strategic_v2
+dd2ab1c2-7c51-4128-9fa0-3f90ed1eb224,layan kesehatan 24 jam,Kesehatan,informal,Jambi,5,Misi 4: Kesehatan,DPR RI,National,Kesehatan,synthetic_strategic_v2
+30f833ef-f4b6-4946-b87a-fb1a766a17d5,vaksin gratis buat semua,Kesehatan,informal,Jawa Timur,5,Misi 4: Kesehatan,DPR RI,Regional,Kesehatan,synthetic_strategic_v2
+d98c87f4-f737-4ec4-a2da-9ff94b93c4f9,tambah rumah sakit di pedesaan,Kesehatan,informal,NTT,4,Misi 4: Kesehatan,DPRD Kab/Kota,Individual,Kesehatan,synthetic_strategic_v2
+0b09c1a2-09fb-4acd-8a88-2df26ed63b1b,obat murah untuk penyakit langka,Kesehatan,informal,Jambi,5,Misi 4: Kesehatan,DPR RI,National,Kesehatan,synthetic_strategic_v2
+54f3f82a-5fa4-438c-96d0-d5ed575aa813,fasilitas kesehatan buat lansia,Kesehatan,informal,Jawa Timur,3,Misi 4: Kesehatan,DPRD Provinsi,Regional,Kesehatan,synthetic_strategic_v2
+c7c1342b-ea98-4287-ba28-b1d777535bf8,penelitian penyakit baru,Kesehatan,informal,NTT,5,"Misi 4: Sains, Teknologi",DPR RI,Regional,Kesehatan,synthetic_strategic_v2
+c7bb0464-d501-4b0d-9eab-d6df5a6ce341,klinik 24 jam di setiap kec,Kesehatan,informal,Papua,4,Misi 4: Kesehatan,DPRD Kab/Kota,Individual,Kesehatan,synthetic_strategic_v2
+7150ab59-6144-47fa-ab46-9c33260dcce4,program diet sehat untuk anak,Kesehatan,informal,Papua,3,Misi 4: Kesehatan,DPRD Provinsi,Community,Kesehatan,synthetic_strategic_v2
+2de44ebd-3bff-4369-aac0-1bca61a9e335,sistem informasi kesehatan online,Kesehatan,informal,NTT,4,Misi 4: Teknologi,DPR RI,National,Kesehatan,synthetic_strategic_v2
+60e64ed2-5371-4850-a34f-e18b3dc4d624,bantuan untuk pasien kanker,Kesehatan,informal,Papua,5,Misi 4: Kesehatan,DPR RI,Individual,Kesehatan,synthetic_strategic_v2
+f91fc39f-e61f-49ef-9be9-d7b1d549a40e,Perlu vaksin gratis buat semua!,Kesehatan,informal,Jawa Timur,5,Misi 4: Kesehatan,DPR RI,Regional,Kesehatan Masyarakat,synthetic_strategic_v2
+e521a274-ad3a-4085-a82b-cb801f6c3709,Butuh rumah sakit lebih banyak di pedesaan!,Kesehatan,informal,NTT,4,Misi 4: Kesehatan,DPRD Kab/Kota,National,Fasilitas Kesehatan,synthetic_strategic_v2
+009c8d11-b8fd-4ebf-a975-618e140fa7e3,Biaya pengobatan kanker harus diturunkan!,Kesehatan,informal,Jawa Timur,5,Misi 4: Kesehatan,DPR RI,Community,Pengobatan Penyakit,synthetic_strategic_v2
+9935180d-0211-4e48-8590-0120fe247daf,Perlindungan kesehatan pekerja informal!,Kesehatan,informal,Papua,4,Misi 4: SDM,DPRD Provinsi,Regional,Kesehatan Kerja,synthetic_strategic_v2
+1766a928-25d6-4a03-8658-47d3bdb53934,Edukasi kesehatan mental di sekolah!,Kesehatan,informal,Papua,3,Misi 4: Pendidikan,DPRD Kab/Kota,Individual,Kesehatan Mental,synthetic_strategic_v2
+14984d09-4f79-400f-b33b-cd40d9c895f7,Ketersediaan obat-obatan gratis untuk penyakit langka!,Kesehatan,informal,Sumatera Utara,5,Misi 4: Kesehatan,DPR RI,Individual,Akses Obat,synthetic_strategic_v2
+1e972c54-fe00-4c10-bbd4-0fde73fd53f4,Peningkatan infrastruktur kesehatan di daerah bencana!,Kesehatan,informal,Kalimantan Timur,5,Misi 4: Kesehatan,DPR RI,Community,Bantuan Kesehatan,synthetic_strategic_v2
+1ab847c6-7ecc-43bf-b500-c5a90b63ebbd,Pemeriksaan kesehatan rutin untuk Lansia!,Kesehatan,informal,Jawa Timur,4,Misi 4: Kesehatan,DPRD Provinsi,Community,Kesehatan Lansia,synthetic_strategic_v2
+d857a45b-8058-4203-8873-4c06315c477f,Penaggulangan stunting dengan edukasi gizi!,Kesehatan,informal,NTT,4,Misi 4: Kesehatan,DPRD Kab/Kota,National,Gizi dan Kesehatan,synthetic_strategic_v2
+763025ba-9c19-4d3a-989a-fa0162fd3b4c,Pengobatan alternatif harus diakui pemerintah!,Kesehatan,informal,Jambi,3,Misi 4: Sains dan Teknologi,DPR RI,Individual,Pengobatan Alternatif,synthetic_strategic_v2
+30e43ee4-d736-4c0e-bad0-356adef82a8c,wajib vaksinasi HPV buat anak2 perempuan,Kesehatan,informal,Jawa Timur,4,Misi 4: Kesehatan,DPRD Kab/Kota,Regional,Kesehatan Reproduksi,synthetic_strategic_v2
+fbc2fd4e-9210-4234-8c55-25f853fe6082,perluas akses obat2an murah,Kesehatan,informal,Jawa Barat,5,Misi 4: Kesehatan,DPR RI,National,Kesehatan Dasar,synthetic_strategic_v2
+0bca5728-98af-4241-94e2-c88b81257011,tambah fasilitas kesehatan mental,Kesehatan,informal,Papua,3,Misi 4: Kesehatan,DPRD Provinsi,National,Kesehatan Mental,synthetic_strategic_v2
+151d0440-8512-4112-b914-2639dbb4df9e,edukasi kesehatan reproduksi di sekolah,Kesehatan,informal,Jawa Timur,2,"Misi 4: Pendidikan, Kesehatan",DPRD Kab/Kota,Individual,Kesehatan Reproduksi,synthetic_strategic_v2
+4dc2e16d-197e-4fce-a069-9e0536968ef2,perlu penelitian penyakit tropis lebih banyak,Kesehatan,informal,Papua,4,"Misi 4: Sains, Teknologi, Kesehatan",DPR RI,Community,Penelitian Kesehatan,synthetic_strategic_v2
+c1cb7b96-2ff0-49b7-8188-d87249e5097c,kurangi biaya pengobatan,Kesehatan,informal,Sumatera Utara,5,Misi 4: Kesehatan,DPR RI,Regional,Kesehatan Dasar,synthetic_strategic_v2
+1a458ea7-d630-4c27-87f9-bdcf65b2e905,tambah dokter spesialis di daerah terpencil,Kesehatan,informal,Jawa Timur,4,Misi 4: Kesehatan,DPRD Provinsi,Individual,Kesehatan Dasar,synthetic_strategic_v2
+ea69bac5-de9e-488b-bc80-410527009f49,perlu edukasi gizi yang lebih baik,Kesehatan,informal,Jambi,3,Misi 4: Kesehatan,DPRD Kab/Kota,National,Gizi,synthetic_strategic_v2
+bb1343e4-6e27-421e-b6f5-94c4ef8e4269,butuh peningkatan kualitas air minum,Kesehatan,informal,Sumatera Utara,5,Misi 4: Kesehatan,DPRD Kab/Kota,Regional,Lingkungan,synthetic_strategic_v2
+5b374341-ae08-4e51-916b-69490773c505,wajib screening kesehatan rutin,Kesehatan,informal,NTT,4,Misi 4: Kesehatan,DPR RI,Individual,Kesehatan Dasar,synthetic_strategic_v2
+2878d7a8-a425-47f1-a163-5b7ceb3512c5,perlu vaksinasi gratis utk warga miskin,Kesehatan,informal,Sumatera Utara,5,Misi 4: Kesehatan,DPRD Kab/Kota,National,Kesehatan,synthetic_strategic_v2
+6079c0dc-9fa2-4aef-97e3-9d8af04ca7e7,Perluasan layanan kesehatan mental,Kesehatan,formal,Kalimantan Timur,4,Misi 4: Kesehatan,DPR RI,National,Kesehatan Mental,synthetic_strategic_v2
+6009c66b-54d6-475c-966c-7a8ddd1c4964,Peningkatan kualitas fasilitas kesehatan,Kesehatan,formal,Jawa Timur,5,Misi 4: Kesehatan,DPRD Provinsi,Community,Fasilitas Kesehatan,synthetic_strategic_v2
+dabbc1e0-cf82-4e54-b058-b6bb4f2afc0a,Program vaksinasi massal,Kesehatan,formal,NTT,5,Misi 4: Kesehatan,DPR RI,National,Vaksinasi,synthetic_strategic_v2
+5bedda30-8602-43bf-b257-8441a0055541,Pengembangan teknologi kesehatan,Kesehatan,formal,Papua,4,"Misi 4: Teknologi, Kesehatan",DPR RI,National,Teknologi Kesehatan,synthetic_strategic_v2
+500225ad-3680-4faf-8815-fa601f6c0932,Peningkatan kualitas air minum,Kesehatan,formal,Jambi,5,Misi 4: Kesehatan,DPRD Kab/Kota,Regional,Kesehatan Lingkungan,synthetic_strategic_v2
+4a211131-d650-4ea0-963b-fadd97191123,Pengembangan pusat kesehatan komunitas,Kesehatan,formal,Jambi,4,Misi 4: Kesehatan,DPRD Provinsi,Regional,Kesehatan Komunitas,synthetic_strategic_v2
+becbe678-70e6-490e-aaa6-9f5576997acf,Peningkatan kesadaran kesehatan masyarakat,Kesehatan,formal,Sumatera Utara,4,Misi 4: Kesehatan,DPR RI,Regional,Kesadaran Kesehatan,synthetic_strategic_v2
+0a099d14-88b2-41ef-bd13-7a2e7bd4503c,Pengembangan program kesehatan anak,Kesehatan,formal,Jawa Timur,5,Misi 4: Kesehatan,DPRD Provinsi,Regional,Kesehatan Anak,synthetic_strategic_v2
+377de694-ef68-4f1e-89db-546ff47dc475,Peningkatan kualitas pengobatan penyakit langka,Kesehatan,formal,Jambi,5,Misi 4: Kesehatan,DPR RI,Community,Penyakit Langka,synthetic_strategic_v2
+8bc810d1-4dc7-451a-a253-bad672465ec2,Pengembangan program kesehatan reproduksi,Kesehatan,formal,Sumatera Utara,4,Misi 4: Kesehatan,DPRD Kab/Kota,Community,Kesehatan Reproduksi,synthetic_strategic_v2
+528ca9b8-aa74-4997-8060-024f25ca290e,Perluasan fasilitas kesehatan,Kesehatan,formal,Papua,4,Misi 4: Kesehatan,DPR RI,Individual,Kesehatan Masyarakat,synthetic_strategic_v2
+30e92afc-312a-4ccf-885c-4dd45cc2b214,Peningkatan kualitas pelayanan kesehatan,Kesehatan,formal,Papua,5,Misi 4: Kesehatan,DPRD Provinsi,Individual,Pelayanan Kesehatan,synthetic_strategic_v2
+d167264e-f0bf-40ad-ad54-21c2a33282e7,Penambahan tenaga medis,Kesehatan,formal,Jawa Timur,3,Misi 4: SDM,DPRD Kab/Kota,National,Tenaga Kesehatan,synthetic_strategic_v2
+0b8cc2e5-8f26-4eaf-ab4f-be1f7f719453,Pendidikan kesehatan masyarakat,Kesehatan,formal,NTT,2,Misi 4: Pendidikan,DPRD Provinsi,Regional,Pendidikan Kesehatan,synthetic_strategic_v2
+8c4c99c5-a6ec-416e-8430-bce3a6702bb5,Pengadaan obat-obatan,Kesehatan,formal,NTT,5,Misi 4: Kesehatan,DPR RI,National,Pengadaan Obat,synthetic_strategic_v2
+88ad3443-67f2-4860-97bb-64ca8530d8a4,Pembangunan rumah sakit,Kesehatan,formal,Jawa Barat,4,Misi 4: Kesehatan,DPRD Kab/Kota,Individual,Fasilitas Kesehatan,synthetic_strategic_v2
+f820ca62-dc46-487b-984a-4b2f206d1bb8,Peningkatan kesadaran kesehatan,Kesehatan,formal,Papua,3,Misi 4: Pendidikan,DPRD Provinsi,Community,Kesadaran Kesehatan,synthetic_strategic_v2
+8df84c58-4df8-4cda-b3d7-8cfe53578c33,Pengembangan program kesehatan,Kesehatan,formal,Jawa Timur,4,Misi 4: Kesehatan,DPR RI,National,Program Kesehatan,synthetic_strategic_v2
+984bcee2-c3b3-4258-9805-77980d6d24fd,Pemantauan kesehatan lingkungan,Kesehatan,formal,NTT,2,Misi 4: Kesehatan,DPRD Kab/Kota,Community,Kesehatan Lingkungan,synthetic_strategic_v2
+ebcb5ccb-3373-476e-9f7d-ac4bc3fc5fbd,perlunya penambahan ruang kelas,Pendidikan,informal,Jambi,5,Misi 4: Pendidikan,DPRD Provinsi,Community,Pendidikan,synthetic_strategic_v2
+57bb88c6-2c80-4e5c-aa94-a2215b7b9643,beasiswa untuk siswa kurang mampu,Pendidikan,informal,Jawa Barat,5,Misi 4: Pendidikan,DPR RI,Individual,Pendidikan,synthetic_strategic_v2
+cc43cec7-1d95-4d28-a15a-ccdf2234c50f,pentingnya pelatihan guru,Pendidikan,informal,Papua,4,Misi 4: Pendidikan,DPRD Kab/Kota,National,Pendidikan,synthetic_strategic_v2
+340fe080-3e3a-4519-a5d0-1905ec7fcce4,akses internet untuk anak2,Pendidikan,informal,Sumatera Utara,4,Misi 4: Teknologi,DPRD Provinsi,Individual,Pendidikan,synthetic_strategic_v2
+02dffb55-bfda-4d06-af03-8a34bf3533b7,perlu liburan yang lebih panjang,Pendidikan,informal,Jawa Timur,2,Misi 4: Pendidikan,DPRD Kab/Kota,Regional,Pendidikan,synthetic_strategic_v2
+d432d181-a17f-41ae-94b8-ca9f9c2fb2ce,butuh laboratorium di sekolah,Pendidikan,informal,Jawa Timur,5,Misi 4: Sains,DPRD Provinsi,Community,Pendidikan,synthetic_strategic_v2
+ef2fcf14-2a59-4157-af8e-798b570769d9,pentingnya kesehatan mental anak,Pendidikan,informal,NTT,5,Misi 4: Kesehatan,DPR RI,National,Pendidikan,synthetic_strategic_v2
+d05d1f0e-ae63-4f4c-9714-7058855c9a48,perlunya pelatihan life skill,Pendidikan,informal,Jawa Barat,4,Misi 4: Pendidikan,DPRD Kab/Kota,National,Pendidikan,synthetic_strategic_v2
+df55e6e0-e8f3-4f54-8189-e6e72abcc25f,beasiswa untuk lulusan terbaik,Pendidikan,informal,Sumatera Utara,5,Misi 4: Pendidikan,DPRD Provinsi,Regional,Pendidikan,synthetic_strategic_v2
+d2b50ca7-e9e8-413c-922e-aeb658271725,butuh wifi gratis di sekolah,Pendidikan,informal,Sumatera Utara,4,Misi 4: Pendidikan,DPRD Kab/Kota,Regional,Pendidikan,synthetic_strategic_v2
+a2a29982-e99c-4f11-871b-437b0c145c0f,tingkatkan kualitas guru,Pendidikan,informal,NTT,5,Misi 4: Pendidikan,DPR RI,Community,Pendidikan,synthetic_strategic_v2
+e204c68e-bdb6-47de-8adc-0839f6dec323,buku sekolah gratis,Pendidikan,informal,Kalimantan Timur,3,Misi 4: Pendidikan,DPRD Provinsi,Regional,Pendidikan,synthetic_strategic_v2
+674bdeb1-0323-40a9-a9e8-3cacdec0382d,perlu lab komputer di sekolah,Pendidikan,informal,Papua,4,Misi 4: Teknologi,DPRD Kab/Kota,Individual,Pendidikan,synthetic_strategic_v2
+ae0c4bb9-2808-4c21-8d69-35dad869f7c3,kurikulum yang lebih menarik,Pendidikan,informal,Kalimantan Timur,2,Misi 4: Pendidikan,DPR RI,Individual,Pendidikan,synthetic_strategic_v2
+c8f836a9-6aba-4224-8f2c-4bb242d5d5a6,beasiswa untuk anak kurang mampu,Pendidikan,informal,Jawa Timur,5,Misi 4: Pendidikan,DPRD Provinsi,Individual,Pendidikan,synthetic_strategic_v2
+ee557973-efe3-49e8-a462-6e681f5c6ca4,fasilitas olahraga yang memadai,Pendidikan,informal,Sumatera Utara,3,Misi 4: Kesehatan,DPRD Kab/Kota,Community,Pendidikan,synthetic_strategic_v2
+aaa8abcf-2563-4e50-88d8-8d9c1c7a5e04,program magang untuk siswa,Pendidikan,informal,Kalimantan Timur,4,Misi 4: SDM,DPR RI,Individual,Pendidikan,synthetic_strategic_v2
+b4ce8278-8c64-4a2f-930c-46b65182ee96,pelatihan guru tentang teknologi,Pendidikan,informal,Papua,4,Misi 4: Teknologi,DPRD Provinsi,National,Pendidikan,synthetic_strategic_v2
+5391c9f4-cfe5-4b48-98c4-ef037930e052,pendidikan karakter yang lebih baik,Pendidikan,informal,Jambi,5,Misi 4: Pendidikan,DPR RI,Individual,Pendidikan,synthetic_strategic_v2
+1efbd565-964c-4520-9754-0a0bc6e2bceb,perluin sekolah gratis biar anak2 bisa sekolah,Pendidikan,informal,Kalimantan Timur,5,Misi 4: Pendidikan,DPRD Kab/Kota,Individual,Pendidikan Dasar,synthetic_strategic_v2
+32c620e8-a371-4888-b6ae-d16255ac4d4b,butuh lab komputer di sekolah,Pendidikan,informal,Kalimantan Timur,4,Misi 4: Teknologi,DPRD Provinsi,Regional,Pendidikan Teknologi,synthetic_strategic_v2
+43fd8579-9156-4bbe-bfe7-50ea7f25fa6c,pengajar kejuruan harus di tambah,Pendidikan,informal,Jawa Barat,3,Misi 4: SDM,DPR RI,Regional,Pendidikan Vokasional,synthetic_strategic_v2
+20bf9b53-7d1d-4bd9-a6d4-ddf394d0ee8f,kurangnya fasilitas olahraga di sekolah,Pendidikan,informal,Jawa Timur,2,Misi 4: Kesehatan,DPRD Kab/Kota,Individual,Pendidikan Jasmani,synthetic_strategic_v2
+490715e5-6727-4bdb-bc65-2d17b2cabb1d,butuh beasiswa untuk anak kurang mampu,Pendidikan,informal,NTT,5,Misi 4: Pendidikan,DPRD Provinsi,National,Bantuan Pendidikan,synthetic_strategic_v2
+2373791f-30a9-4cbb-ad47-baa0776526f8,perlunya pelatihan guru untuk kemajuan pendidikan,Pendidikan,informal,Papua,4,Misi 4: SDM,DPR RI,National,Pengembangan Guru,synthetic_strategic_v2
+79e7017b-181c-420c-83bc-b257945f151c,sekolah harus punya fasilitas ramah disabilitas,Pendidikan,informal,Papua,3,Misi 4: Pendidikan,DPRD Kab/Kota,Individual,Pendidikan Inklusif,synthetic_strategic_v2
+194a908c-760d-49c0-9388-2da3ee66dde5,perlu penambahan dana bantuan pendidikan,Pendidikan,informal,Sumatera Utara,5,Misi 4: Pendidikan,DPR RI,Regional,Anggaran Pendidikan,synthetic_strategic_v2
+3c9f01bf-f57b-4aac-9990-acc0e6681b4b,butuh peningkatan kualitas pendidikan di daerah terpencil,Pendidikan,informal,Sumatera Utara,4,Misi 4: Pendidikan,DPRD Provinsi,Community,Pendidikan Pedesaan,synthetic_strategic_v2
+b5e6ee82-267e-4aa1-9257-ff9a36ddd0b9,kurangnya kesadaran akan pentingnya pendidikan kesehatan reproduksi,Pendidikan,informal,Kalimantan Timur,3,Misi 4: Kesehatan,DPRD Kab/Kota,Regional,Pendidikan Kesehatan Reproduksi,synthetic_strategic_v2
+a636ec85-4a98-4b24-b112-4c014e460a39,SDM lebih pintar,Pendidikan,informal,Sumatera Utara,5,Misi 4: SDM,DPR RI,National,Pendidikan,synthetic_strategic_v2
+a3d65888-8c26-4007-be37-356e82375b91,Dana pendidikan lebih banyak,Pendidikan,informal,Papua,4,Misi 4: Pendidikan,DPRD Provinsi,Individual,Pendidikan,synthetic_strategic_v2
+3373ea4c-414b-4e87-acd0-0c008420297d,Kurikulum yang lebih baik,Pendidikan,informal,Jawa Barat,3,Misi 4: Pendidikan,DPRD Kab/Kota,Community,Pendidikan,synthetic_strategic_v2
+feb66b31-0019-48d6-ab5a-70050698fc06,Guru lebih kompeten,Pendidikan,informal,Papua,5,Misi 4: SDM,DPR RI,Community,Pendidikan,synthetic_strategic_v2
+19472e0d-7762-4534-a8d3-abb484e87b62,Fasilitas sekolah lebih baik,Pendidikan,informal,Sumatera Utara,4,Misi 4: Pendidikan,DPRD Provinsi,Regional,Pendidikan,synthetic_strategic_v2
+15722b82-af6a-4041-a881-2722c4267c3d,Biaya pendidikan lebih murah,Pendidikan,informal,NTT,5,Misi 4: Pendidikan,DPR RI,Individual,Pendidikan,synthetic_strategic_v2
+60f97e5c-1e6d-4401-8705-6d3394fa4d8e,Teknologi di sekolah,Pendidikan,informal,NTT,4,Misi 4: Teknologi,DPRD Kab/Kota,National,Pendidikan,synthetic_strategic_v2
+c9392fa2-7467-44b4-9a43-c07e89c3a80c,Pendidikan karakter,Pendidikan,informal,Sumatera Utara,3,Misi 4: Pendidikan,DPRD Provinsi,Community,Pendidikan,synthetic_strategic_v2
+ceebefe8-4e3b-4aff-8a5d-652fc3ee04ea,Pendidikan untuk disabilitas,Pendidikan,informal,Sumatera Utara,5,Misi 4: Pendidikan,DPR RI,National,Pendidikan,synthetic_strategic_v2
+3947b26a-e1d7-4411-bcc2-b349999fc103,Pendidikan untuk semua,Pendidikan,informal,NTT,5,Misi 4: Pendidikan,DPR RI,Community,Pendidikan,synthetic_strategic_v2
+b635c6cb-f135-40a0-9686-e2134106236d,perluin sekolah ramah lingkungan,Pendidikan,informal,Kalimantan Timur,4,Misi 4: Pendidikan,DPRD Kab/Kota,Community,Pendidikan,synthetic_strategic_v2
+5d8dde90-0c48-4a4a-8125-135c873251f5,sekolah harusnya ada laboratorium,Pendidikan,informal,Papua,4,Misi 4: Sains,DPRD Kab/Kota,Community,Pendidikan,synthetic_strategic_v2
+fda8a790-7ef8-40d5-8ebf-58c71345c3af,butuh pelatihan untuk guru,Pendidikan,informal,Jambi,4,Misi 4: SDM,DPRD Provinsi,Individual,Pendidikan,synthetic_strategic_v2
+8bb1d686-8e54-4af1-b8cf-b0b3591bc628,perlu kurikulum yang lebih baik,Pendidikan,informal,Jambi,5,Misi 4: Pendidikan,DPR RI,National,Pendidikan,synthetic_strategic_v2
+0bc65cca-9d7b-40d7-921c-45286c314e9d,sekolah harusnya ada fasilitas olahraga,Pendidikan,informal,Kalimantan Timur,3,Misi 4: Kesehatan,DPRD Kab/Kota,National,Pendidikan,synthetic_strategic_v2
+fdc10cd9-8d94-4f04-92c3-301197674364,kebutuhan akan perpustakaan sekolah,Pendidikan,informal,Jawa Timur,4,Misi 4: Pendidikan,DPRD Provinsi,Individual,Pendidikan,synthetic_strategic_v2
+bc1a08d1-f071-45f3-bd28-75b9b008e4d4,perlunya edukasi tentang teknologi,Pendidikan,informal,NTT,5,Misi 4: Teknologi,DPR RI,National,Pendidikan,synthetic_strategic_v2
+a26ef641-3459-4d95-92f9-abb4d4065aee,Lebih bnyk beasiswa,Pendidikan,informal,Papua,4,Misi 4: Pendidikan,DPR RI,Individual,Pendidikan,synthetic_strategic_v2
+706a10d7-d9dd-456f-bc09-2ea9cc28d250,Perluin guru yg kompeten,Pendidikan,informal,Papua,5,Misi 4: SDM,DPRD Kab/Kota,Regional,Pendidikan,synthetic_strategic_v2
+32042e98-f24f-4a87-a98f-0e47b34bc537,Butuh lab sekolah yg memadai,Pendidikan,informal,Jawa Barat,3,"Misi 4: Sains, Teknologi",DPRD Provinsi,National,Pendidikan,synthetic_strategic_v2
+c4ed825d-5c16-4ba0-b692-220d38c425d6,Biaya kuliah murah,Pendidikan,informal,Jawa Barat,5,Misi 4: Pendidikan,DPR RI,Community,Pendidikan,synthetic_strategic_v2
+0554f9a6-14be-415a-8226-7efc6c44aa5f,Perlunya pelatihan guru,Pendidikan,informal,Kalimantan Timur,4,Misi 4: SDM,DPRD Kab/Kota,Regional,Pendidikan,synthetic_strategic_v2
+b50d23b4-e2a8-40b4-ab4f-8c767abb882c,Kursus online gratis,Pendidikan,informal,Kalimantan Timur,2,Misi 4: Teknologi,DPR RI,Regional,Pendidikan,synthetic_strategic_v2
+35c93c38-0d1f-4734-bb08-5ea7be528240,Perpustakaan digital,Pendidikan,informal,Sumatera Utara,3,"Misi 4: Sains, Teknologi",DPRD Provinsi,Individual,Pendidikan,synthetic_strategic_v2
+e7efea3c-56db-48ec-8df0-995dd8f5643b,Pendidikan karakter wajib,Pendidikan,informal,NTT,4,Misi 4: Pendidikan,DPR RI,National,Pendidikan,synthetic_strategic_v2
+22c3edd5-d06e-48d2-95be-03b8bc5b33f2,Guru honorer dapat gaji,Pendidikan,informal,NTT,5,Misi 4: SDM,DPRD Kab/Kota,Individual,Pendidikan,synthetic_strategic_v2
+304ed98f-7749-4943-a54c-c1df83c1ddb3,Beasiswa luar negeri,Pendidikan,informal,NTT,4,Misi 4: Pendidikan,DPR RI,Individual,Pendidikan,synthetic_strategic_v2
+4a6dbbef-423f-4828-891a-f7c6e5348340,lebih bnyk beasiswa untuk mahasiswa,Pendidikan,informal,Jawa Barat,4,Misi 4: Pendidikan,DPR RI,Regional,Pendidikan Tinggi,synthetic_strategic_v2
+64006528-03cb-4b48-a2d0-d72476643335,perbaiki infrastruktur sekolah,Pendidikan,informal,Papua,5,Misi 4: Pendidikan,DPRD Kab/Kota,National,Pendidikan Dasar,synthetic_strategic_v2
+55e4871a-e355-463e-80be-2c2c90921e5f,bijak teknologi untuk anak,Pendidikan,informal,Jawa Timur,2,Misi 4: Teknologi,DPR RI,Community,Pendidikan Digital,synthetic_strategic_v2
+32044bbd-44d9-485a-97f4-85a702fc3de3,akses pendidikan inklusif,Pendidikan,informal,Papua,5,Misi 4: Pendidikan,DPRD Kab/Kota,Community,Pendidikan Inklusif,synthetic_strategic_v2
+55a85f9b-5c25-456e-bfd2-c5d80d71b2fd,kurikulum yang lebih baik,Pendidikan,informal,Kalimantan Timur,4,Misi 4: Pendidikan,DPR RI,Regional,Kurikulum Pendidikan,synthetic_strategic_v2
+c4ef46e6-81fc-4fae-9df1-63e8c723879d,fasilitas pendidikan gratis,Pendidikan,informal,Jawa Barat,5,Misi 4: Pendidikan,DPRD Provinsi,National,Pendidikan Gratis,synthetic_strategic_v2
+440c9400-6376-42c0-8a30-b055b5134225,peningkatan kualitas pendidikan,Pendidikan,informal,NTT,4,Misi 4: Pendidikan,DPR RI,Regional,Kualitas Pendidikan,synthetic_strategic_v2
+eaf2b585-699b-4b50-9dc6-517146a66846,pendidikan karakter wajib,Pendidikan,informal,Jawa Barat,4,Misi 4: Pendidikan,DPR RI,Individual,Pendidikan Karakter,synthetic_strategic_v2
+637da902-e5a6-4d37-8c98-1fd1a66f926a,perluin guru kimia lbh,Pendidikan,informal,Kalimantan Timur,5,Misi 4: SDM,DPRD Provinsi,Individual,Pendidikan,synthetic_strategic_v2
+ec8710a7-456f-4df2-bc98-ef18b72a52e9,buku pelajaran murah,Pendidikan,informal,Jawa Barat,3,Misi 4: Pendidikan,DPR RI,National,Pendidikan,synthetic_strategic_v2
+80806893-78fc-4c22-88a4-f0313c0b8451,lptn bantu siswa miskin,Pendidikan,informal,Jawa Timur,5,Misi 4: SDM,DPRD Kab/Kota,National,Pendidikan,synthetic_strategic_v2
+b48dff95-0f52-4a08-8836-7fe19226063f,lab komputer sdh usang,Pendidikan,informal,NTT,4,Misi 4: Teknologi,DPRD Provinsi,National,Pendidikan,synthetic_strategic_v2
+fb984049-dad6-4b0a-a513-4a7203ab412c,butuh ruang baca,Pendidikan,informal,NTT,2,Misi 4: Pendidikan,DPRD Kab/Kota,Individual,Pendidikan,synthetic_strategic_v2
+fdce5a4e-312a-4f08-be87-0cb21138f223,kurangnya guru olahraga,Pendidikan,informal,Jambi,3,Misi 4: SDM,DPRD Provinsi,National,Pendidikan,synthetic_strategic_v2
+88e1836a-5c33-45b8-a956-2a189bc38969,pembangunan sma baru,Pendidikan,informal,Jawa Barat,5,Misi 4: Pendidikan,DPR RI,Community,Pendidikan,synthetic_strategic_v2
+dc9f4a85-d573-48f3-adc6-4e222fe61d05,penambahan jam ekstra,Pendidikan,informal,Sumatera Utara,4,Misi 4: Pendidikan,DPRD Provinsi,Regional,Pendidikan,synthetic_strategic_v2
+45ded5f4-6d74-4ace-a3d1-c14a516896e9,Perbaiki infra sekolah,Pendidikan,informal,Kalimantan Timur,5,Misi 4: Pendidikan,DPRD Kab/Kota,Individual,Pendidikan Dasar,synthetic_strategic_v2
+2d2e7bdd-b9bb-4daf-99b3-e3401afa5f0d,Biaya kuliah yang murah,Pendidikan,informal,Jawa Timur,5,Misi 4: Pendidikan,DPR RI,National,Pendidikan Tinggi,synthetic_strategic_v2
+a68cff6d-82e4-44fa-8880-091b3da976a2,Guru yang lebih berkualitas,Pendidikan,informal,Papua,4,Misi 4: Pendidikan,DPRD Provinsi,Community,Pendidikan Guru,synthetic_strategic_v2
+e654af7b-f67f-4bba-9c3e-40333844890e,Akses internet di sekolah,Pendidikan,informal,Jawa Timur,4,Misi 4: Teknologi,DPRD Kab/Kota,Community,Pendidikan,synthetic_strategic_v2
+65855c3b-ce2d-4fd5-a3db-1b360c56fefb,Buku pelajaran yang lebih baik,Pendidikan,informal,Jawa Barat,3,Misi 4: Pendidikan,DPR RI,Individual,Pendidikan Dasar,synthetic_strategic_v2
+42b7c75f-580f-4f5a-ab86-3553ba2f137b,Pendidikan karakter yang lebih baik,Pendidikan,informal,Kalimantan Timur,4,Misi 4: Pendidikan,DPRD Provinsi,National,Pendidikan Karakter,synthetic_strategic_v2
+7169767f-264e-444c-af77-f848785eb82d,Perlu peningkatan kualitas pendidikan dasar,Pendidikan,formal,Sumatera Utara,4,Misi 4: Pendidikan,DPRD Kab/Kota,National,Pendidikan Dasar,synthetic_strategic_v2
+b3262472-3d64-4d39-b3b2-5040e9bc9806,Diperlukan program beasiswa untuk mahasiswa berprestasi,Pendidikan,formal,NTT,3,Misi 4: Pendidikan,DPR RI,Individual,Pendidikan Tinggi,synthetic_strategic_v2
+24048e0f-db06-45ac-985d-882e4ab31d7a,Butuh penambahan fasilitas sekolah di daerah terpencil,Pendidikan,formal,NTT,5,Misi 4: Pendidikan,DPRD Provinsi,National,Pendidikan Dasar,synthetic_strategic_v2
+17ab1fbd-0bb2-4f19-99c9-b0489b295b4b,Pengembangan kurikulum pendidikan yang lebih komprehensif,Pendidikan,formal,Jawa Timur,2,Misi 4: Pendidikan,DPR RI,Individual,Kurikulum Pendidikan,synthetic_strategic_v2
+b6eb9d90-a7b3-4ca1-a1c6-6d3b13db1fbc,Peningkatan kualitas guru dengan pelatihan rutin,Pendidikan,formal,Kalimantan Timur,4,Misi 4: Pendidikan,DPRD Kab/Kota,Regional,Pengembangan Guru,synthetic_strategic_v2
+08a586da-fa47-4831-b87a-d6e464f04ee1,Pembangunan perpustakaan digital untuk akses pendidikan luas,Pendidikan,formal,Kalimantan Timur,3,Misi 4: Pendidikan,DPRD Provinsi,National,Sumber Belajar,synthetic_strategic_v2
+6471a930-c763-4bd0-a851-3533315a1f1d,Pengadaan fasilitas pendidikan khusus untuk disabilitas,Pendidikan,formal,NTT,5,Misi 4: Pendidikan,DPR RI,Community,Pendidikan Inklusif,synthetic_strategic_v2
+245ac8dc-f0e0-4978-a184-ab55edf3a7e0,Penerapan teknologi dalam proses belajar mengajar,Pendidikan,formal,Jambi,4,Misi 4: Teknologi,DPRD Kab/Kota,Individual,Pendidikan Berbasis Teknologi,synthetic_strategic_v2
+90f6281e-8633-4cbf-921c-664cc8487a47,Pengembangan program pendidikan karakter bagi siswa,Pendidikan,formal,Sumatera Utara,3,Misi 4: Pendidikan,DPRD Provinsi,Regional,Pendidikan Karakter,synthetic_strategic_v2
+33e71fe7-d850-4b71-9cb6-5071f9b0f98a,Peningkatan akses pendidikan bagi masyarakat ekonomi lemah,Pendidikan,formal,NTT,5,Misi 4: Pendidikan,DPR RI,Regional,Pendidikan untuk Semua,synthetic_strategic_v2
+8cca9658-714b-4acd-8ce9-a96c983cdb1c,Peningkatan kualitas pendidikan dasar,Pendidikan,formal,Jawa Timur,4,Misi 4: Pendidikan,DPRD Kab/Kota,National,Pendidikan Dasar,synthetic_strategic_v2
+47b49131-1d8d-434a-ac8c-f6b54c45bbff,Pengembangan sains dan teknologi,Pendidikan,formal,Jawa Timur,5,"Misi 4: Sains, Teknologi",DPR RI,Regional,Pendidikan Teknologi,synthetic_strategic_v2
+f670babb-f7cb-48f3-a8c9-472a1e20d575,Pembangunan infrastruktur pendidikan,Pendidikan,formal,Sumatera Utara,3,Misi 4: Pendidikan,DPRD Provinsi,Community,Infrastruktur Pendidikan,synthetic_strategic_v2
+be1b069d-1970-4043-9dee-a13dbbcf30d4,Peningkatan kualitas guru,Pendidikan,formal,Jawa Timur,4,Misi 4: Pendidikan,DPRD Kab/Kota,Regional,Pendidikan Guru,synthetic_strategic_v2
+c9a9fec8-c65b-4a1a-bb21-746bb619dd2e,Pengembangan pelatihan vokasional,Pendidikan,formal,NTT,4,Misi 4: Pendidikan,DPR RI,Community,Pendidikan Vokasional,synthetic_strategic_v2
+0fc0c917-5ea3-4d73-916f-192992c411b5,Peningkatan akses pendidikan inklusif,Pendidikan,formal,Kalimantan Timur,5,Misi 4: Pendidikan,DPRD Provinsi,Community,Pendidikan Inklusif,synthetic_strategic_v2
+3d15d542-f1b3-4217-acf8-1aa4e87318e4,Pengembangan teknologi pendidikan,Pendidikan,formal,Sumatera Utara,4,Misi 4: Teknologi,DPR RI,Community,Pendidikan Teknologi,synthetic_strategic_v2
+a42dc457-d88c-45fd-ae34-5eda73616706,Peningkatan kualitas pendidikan tinggi,Pendidikan,formal,Jambi,4,Misi 4: Pendidikan,DPR RI,National,Pendidikan Tinggi,synthetic_strategic_v2
+66899fe3-6019-41d0-aaab-4ae189fc6c32,Pengembangan pendidikan kesehatan,Pendidikan,formal,Jawa Timur,4,Misi 4: Kesehatan,DPRD Kab/Kota,National,Pendidikan Kesehatan,synthetic_strategic_v2
+05722df7-ec7b-4149-8a41-2e88a7d24c94,Peningkatan kualitas pendidikan dasar khusus,Pendidikan,formal,NTT,4,Misi 4: Pendidikan,DPRD Provinsi,National,Pendidikan Dasar Khusus,synthetic_strategic_v2
+365f7fb3-590d-44f9-b02b-33b27efc72ce,Meningkatkan kualitas pendidikan,Pendidikan,formal,Jawa Barat,4,"Misi 4: SDM, Sains, Teknologi, Pendidikan, Kesehatan",DPR RI,Individual,Pendidikan,synthetic_strategic_v2
+fde85133-c01c-4b4b-8504-6694141b40f4,Pemerataan akses pendidikan,Pendidikan,formal,Sumatera Utara,5,"Misi 4: SDM, Sains, Teknologi, Pendidikan, Kesehatan",DPRD Provinsi,National,Pendidikan,synthetic_strategic_v2
+f75ad755-7465-4287-abd1-3eb8ad7de8e9,bukin lapangan kerja baru di desa,Ekonomi,informal,NTT,4,Misi 3,DPRD Kab/Kota,Regional,Ekonomi Desa,synthetic_strategic_v2
+c14023c8-4f4f-4aa8-87cd-e0dadbe3a645,dongkrak produksi pangan lokal,Ekonomi,informal,Jawa Barat,5,Misi 2,DPR RI,Individual,Swasembada Pangan,synthetic_strategic_v2
+7af097f5-a836-4b90-8418-b102454b485a,kembangin usaha kecil di kota,Ekonomi,informal,Sumatera Utara,3,Misi 3,DPRD Kab/Kota,Regional,Kewirausahaan,synthetic_strategic_v2
+1ace4016-cae3-4398-9587-f76e38bc1af6,bantu petani desa akses modal,Ekonomi,informal,Papua,4,Misi 6,DPRD Kab/Kota,Regional,Pemerataan Ekonomi,synthetic_strategic_v2
+7617b243-9da5-4f92-9abb-b1c4912ca822,fasilitasi industri kecil dan menengah,Ekonomi,informal,Papua,4,Misi 5,DPR RI,Individual,Hilirisasi,synthetic_strategic_v2
+20cf53fe-5b96-4796-abd0-ddb682cf321c,kembangkan ekowisata di desa,Ekonomi,informal,Papua,3,Misi 6,DPRD Kab/Kota,Community,Pariwisata Desa,synthetic_strategic_v2
+3fe18f50-990d-4268-baaf-6a2d8ee4148e,tingkatkan kualitas sumber daya manusia,Ekonomi,informal,NTT,5,Misi 3,DPR RI,Individual,Pendidikan dan Pelatihan,synthetic_strategic_v2
+b76b5da3-3bdb-4b7a-8ff5-d8eaa726ea9e,kembangkan infrastruktur desa,Ekonomi,informal,Papua,4,Misi 6,DPRD Kab/Kota,Individual,Infrastruktur Desa,synthetic_strategic_v2
+b00a6ad3-ddfd-41ef-a10a-42515619ffea,fasilitasi akses pasar bagi UMKM,Ekonomi,informal,Papua,4,Misi 5,DPR RI,Individual,Pemasaran UMKM,synthetic_strategic_v2
+9e556aff-4e14-4116-bfe0-21ef52b95125,bantu UKM naik kelas,Ekonomi,informal,Sumatera Utara,4,Misi 5,DPRD Kab/Kota,Regional,Ekonomi,synthetic_strategic_v2
+0a8ac89e-e9ad-4d35-a536-9b2c5a9df67d,dongkrak ekspor produk lokal,Ekonomi,informal,Jambi,5,Misi 6,DPR RI,Regional,Ekonomi,synthetic_strategic_v2
+518bea9e-349a-4378-bdd3-3da77c06733e,perluatkan UMKM di desa,Ekonomi,informal,Sumatera Utara,3,Misi 3,DPRD Provinsi,Community,Ekonomi,synthetic_strategic_v2
+53ec3894-e074-43af-aea5-879d7ff70a1a,buka lapangan kerja baru,Ekonomi,informal,Jawa Timur,4,Misi 3,DPRD Kab/Kota,National,Ekonomi,synthetic_strategic_v2
+5d4776d0-56e3-422c-9ddf-68269eb3fabc,kembangkan pariwisata daerah,Ekonomi,informal,Jambi,3,Misi 6,DPRD Provinsi,Regional,Ekonomi,synthetic_strategic_v2
+66762528-6b07-4826-a2b2-46da2f8df3c7,suport wirausaha muda,Ekonomi,informal,NTT,4,Misi 5,DPR RI,National,Ekonomi,synthetic_strategic_v2
+eaf9dc81-c071-428c-8329-96bd12cc6b90,asah keterampilan kerja,Ekonomi,informal,Sumatera Utara,3,Misi 3,DPRD Kab/Kota,Regional,Ekonomi,synthetic_strategic_v2
+a08b5af3-dea1-4990-8afd-2fb1f5cd7781,kembangkan industri kreatif,Ekonomi,informal,Sumatera Utara,4,Misi 5,DPRD Provinsi,Community,Ekonomi,synthetic_strategic_v2
+42452ea7-8e88-419e-993a-c968470f2468,tingkatkan kesejahteraan petani,Ekonomi,informal,Sumatera Utara,5,Misi 2,DPR RI,National,Ekonomi,synthetic_strategic_v2
+7fab03e0-8dc6-47ab-b5ce-23a0ad1dac8c,buka lapangan kerja baru di desa,Ekonomi,informal,NTT,4,Misi 3,DPRD Kab/Kota,National,Ekonomi,synthetic_strategic_v2
+427c3fd7-7695-4178-a89d-f8c2d55c39fa,tingkatkan swasembada pangan,Ekonomi,informal,Jawa Barat,4,Misi 2,DPR RI,Community,Pertanian,synthetic_strategic_v2
+e253204f-9443-4160-857d-6a2bf37db722,fasilitasi kewirausahaan muda,Ekonomi,informal,Papua,3,Misi 3,DPRD Provinsi,Individual,Ekonomi,synthetic_strategic_v2
+aa2ec9ab-8c8b-48ba-985e-35168589e58c,kembangkan industri hilir,Ekonomi,informal,Sumatera Utara,5,Misi 5,DPR RI,National,Ekonomi,synthetic_strategic_v2
+124d3ef1-7805-4ff0-9c11-a6f4fd4c08e3,perbaiki infrastruktur desa,Ekonomi,informal,NTT,4,Misi 3,DPRD Kab/Kota,National,Infrastruktur,synthetic_strategic_v2
+1a7e2964-b1f0-4c14-aa17-c2dab3934ada,tingkatkan kualitas SDM,Ekonomi,informal,Sumatera Utara,4,Misi 3,DPRD Provinsi,National,Pendidikan,synthetic_strategic_v2
+4cd4dd7c-ed53-4a66-a026-2b0c797e5429,kembangkan ekonomi biru,Ekonomi,informal,Sumatera Utara,5,Misi 2,DPR RI,Community,Ekonomi Biru,synthetic_strategic_v2
+4f060eac-db19-410a-9b8b-e4b4fa6cbc00,perluasan akses air bersih,Ekonomi,informal,Jawa Barat,5,Misi 2,DPRD Kab/Kota,National,Lingkungan,synthetic_strategic_v2
+44487eea-9a9a-495a-9b44-ae7aa183f0e0,butuh lapangan kerja lebih banyak di desa,Ekonomi,informal,Jambi,5,Misi 3,DPRD Kab/Kota,Community,Ekonomi Desa,synthetic_strategic_v2
+eacd0c46-7377-4bc4-890e-a015794fbcf2,swasembada pangan untuk kemandirian,Ekonomi,informal,Jawa Timur,4,Misi 2,DPR RI,Individual,Pertanian,synthetic_strategic_v2
+0f41df12-8ee9-4ef4-83e0-b09108b38a31,kembangkan ekonomi hijau di kota besar,Ekonomi,informal,Jambi,3,Misi 2,DPRD Provinsi,Community,Lingkungan,synthetic_strategic_v2
+91af1804-82c1-46a8-93ff-6a2a373cf6ff,buka lapangan kerja di sektor pariwisata,Ekonomi,informal,Jawa Barat,5,Misi 3,DPRD Kab/Kota,National,Pariwisata,synthetic_strategic_v2
+15b1f0ac-e349-44e0-a0d4-902341c2f460,industrialisasi di daerah terpencil,Ekonomi,informal,Papua,4,Misi 5,DPR RI,National,Pembangunan Daerah,synthetic_strategic_v2
+fdcbe083-9429-4b3d-a28c-01752150d976,kembangkan UKM di desa,Ekonomi,informal,Papua,4,Misi 6,DPRD Kab/Kota,Regional,Kewirausahaan,synthetic_strategic_v2
+b06c0226-34d6-4509-8a17-19f3118ae930,perkuat infrastruktur jalan dan jembatan,Ekonomi,informal,NTT,5,Misi 3,DPRD Provinsi,National,Infrastruktur,synthetic_strategic_v2
+bd97a8f2-7a98-447f-a825-3e92284b16c5,hilirisasi industri pertanian,Ekonomi,informal,Jawa Barat,4,Misi 5,DPR RI,Regional,Pertanian,synthetic_strategic_v2
+5d754dca-18ea-4bbe-906f-3d934178fc3c,kembangkan ekonomi kreatif di kota,Ekonomi,informal,Jambi,3,Misi 3,DPRD Kab/Kota,Individual,Ekonomi Kreatif,synthetic_strategic_v2
+7ab50956-441b-4236-bc20-7b6140fc6bbe,pemerataan ekonomi desa dan kota,Ekonomi,informal,Sumatera Utara,5,Misi 6,DPR RI,Regional,Pemerataan Ekonomi,synthetic_strategic_v2
+1781479d-00a9-4ef0-8d11-08e56e4609be,swasembada pangan sekarang juga,Ekonomi,informal,Jawa Timur,5,Misi 2,DPR RI,Community,Ekonomi,synthetic_strategic_v2
+dd8611df-86f8-4b47-b8e4-2832842e2bd7,kerja sama dengan negara lain,Ekonomi,informal,Jawa Barat,3,Misi 3,DPR RI,National,Ekonomi,synthetic_strategic_v2
+8cb6c20e-617e-416b-84c6-05d01c4c9606,bijak dalam mengelola sumber daya,Ekonomi,informal,Sumatera Utara,4,Misi 2,DPRD Kab/Kota,National,Ekonomi,synthetic_strategic_v2
+21a863a5-a10b-4f18-9e1c-9f3b81443518,"desa maju, ekonomi sejahtera",Ekonomi,informal,Kalimantan Timur,4,Misi 6,DPRD Kab/Kota,National,Ekonomi,synthetic_strategic_v2
+428e174a-a744-41f8-9a3c-2b2ae9ade9d8,infrastruktur yang memadai,Ekonomi,informal,Jawa Barat,4,Misi 3,DPR RI,Community,Ekonomi,synthetic_strategic_v2
+2bf7877e-d91e-4b0a-bc77-5b983070737b,pembangunan dari desa,Ekonomi,informal,NTT,4,Misi 6,DPRD Kab/Kota,Regional,Ekonomi,synthetic_strategic_v2
+e7933943-df13-4253-bc4c-3e260fe7355f,kewirausahaan mudah diakses,Ekonomi,informal,Jawa Barat,4,Misi 3,DPRD Provinsi,Individual,Ekonomi,synthetic_strategic_v2
+35045c71-68d0-4d5c-b2ab-af92a9dfc388,industri yang berkelanjutan,Ekonomi,informal,NTT,4,Misi 5,DPR RI,Individual,Ekonomi,synthetic_strategic_v2
+f236c262-01b2-40c7-b671-29a4198f970a,Naikkan gaji pegawai,Ekonomi,informal,NTT,4,Misi 3,DPR RI,Community,Lapangan Kerja,synthetic_strategic_v2
+01640620-970d-41c4-a4ec-1c7c31120b36,Harga bahan pangan turun,Ekonomi,informal,Sumatera Utara,3,Misi 2,DPR RI,Regional,Swasembada Pangan,synthetic_strategic_v2
+efa102d3-bed7-4301-bf97-36e45a20c099,Dukung UMKM lokal,Ekonomi,informal,Sumatera Utara,2,Misi 5,DPRD Provinsi,National,Hilirisasi,synthetic_strategic_v2
+71084ed5-b355-4888-874f-98af190bdbc0,Perbaiki infrastruktur desa,Ekonomi,informal,Papua,4,Misi 6,DPRD Kab/Kota,Regional,Pemerataan Ekonomi,synthetic_strategic_v2
+f94a9684-fa5d-452a-8cbd-7f0149e2cfb1,Kurangi biaya hidup,Ekonomi,informal,NTT,5,Misi 2,DPR RI,National,Ekonomi Hijau dan Biru,synthetic_strategic_v2
+48cc5925-180b-48f6-9fc8-fddf80e1d70a,Buka lowongan kerja baru,Ekonomi,informal,Jawa Timur,4,Misi 3,DPRD Kab/Kota,National,Lapangan Kerja,synthetic_strategic_v2
+f70708f8-61f2-44ea-9b0e-6b9ebda0919a,Dorong investasi desa,Ekonomi,informal,Jawa Timur,3,Misi 6,DPRD Provinsi,National,Pemerataan Ekonomi,synthetic_strategic_v2
+502df294-0488-4805-a3a9-21b916f5f915,Naikkan kualitas pendidikan,Ekonomi,informal,Jambi,4,Misi 3,DPR RI,Regional,Kewirausahaan,synthetic_strategic_v2
+55893de8-b3da-49d5-a994-172cc2820e13,Permudah akses kredit UMKM,Ekonomi,informal,Kalimantan Timur,4,Misi 5,DPRD Provinsi,Community,Industrialisasi,synthetic_strategic_v2
+881f4b03-85db-4fde-b4d0-e668c7121fd8,Bantu UMKM akses modal,Ekonomi,informal,Papua,4,Misi 3,DPRD Kab/Kota,Community,Kewirausahaan,synthetic_strategic_v2
+fd9b7b8b-009d-421c-8312-bc2ca32c1b9d,Swasembada pangan,Ekonomi,informal,Jawa Timur,5,Misi 2,DPR RI,Community,Pertanian,synthetic_strategic_v2
+bde4f063-8624-4e6b-ae45-9059dc77e6fe,Hilirisasi industri,Ekonomi,informal,NTT,3,Misi 5,DPR RI,Community,Industrialisasi,synthetic_strategic_v2
+51bb1931-3598-4f44-bef1-ef72f5ff70b8,Infrastruktur desa,Ekonomi,informal,Jawa Barat,2,Misi 6,DPRD Kab/Kota,Community,Pembangunan Desa,synthetic_strategic_v2
+3303368d-0132-4019-9a81-c07be02b8ca0,butuh lapangan kerja baru di desa,Ekonomi,informal,Sumatera Utara,4,Misi 3,DPRD Kab/Kota,National,Ekonomi,synthetic_strategic_v2
+86f75cf0-517f-411b-aeb4-b3e37c1d4556,Meningkatkan produksi pangan,Ekonomi,formal,Jawa Timur,4,Misi 2,DPR RI,Regional,Ekonomi,synthetic_strategic_v2
+3ac56caa-e3f6-4f4b-a253-cb2b0621301c,Membuka lapangan kerja baru,Ekonomi,formal,Jawa Timur,5,Misi 3,DPRD Kab/Kota,Individual,Ekonomi,synthetic_strategic_v2
+b1becff9-6b1c-412e-b196-aab535de98fb,Mengembangkan energi terbarukan,Ekonomi,formal,Papua,3,Misi 2,DPR RI,Individual,Ekonomi,synthetic_strategic_v2
+749da9e4-5f95-4e2b-ac11-3779550669f0,Meningkatkan kewirausahaan,Ekonomi,formal,Papua,4,Misi 3,DPRD Provinsi,Individual,Ekonomi,synthetic_strategic_v2
+84d36ddc-dd7f-4893-8de1-f6ac526980ce,Meningkatkan hilirisasi industri,Ekonomi,formal,Jawa Timur,5,Misi 5,DPR RI,Regional,Ekonomi,synthetic_strategic_v2
+603eb963-b033-414d-af49-627aa5436458,Membangun ekonomi hijau,Ekonomi,formal,Papua,3,Misi 2,DPRD Provinsi,National,Ekonomi,synthetic_strategic_v2
+965a6fc6-60ee-444f-9be5-e765524f2de2,Meningkatkan pemerataan ekonomi,Ekonomi,formal,Papua,4,Misi 6,DPRD Kab/Kota,Individual,Ekonomi,synthetic_strategic_v2
+5dc7865f-4f0e-4422-ae91-8eb5a24a36d8,Mengembangkan industri kreatif,Ekonomi,formal,Papua,4,Misi 5,DPRD Provinsi,National,Ekonomi,synthetic_strategic_v2
+73a60182-df57-4414-a8e3-897e4e8dafbc,Meningkatkan investasi desa,Ekonomi,formal,Jawa Timur,4,Misi 6,DPRD Kab/Kota,National,Ekonomi,synthetic_strategic_v2
+0f5c8c42-7f58-4452-96b1-8c23dfcc5d84,Pengembangan ekonomi hijau,Ekonomi,formal,Sumatera Utara,4,Misi 2,DPR RI,National,Ekonomi,synthetic_strategic_v2
+f0aa2db1-1638-4bfd-969d-9f1ca6145469,Peningkatan lapangan kerja,Ekonomi,formal,Papua,5,Misi 3,DPRD Provinsi,Community,Ketenagakerjaan,synthetic_strategic_v2
+b156f28b-ec2e-47ae-980b-1850c4473ec7,Hilirisasi industri pertanian,Ekonomi,formal,Papua,3,Misi 5,DPRD Kab/Kota,National,Pertanian,synthetic_strategic_v2
+7d78454b-d01b-4f8d-b93f-4b762ee8363b,Pembangunan infrastruktur desa,Ekonomi,formal,Jawa Barat,2,Misi 6,DPR RI,Individual,Infrastruktur,synthetic_strategic_v2
+7931dafb-12f3-450a-93a1-41cc1ce04537,Pengembangan kewirausahaan,Ekonomi,formal,NTT,4,Misi 3,DPRD Provinsi,Regional,Kewirausahaan,synthetic_strategic_v2
+9e43c301-e32d-4e82-958b-28694192318a,Peningkatan swasembada pangan,Ekonomi,formal,Jawa Barat,5,Misi 2,DPR RI,Individual,Pangan,synthetic_strategic_v2
+798dc86e-c91a-4e0a-a1be-aad7acf654d3,Hapus limbah plastik di sungai,Lingkungan,informal,Sumatera Utara,5,Misi 8,DPRD Kab/Kota,National,Lingkungan,synthetic_strategic_v2
+638810ae-ad4b-461d-90ce-ebf86cf159e3,Tanam 1000 pohon tiap bulan,Lingkungan,informal,Sumatera Utara,4,Misi 8,DPRD Provinsi,Community,Lingkungan,synthetic_strategic_v2
+e0e9a63b-2256-4ba5-b573-2271f7d19749,Energi terbarukan aja,Lingkungan,informal,NTT,5,Misi 2,DPR RI,National,Lingkungan,synthetic_strategic_v2
+b38af86a-73f0-41c9-b53c-b9c0647c32d3,"Hemat air, hemat bumi",Lingkungan,informal,Papua,3,Misi 2,DPRD Kab/Kota,Regional,Lingkungan,synthetic_strategic_v2
+73389080-7cd3-4615-a50c-a57c20fb2ce0,Kurangi polusi udara,Lingkungan,informal,NTT,5,Misi 8,DPR RI,Regional,Lingkungan,synthetic_strategic_v2
+b7d846d7-1463-4384-936f-125733138ddf,"Lindungi hutan, lindungi fauna",Lingkungan,informal,Jawa Timur,4,Misi 8,DPRD Provinsi,Regional,Lingkungan,synthetic_strategic_v2
+6909f201-f2c6-48ff-8b34-22a21fb051ea,"Eko wisata, wisata alam",Lingkungan,informal,Papua,2,Misi 2,DPRD Kab/Kota,Community,Lingkungan,synthetic_strategic_v2
+0ff1a4c8-671d-48c8-acbf-00675a57afb1,"Bersihkan pantai, bersihkan laut",Lingkungan,informal,Jawa Timur,5,Misi 8,DPRD Provinsi,Individual,Lingkungan,synthetic_strategic_v2
+d66ecdeb-f9e0-4a26-9872-e1ac68829b20,Pakai energi surya,Lingkungan,informal,NTT,3,Misi 2,DPR RI,Regional,Lingkungan,synthetic_strategic_v2
+5bc7b280-5b67-4103-b9b7-51b2627c7c08,"Lestarikan lingkungan, lestarikan budaya",Lingkungan,informal,Papua,4,Misi 8,DPRD Kab/Kota,Community,Lingkungan,synthetic_strategic_v2
+0dab7ef6-19fd-4768-a644-eb99402a1028,Tanam pohon sekarang!,Lingkungan,informal,Jawa Barat,5,Misi 8,DPR RI,Individual,Reforestasi,synthetic_strategic_v2
+f4e77e00-b17a-4c84-8336-bd040ddca81b,Energi terbarukan!,Lingkungan,informal,NTT,3,Misi 2,DPR RI,Community,Energi Hijau,synthetic_strategic_v2
+896a67af-5d23-4aa9-9a01-bb8bb3396a13,Pakai energi surya!,Lingkungan,informal,NTT,3,Misi 2,DPRD Kab/Kota,Regional,Energi Terbarukan,synthetic_strategic_v2
+3f589f05-6ccf-4c3a-80cf-48a880765f00,Jangan buang sampah sembarangan!,Lingkungan,informal,Sumatera Utara,4,Misi 8,DPRD Provinsi,National,Pengelolaan Sampah,synthetic_strategic_v2
+912843f6-64a4-4316-b9b5-3afb89cdb6f7,Tanam sayur sendiri!,Lingkungan,informal,Papua,2,Misi 2,DPRD Kab/Kota,Regional,Swasembada Pangan,synthetic_strategic_v2
+7325b11d-3e97-4309-974a-c073c711bb43,Energi terbarukan sekarang!,Lingkungan,informal,Papua,4,Misi 2,DPRD Provinsi,Community,Lingkungan,synthetic_strategic_v2
+d7143ae4-adce-4815-b9a3-17f5595c709b,"Hijaukan kota, hijaukan hidup",Lingkungan,informal,Jawa Timur,3,Misi 8,DPRD Kab/Kota,Community,Lingkungan,synthetic_strategic_v2
+a4fc20c1-3881-421b-8ce5-b1a89a9affbe,Ekonomi hijau untuk masa depan,Lingkungan,informal,Papua,5,Misi 2,DPR RI,National,Lingkungan,synthetic_strategic_v2
+1e887906-3321-4628-97ac-81464187298e,"Lestarikan hutan, lestarikan kehidupan",Lingkungan,informal,Kalimantan Timur,5,Misi 8,DPR RI,Regional,Lingkungan,synthetic_strategic_v2
+0509d11c-b378-418a-830a-85eba8ba4fcf,Air bersih untuk semua,Lingkungan,informal,Sumatera Utara,5,Misi 2,DPRD Provinsi,National,Lingkungan,synthetic_strategic_v2
+d6dca0f0-c534-4a30-a127-55faaf2040ae,"Kurangi plastik, selamatkan bumi",Lingkungan,informal,Jawa Timur,4,Misi 8,DPRD Kab/Kota,National,Lingkungan,synthetic_strategic_v2
+d28b8ed7-4a8c-44ed-91cf-115c61892fbd,Energi surya untuk kehidupan,Lingkungan,informal,Jawa Barat,4,Misi 2,DPR RI,Regional,Lingkungan,synthetic_strategic_v2
+675fcd3c-38af-4258-ba3a-bb7b1bc422ca,"Lingkungan bersih, hidup sehat",Lingkungan,informal,Kalimantan Timur,3,Misi 8,DPRD Kab/Kota,Community,Lingkungan,synthetic_strategic_v2
+71eca476-a6c3-4621-b281-e965c0661357,"Tanam pohon, tanam harapan",Lingkungan,informal,Kalimantan Timur,4,Misi 8,DPRD Provinsi,Regional,Lingkungan,synthetic_strategic_v2
+7ee609d7-055e-448d-b6c8-be535515d40f,Hijaukan kota dgn taman,Lingkungan,informal,Jawa Timur,4,Misi 8,DPRD Kab/Kota,Community,Lingkungan,synthetic_strategic_v2
+e565966b-ba6b-4890-b437-67427e177ed4,Energi terbarukan sekarang,Lingkungan,informal,Jawa Barat,5,Misi 2,DPR RI,Individual,Lingkungan,synthetic_strategic_v2
+e1402277-4766-455d-8074-fc339b5a0e4e,Tanam pohon lebih banyak,Lingkungan,informal,Jawa Timur,3,Misi 8,DPRD Kab/Kota,National,Lingkungan,synthetic_strategic_v2
+e78fdfaf-df1d-493d-a210-d2eef7526587,Gunakan energi surya,Lingkungan,informal,Jambi,4,Misi 2,DPR RI,Regional,Lingkungan,synthetic_strategic_v2
+148807d5-76c2-4e5d-99c1-ddfc9d982875,Hemat air untuk masa depan,Lingkungan,informal,NTT,4,Misi 2,DPRD Provinsi,Community,Lingkungan,synthetic_strategic_v2
+dffc640a-acaf-40e3-a12a-2a9ce58c8417,Buat kota bebas sampah,Lingkungan,informal,Jawa Barat,5,Misi 8,DPRD Kab/Kota,National,Lingkungan,synthetic_strategic_v2
+f26a79bf-a33a-4310-877b-0af2ddcc7a36,Lindungi hutan kita,Lingkungan,informal,Papua,5,Misi 8,DPR RI,National,Lingkungan,synthetic_strategic_v2
+b01228b4-83bb-40a1-815f-9744706ad48c,Ciptakan ekonomi hijau,Lingkungan,informal,Jawa Timur,4,Misi 2,DPR RI,Community,Lingkungan,synthetic_strategic_v2
+c415cee4-d1e7-479e-81f3-5e5804d98b37,Energi terbarukan,Lingkungan,informal,Sumatera Utara,5,Misi 2,DPR RI,Community,Lingkungan,synthetic_strategic_v2
+9ca94f71-59d9-4b98-b077-f3381344164b,Pengelolaan sampah,Lingkungan,informal,NTT,4,Misi 8,DPRD Provinsi,Individual,Lingkungan,synthetic_strategic_v2
+8f65dbe6-213a-4321-8475-a801cdf326f9,Masyarakat sadar lingkungan,Lingkungan,informal,Jawa Timur,4,Misi 8,DPRD Kab/Kota,Individual,Lingkungan,synthetic_strategic_v2
+bfac26e1-5b62-4ba5-9ea8-3a3ff98c7949,Stop plastik sekali pakai!,Lingkungan,informal,Papua,5,Misi 8,DPR RI,National,Lingkungan,synthetic_strategic_v2
+ac8739f2-560d-48ad-bec3-f2bbc9bf4086,Tanam pohon di kota!,Lingkungan,informal,NTT,4,Misi 8,DPRD Kab/Kota,National,Lingkungan,synthetic_strategic_v2
+3b31c42e-1c4b-44d1-b73d-bf8589454a88,Energi surya untuk semua!,Lingkungan,informal,Jambi,4,Misi 2,DPR RI,Community,Lingkungan,synthetic_strategic_v2
+d8500675-1f67-43fa-beff-39155b62e632,Air bersih untuk semua!,Lingkungan,informal,Jambi,5,Misi 2,DPRD Provinsi,Regional,Lingkungan,synthetic_strategic_v2
+7d692221-629d-43ec-8b86-e3ba0d9dbbca,Kurangi polusi udara!,Lingkungan,informal,Jambi,5,Misi 8,DPRD Kab/Kota,Community,Lingkungan,synthetic_strategic_v2
+fc51ead0-2d01-40f2-adae-381561c34f92,Ekonomi hijau sekarang!,Lingkungan,informal,Jawa Timur,4,Misi 2,DPR RI,Individual,Lingkungan,synthetic_strategic_v2
+68a64d6f-fe22-4e0a-91c4-57eb95d93434,Lestarikan laut!,Lingkungan,informal,NTT,5,Misi 8,DPR RI,National,Lingkungan,synthetic_strategic_v2
+dc2dcd00-50ca-4b9a-8c81-2bbf5f18c14e,Konservasi tanah!,Lingkungan,informal,Papua,4,Misi 2,DPRD Provinsi,National,Lingkungan,synthetic_strategic_v2
+b3726734-df03-4c22-aa9b-0f1a69128430,Energi hijau sekarang!,Lingkungan,informal,NTT,5,Misi 2,DPR RI,Regional,Lingkungan,synthetic_strategic_v2
+5614fecc-bf50-483e-988e-d2e282510b18,Pengelolaan sampah yang efektif,Lingkungan,formal,Papua,4,Misi 8,DPRD Kab/Kota,Community,Lingkungan,synthetic_strategic_v2
+e8815dea-df2c-4391-b61b-d995b1abc7f8,Pengembangan energi terbarukan,Lingkungan,formal,Jawa Timur,5,Misi 2,DPR RI,Individual,Lingkungan,synthetic_strategic_v2
+c4ccb756-2f49-4565-a20f-bb489336ae22,Pelestarian sumber daya air,Lingkungan,formal,Sumatera Utara,3,Misi 2,DPRD Provinsi,Regional,Lingkungan,synthetic_strategic_v2
+24f59b0d-b5db-4a33-b103-458c0e6b15cf,Pengurangan polusi udara,Lingkungan,formal,Jambi,5,Misi 8,DPR RI,Individual,Lingkungan,synthetic_strategic_v2
+e727691b-d95c-4fcd-8edf-f81c9c3fb989,Pengembangan ekowisata,Lingkungan,formal,Jambi,2,Misi 2,DPRD Kab/Kota,Regional,Lingkungan,synthetic_strategic_v2
+92c23d5e-8d79-4c8a-a7db-109c422690b8,Pengelolaan limbah berbahaya,Lingkungan,formal,Papua,4,Misi 8,DPRD Provinsi,Community,Lingkungan,synthetic_strategic_v2
+0d622478-67ac-43bc-98d1-e9b66d5455d2,Pengembangan transportasi ramah lingkungan,Lingkungan,formal,Jawa Timur,3,Misi 2,DPR RI,Community,Lingkungan,synthetic_strategic_v2
+5b485fce-5045-4bce-819f-aeba35f644ea,Pengurangan emisi gas rumah kaca,Lingkungan,formal,Jambi,5,Misi 8,DPR RI,National,Lingkungan,synthetic_strategic_v2
+3560524f-61e6-481b-b6e4-b2b2aff3641b,Pengembangan energi hijau,Lingkungan,formal,Kalimantan Timur,4,Misi 2,DPRD Provinsi,Regional,Lingkungan,synthetic_strategic_v2
+c9b700da-7078-4dc6-8308-eaa50172815a,Pengelolaan kawasan konservasi,Lingkungan,formal,Papua,3,Misi 8,DPRD Kab/Kota,Regional,Lingkungan,synthetic_strategic_v2
+c96e38e8-56ca-4c6e-a34c-e71e291f8e32,Mengembangkan ekonomi hijau di Kabupaten,Lingkungan,formal,NTT,4,Misi 2,DPRD Kab/Kota,Community,Lingkungan,synthetic_strategic_v2
+cbd567db-6c65-4919-9f61-bfd76db8c54f,Menggalakkan kehidupan harmonis dengan alam,Lingkungan,formal,Jambi,5,Misi 8,DPR RI,National,Lingkungan,synthetic_strategic_v2
+944edd48-949f-42bd-bb14-5835d886bb80,bikin peraturan hukum yang adil buat warga,Keamanan,informal,Sumatera Utara,4,Misi 7,DPR RI,National,Reformasi Hukum,synthetic_strategic_v2
+ffe6d980-9837-4500-bd9e-9729b4d3b45d,tingkatkan kemanan di daerah perbatasan,Keamanan,informal,Jawa Timur,5,Misi 1,DPRD Provinsi,Community,Keamanan Perbatasan,synthetic_strategic_v2
+fe2cc508-48c6-429b-a122-9800260bdfba,ciptakan sistem pengadilan yang transparan,Keamanan,informal,Jambi,3,Misi 7,DPR RI,National,Reformasi Hukum,synthetic_strategic_v2
+fad3de53-1efa-42dd-8718-974128eaa23f,perangi narkoba di daerah,Keamanan,informal,Sumatera Utara,5,Misi 7,DPRD Kab/Kota,Individual,Pemberantasan Narkoba,synthetic_strategic_v2
+55fef039-12d4-455d-b042-300a201e2e54,bentuk tim keamanan yang efektif,Keamanan,informal,Kalimantan Timur,4,Misi 1,DPRD Provinsi,Individual,Keamanan Publik,synthetic_strategic_v2
+e3bac14a-0bb4-4280-b4ef-4da0bdc33dda,jaga HAM di penjara,Keamanan,informal,Papua,4,Misi 1,DPR RI,Individual,Hak Asasi Manusia,synthetic_strategic_v2
+86faea24-13a3-4c2a-95ca-d296ae4ad2a1,ciptakan sistem pencegahan korupsi,Keamanan,informal,Jawa Timur,5,Misi 7,DPR RI,Community,Pemberantasan Korupsi,synthetic_strategic_v2
+2f118e58-f279-4d3b-af84-ac3b7f1a656f,tingkatkan keamanan di sekolah,Keamanan,informal,Sumatera Utara,4,Misi 1,DPRD Kab/Kota,Community,Keamanan Sekolah,synthetic_strategic_v2
+276b316c-6795-4683-b136-40350ad6d1fd,bentuk kebijakan anti terorisme,Keamanan,informal,Papua,5,Misi 1,DPR RI,Community,Pemberantasan Terorisme,synthetic_strategic_v2
+a98a694c-06df-4c54-a4cc-8732d21ec3f8,jaga kebebasan berekspresi,Keamanan,informal,Jambi,3,Misi 1,DPR RI,Regional,Kebebasan Berbicara,synthetic_strategic_v2
+27cee6b5-6a64-47e6-9917-57ce76484555,Perkuat hukum korupsi,Keamanan,informal,Papua,5,Misi 7,DPR RI,Community,Keamanan,synthetic_strategic_v2
+c70b745a-31eb-4ce3-9826-91b0aa477863,Lebih banyak polisi di jalan,Keamanan,informal,Papua,3,Misi 1,DPRD Kab/Kota,Individual,Keamanan,synthetic_strategic_v2
+1d2523ab-c6b5-4656-aca5-1969b5f490a0,Hukum yang adil untuk semua,Keamanan,informal,Jawa Timur,4,Misi 1,DPR RI,National,Keamanan,synthetic_strategic_v2
+7ac92b02-5ef1-4c06-b66d-09ea90bb1d99,Cegah penyalahgunaan narkoba,Keamanan,informal,Jambi,5,Misi 7,DPR RI,Individual,Keamanan,synthetic_strategic_v2
+36fcb906-c9de-4ec6-ac19-e1b5d40c899e,Perbaiki sistem pemantauan keamanan,Keamanan,informal,NTT,4,Misi 7,DPRD Provinsi,Individual,Keamanan,synthetic_strategic_v2
+06bc9ffc-dc1a-4653-b070-26775d67ff97,Naikkan gaji polisi,Keamanan,informal,Kalimantan Timur,2,Misi 1,DPR RI,Regional,Keamanan,synthetic_strategic_v2
+97afc2a0-1c2f-41b6-858d-e808b64a539e,Buat kebijakan keamanan yang efektif,Keamanan,informal,Jawa Barat,5,Misi 7,DPR RI,Individual,Keamanan,synthetic_strategic_v2
+54e55369-6614-4a1e-af1d-9aaa5bcb1697,Perangi korupsi di kepolisian,Keamanan,informal,Jawa Timur,5,Misi 7,DPR RI,Regional,Keamanan,synthetic_strategic_v2
+0ef35c5a-4090-433b-af23-0b62a317741f,Lindungi HAM di daerah konflik,Keamanan,informal,Kalimantan Timur,5,Misi 1,DPR RI,Regional,Keamanan,synthetic_strategic_v2
+a778d75c-3489-4fbf-ad6d-5561af33695f,Bentuk satuan tugas anti-terorisme,Keamanan,informal,Jawa Barat,5,Misi 7,DPR RI,Individual,Keamanan,synthetic_strategic_v2
+14fcfb44-ae06-4d89-957a-27298549dc7e,wajib hukum korupsi ditingkatkan,Keamanan,informal,Jawa Timur,5,Misi 7,DPR RI,National,Keamanan,synthetic_strategic_v2
+4284deb2-2cda-4004-8eb3-7b5c1a5dedfd,hukum narkoba diperketat,Keamanan,informal,Jawa Barat,4,Misi 7,DPRD Provinsi,National,Keamanan,synthetic_strategic_v2
+3a4c6d8b-90cd-4cf1-b85f-c5ec9bdd32ef,keamanan warga ditingkatkan,Keamanan,informal,Jawa Timur,5,Misi 1,DPRD Kab/Kota,Community,Keamanan,synthetic_strategic_v2
+f0f4c533-0e17-4a5e-b57c-302774dff933,pemberantasan korupsi diperkuat,Keamanan,informal,Sumatera Utara,5,Misi 7,DPR RI,Community,Keamanan,synthetic_strategic_v2
+2b6caca2-ccb6-407f-9fcb-0e2af38f82e8,reformasi hukum untuk keadilan,Keamanan,informal,Sumatera Utara,4,Misi 7,DPR RI,Regional,Keamanan,synthetic_strategic_v2
+7264718d-8511-4744-a819-a5a2366a1fd1,penindakan kekerasan diperkuat,Keamanan,informal,Jawa Barat,5,Misi 1,DPRD Provinsi,Community,Keamanan,synthetic_strategic_v2
+ce19b704-a3e3-44aa-994f-309438a56869,jaminan keamanan warga,Keamanan,informal,Kalimantan Timur,5,Misi 1,DPRD Kab/Kota,Regional,Keamanan,synthetic_strategic_v2
+27f86d0f-d226-4394-8437-fadf0ada493f,pemberantasan narkoba diperkuat,Keamanan,informal,NTT,5,Misi 7,DPR RI,Community,Keamanan,synthetic_strategic_v2
+e9811ea7-705a-4187-9d70-8dec25d55d36,hukum untuk melindungi warga,Keamanan,informal,NTT,4,Misi 1,DPRD Provinsi,Regional,Keamanan,synthetic_strategic_v2
+ba17529b-006e-4820-8fa9-9a81538f8144,perkuat hukum korupsi,Keamanan,informal,Sumatera Utara,5,Misi 7,DPR RI,National,Keamanan,synthetic_strategic_v2
+284d9b93-e756-44c6-b8ad-1e0f9258416e,tingkatkan keamanan kota,Keamanan,informal,Kalimantan Timur,4,Misi 1,DPRD Kab/Kota,Regional,Keamanan,synthetic_strategic_v2
+87bd33fe-a7cf-4214-95f7-494c658a2eaa,jaminan kebebasan berbicara,Keamanan,informal,Sumatera Utara,3,Misi 1,DPR RI,Community,Keamanan,synthetic_strategic_v2
+1fb8b840-3a72-408d-8f91-55a9ffb8beff,perlindungan HAM,Keamanan,informal,Sumatera Utara,5,Misi 1,DPR RI,National,Keamanan,synthetic_strategic_v2
+17d69d80-a593-43fa-aacb-0df9c6e1d52a,tingkatkan keamanan online,Keamanan,informal,Papua,4,Misi 7,DPR RI,National,Keamanan,synthetic_strategic_v2
+b45f4628-3ada-417c-93e1-180fe3092120,bongkar korupsi daerah,Keamanan,informal,NTT,5,Misi 7,DPRD Provinsi,Regional,Keamanan,synthetic_strategic_v2
+c735b318-72f1-4dea-a326-27cd84a38c8e,keamanan lingkungan,Keamanan,informal,Papua,3,Misi 1,DPRD Kab/Kota,Regional,Keamanan,synthetic_strategic_v2
+4d3fab9a-49b2-4f65-b986-06cc05c44461,perkuat undang-undang keamanan,Keamanan,informal,Jambi,5,Misi 7,DPR RI,Regional,Keamanan,synthetic_strategic_v2
+36c1ed97-e7b3-4381-8484-b9b0f18291c7,Stop korupsi dlm keamanan!,Keamanan,informal,Sumatera Utara,5,Misi 7,DPR RI,Community,Keamanan,synthetic_strategic_v2
+4cc66e45-67c8-4f86-9d40-c9f9dd4dacaa,Perkuat hukum anti terorisme,Keamanan,informal,Sumatera Utara,4,Misi 7,DPR RI,Individual,Keamanan,synthetic_strategic_v2
+acb257c7-68ce-4cd4-b45b-44e9bba7074e,Buat kebijakan keamanan yang adil,Keamanan,informal,Jambi,3,Misi 1,DPRD Provinsi,Individual,Keamanan,synthetic_strategic_v2
+f0b22181-b2ee-4612-b0ec-d41f99f40912,Tingkatkan keamanan di daerah,Keamanan,informal,NTT,2,Misi 1,DPRD Kab/Kota,Individual,Keamanan,synthetic_strategic_v2
+3de55e10-c21f-4c6e-9e72-1550bf7afbdc,Lindungi HAM di keamanan,Keamanan,informal,Jawa Barat,5,Misi 1,DPR RI,Individual,Keamanan,synthetic_strategic_v2
+ffc6db2d-2c8b-4f37-b4eb-3e0b283162b2,Perangi narkoba dgn efektif,Keamanan,informal,Papua,4,Misi 7,DPR RI,Community,Keamanan,synthetic_strategic_v2
+2122a5cc-8ade-43e0-9e21-4eccc62370e0,Keamanan yang menjaga demokrasi,Keamanan,informal,Papua,3,Misi 1,DPRD Provinsi,Individual,Keamanan,synthetic_strategic_v2
+d20e0f9c-e667-4365-bdf5-f07c6c1f731d,Tingkatkan kesadaran keamanan masyarakat,Keamanan,informal,Jambi,2,Misi 1,DPRD Kab/Kota,Community,Keamanan,synthetic_strategic_v2
+fb256d53-c82f-402d-b111-88be45ccdd56,Hapus praktik kezaliman keamanan,Keamanan,informal,Jawa Barat,5,Misi 1,DPR RI,Individual,Keamanan,synthetic_strategic_v2
+3b94bf26-6240-41ac-9ffa-64aa5263b56d,Reformasi keamanan yang transparan,Keamanan,informal,Jambi,4,Misi 7,DPR RI,Regional,Keamanan,synthetic_strategic_v2
+6cded0c6-d724-400a-bd0f-d6848f06259c,"Stop Korupsi, Selamatkan Negara!",Keamanan,informal,Sumatera Utara,5,Misi 7,DPR RI,Regional,Keamanan,synthetic_strategic_v2
+21873b0d-f6f5-4011-8eab-c6bc039ec560,Perkuat keamanan wilayah,Keamanan,formal,Jawa Timur,4,Misi 7,DPRD Provinsi,National,Keamanan Wilayah,synthetic_strategic_v2
+6fd475b3-2c42-4036-8a64-594a90d773c3,Hapus korupsi di kepolisian,Keamanan,formal,Jawa Barat,5,Misi 7,DPR RI,Regional,Reformasi Kepolisian,synthetic_strategic_v2
+0b6845fe-608c-4947-831a-f6d3e33e3fad,Perbaiki sistem keamanan kota,Keamanan,formal,Jambi,3,Misi 7,DPRD Kab/Kota,Regional,Keamanan Kota,synthetic_strategic_v2
+65b99f90-81f3-4df5-bf16-d2ba9dc61714,Tingkatkan keamanan di perbatasan,Keamanan,formal,Sumatera Utara,4,Misi 7,DPR RI,Individual,Keamanan Perbatasan,synthetic_strategic_v2
+767505f3-882f-4a5d-a7ba-b0e693d0a3df,Cegah penyebaran narkoba,Keamanan,formal,Jawa Barat,5,Misi 7,DPR RI,National,Pemberantasan Narkoba,synthetic_strategic_v2
+c1fc713d-8454-4272-bd7d-4fca94b986c4,Bentuk satuan keamanan khusus,Keamanan,formal,Jawa Barat,4,Misi 7,DPRD Provinsi,National,Keamanan Khusus,synthetic_strategic_v2
+353f5c06-f53e-475d-9677-e4969703f1dc,Lakukan reformasi kepolisian,Keamanan,formal,Sumatera Utara,5,Misi 7,DPR RI,National,Reformasi Kepolisian,synthetic_strategic_v2
+9a88725b-b694-431d-8e01-05bb2d2af050,Perlindungan warga sipil,Keamanan,formal,Jawa Timur,5,Misi 1,DPR RI,Community,Keamanan dan HAM,synthetic_strategic_v2
+dcdf26fa-e9e5-4bc7-9afb-88e063cc86e2,Perketat keamanan di pelosok,Keamanan,formal,Jawa Timur,4,Misi 7,DPRD Kab/Kota,Regional,Keamanan Pedesaan,synthetic_strategic_v2
+7fbe8642-1705-4fc8-a54e-84364f4e0aea,Peningkatan keamanan nasional,Keamanan,formal,Papua,4,Misi 7,DPR RI,Individual,Keamanan,synthetic_strategic_v2
+944353aa-d9f9-4849-9c53-245adfeb3b1b,Pemberantasan korupsi,Keamanan,formal,Sumatera Utara,5,Misi 7,DPRD Provinsi,Regional,Keamanan,synthetic_strategic_v2
+d81adb86-9ab2-46b4-b221-26ba8ad25b42,Desa butuh akses internet,Sosial,informal,Sumatera Utara,4,Misi 6,DPRD Kab/Kota,Regional,Sosial,synthetic_strategic_v2
+73dd0d46-ae1f-489b-a546-8b7407657818,Perlindungan HAM di desa,Sosial,informal,Kalimantan Timur,5,Misi 1,DPR RI,Regional,Sosial,synthetic_strategic_v2
+ebada7e4-cb49-42ac-91bb-ad5615718231,Pendidikan gratis di desa,Sosial,informal,Jawa Barat,4,Misi 6,DPRD Provinsi,Community,Sosial,synthetic_strategic_v2
+06a46890-4f68-473b-ad82-d5141c11fc99,Kesehatan desa butuh perhatian,Sosial,informal,Papua,5,Misi 6,DPR RI,Regional,Sosial,synthetic_strategic_v2
+256bc9a8-2bf4-4dcd-af4d-9479c5343b1d,Demokrasi desa harus diperkuat,Sosial,informal,Jawa Barat,4,Misi 1,DPRD Kab/Kota,Community,Sosial,synthetic_strategic_v2
+8944578d-cf55-4478-947c-83ee25799bfa,Pemberdayaan perempuan desa,Sosial,informal,Sumatera Utara,4,Misi 6,DPRD Provinsi,National,Sosial,synthetic_strategic_v2
+753028d1-0815-4c75-abe6-61412b589e77,Kurangnya infrastruktur desa,Sosial,informal,Jawa Timur,4,Misi 6,DPRD Kab/Kota,Individual,Sosial,synthetic_strategic_v2
+6daed1ba-bbd1-4b82-93e5-3c17f01c1dd9,Pendidikan karakter desa,Sosial,informal,Sumatera Utara,3,Misi 1,DPRD Provinsi,Individual,Sosial,synthetic_strategic_v2
+6e2c3065-47a9-4577-b3ed-a2ee9058b63c,Kesejahteraan sosial desa,Sosial,informal,Jawa Barat,4,Misi 6,DPR RI,Regional,Sosial,synthetic_strategic_v2
+b695bd04-2888-466f-b31f-25023c8badab,Partisipasi masyarakat desa,Sosial,informal,Jawa Timur,4,Misi 1,DPRD Kab/Kota,Individual,Sosial,synthetic_strategic_v2
+1f0c1bbd-a2ed-4b97-8e59-629bc506fbc5,perlu adanya pendidikan HAM di desa,Sosial,informal,Papua,4,Misi 1,DPRD Kab/Kota,Regional,Sosial,synthetic_strategic_v2
+d9746d10-fc7f-4f41-a5d2-c5de11e98f20,desa butuh akses internet,Sosial,informal,Jawa Barat,5,Misi 6,DPRD Provinsi,Community,Sosial,synthetic_strategic_v2
+f0f5796c-3c0e-4ef1-9566-a514717ecad2,perlindungan anak di desa,Sosial,informal,Kalimantan Timur,5,Misi 1,DPR RI,Regional,Sosial,synthetic_strategic_v2
+08372bad-f99c-48fa-84c6-866b5fcec15c,butuh pelatihan wirausaha,Sosial,informal,NTT,3,Misi 6,DPRD Kab/Kota,Community,Sosial,synthetic_strategic_v2
+ace87e2e-6337-4be3-91d4-56cf28b86d69,perlindungan pekerja migran,Sosial,informal,Jawa Barat,4,Misi 1,DPR RI,Regional,Sosial,synthetic_strategic_v2
+e315e2a7-4154-4fce-951b-6afeccfad45b,bantu warga desa dapat BPJS,Sosial,informal,Jawa Timur,4,Misi 6,DPRD Provinsi,Individual,Sosial,synthetic_strategic_v2
+f66cf05a-a888-4e0e-b297-c2dcc933d4a9,butuh fasilitas kesehatan,Sosial,informal,Kalimantan Timur,5,Misi 6,DPRD Kab/Kota,National,Sosial,synthetic_strategic_v2
+317b52a0-32d6-40c4-860c-7bf43ef4daf8,tingkatkan kualitas pendidikan,Sosial,informal,NTT,4,Misi 1,DPRD Provinsi,National,Sosial,synthetic_strategic_v2
+e21881e5-95a9-43d9-a6d6-e58c12071d26,bantu pengembangan UMKM,Sosial,informal,Kalimantan Timur,3,Misi 6,DPRD Kab/Kota,National,Sosial,synthetic_strategic_v2
+c4ec36eb-c1d6-4a7c-91ff-cbc9d5ead402,lindungi warga dari kekerasan,Sosial,informal,Jawa Timur,5,Misi 1,DPR RI,Individual,Sosial,synthetic_strategic_v2
+2d8b3df9-0884-485f-adb5-a813d7e9178b,HAM harus diperkuat,Sosial,informal,Papua,5,Misi 1,DPR RI,Community,Sosial,synthetic_strategic_v2
+0497f8bb-7695-479a-a45b-efcc82688f59,tingkatkan kesejahteraan warga,Sosial,informal,Jawa Timur,3,Misi 6,DPRD Provinsi,Community,Sosial,synthetic_strategic_v2
+d86b4e4d-a614-4a0a-a60e-dff0d5b3e7f8,bantu anak2 kurang mampu,Sosial,informal,Kalimantan Timur,4,Misi 6,DPRD Kab/Kota,Community,Sosial,synthetic_strategic_v2
+fbc6a482-4dfa-4209-b6a3-79df18445d58,bantu warga terdampak bencana,Sosial,informal,NTT,5,Misi 6,DPRD Provinsi,Community,Sosial,synthetic_strategic_v2
+0e493a4a-e641-4879-ba43-938b1aa64f3e,lindungi hak2 disabilitas,Sosial,informal,Jawa Timur,5,Misi 1,DPR RI,Community,Sosial,synthetic_strategic_v2
+8e64dffd-856f-432e-b7ca-3b5506ae6d0e,jaga keamanan warga,Sosial,informal,NTT,5,Misi 1,DPRD Kab/Kota,National,Sosial,synthetic_strategic_v2
+6565f6bf-a5f4-4195-bad6-abef30f9d4b0,warga butuh akses kesehatan murah,Sosial,informal,Jawa Timur,4,Misi 1,DPR RI,Individual,kesehatan,synthetic_strategic_v2
+9e994c45-6e2c-4148-9a06-d17c4cbdf08f,desa butuh infrastruktur yang memadai,Sosial,informal,Jawa Barat,5,Misi 6,DPRD Kab/Kota,Regional,infrastruktur,synthetic_strategic_v2
+d1b4e251-b557-40c7-b486-f32ecad014f8,perlindungan HAM bagi warga,Sosial,informal,Jawa Barat,5,Misi 1,DPR RI,National,HAM,synthetic_strategic_v2
+ea542653-b767-4cb6-8466-52951ec6b9ee,pemerataan ekonomi desa,Sosial,informal,Jawa Timur,4,Misi 6,DPRD Provinsi,Individual,ekonomi,synthetic_strategic_v2
+257db49c-2f85-4e34-b719-99db63608c68,edukasi demokrasi untuk warga,Sosial,informal,Jambi,3,Misi 1,DPRD Kab/Kota,National,demokrasi,synthetic_strategic_v2
+80eb859a-3ad6-4f9d-aaaa-afde41d303ed,bantuan untuk pengusaha kecil,Sosial,informal,Sumatera Utara,4,Misi 6,DPRD Provinsi,Community,ekonomi,synthetic_strategic_v2
+f884c7ca-693c-4611-ae4f-983c4f1668c2,warga butuh jaminan sosial,Sosial,informal,Jawa Barat,5,Misi 1,DPR RI,Regional,sosial,synthetic_strategic_v2
+390c604a-907c-4615-81c6-87a2267e8701,peningkatan kualitas pendidikan desa,Sosial,informal,Jawa Timur,4,Misi 6,DPRD Kab/Kota,National,pendidikan,synthetic_strategic_v2
+afb911ab-8a52-423d-8a02-4e2d54410e59,perlindungan lingkungan desa,Sosial,informal,Sumatera Utara,4,Misi 6,DPRD Kab/Kota,Individual,lingkungan,synthetic_strategic_v2
+f660a31f-bdc6-4798-85ea-62a8368d7aa2,pembangunan infrastruktur desa,Sosial,informal,Jawa Timur,5,Misi 6,DPRD Provinsi,Regional,infrastruktur,synthetic_strategic_v2
+d40078c5-fb72-4f83-892c-0c144e65b16b,Meningkatkan akses pendidikan,Sosial,formal,Jambi,4,Misi 1,DPR RI,National,Sosial,synthetic_strategic_v2
+bde56825-ccec-44c9-bbba-f9694b6c1b9f,Pemerataan ekonomi desa,Sosial,formal,Sumatera Utara,5,Misi 6,DPRD Kab/Kota,Regional,Sosial,synthetic_strategic_v2
+8fa5ee53-41a4-42f1-a176-a08e02dd43f8,Perlindungan HAM,Sosial,formal,Papua,5,Misi 1,DPR RI,Regional,Sosial,synthetic_strategic_v2
+2dbe82a1-f757-4c1e-989f-89efbfc72fa3,Peningkatan kesehatan masyarakat,Sosial,formal,Jawa Timur,4,Misi 1,DPR RI,Regional,Sosial,synthetic_strategic_v2
+04fa6f91-5b25-4c5c-9ad5-00820ee39d0b,Pembangunan ekonomi lokal,Sosial,formal,Jawa Timur,4,Misi 6,DPRD Kab/Kota,National,Sosial,synthetic_strategic_v2
+1fc4200c-a04d-4204-868a-9448566eaa80,Pengembangan pendidikan karakter,Sosial,formal,Jawa Barat,3,Misi 1,DPRD Provinsi,National,Sosial,synthetic_strategic_v2
+cee7afd7-6946-4bee-86ff-dd4a609c68a1,Peningkatan partisipasi masyarakat,Sosial,formal,NTT,3,Misi 1,DPR RI,Community,Sosial,synthetic_strategic_v2
+f4d4c9ce-6162-485e-869a-a19ae489c14f,Pembangunan sumber daya manusia,Sosial,formal,Papua,4,Misi 6,DPRD Kab/Kota,Community,Sosial,synthetic_strategic_v2
+1b089e6a-bfab-4c3a-b87b-1c99062e2481,Pengembangan kesetaraan gender,Sosial,formal,Sumatera Utara,3,Misi 1,DPR RI,Community,Sosial,synthetic_strategic_v2
