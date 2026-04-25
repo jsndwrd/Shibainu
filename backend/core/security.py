@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta, timezone
-from jose import jwt, JWTError
+import jwt
+from jwt.exceptions import InvalidTokenError
 from passlib.context import CryptContext
 
 from core.config import settings
@@ -49,5 +50,5 @@ def decode_access_token(token: str):
         )
         return payload
 
-    except JWTError:
+    except InvalidTokenError:
         return None

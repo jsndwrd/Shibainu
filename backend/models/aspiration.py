@@ -5,9 +5,10 @@ from sqlalchemy import (
     Text,
     Integer,
     DateTime,
-    ForeignKey
+    ForeignKey,
+    Float
 )
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.dialects.postgresql import UUID, ARRAY
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
 
@@ -42,7 +43,8 @@ class Aspiration(Base):
     impact_scope = Column(String(30), nullable=False)
     target_level = Column(String(30), nullable=False)
 
-    embedding = Column(Vector(768), nullable=True)
+    # embedding = Column(Vector(768), nullable=True)
+    embedding = Column(ARRAY(Float), nullable=True)
 
     cluster_id = Column(
         UUID(as_uuid=True),

@@ -16,7 +16,7 @@ class AuditLog(Base):
     actor_id = Column(UUID(as_uuid=True), nullable=True)
     action = Column(String(100), nullable=False)
     resource = Column(String(100), nullable=False)
-    metadata = Column(JSONB, default={})
+    metadatas = Column(JSONB, default={})
     created_at = Column(
         DateTime(timezone=True),
         server_default=func.now()
