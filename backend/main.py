@@ -1,13 +1,47 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
+from core.config import settings
+from core.database import Base, engine
+
+from routers import auth, aspirations, clusters, scores, briefs, reference
+
+app = FastAPI(
+    title=settings.APP_NAME,
+    version=settings.APP_VERSION,
+    debug=settings.DEBUG,
+)
+
+# ganti Alembic ntar
+Base.metadata.create_all(bind=engine)
+
+# CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.CORS_ORIGINS,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
-def read_root():
-    return {"Hello": "World"}
+def root():
+    return {
+        "message": "This is Vokara.",
+    }
 
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: str | None = None):
-    return {"item_id": item_id, "q": q}
+@app.get("/health")
+def health():
+    return {
+        "status": "ok"
+    }
+
+
+app.include_router(auth.router, prefix="/api/auth", tags=["Auth"])
+app.include_router(aspirations.router, prefix="/api/aspirations", tags=["Aspirations"])
+app.include_router(clusters.router, prefix="/api/clusters", tags=["Clusters"])
+app.include_router(scores.router, prefix="/api/scores", tags=["Scores"])
+app.include_router(briefs.router, prefix="/api/briefs", tags=["Briefs"])
+app.include_router(reference.router, prefix="/api/ref", tags=["Reference"])
