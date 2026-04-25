@@ -1,6 +1,7 @@
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi.responses import FileResponse
 from sqlalchemy.orm import Session
 
 from core.database import get_db
@@ -34,3 +35,21 @@ async def get_brief_by_id(brief_id: UUID, db: Session = Depends(get_db)):
         )
 
     return result
+
+
+@router.get("/{brief_id}/download")
+async def download_brief_file(brief_id: UUID, db: Session = Depends(get_db)):
+    service = BriefGeneratorService(db)
+    file_path = service.getBriefFilePath(brief_id)
+
+    if not file_path:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Brief file not found",
+        )
+
+    return FileResponse(
+        path=str(file_path),
+        media_type="text/markdown",
+        filename=file_path.name,
+    )
