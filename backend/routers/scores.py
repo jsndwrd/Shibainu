@@ -16,7 +16,7 @@ async def getAllScores(db: Session = Depends(get_db)):
 
 @router.get('/top', response_model=list[ScoreResponse])
 async def getTopScores(db: Session = Depends(get_db)):
-    return (db.quuery(ClusterScore).order_by(ClusterScore.total_score.desc()).limit(10).all())
+    return (db.query(ClusterScore).order_by(ClusterScore.total_score.desc()).limit(10).all())
 
 @router.get('/regional/{province}', response_model=list[ScoreResponse])
 async def getScoresByProvince(province:str, db: Session = Depends(get_db)):
