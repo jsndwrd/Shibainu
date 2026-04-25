@@ -5,7 +5,7 @@
 0. Concurrent Running
 
    ```bash
-   (cd frontend && bun dev) & (cd backend && fastapi dev)
+   (cd frontend && bun dev) & (cd backend && python -m fastapi dev)
    ```
 
 1. Frontend
