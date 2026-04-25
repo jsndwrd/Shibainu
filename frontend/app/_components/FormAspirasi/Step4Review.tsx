@@ -18,7 +18,7 @@ const Step4Review = () => {
 
     return (
         <div className="space-y-6">
-            <div className="mb-4 flex items-center gap-2 font-semibold text-emerald-800">
+            <div className="text-primary mb-4 flex items-center gap-2 font-semibold">
                 <CheckCircle className="h-5 w-5" /> <h3>Review Laporan Anda</h3>
             </div>
 
@@ -45,7 +45,7 @@ const Step4Review = () => {
                 </div>
                 <div className="grid grid-cols-3 border-b border-gray-200 pb-3">
                     <span className="text-gray-500">Privasi</span>
-                    <span className="col-span-2 font-medium text-emerald-700">
+                    <span className="text-primary col-span-2 font-medium">
                         {formData.isAnonim ? "Anonim" : "Publik"} &{" "}
                         {formData.isRahasia ? "Rahasia" : "Terbuka"}
                     </span>
@@ -56,14 +56,14 @@ const Step4Review = () => {
                 <button
                     onClick={prevStep}
                     disabled={mutation.isPending}
-                    className="rounded-lg border border-gray-300 px-6 py-3 font-medium text-gray-700 hover:bg-gray-50"
+                    className="rounded-lg border border-gray-300 px-6 py-3 font-medium text-gray-700 hover:cursor-pointer hover:bg-gray-50"
                 >
                     Ubah Data
                 </button>
                 <button
                     onClick={() => mutation.mutate(formData)}
                     disabled={mutation.isPending}
-                    className="flex items-center gap-2 rounded-lg bg-emerald-700 px-8 py-3 font-medium text-white hover:bg-emerald-800 disabled:cursor-not-allowed disabled:opacity-70"
+                    className="bg-primary hover:bg-primary/90 flex items-center gap-2 rounded-lg px-8 py-3 font-medium text-white hover:cursor-pointer disabled:cursor-not-allowed disabled:opacity-70"
                 >
                     {mutation.isPending
                         ? "Memproses Enkripsi & Mengirim..."

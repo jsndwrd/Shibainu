@@ -40,9 +40,9 @@ export default function FormLayout({
                                     <div
                                         className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 ${
                                             isPast
-                                                ? "border-emerald-700 bg-emerald-700 text-white"
+                                                ? "border-primary bg-primary text-white"
                                                 : isActive
-                                                  ? "border-emerald-700 bg-emerald-50 text-emerald-700"
+                                                  ? "border-primary text-primary bg-emerald-50"
                                                   : "border-gray-300 text-gray-400"
                                         }`}
                                     >
@@ -71,13 +71,13 @@ export default function FormLayout({
                 </div>
 
                 {/* Info Keamanan Box */}
-                <div className="flex gap-3 rounded-xl border border-emerald-100 bg-emerald-50 p-6">
-                    <ShieldCheck className="h-6 w-6 shrink-0 text-emerald-700" />
+                <div className="border-accent flex gap-3 rounded-xl border bg-emerald-50 p-6">
+                    <ShieldCheck className="text-primary/90 h-6 w-6 shrink-0" />
                     <div>
-                        <h3 className="mb-1 text-sm font-semibold text-emerald-900">
+                        <h3 className="text-primary mb-1 text-sm font-semibold">
                             INFO KEAMANAN
                         </h3>
-                        <p className="text-xs leading-relaxed text-emerald-800/80">
+                        <p className="text-primary text-xs leading-relaxed">
                             Data Anda dilindungi enkripsi tingkat negara dan
                             terhubung langsung ke Dashboard Pemerintah
                             (Otentikasi NIK).
@@ -104,13 +104,13 @@ export default function FormLayout({
 
                 {/* AI Predictive Analytics Box (UI Match) */}
                 {step === 2 && (
-                    <div className="flex items-start gap-4 rounded-xl border border-emerald-100 bg-emerald-50 p-6">
-                        <Cpu className="mt-1 h-6 w-6 text-emerald-700" />
+                    <div className="border-accent flex items-start gap-4 rounded-xl border bg-emerald-50 p-6">
+                        <Cpu className="text-primary/90 mt-1 h-6 w-6" />
                         <div>
-                            <h4 className="font-semibold text-emerald-900">
+                            <h4 className="text-primary font-semibold">
                                 Analisis Prediktif AI
                             </h4>
-                            <p className="mt-1 text-sm text-emerald-800">
+                            <p className="text-primary mt-1 text-sm">
                                 Berdasarkan kategori Infrastruktur yang Anda
                                 pilih, rata-rata waktu respon pemerintah di
                                 wilayah Jawa Barat adalah 4-7 hari kerja.

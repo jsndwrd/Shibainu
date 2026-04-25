@@ -26,7 +26,7 @@ const Step2Detail = () => {
             })}
             className="space-y-6"
         >
-            <div className="mb-4 flex items-center gap-2 font-semibold text-emerald-800">
+            <div className="text-primary mb-4 flex items-center gap-2 font-semibold">
                 <FileText className="h-5 w-5" /> <h3>Detail Aspirasi</h3>
             </div>
 
@@ -37,7 +37,7 @@ const Step2Detail = () => {
                     </label>
                     <select
                         {...register("kategoriAspirasi")}
-                        className="w-full rounded-lg border border-gray-300 bg-white p-3 outline-none focus:ring-2 focus:ring-emerald-500"
+                        className="focus:ring-accent w-full rounded-lg border border-gray-300 bg-white p-3 outline-none focus:ring-2"
                     >
                         <option value="">Pilih Kategori</option>
                         <option value="infrastruktur">Infrastruktur</option>
@@ -65,7 +65,7 @@ const Step2Detail = () => {
                                     {...register("tingkatPemerintahan")}
                                     className="peer sr-only"
                                 />
-                                <div className="rounded-md py-2 text-sm font-medium text-gray-500 transition-all peer-checked:bg-white peer-checked:text-emerald-700 peer-checked:shadow-sm">
+                                <div className="peer-checked:text-primary rounded-md py-2 text-sm font-medium text-gray-500 transition-all peer-checked:bg-white peer-checked:shadow-sm">
                                     {lvl}
                                 </div>
                             </label>
@@ -82,7 +82,7 @@ const Step2Detail = () => {
                     <input
                         {...register("judulLaporan")}
                         placeholder="Kesimpulan singkat aduan"
-                        className="w-full rounded-lg border border-gray-300 p-3 outline-none focus:ring-2 focus:ring-emerald-500"
+                        className="focus:ring-accent w-full rounded-lg border border-gray-300 p-3 outline-none focus:ring-2"
                     />
                     {errors.judulLaporan && (
                         <p className="mt-1 text-xs text-red-500">
@@ -97,7 +97,7 @@ const Step2Detail = () => {
                     <input
                         type="date"
                         {...register("tanggalKejadian")}
-                        className="w-full rounded-lg border border-gray-300 p-3 outline-none focus:ring-2 focus:ring-emerald-500"
+                        className="focus:ring-accent w-full rounded-lg border border-gray-300 p-3 outline-none focus:ring-2"
                     />
                     {errors.tanggalKejadian && (
                         <p className="mt-1 text-xs text-red-500">
@@ -115,7 +115,7 @@ const Step2Detail = () => {
                     {...register("deskripsi")}
                     rows={5}
                     placeholder="Ceritakan secara detail mengenai aspirasi, masukan, atau kendala..."
-                    className="w-full rounded-lg border border-gray-300 p-3 outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="focus:ring-accent w-full rounded-lg border border-gray-300 p-3 outline-none focus:ring-2"
                 ></textarea>
                 {errors.deskripsi && (
                     <p className="mt-1 text-xs text-red-500">
@@ -131,7 +131,7 @@ const Step2Detail = () => {
                 <input
                     type="file"
                     {...register("lampiran")}
-                    className="text-sm file:mr-4 file:rounded-lg file:border-0 file:bg-emerald-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-emerald-700 hover:file:bg-emerald-100"
+                    className="file:text-primary hover:file:bg-accent text-sm file:mr-4 file:rounded-lg file:border-0 file:bg-emerald-50 file:px-4 file:py-2 file:text-sm file:font-semibold"
                 />
             </div>
 
@@ -145,7 +145,7 @@ const Step2Detail = () => {
                 </button>
                 <button
                     type="submit"
-                    className="rounded-lg bg-emerald-700 px-6 py-3 font-medium text-white hover:bg-emerald-800"
+                    className="hover:bg-primary/90 bg-primary rounded-lg px-6 py-3 font-medium text-white hover:cursor-pointer"
                 >
                     Lanjutkan ke Lokasi
                 </button>

@@ -25,7 +25,7 @@ const Step3Lokasi = () => {
             })}
             className="space-y-6"
         >
-            <div className="mb-4 flex items-center gap-2 font-semibold text-emerald-800">
+            <div className="text-primary mb-4 flex items-center gap-2 font-semibold">
                 <MapPin className="h-5 w-5" /> <h3>Lokasi & Tingkat Urgensi</h3>
             </div>
 
@@ -36,7 +36,7 @@ const Step3Lokasi = () => {
                     </label>
                     <select
                         {...register("provinsi")}
-                        className="w-full rounded-lg border border-gray-300 bg-white p-3 outline-none focus:ring-2 focus:ring-emerald-500"
+                        className="focus:ring-accent w-full rounded-lg border border-gray-300 bg-white p-3 outline-none focus:ring-2"
                     >
                         <option value="Jawa Barat">Jawa Barat</option>
                         {/* ... other options */}
@@ -48,7 +48,7 @@ const Step3Lokasi = () => {
                     </label>
                     <select
                         {...register("kota")}
-                        className="w-full rounded-lg border border-gray-300 bg-white p-3 outline-none focus:ring-2 focus:ring-emerald-500"
+                        className="focus:ring-accent w-full rounded-lg border border-gray-300 bg-white p-3 outline-none focus:ring-2"
                     >
                         <option value="Kota Bekasi">Kota Bekasi</option>
                         {/* ... other options */}
@@ -63,7 +63,7 @@ const Step3Lokasi = () => {
                 <input
                     {...register("lokasiDetail")}
                     placeholder="Nama jalan, gedung, atau patokan spesifik"
-                    className="w-full rounded-lg border border-gray-300 p-3 outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="focus:ring-accent w-full rounded-lg border border-gray-300 p-3 outline-none focus:ring-2"
                 />
                 {errors.lokasiDetail && (
                     <p className="mt-1 text-xs text-red-500">
@@ -89,7 +89,7 @@ const Step3Lokasi = () => {
                         max="2"
                         step="1"
                         {...register("tingkatUrgensi")}
-                        className="w-full accent-emerald-600"
+                        className="accent-primary w-full"
                     />
                     <div className="mt-1 flex justify-between text-xs text-gray-500">
                         <span>Rendah</span>
@@ -105,7 +105,7 @@ const Step3Lokasi = () => {
                     <input
                         {...register("instansiTujuan")}
                         placeholder="Contoh: Kementerian PUPR"
-                        className="w-full rounded-lg border border-gray-300 p-3 outline-none focus:ring-2 focus:ring-emerald-500"
+                        className="focus:ring-accent w-full rounded-lg border border-gray-300 p-3 outline-none focus:ring-2"
                     />
                 </div>
             </div>
@@ -131,7 +131,7 @@ const Step3Lokasi = () => {
                                 {...register("cakupanDampak")}
                                 className="peer sr-only"
                             />
-                            <div className="rounded-lg border border-gray-200 p-4 transition-colors peer-checked:border-emerald-600 peer-checked:bg-emerald-50">
+                            <div className="peer-checked:border-accent rounded-lg border border-gray-200 p-4 transition-colors peer-checked:bg-emerald-50">
                                 <p className="text-sm font-semibold text-gray-900">
                                     {item.id}
                                 </p>
@@ -147,7 +147,7 @@ const Step3Lokasi = () => {
             <div className="flex justify-between border-t border-gray-100 pt-6">
                 <button
                     type="button"
-                    className="rounded-lg border border-emerald-600 px-6 py-3 font-medium text-emerald-700 hover:bg-emerald-50"
+                    className="border-primary text-primary rounded-lg border px-6 py-3 font-medium hover:bg-emerald-50"
                 >
                     Simpan Draft
                 </button>
@@ -161,7 +161,7 @@ const Step3Lokasi = () => {
                     </button>
                     <button
                         type="submit"
-                        className="rounded-lg bg-emerald-700 px-6 py-3 font-medium text-white hover:bg-emerald-800"
+                        className="bg-primary hover:bg-primary/90 rounded-lg px-6 py-3 font-medium text-white"
                     >
                         Lanjutkan ke Review
                     </button>

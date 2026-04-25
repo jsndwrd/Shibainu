@@ -26,7 +26,7 @@ const Step1Identitas = () => {
             })}
             className="space-y-6"
         >
-            <div className="mb-4 flex items-center gap-2 font-semibold text-emerald-800">
+            <div className="text-primary mb-4 flex items-center gap-2 font-semibold">
                 <User className="h-5 w-5" /> <h3>Identitas Pelapor</h3>
             </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -58,7 +58,7 @@ const Step1Identitas = () => {
                     <input
                         type="checkbox"
                         {...register("isAnonim")}
-                        className="h-4 w-4 rounded text-emerald-600"
+                        className="text-primary h-4 w-4 rounded"
                     />
                     Anonimkan Nama Saya
                 </label>
@@ -66,7 +66,7 @@ const Step1Identitas = () => {
                     <input
                         type="checkbox"
                         {...register("isRahasia")}
-                        className="h-4 w-4 rounded text-emerald-600"
+                        className="text-primary h-4 w-4 rounded"
                     />
                     Rahasiakan Laporan Ini (Private)
                 </label>
@@ -75,7 +75,7 @@ const Step1Identitas = () => {
             <div className="flex justify-end border-t border-gray-100 pt-6">
                 <button
                     type="submit"
-                    className="rounded-lg bg-emerald-700 px-6 py-3 font-medium text-white hover:bg-emerald-800"
+                    className="bg-primary hover:bg-primary/80 rounded-lg px-6 py-3 font-medium text-white"
                 >
                     Lanjutkan ke Detail
                 </button>
