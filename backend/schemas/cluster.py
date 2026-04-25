@@ -1,19 +1,28 @@
-from pydantic import BaseModel
-from uuid import UUID
 from datetime import datetime
-from typing import List
+from typing import List, Optional
+from uuid import UUID
+
+from pydantic import BaseModel
+
 
 class ClusterResponse(BaseModel):
     id: UUID
     label: str
     category: str
     member_count: int
-    avg_urgency: float
     top_provinces: List[str]
-    priority_score: float
+    dominant_asta_cita: Optional[str]
+    asta_confidence: Optional[float]
     created_at: datetime
     last_updated: datetime
 
+    class Config:
+        from_attributes = True
+
+
 class ClusterDetailResponse(ClusterResponse):
     sub_topics: List[str]
-    urgency_dist: dict
+    dominant_impact_scope: Optional[str]
+
+    class Config:
+        from_attributes = True

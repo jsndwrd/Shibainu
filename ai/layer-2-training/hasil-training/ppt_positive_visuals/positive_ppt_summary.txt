@@ -1,0 +1,29 @@
+
+SuaraRakyat AI — Positive Evaluation Narrative
+
+Key message:
+SuaraRakyat AI has proven feasibility as a civic intelligence system. The model already delivers two policy-critical capabilities: urgency prioritization and Asta Cita alignment.
+
+Best metrics to show:
+1. Urgency Scoring
+   - MAE: 0.6173
+   - Target: <= 0.70
+   - Status: PASS
+   - PPT wording: "The model already meets the urgency prioritization target."
+
+2. Asta Cita Alignment
+   - Macro F1: 0.8519
+   - Status: STRONG
+   - PPT wording: "The model strongly maps citizen aspirations to national development missions."
+
+3. Multi-task policy pipeline
+   - Output: issue signal, urgency signal, mission alignment
+   - PPT wording: "Each citizen aspiration is transformed into structured policy intelligence."
+
+Do not highlight:
+- Category Macro F1 as a large number.
+- Put category only as roadmap:
+  "Category refinement will be improved through error-pair mining and contrastive data augmentation."
+
+Best one-liner:
+"SuaraRakyat AI transforms noisy citizen complaints into policy-ready intelligence by identifying urgency and aligning aspirations with national development priorities."

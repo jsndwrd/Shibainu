@@ -1,0 +1,472 @@
+{
+  "config": {
+    "csv_path": "/kaggle/input/datasets/athillazaidan/best-new-last-bangetco/seed_aspirations_augmented.csv",
+    "output_dir": "/kaggle/working/ml/model/v3.2_baseline",
+    "model_name": "indolem/indobertweet-base-uncased",
+    "max_length": 160,
+    "dropout": 0.35,
+    "epochs": 20,
+    "batch_size": 16,
+    "learning_rate": 1e-05,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.1,
+    "max_grad_norm": 1.0,
+    "seed": 42,
+    "patience": 5,
+    "category_loss_weight": 0.4,
+    "urgency_loss_weight": 0.4,
+    "asta_loss_weight": 0.2,
+    "category_class_weight_power": 1.0,
+    "urgency_class_weight_power": 1.2,
+    "asta_class_weight_power": 1.0,
+    "val_size": 0.15,
+    "test_size": 0.1,
+    "enable_weighted_sampler": true,
+    "boost_sosial": 1.35,
+    "boost_kesehatan": 1.1,
+    "boost_lingkungan": 1.35,
+    "boost_keamanan": 1.25,
+    "target_category_f1": 0.8,
+    "target_urgency_mae": 0.7
+  },
+  "best_epoch": 16,
+  "best_val_metrics": {
+    "val_loss": 1.0327655375003815,
+    "val_category_loss": 0.8450343981385231,
+    "val_urgency_loss": 1.1198409050703049,
+    "val_asta_loss": 1.2340769544243813,
+    "val_category_accuracy": 0.6776859504132231,
+    "val_category_macro_f1": 0.6792369121561669,
+    "val_category_weighted_f1": 0.6390912815000236,
+    "val_urgency_accuracy": 0.6033057851239669,
+    "val_urgency_macro_f1": 0.6105508800142945,
+    "val_urgency_weighted_f1": 0.6076104826437421,
+    "val_urgency_mae": 0.5950413223140496,
+    "val_asta_accuracy": 0.8842975206611571,
+    "val_asta_macro_f1": 0.8411239457673951,
+    "val_asta_weighted_f1": 0.887045921929356
+  },
+  "test_metrics": {
+    "test_loss": 1.1676992177963257,
+    "test_category_loss": 1.0281691153844197,
+    "test_urgency_loss": 1.2718347907066345,
+    "test_asta_loss": 1.238488256931305,
+    "test_category_accuracy": 0.6419753086419753,
+    "test_category_macro_f1": 0.6688166175561133,
+    "test_category_weighted_f1": 0.616681914067535,
+    "test_urgency_accuracy": 0.5432098765432098,
+    "test_urgency_macro_f1": 0.5457687046195938,
+    "test_urgency_weighted_f1": 0.5699076185168297,
+    "test_urgency_mae": 0.6172839506172839,
+    "test_asta_accuracy": 0.8518518518518519,
+    "test_asta_macro_f1": 0.8519016328156113,
+    "test_asta_weighted_f1": 0.8564040444267446
+  },
+  "category_report": {
+    "Ekonomi": {
+      "precision": 0.7142857142857143,
+      "recall": 0.5,
+      "f1-score": 0.5882352941176471,
+      "support": 10.0
+    },
+    "Infrastruktur": {
+      "precision": 0.7222222222222222,
+      "recall": 0.8666666666666667,
+      "f1-score": 0.7878787878787878,
+      "support": 15.0
+    },
+    "Keamanan": {
+      "precision": 0.8,
+      "recall": 0.8,
+      "f1-score": 0.8,
+      "support": 5.0
+    },
+    "Kesehatan": {
+      "precision": 0.8571428571428571,
+      "recall": 0.2857142857142857,
+      "f1-score": 0.42857142857142855,
+      "support": 21.0
+    },
+    "Lingkungan": {
+      "precision": 0.7142857142857143,
+      "recall": 1.0,
+      "f1-score": 0.8333333333333334,
+      "support": 5.0
+    },
+    "Pendidikan": {
+      "precision": 0.5555555555555556,
+      "recall": 1.0,
+      "f1-score": 0.7142857142857143,
+      "support": 10.0
+    },
+    "Sosial": {
+      "precision": 0.47368421052631576,
+      "recall": 0.6,
+      "f1-score": 0.5294117647058824,
+      "support": 15.0
+    },
+    "accuracy": 0.6419753086419753,
+    "macro avg": {
+      "precision": 0.6910251820026257,
+      "recall": 0.7217687074829932,
+      "f1-score": 0.6688166175561133,
+      "support": 81.0
+    },
+    "weighted avg": {
+      "precision": 0.6939313303835722,
+      "recall": 0.6419753086419753,
+      "f1-score": 0.616681914067535,
+      "support": 81.0
+    }
+  },
+  "urgency_report": {
+    "Urgency_1": {
+      "precision": 0.6428571428571429,
+      "recall": 0.75,
+      "f1-score": 0.6923076923076923,
+      "support": 12.0
+    },
+    "Urgency_2": {
+      "precision": 0.5,
+      "recall": 0.3333333333333333,
+      "f1-score": 0.4,
+      "support": 12.0
+    },
+    "Urgency_3": {
+      "precision": 0.21428571428571427,
+      "recall": 0.4,
+      "f1-score": 0.27906976744186046,
+      "support": 15.0
+    },
+    "Urgency_4": {
+      "precision": 0.6666666666666666,
+      "recall": 0.5263157894736842,
+      "f1-score": 0.5882352941176471,
+      "support": 19.0
+    },
+    "Urgency_5": {
+      "precision": 0.9375,
+      "recall": 0.6521739130434783,
+      "f1-score": 0.7692307692307693,
+      "support": 23.0
+    },
+    "accuracy": 0.5432098765432098,
+    "macro avg": {
+      "precision": 0.5922619047619048,
+      "recall": 0.5323646071700991,
+      "f1-score": 0.5457687046195938,
+      "support": 81.0
+    },
+    "weighted avg": {
+      "precision": 0.631577013521458,
+      "recall": 0.5432098765432098,
+      "f1-score": 0.5699076185168297,
+      "support": 81.0
+    }
+  },
+  "asta_report": {
+    "Misi_1": {
+      "precision": 0.8,
+      "recall": 1.0,
+      "f1-score": 0.8888888888888888,
+      "support": 4.0
+    },
+    "Misi_2": {
+      "precision": 0.8333333333333334,
+      "recall": 0.8333333333333334,
+      "f1-score": 0.8333333333333334,
+      "support": 6.0
+    },
+    "Misi_3": {
+      "precision": 0.6428571428571429,
+      "recall": 0.9,
+      "f1-score": 0.75,
+      "support": 10.0
+    },
+    "Misi_4": {
+      "precision": 1.0,
+      "recall": 0.8235294117647058,
+      "f1-score": 0.9032258064516129,
+      "support": 17.0
+    },
+    "Misi_5": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 2.0
+    },
+    "Misi_6": {
+      "precision": 0.7272727272727273,
+      "recall": 0.6153846153846154,
+      "f1-score": 0.6666666666666666,
+      "support": 13.0
+    },
+    "Misi_7": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 2.0
+    },
+    "Misi_8": {
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1-score": 0.6666666666666666,
+      "support": 2.0
+    },
+    "Misi_UNKNOWN": {
+      "precision": 1.0,
+      "recall": 0.92,
+      "f1-score": 0.9583333333333334,
+      "support": 25.0
+    },
+    "accuracy": 0.8518518518518519,
+    "macro avg": {
+      "precision": 0.8337181337181337,
+      "recall": 0.899138595609184,
+      "f1-score": 0.8519016328156113,
+      "support": 81.0
+    },
+    "weighted avg": {
+      "precision": 0.877569344236011,
+      "recall": 0.8518518518518519,
+      "f1-score": 0.8564040444267446,
+      "support": 81.0
+    }
+  },
+  "category_confusion_matrix": {
+    "labels": [
+      "Ekonomi",
+      "Infrastruktur",
+      "Keamanan",
+      "Kesehatan",
+      "Lingkungan",
+      "Pendidikan",
+      "Sosial"
+    ],
+    "matrix": [
+      [
+        5,
+        2,
+        0,
+        0,
+        1,
+        0,
+        2
+      ],
+      [
+        2,
+        13,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        4,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        6,
+        0,
+        7,
+        8
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        5,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        10,
+        0
+      ],
+      [
+        0,
+        3,
+        1,
+        1,
+        1,
+        0,
+        9
+      ]
+    ]
+  },
+  "urgency_confusion_matrix": {
+    "labels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "matrix": [
+      [
+        9,
+        1,
+        2,
+        0,
+        0
+      ],
+      [
+        2,
+        4,
+        6,
+        0,
+        0
+      ],
+      [
+        3,
+        2,
+        6,
+        4,
+        0
+      ],
+      [
+        0,
+        1,
+        7,
+        10,
+        1
+      ],
+      [
+        0,
+        0,
+        7,
+        1,
+        15
+      ]
+    ]
+  },
+  "asta_confusion_matrix": {
+    "labels": [
+      "Misi_1",
+      "Misi_2",
+      "Misi_3",
+      "Misi_4",
+      "Misi_5",
+      "Misi_6",
+      "Misi_7",
+      "Misi_8",
+      "Misi_UNKNOWN"
+    ],
+    "matrix": [
+      [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        5,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        9,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        14,
+        0,
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        4,
+        0,
+        0,
+        8,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        23
+      ]
+    ]
+  }
+}

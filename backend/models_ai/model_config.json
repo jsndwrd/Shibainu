@@ -1,0 +1,37 @@
+{
+  "version": "v3.2_baseline",
+  "base_model": "indolem/indobertweet-base-uncased",
+  "num_categories": 7,
+  "num_urgency": 5,
+  "num_asta": 9,
+  "max_length": 160,
+  "dropout": 0.35,
+  "category_classes": [
+    "Ekonomi",
+    "Infrastruktur",
+    "Keamanan",
+    "Kesehatan",
+    "Lingkungan",
+    "Pendidikan",
+    "Sosial"
+  ],
+  "best_epoch": 16,
+  "best_metrics": {
+    "val_loss": 1.0327655375003815,
+    "val_category_loss": 0.8450343981385231,
+    "val_urgency_loss": 1.1198409050703049,
+    "val_asta_loss": 1.2340769544243813,
+    "val_category_accuracy": 0.6776859504132231,
+    "val_category_macro_f1": 0.6792369121561669,
+    "val_category_weighted_f1": 0.6390912815000236,
+    "val_urgency_accuracy": 0.6033057851239669,
+    "val_urgency_macro_f1": 0.6105508800142945,
+    "val_urgency_weighted_f1": 0.6076104826437421,
+    "val_urgency_mae": 0.5950413223140496,
+    "val_asta_accuracy": 0.8842975206611571,
+    "val_asta_macro_f1": 0.8411239457673951,
+    "val_asta_weighted_f1": 0.887045921929356
+  },
+  "meta_prefix_mode": "plain_text_with_asta_no_special_tokens",
+  "checkpoint_file": "pytorch_model_multitask.bin"
+}

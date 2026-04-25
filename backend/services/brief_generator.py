@@ -1,11 +1,13 @@
 from sqlalchemy.orm import Session
-from models import PolicyBrief, Cluster
-from services import ScorerService
+
+from models import Cluster, PolicyBrief
+from services.scorer import ScorerService
+
 
 class BriefGeneratorService:
     def __init__(self, db: Session):
         self.db = db
-    
+
     def generateBrief(self, cluster_id):
         cluster = (
             self.db.query(Cluster)
@@ -19,25 +21,51 @@ class BriefGeneratorService:
         scorer = ScorerService(self.db)
         score = scorer.compute_priority_score(cluster)
 
+        components = score["components"]
+        raw_metrics = score["raw_metrics"]
+
         content = f"""
-                    Policy Brief: {cluster.label}
+POLICY BRIEF ASPIRASI PUBLIK
 
-                    Kategori: {cluster.category}
-                    Jumlah Aspirasi: {cluster.member_count}
-                    Urgensi Rata-rata: {cluster.avg_urgency:.2f}
-                    Priority Score: {score["total_score"]:.2f}
+Judul Isu:
+{cluster.label}
 
-                    Rekomendasi:
-                    BELOM
-                    """
+Kategori:
+{cluster.category}
+
+Asta Cita Terkait:
+{cluster.dominant_asta_cita or "Misi UNKNOWN"}
+
+Ringkasan Isu:
+Terdapat {cluster.member_count} laporan warga yang memiliki kemiripan isu dan masuk ke dalam cluster {cluster.category}. Isu ini tersebar di {len(cluster.top_provinces or [])} wilayah dan memiliki keterkaitan dengan {cluster.dominant_asta_cita or "Misi UNKNOWN"}.
+
+Hasil Prioritas:
+Priority Score: {score["priority_score"]}
+Priority Level: {score["priority_level"]}
+
+Komponen Perhitungan:
+- GDI Score: {components["gdi_score"]}
+- PAVI Score: {components["pavi_score"]}
+- Asta Cita Score: {components["asta_cita_score"]}
+- Reports per 100.000 penduduk: {raw_metrics["reports_per_100k"]}
+- Population Basis: {raw_metrics["population"]}
+
+Analisis Kebijakan:
+Priority score dihitung dari tiga sinyal utama. GDI menangkap sebaran geografis isu, PAVI menangkap intensitas laporan relatif terhadap jumlah penduduk, dan Asta Cita mengukur relevansi isu terhadap agenda pembangunan nasional. Dengan pendekatan ini, sistem tidak hanya memprioritaskan isu yang paling ramai, tetapi isu yang representatif, tersebar, dan relevan secara kebijakan.
+
+Rekomendasi:
+1. Pemerintah perlu melakukan verifikasi lapangan terhadap cluster isu ini.
+2. Instansi terkait perlu menyusun tindak lanjut sesuai kategori isu dan wilayah terdampak.
+3. Jika laporan terus bertambah, isu ini dapat dinaikkan sebagai agenda pembahasan kebijakan prioritas.
+        """.strip()
 
         brief = PolicyBrief(
             cluster_id=cluster.id,
-            content=content.strip(),
-            urgency_classification="Segera",
+            content=content,
+            urgency_classification=score["priority_level"],
             generated_by="system",
             member_count_at_generation=cluster.member_count,
-            priority_score_at_generation=score["total_score"],
+            priority_score_at_generation=score["priority_score"],
         )
 
         self.db.add(brief)
@@ -46,9 +74,27 @@ class BriefGeneratorService:
 
         return brief
 
-
     def generateMany(self, cluster_ids):
-        return [self.generateBrief(c_id) for c_id in cluster_ids]
+        results = []
+
+        for cluster_id in cluster_ids:
+            brief = self.generateBrief(cluster_id)
+
+            if brief:
+                results.append(brief)
+
+        return results
 
     def getBrief(self, brief_id):
-        return (self.db.query(PolicyBrief).filter(PolicyBrief.id == brief_id).first())
+        return (
+            self.db.query(PolicyBrief)
+            .filter(PolicyBrief.id == brief_id)
+            .first()
+        )
+
+    def getAllBriefs(self):
+        return (
+            self.db.query(PolicyBrief)
+            .order_by(PolicyBrief.generated_at.desc())
+            .all()
+        )
