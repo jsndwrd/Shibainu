@@ -104,7 +104,7 @@ export default function FormLayout({
 
                 {/* AI Predictive Analytics Box (UI Match) */}
                 {step === 2 && (
-                    <div className="border-accent flex items-start gap-4 rounded-xl border bg-emerald-50 p-6">
+                    <div className="border-accent bg-accent/50 flex items-start gap-4 rounded-xl border p-6">
                         <Cpu className="text-primary/90 mt-1 h-6 w-6" />
                         <div>
                             <h4 className="text-primary font-semibold">
