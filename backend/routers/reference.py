@@ -31,4 +31,4 @@ async def getRegenciesByProvince(province: str):
 @router.get('/categories')
 async def getAllCategories():
     serv = ReferenceService()
-    return serv.getCategories()
+    return serv.getcategory()
