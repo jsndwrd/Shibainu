@@ -25,7 +25,6 @@ const Navbar = () => {
                         height={899}
                         className="w-9"
                     />
-                    <span className="text-primary text-xl font-bold">NAWA</span>
                 </Link>
 
                 <ul className="flex gap-6">
