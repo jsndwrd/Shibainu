@@ -21,6 +21,9 @@ class BriefGeneratorService:
         scorer = ScorerService(self.db)
         score = scorer.compute_priority_score(cluster)
 
+        components = score["components"]
+        raw_metrics = score["raw_metrics"]
+
         content = f"""
 POLICY BRIEF ASPIRASI PUBLIK
 
@@ -34,24 +37,26 @@ Asta Cita Terkait:
 {cluster.dominant_asta_cita or "Misi UNKNOWN"}
 
 Ringkasan Isu:
-Terdapat {cluster.member_count} laporan warga yang memiliki kemiripan isu dan masuk ke dalam cluster {cluster.category}. Isu ini tersebar di {len(cluster.top_provinces or [])} wilayah.
+Terdapat {cluster.member_count} laporan warga yang memiliki kemiripan isu dan masuk ke dalam cluster {cluster.category}. Isu ini tersebar di {len(cluster.top_provinces or [])} wilayah dan memiliki keterkaitan dengan {cluster.dominant_asta_cita or "Misi UNKNOWN"}.
 
 Hasil Prioritas:
 Priority Score: {score["priority_score"]}
 Priority Level: {score["priority_level"]}
 
 Komponen Perhitungan:
-- Volume Score: {score["components"]["volume_score"]}
-- Spread Score: {score["components"]["spread_score"]}
-- Asta Cita Score: {score["components"]["asta_cita_score"]}
+- GDI Score: {components["gdi_score"]}
+- PAVI Score: {components["pavi_score"]}
+- Asta Cita Score: {components["asta_cita_score"]}
+- Reports per 100.000 penduduk: {raw_metrics["reports_per_100k"]}
+- Population Basis: {raw_metrics["population"]}
 
 Analisis Kebijakan:
-Isu ini diprioritaskan berdasarkan banyaknya laporan serupa, sebaran wilayah, dan relevansi terhadap Asta Cita. Dengan pendekatan ini, sistem tidak hanya melihat satu laporan individual, tetapi membaca pola aspirasi kolektif warga.
+Priority score dihitung dari tiga sinyal utama. GDI menangkap sebaran geografis isu, PAVI menangkap intensitas laporan relatif terhadap jumlah penduduk, dan Asta Cita mengukur relevansi isu terhadap agenda pembangunan nasional. Dengan pendekatan ini, sistem tidak hanya memprioritaskan isu yang paling ramai, tetapi isu yang representatif, tersebar, dan relevan secara kebijakan.
 
 Rekomendasi:
-1. Pemerintah daerah perlu melakukan verifikasi lapangan terhadap cluster isu ini.
-2. Instansi terkait perlu menyusun tindak lanjut sesuai kategori isu.
-3. Jika laporan terus meningkat, isu ini dapat dinaikkan sebagai agenda pembahasan kebijakan.
+1. Pemerintah perlu melakukan verifikasi lapangan terhadap cluster isu ini.
+2. Instansi terkait perlu menyusun tindak lanjut sesuai kategori isu dan wilayah terdampak.
+3. Jika laporan terus bertambah, isu ini dapat dinaikkan sebagai agenda pembahasan kebijakan prioritas.
         """.strip()
 
         brief = PolicyBrief(
@@ -74,6 +79,7 @@ Rekomendasi:
 
         for cluster_id in cluster_ids:
             brief = self.generateBrief(cluster_id)
+
             if brief:
                 results.append(brief)
 

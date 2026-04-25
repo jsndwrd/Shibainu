@@ -26,6 +26,7 @@ class AspirationService:
             impact_scope=payload.impact_scope,
             asta_cita=prediction["asta_cita"],
             asta_confidence=prediction["asta_confidence"],
+            population=getattr(payload, "population", 100000) or 100000,
         )
 
         aspiration = Aspiration(

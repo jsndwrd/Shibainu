@@ -13,6 +13,10 @@ class AspirationCreate(BaseModel):
     impact_scope: str = "Community"
     target_level: str = "DPRD"
 
+    # Untuk PAVI.
+    # Bisa diisi dari referensi wilayah nanti.
+    population: Optional[int] = Field(default=100000, ge=1)
+
 
 class AspirationResponse(BaseModel):
     id: UUID
