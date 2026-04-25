@@ -1,6 +1,6 @@
 import uuid
 
-from sqlalchemy import Column, String, Text, DateTime, ForeignKey
+from sqlalchemy import Column, String, Text, DateTime, ForeignKey, Float, Integer
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
@@ -21,8 +21,12 @@ class PolicyBrief(Base):
     )
 
     content = Column(Text, nullable=False)
+
     urgency_classification = Column(String(100), nullable=False)
     generated_by = Column(String(100), nullable=False, default="system")
+
+    member_count_at_generation = Column(Integer, nullable=False, default=0)
+    priority_score_at_generation = Column(Float, nullable=False, default=0)
 
     generated_at = Column(DateTime(timezone=True), server_default=func.now())
 

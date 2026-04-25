@@ -28,6 +28,13 @@
   fastapi dev
   ```
 
+## Technology Stack
+
+- Next.js
+- FastAPI
+- PostgreSQL
+- NLP
+
 ## CROSSCHECK LAGII
 
 2. embedder predict category kurang detail, predict urgency worse masih if-else clause, cek generateEmbedding juga
