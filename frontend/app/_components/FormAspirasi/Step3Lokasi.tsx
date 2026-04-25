@@ -1,140 +1,242 @@
+"use client";
+
 import { step3Schema } from "@/schemas/aspirasiSchema";
 import { useAspirasiStore } from "@/store/useAspirasiStore";
+import { useReferenceStore } from "@/store/useReferenceStore";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MapPin } from "lucide-react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import z from "zod";
 
 const Step3Lokasi = () => {
-    type Step3FormValues = z.infer<typeof step3Schema>;
-    const { formData, updateData, nextStep, prevStep } = useAspirasiStore();
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm({
-        resolver: zodResolver(step3Schema),
-        defaultValues: formData as Step3FormValues,
+  type Step3FormValues = z.infer<typeof step3Schema>;
+
+  const { formData, updateData, nextStep, prevStep } = useAspirasiStore();
+
+  const {
+    provinces,
+    regencies,
+    fetchProvinces,
+    fetchRegencies,
+    resetRegencies,
+    isLoadingProvinces,
+    isLoadingRegencies,
+    error: referenceError,
+  } = useReferenceStore();
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm<Step3FormValues>({
+    resolver: zodResolver(step3Schema),
+    defaultValues: {
+      ...(formData as Step3FormValues),
+      tingkatUrgensi:
+        (formData.tingkatUrgensi as
+          | "Sangat Rendah"
+          | "Rendah"
+          | "Sedang"
+          | "Tinggi"
+          | "Kritis") ?? "Sedang",
+    },
+  });
+
+  const selectedProvince = watch("provinsi");
+
+  useEffect(() => {
+    fetchProvinces().catch(() => {
+      // error sudah masuk ke reference store
     });
+  }, [fetchProvinces]);
 
-    return (
-        <form
-            onSubmit={handleSubmit((d) => {
-                updateData(d);
-                nextStep();
-            })}
-            className="space-y-6"
+  useEffect(() => {
+    if (!selectedProvince) {
+      resetRegencies();
+      return;
+    }
+
+    setValue("kota", "" as never);
+
+    fetchRegencies(selectedProvince).catch(() => {
+      // error sudah masuk ke reference store
+    });
+  }, [selectedProvince, fetchRegencies, resetRegencies, setValue]);
+
+  return (
+    <form
+      onSubmit={handleSubmit((data) => {
+        updateData(data);
+        nextStep();
+      })}
+      className="space-y-6"
+    >
+      <div className="text-primary mb-4 flex items-center gap-2 font-semibold">
+        <MapPin className="h-5 w-5" />
+        <h3>Lokasi & Tingkat Urgensi</h3>
+      </div>
+
+      {referenceError && (
+        <div className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-600">
+          {referenceError}
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div>
+          <label className="mb-2 block text-sm font-medium text-gray-700">
+            Provinsi
+          </label>
+
+          <select
+            {...register("provinsi")}
+            disabled={isLoadingProvinces}
+            className="focus:ring-accent w-full rounded-lg border border-gray-300 bg-white p-3 outline-none focus:ring-2 disabled:bg-gray-100"
+          >
+            <option value="">
+              {isLoadingProvinces ? "Memuat provinsi..." : "Pilih Provinsi"}
+            </option>
+
+            {provinces.map((province) => (
+              <option key={province.code} value={province.name}>
+                {province.name}
+              </option>
+            ))}
+          </select>
+
+          {errors.provinsi && (
+            <p className="mt-1 text-xs text-red-500">
+              {errors.provinsi.message as string}
+            </p>
+          )}
+        </div>
+
+        <div>
+          <label className="mb-2 block text-sm font-medium text-gray-700">
+            Kota / Kabupaten
+          </label>
+
+          <select
+            {...register("kota")}
+            disabled={!selectedProvince || isLoadingRegencies}
+            className="focus:ring-accent w-full rounded-lg border border-gray-300 bg-white p-3 outline-none focus:ring-2 disabled:bg-gray-100"
+          >
+            <option value="">
+              {isLoadingRegencies
+                ? "Memuat kota/kabupaten..."
+                : "Pilih Kota/Kabupaten"}
+            </option>
+
+            {regencies.map((regency) => (
+              <option key={regency.code} value={regency.name}>
+                {regency.name}
+              </option>
+            ))}
+          </select>
+
+          {errors.kota && (
+            <p className="mt-1 text-xs text-red-500">
+              {errors.kota.message as string}
+            </p>
+          )}
+        </div>
+      </div>
+
+      <div>
+        <label className="mb-2 block text-sm font-medium text-gray-700">
+          Lokasi Kejadian Lengkap
+        </label>
+
+        <input
+          {...register("lokasiDetail")}
+          placeholder="Nama jalan, gedung, atau patokan spesifik"
+          className="focus:ring-accent w-full rounded-lg border border-gray-300 p-3 outline-none focus:ring-2"
+        />
+
+        {errors.lokasiDetail && (
+          <p className="mt-1 text-xs text-red-500">
+            {errors.lokasiDetail.message as string}
+          </p>
+        )}
+      </div>
+
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div>
+          <div className="mb-2 flex items-center justify-between">
+            <label className="block text-sm font-medium text-gray-700">
+              Tingkat Urgensi
+            </label>
+
+            <span className="rounded bg-red-100 px-2 py-1 text-[10px] font-bold text-red-700">
+              SKALA 1-5
+            </span>
+          </div>
+
+          <select
+            {...register("tingkatUrgensi")}
+            className="focus:ring-accent w-full rounded-lg border border-gray-300 bg-white p-3 outline-none focus:ring-2"
+          >
+            <option value="Sangat Rendah">Sangat Rendah</option>
+            <option value="Rendah">Rendah</option>
+            <option value="Sedang">Sedang</option>
+            <option value="Tinggi">Tinggi</option>
+            <option value="Kritis">Kritis</option>
+          </select>
+
+          <p className="mt-1 text-xs text-gray-500">
+            Pilih tingkat urgensi sesuai kondisi laporan.
+          </p>
+
+          {errors.tingkatUrgensi && (
+            <p className="mt-1 text-xs text-red-500">
+              {errors.tingkatUrgensi.message as string}
+            </p>
+          )}
+        </div>
+
+        <div>
+          <label className="mb-2 block text-sm font-medium text-gray-700">
+            Instansi Tujuan
+          </label>
+
+          <input
+            {...register("instansiTujuan")}
+            placeholder="Contoh: Kementerian PUPR"
+            className="focus:ring-accent w-full rounded-lg border border-gray-300 p-3 outline-none focus:ring-2"
+          />
+        </div>
+      </div>
+
+      <div className="flex justify-between border-t border-gray-100 pt-6">
+        <button
+          type="button"
+          className="border-primary text-primary rounded-lg border px-6 py-3 font-medium hover:bg-emerald-50"
         >
-            <div className="text-primary mb-4 flex items-center gap-2 font-semibold">
-                <MapPin className="h-5 w-5" /> <h3>Lokasi & Tingkat Urgensi</h3>
-            </div>
+          Simpan Draft
+        </button>
 
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <div>
-                    <label className="mb-2 block text-sm font-medium text-gray-700">
-                        Provinsi
-                    </label>
-                    <select
-                        {...register("provinsi")}
-                        className="focus:ring-accent w-full rounded-lg border border-gray-300 bg-white p-3 outline-none focus:ring-2"
-                    >
-                        <option value="Jawa Barat">Jawa Barat</option>
-                        {/* ... other options */}
-                    </select>
-                </div>
-                <div>
-                    <label className="mb-2 block text-sm font-medium text-gray-700">
-                        Kota / Kabupaten
-                    </label>
-                    <select
-                        {...register("kota")}
-                        className="focus:ring-accent w-full rounded-lg border border-gray-300 bg-white p-3 outline-none focus:ring-2"
-                    >
-                        <option value="Kota Bekasi">Kota Bekasi</option>
-                        {/* ... other options */}
-                    </select>
-                </div>
-            </div>
+        <div className="flex gap-3">
+          <button
+            type="button"
+            onClick={prevStep}
+            className="rounded-lg border border-gray-300 px-6 py-3 font-medium text-gray-700 hover:bg-gray-50"
+          >
+            Kembali
+          </button>
 
-            <div>
-                <label className="mb-2 block text-sm font-medium text-gray-700">
-                    Lokasi Kejadian Lengkap
-                </label>
-                <input
-                    {...register("lokasiDetail")}
-                    placeholder="Nama jalan, gedung, atau patokan spesifik"
-                    className="focus:ring-accent w-full rounded-lg border border-gray-300 p-3 outline-none focus:ring-2"
-                />
-                {errors.lokasiDetail && (
-                    <p className="mt-1 text-xs text-red-500">
-                        {errors.lokasiDetail.message as string}
-                    </p>
-                )}
-            </div>
-
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-                {/* Urgensi Slider UI Mock */}
-                <div>
-                    <div className="mb-2 flex items-center justify-between">
-                        <label className="block text-sm font-medium text-gray-700">
-                            Tingkat Urgensi
-                        </label>
-                        <span className="rounded bg-red-100 px-2 py-1 text-[10px] font-bold text-red-700">
-                            SANGAT PENTING
-                        </span>
-                    </div>
-                    <input
-                        type="range"
-                        min="0"
-                        max="4"
-                        step="1"
-                        {...register("tingkatUrgensi")}
-                        className="accent-primary w-full"
-                    />
-                    <div className="mt-1 flex justify-between text-xs text-gray-500">
-                        <span>Sangat Rendah</span>
-                        <span>Sedang</span>
-                        <span>Sangat Kritis</span>
-                    </div>
-                </div>
-
-                <div>
-                    <label className="mb-2 block text-sm font-medium text-gray-700">
-                        Instansi Tujuan (Opsional)
-                    </label>
-                    <input
-                        {...register("instansiTujuan")}
-                        placeholder="Contoh: Kementerian PUPR"
-                        className="focus:ring-accent w-full rounded-lg border border-gray-300 p-3 outline-none focus:ring-2"
-                    />
-                </div>
-            </div>
-
-            <div className="flex justify-between border-t border-gray-100 pt-6">
-                <button
-                    type="button"
-                    className="border-primary text-primary rounded-lg border px-6 py-3 font-medium hover:bg-emerald-50"
-                >
-                    Simpan Draft
-                </button>
-                <div className="flex gap-3">
-                    <button
-                        type="button"
-                        onClick={prevStep}
-                        className="rounded-lg border border-gray-300 px-6 py-3 font-medium text-gray-700 hover:bg-gray-50"
-                    >
-                        Kembali
-                    </button>
-                    <button
-                        type="submit"
-                        className="bg-primary hover:bg-primary/90 rounded-lg px-6 py-3 font-medium text-white"
-                    >
-                        Lanjutkan ke Review
-                    </button>
-                </div>
-            </div>
-        </form>
-    );
+          <button
+            type="submit"
+            className="bg-primary hover:bg-primary/90 rounded-lg px-6 py-3 font-medium text-white"
+          >
+            Lanjutkan ke Review
+          </button>
+        </div>
+      </div>
+    </form>
+  );
 };
 
 export default Step3Lokasi;
