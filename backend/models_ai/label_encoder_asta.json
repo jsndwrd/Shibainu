@@ -1,0 +1,23 @@
+{
+  "label_to_id": {
+    "Misi 1": 0,
+    "Misi 2": 1,
+    "Misi 3": 2,
+    "Misi 4": 3,
+    "Misi 5": 4,
+    "Misi 6": 5,
+    "Misi 7": 6,
+    "Misi 8": 7
+  },
+  "id_to_label": {
+    "0": "Misi 1",
+    "1": "Misi 2",
+    "2": "Misi 3",
+    "3": "Misi 4",
+    "4": "Misi 5",
+    "5": "Misi 6",
+    "6": "Misi 7",
+    "7": "Misi 8"
+  },
+  "unknown_id": 8
+}

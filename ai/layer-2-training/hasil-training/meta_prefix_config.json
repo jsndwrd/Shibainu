@@ -1,0 +1,6 @@
+{
+  "format": "legislative target {legislative}. asta cita misi {id}. impact scope {impact}. register {register}. aspirasi warga: {cleaned_description}",
+  "asta_cita_in_prefix": true,
+  "special_tokens_used": false,
+  "tokenizer_resize_used": false
+}

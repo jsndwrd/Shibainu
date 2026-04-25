@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-25T16:36:12.679522",
+  "generated_at": "2026-04-25T18:40:59.762205",
   "input_path": "../data/seed_aspirations.csv",
-  "input_rows": 609,
+  "input_rows": 607,
   "input_columns": [
     "id",
     "description",
@@ -16,13 +16,13 @@
     "source"
   ],
   "steps": {
-    "step1_duplicates": {
-      "duplicate_ids_fixed": 0,
-      "duplicate_descriptions_dropped": 0,
-      "rows_after": 609
+    "s1_duplicates": {
+      "dup_ids_fixed": 0,
+      "dup_desc_dropped": 0,
+      "rows_after": 607
     },
-    "step2_nulls": {
-      "null_counts_before": {
+    "s2_nulls": {
+      "null_counts": {
         "id": 0,
         "description": 0,
         "category": 0,
@@ -32,58 +32,73 @@
         "asta_cita": 0,
         "legislative_target": 0,
         "impact_scope": 0,
-        "sub_topic": 0,
+        "sub_topic": 5,
         "source": 0
       },
       "actions": [
-        "No nulls found"
+        "Filled null sub_topic"
       ],
-      "rows_after": 609
+      "rows_after": 607
     },
-    "step3_types": {
-      "actions": [
-        "urgency cast to Int64",
-        "Stripped whitespace on: ['category', 'register', 'province', 'impact_scope', 'legislative_target', 'sub_topic', 'source', 'asta_cita']"
-      ]
+    "s3_types": {
+      "rows_after": 607
     },
-    "step4_enums": {
-      "issues": [],
-      "rows_dropped": 0,
-      "rows_after": 609
-    },
-    "step5_description_quality": {
-      "checks": [],
-      "total_dropped": 0,
-      "rows_after": 609
-    },
-    "step6_urgency_imbalance": {
+    "s3b_legislative": {
+      "unique_before": 49,
+      "unique_after": 3,
       "distribution": {
-        "1": 1,
-        "2": 26,
-        "3": 115,
-        "4": 240,
-        "5": 227
+        "DPRD Kab/Kota": 326,
+        "DPR RI": 151,
+        "DPRD Provinsi": 130
       },
-      "warnings": [
-        {
-          "urgency": 1,
-          "count": 1,
-          "pct": 0.16,
-          "status": "imbalanced"
-        }
-      ]
+      "invalid_remaining": 0
     },
-    "step7_category_distribution": {
-      "actual_distribution": {
+    "s3c_asta_cita": {
+      "unique_before": 12,
+      "unique_after": 8,
+      "distribution": {
+        "Misi 4: SDM, Sains, Teknologi, Pendidikan, Kesehatan": 208,
+        "Misi 6: Membangun dari Desa dan Kelurahan untuk Pemerataan Ekonomi": 111,
+        "Misi 3: Lapangan Kerja, Kewirausahaan, dan Infrastruktur": 94,
+        "Misi 2: Swasembada Pangan, Energi, Air, Ekonomi Hijau dan Biru": 73,
+        "Misi 1: Ideologi, Demokrasi, dan HAM": 45,
+        "Misi 7: Reformasi Hukum, Birokrasi, dan Pemberantasan Korupsi/Narkoba": 36,
+        "Misi 8: Penyelarasan Kehidupan yang Harmonis dengan Alam dan Budaya": 30,
+        "Misi 5: Hilirisasi dan Industrialisasi": 10
+      },
+      "invalid_remaining": 0
+    },
+    "s4_enums": {
+      "issues": [],
+      "dropped": 0,
+      "rows_after": 607
+    },
+    "s5_description": {
+      "flags": [],
+      "dropped": 0,
+      "rows_after": 607
+    },
+    "s6_urgency": {
+      "distribution": {
+        "1": 122,
+        "2": 119,
+        "3": 122,
+        "4": 122,
+        "5": 122
+      },
+      "warnings": []
+    },
+    "s7_category": {
+      "actual": {
         "Infrastruktur": 150,
-        "Pendidikan": 110,
+        "Pendidikan": 108,
         "Kesehatan": 100,
         "Ekonomi": 80,
-        "Lingkungan": 60,
         "Keamanan": 60,
-        "Sosial": 49
+        "Lingkungan": 59,
+        "Sosial": 50
       },
-      "prd_targets": {
+      "targets": {
         "Infrastruktur": 150,
         "Kesehatan": 100,
         "Pendidikan": 110,
@@ -92,18 +107,29 @@
         "Keamanan": 60,
         "Sosial": 50
       },
-      "shortfall_warnings": [
+      "shortfalls": [
         {
-          "category": "Sosial",
-          "actual": 49,
-          "target": 50,
-          "diff": -1
+          "category": "Pendidikan",
+          "actual": 108,
+          "target": 110,
+          "shortfall": 2
+        },
+        {
+          "category": "Lingkungan",
+          "actual": 59,
+          "target": 60,
+          "shortfall": 1
         }
       ],
-      "formal_pct_warnings": []
+      "formal_pct_warnings": [
+        {
+          "category": "Lingkungan",
+          "formal_pct": 25.42
+        }
+      ]
     }
   },
-  "output_rows": 609,
+  "output_rows": 607,
   "output_columns": [
     "id",
     "description",
