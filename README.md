@@ -4,31 +4,33 @@
 
 0. Concurrent Running
 
-   ```bash
-   (cd frontend && bun dev) & (cd backend && python -m fastapi dev)
-   ```
+```bash
+(cd frontend && bun dev) & (cd backend && python -m uvicorn main:app --reload)
+```
 
 1. Frontend
 
-   ```bash
-   bun dev
-   ```
+```bash
+bun dev
+```
 
 2. Backend
 
 - Dependencies Update:
 
-  ```bash
-  pip freeze > requirements.txt
-  ```
+```bash
+pip freeze > requirements.txt
+```
 
-- Runnning the project:
+- Running the project:
 
-  ```bash
-  fastapi dev
-  ```
+```bash
+python -m uvicorn main:app --reload
+```
 
-## Features (Not Detailed Yet)
+---
+
+## Features
 
 ### 1. Autentikasi Pengguna
 
@@ -40,7 +42,7 @@
 
 ### 2. Role User dan Admin
 
-- Sistem dapat membedakan role `user` dan `admin`.
+- Sistem membedakan role `user` dan `admin`.
 - User diarahkan ke halaman aspirasi.
 - Admin diarahkan ke dashboard admin.
 - Navbar berubah otomatis berdasarkan role.
@@ -50,7 +52,7 @@
 
 - Step 1: Identitas pelapor.
 - Step 2: Detail aspirasi.
-- Step 3: Lokasi dan tingkat urgensi.
+- Step 3: Lokasi dan level prioritas.
 - Step 4: Review dan submit.
 - Data form disimpan menggunakan Zustand store.
 - Validasi form menggunakan Zod dan React Hook Form.
@@ -60,66 +62,85 @@
 
 - User dapat mengirim aspirasi ke backend.
 - Aspirasi dikirim ke endpoint `/api/aspirations/`.
-- Sistem mengirim data seperti:
-  - deskripsi aspirasi
-  - kategori
-  - provinsi
-  - kabupaten atau kota
-  - skala dampak
-  - target level
+- Data dikirim meliputi:
+  - Deskripsi aspirasi
+  - Kategori
+  - Provinsi
+  - Kabupaten/Kota
+  - Skala dampak / prioritas
+  - Target level (operasional/strategis)
 
 ### 5. Reference Data
 
-- Data kategori diambil dari backend.
-- Data provinsi diambil dari backend.
-- Data kabupaten atau kota diambil berdasarkan provinsi.
-- Dibuat store khusus `useReferenceStore` untuk mengelola:
-  - categories
-  - provinces
-  - regencies
+- Data kategori, provinsi, dan kabupaten/kota diambil dari backend.
+- Store khusus `useReferenceStore` untuk:
+  - Categories
+  - Provinces
+  - Regencies
 
 ### 6. Dashboard Admin
 
-- Dashboard admin mengambil data dari backend.
-- Admin dapat melihat:
-  - total aspirasi
-  - total cluster
-  - aspirasi kritis
-  - jumlah policy brief
-  - daftar aspirasi terbaru
-  - cluster prioritas
-  - top scores
-  - policy brief terbaru
+- Menampilkan data dari backend:
+  - Total aspirasi
+  - Total cluster
+  - Aspirasi kritis
+  - Jumlah policy brief
+  - Daftar aspirasi terbaru
+  - Cluster prioritas
+  - Top scores
+  - Policy brief terbaru
 
 ### 7. Cluster Aspirasi
 
-- Aspirasi dapat dikelompokkan ke dalam cluster isu.
-- Cluster menyimpan informasi seperti:
-  - label
-  - kategori
-  - jumlah anggota
-  - rata-rata urgensi
-  - provinsi dominan
-  - skor prioritas
-  - sub-topik
-  - distribusi urgensi
+- Clusterisasi berdasarkan similarity embedding.
+- Cluster menyimpan:
+  - Label
+  - Kategori
+  - Jumlah anggota
+  - Rata-rata prioritas
+  - Provinsi dominan
+  - Skor prioritas (GDI + PAVI + Asta Cita)
+  - Sub-topik
+  - Distribusi laporan
   - Asta Cita dominan
 
-### 8. Policy Brief (Not Yet Integrated with AI)
+### 8. Policy Brief Generation
 
-- Admin dapat membuat policy brief dari cluster tertentu.
-- Policy brief berisi ringkasan isu dan rekomendasi awal.
-- Policy brief dapat ditampilkan di halaman detail admin.
+- Menggunakan local LLM (Ollama) untuk cluster strategis.
+- Menghasilkan dokumen formal 7-section policy brief (~10–20 detik per cluster).
+- Dokumen sudah aligned dengan prioritas, actionable untuk pemerintah.
+- Fallback ke template jika LLM tidak tersedia.
+- File disimpan ke database dan sebagai file `.txt`.
+- Endpoint download tersedia di `/api/briefs/{id}/download`.
+
+### 9. Context-Based Policy Routing
+
+- Memisahkan laporan operasional vs strategis.
+- 2-route transparent decision logic:
+  - Operational → ticket langsung
+  - Strategic → masuk clustering, scoring, brief generation
+- Strategic trigger: ≥10 laporan serupa atau ≥3 wilayah terdampak.
+- Rule-based confidence: 65–95%.
+
+### 10. Priority Scoring
+
+- Menggunakan kombinasi:
+  - **GDI (35%)**: koreksi sebaran geografis isu
+  - **PAVI (35%)**: normalisasi jumlah laporan per 100.000 penduduk
+  - **Asta Cita (30%)**: relevansi isu terhadap misi pembangunan nasional
+- Macro F1 Asta Cita: 85.19%
+- Category Macro F1: 66.88%
+- Menyeimbangkan isu secara regional dan populasi.
+
+---
 
 ## Technology Stack
 
-- Next.js
-- FastAPI
-- PostgreSQL
-- NLP
+- **Frontend:** Next.js, React, Zustand, React Hook Form, Zod
+- **Backend:** FastAPI, Python 3.12, SQLAlchemy
+- **Database:** PostgreSQL
+- **NLP:** IndoBERTweet (multi-task: category, Asta Cita, embedding)
+- **LLM:** Ollama local (policy brief generation)
+- **Other Tools:** bun, uvicorn, Pydantic, requests
 
-## CROSSCHECK LAGII
-
-2. embedder predict category kurang detail, predict urgency worse masih if-else clause, cek generateEmbedding juga
-3. recomputeCluster()
-4. generateBrief harus connect ke AI-side nunggu athilluy
+---
