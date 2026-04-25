@@ -1,24 +1,35 @@
-const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL;
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 type ApiFetchOptions = RequestInit & {
   token?: string | null;
 };
 
+function getStoredToken(): string | null {
+  if (typeof window === "undefined") return null;
+
+  return (
+    localStorage.getItem("token") ||
+    localStorage.getItem("access_token") ||
+    null
+  );
+}
+
 export async function apiFetch<T>(
   route: string,
   options: ApiFetchOptions = {},
 ): Promise<T> {
-  if (!apiBaseUrl) {
+  if (!API_BASE_URL) {
     throw new Error("NEXT_PUBLIC_API_URL belum diatur.");
   }
 
   const { token, headers, ...restOptions } = options;
+  const activeToken = token ?? getStoredToken();
 
-  const response = await fetch(`${apiBaseUrl}${route}`, {
+  const response = await fetch(`${API_BASE_URL}${route}`, {
     ...restOptions,
     headers: {
       "Content-Type": "application/json",
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...(activeToken ? { Authorization: `Bearer ${activeToken}` } : {}),
       ...headers,
     },
   });
@@ -30,7 +41,7 @@ export async function apiFetch<T>(
     throw new Error(
       data?.detail ||
         data?.message ||
-        `Permintaan gagal dengan status ${response.status}`,
+        `Request gagal dengan status ${response.status}`,
     );
   }
 

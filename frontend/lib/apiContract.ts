@@ -17,6 +17,8 @@ export interface MeResponse {
   id: UUID;
   nik: string;
   province: string | null;
+  nama_lengkap?: string;
+  name?: string;
 }
 
 export interface AspirationCreatePayload {
@@ -61,37 +63,16 @@ export interface RegencyResponse {
   province_code: string;
 }
 
-export interface ClusterResponse {
-  id: UUID;
+export interface CategoryOption {
   label: string;
-  category: string;
-  member_count: number;
-  avg_urgency: number;
-  top_provinces: string[];
-  priority_score: number;
-  created_at: ISODateTime;
-  last_updated: ISODateTime;
+  value: string;
 }
 
-export interface ScoreResponse {
-  cluster_id: UUID;
-  volume_score: number;
-  urgency_score: number;
-  geo_score: number;
-  impact_score: number;
-  total_score: number;
-  computed_at: ISODateTime;
-}
-
-export interface BriefGenerateRequest {
-  cluster_ids: UUID[];
-}
-
-export interface BriefResponse {
-  id: UUID;
-  cluster_id: UUID;
-  content: string;
-  urgency_classification: string;
-  generated_by: string;
-  generated_at: ISODateTime;
-}
+export type RawCategoryResponse =
+  | string
+  | {
+      name?: string;
+      label?: string;
+      value?: string;
+      code?: string;
+    };
