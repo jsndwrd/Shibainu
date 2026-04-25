@@ -20,10 +20,18 @@ class AspirationResponse(BaseModel):
     citizen_id: UUID
     description: str
     cleaned_description: Optional[str]
+
     predicted_category: Optional[str]
     category_confidence: Optional[float]
+
     predicted_asta_cita: Optional[str]
     asta_confidence: Optional[float]
+
+    policy_level: Optional[str]
+    policy_level_confidence: Optional[float]
+    policy_level_reason: Optional[str]
+    routing_target: Optional[str]
+
     cluster_id: Optional[UUID]
     status: str
     submitted_at: datetime
@@ -36,6 +44,10 @@ class AspirationListItem(BaseModel):
     id: UUID
     predicted_category: Optional[str]
     predicted_asta_cita: Optional[str]
+
+    policy_level: Optional[str]
+    routing_target: Optional[str]
+
     cluster_id: Optional[UUID]
     status: str
     submitted_at: datetime
