@@ -1,17 +1,24 @@
 from pydantic import BaseModel, Field
 from datetime import date
 from uuid import UUID
+from typing import Literal
+
 
 class LoginRequest(BaseModel):
     nik: str = Field(min_length=16, max_length=16)
     dob: date
 
+
 class LoginResponse(BaseModel):
     access_token: str
     token_type: str = "bearer"
     citizen_id: UUID
+    role: Literal["user", "admin"] = "user"
+
 
 class MeResponse(BaseModel):
     id: UUID
     nik: str
-    province: str | None
+    province: str | None = None
+    full_name: str | None = None
+    role: Literal["user", "admin"] = "user"

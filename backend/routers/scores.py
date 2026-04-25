@@ -15,10 +15,9 @@ from services.scorer import ScorerService, calculate_priority_score
 router = APIRouter()
 
 
-@router.post("/priority", response_model=PriorityScoreResponse)
-async def calculate_priority(payload: PriorityScoreRequest):
-    """
-    Endpoint untuk menghitung priority score manual.
+@router.get('/top', response_model=list[ScoreResponse])
+async def getTopScores(db: Session = Depends(get_db)):
+    return (db.query(ClusterScore).order_by(ClusterScore.total_score.desc()).limit(10).all())
 
     Formula:
     Priority Score = 35% GDI + 35% PAVI + 30% Asta Cita
