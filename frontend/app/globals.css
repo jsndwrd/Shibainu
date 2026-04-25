@@ -1,26 +1,70 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-ring: var(--brand-base);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  /* Brand Source */
+  --brand-base: #869E0A;
+  --brand-dark: #2D3F08;
+  --brand-light: #E9F0BC;
+  --brand-accent: #A1A607;
+  --brand-muted: #4E5303;
+  --brand-error: #541203;
+
+  /* Semantic Mapping (Light Mode) */
+  --background: #FFFFFF;
+  --foreground: var(--brand-dark);
+  
+  --primary: var(--brand-dark);
+  --primary-foreground: #FFFFFF;
+  
+  /* Muted is a very subtle tint of your brand-light */
+  --muted: var(--brand-light);
+  --muted-foreground: var(--brand-muted);
+  
+  /* Accent is a slightly lighter version of primary for hover states */
+  --accent: color-mix(in srgb, var(--brand-base), white 80%);
+  --accent-foreground: var(--brand-dark);
+  
+  --destructive: var(--brand-error);
+  --border: color-mix(in srgb, var(--brand-dark), transparent 85%);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.dark {
+  /* Semantic Mapping (Dark Mode) */
+  --background: var(--brand-dark);
+  --foreground: var(--brand-light);
+  
+  --primary: var(--brand-light);
+  --primary-foreground: var(--brand-dark);
+  
+  --muted: color-mix(in srgb, var(--brand-dark), white 10%);
+  --muted-foreground: var(--brand-light);
+  
+  --accent: var(--brand-muted);
+  --accent-foreground: var(--brand-light);
+  
+  --destructive: color-mix(in srgb, var(--brand-error), #ff6b6b 30%);
+  --border: color-mix(in srgb, var(--brand-light), transparent 80%);
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  body { @apply bg-background text-foreground; }
 }
