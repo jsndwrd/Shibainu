@@ -17,7 +17,7 @@ type NavbarItem = {
   link: string;
 };
 
-const NavbarItems: NavbarItem[] = [
+const baseNavbarItems: NavbarItem[] = [
   {
     item: "Beranda",
     link: "/",
@@ -38,19 +38,28 @@ const NavbarItems: NavbarItem[] = [
 
 const Navbar = () => {
   const pathname = usePathname();
-
   const router = useRouter();
 
-  const { user, isAuthenticated, hydrateAuth, logout, isLoading } =
+  const { user, isAuthenticated, isAdmin, hydrateAuth, logout, isLoading } =
     useAuthStore();
 
   useEffect(() => {
     hydrateAuth();
   }, [hydrateAuth]);
 
+  const navItems: NavbarItem[] = baseNavbarItems.map((nav) => {
+    if (isAuthenticated && isAdmin && nav.item === "Laporan") {
+      return {
+        item: "Dashboard",
+        link: "/admin",
+      };
+    }
+
+    return nav;
+  });
+
   const handleLogout = async () => {
     await logout();
-
     router.push("/");
   };
 
@@ -69,7 +78,7 @@ const Navbar = () => {
         </Link>
 
         <ul className="flex gap-6">
-          {NavbarItems.map((nav) => {
+          {navItems.map((nav) => {
             const isActive =
               nav.link === "/"
                 ? pathname === "/"
@@ -103,7 +112,9 @@ const Navbar = () => {
               <span>
                 {user?.nik
                   ? `NIK: ${user.nik.slice(0, 4)}********${user.nik.slice(-4)}`
-                  : "Warga"}
+                  : isAdmin
+                    ? "Admin"
+                    : "Warga"}
               </span>
             </div>
 
