@@ -7,15 +7,14 @@ import { useRouter } from "next/navigation";
 import {
     User,
     MapPin,
-    Calendar,
     CheckCircle2,
     Clock,
     FileText,
-    XCircle,
     ChevronRight,
-    Activity,
+    Loader2,
+    PieChart,
+    MoreHorizontal,
 } from "lucide-react";
-import Link from "next/link";
 
 export default function ProfilePage() {
     const router = useRouter();
@@ -43,16 +42,18 @@ export default function ProfilePage() {
         const loadData = async () => {
             if (!isMounted) return;
 
-            // Jika belum login (berdasarkan state auth di localStorage), redirect ke login
-            if (!isAuthenticated && !localStorage.getItem("access_token")) {
+            const token =
+                localStorage.getItem("token") ||
+                localStorage.getItem("access_token");
+
+            if (!isAuthenticated && !token) {
                 router.push("/login");
                 return;
             }
 
             try {
-                // Ambil data user terbaru dan riwayat aspirasi secara paralel
                 await Promise.all([
-                    fetchMe().catch(() => {}), // Ignore if already cached/fetched
+                    fetchMe().catch(() => {}),
                     fetchMyAspirations(),
                 ]);
             } catch (error) {
@@ -65,130 +66,151 @@ export default function ProfilePage() {
         loadData();
     }, [isMounted, isAuthenticated, router, fetchMe, fetchMyAspirations]);
 
-    // Format Tanggal
+    // Format Tanggal Helper (Contoh Output: 12 Okt 2024)
     const formatDate = (dateString?: string) => {
         if (!dateString) return "-";
-        return new Intl.DateTimeFormat("id-ID", {
-            day: "numeric",
-            month: "short",
-            year: "numeric",
-        }).format(new Date(dateString));
+        try {
+            return new Intl.DateTimeFormat("id-ID", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+            }).format(new Date(dateString));
+        } catch {
+            return "-";
+        }
     };
 
-    // Ekstrak Judul dari Deskripsi (Karena format: "Judul\n\nDeskripsi")
+    // Format Bulan Tahun (Contoh Output: Jan 2023)
+    const formatMonthYear = (dateString?: string) => {
+        if (!dateString) return "-";
+        try {
+            return new Intl.DateTimeFormat("id-ID", {
+                month: "short",
+                year: "numeric",
+            }).format(new Date(dateString));
+        } catch {
+            return "-";
+        }
+    };
+
     const parseAspirationContent = (description: string) => {
+        if (!description) return { title: "Aspirasi Tanpa Judul", body: "" };
         const parts = description.split("\n\n");
         const title = parts[0] || "Aspirasi Tanpa Judul";
         const body = parts.slice(1).join("\n\n") || title;
         return { title, body };
     };
 
-    // Hitung Statistik
+    const userInfo = user as Record<string, any> | null;
+
     const stats = {
         total: aspirations.length,
         disetujui: aspirations.filter(
-            (a) => a.status === "processed" || a.status === "selesai",
+            (a: any) => a.status === "processed" || a.status === "selesai",
         ).length,
         dalamProses: aspirations.filter(
-            (a) => a.status === "in_progress" || a.status === "diproses",
+            (a: any) =>
+                a.status === "in_progress" ||
+                a.status === "diproses" ||
+                a.status === "clustered",
         ).length,
         ditolak: aspirations.filter(
-            (a) => a.status === "rejected" || a.status === "ditolak",
+            (a: any) => a.status === "rejected" || a.status === "ditolak",
         ).length,
     };
 
-    // Render Status Badge
-    const renderStatusBadge = (status: string) => {
+    const renderStatusBadge = (status?: string) => {
         const s = status?.toLowerCase() || "pending";
         if (s === "processed" || s === "selesai") {
             return (
-                <span className="flex items-center gap-1.5 rounded-md bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-700">
-                    <CheckCircle2 className="h-3.5 w-3.5" /> Selesai
+                <span className="bg-muted text-muted-foreground flex items-center gap-1.5 rounded-full px-4 py-1.5 text-sm font-bold">
+                    <CheckCircle2 className="h-4 w-4" /> Selesai
                 </span>
             );
         }
-        if (s === "in_progress" || s === "diproses") {
+        if (s === "in_progress" || s === "diproses" || s === "clustered") {
             return (
-                <span className="flex items-center gap-1.5 rounded-md bg-gray-100 px-3 py-1 text-xs font-bold text-gray-700">
-                    <Activity className="h-3.5 w-3.5" /> Dalam Proses
+                <span className="flex items-center gap-1.5 rounded-full bg-gray-200 px-4 py-1.5 text-sm font-bold text-gray-700">
+                    <MoreHorizontal className="h-4 w-4" /> Dalam Proses
                 </span>
             );
         }
         if (s === "rejected" || s === "ditolak") {
             return (
-                <span className="flex items-center gap-1.5 rounded-md bg-red-100 px-3 py-1 text-xs font-bold text-red-700">
-                    <XCircle className="h-3.5 w-3.5" /> Ditolak
+                <span className="flex items-center gap-1.5 rounded-full bg-red-100 px-4 py-1.5 text-sm font-bold text-red-700">
+                    <XCircle className="h-4 w-4" /> Ditolak
                 </span>
             );
         }
         return (
-            <span className="flex items-center gap-1.5 rounded-md bg-orange-100 px-3 py-1 text-xs font-bold text-orange-700">
-                <Clock className="h-3.5 w-3.5" /> Menunggu Review
+            <span className="flex items-center gap-1.5 rounded-full bg-gray-200 px-4 py-1.5 text-sm font-bold text-gray-700">
+                <Clock className="h-4 w-4" /> Menunggu Review
             </span>
         );
     };
 
     if (!isMounted || isPageLoading) {
         return (
-            <div className="mx-auto flex max-w-5xl animate-pulse flex-col gap-6 p-6 md:p-10">
-                <div className="flex gap-6">
-                    <div className="h-40 flex-1 rounded-xl bg-gray-200"></div>
-                    <div className="h-40 w-1/3 rounded-xl bg-gray-200"></div>
+            <div className="mx-auto w-full max-w-[1440px] space-y-8 px-6 pt-10 pb-20 md:px-10">
+                <div className="flex items-center gap-2 rounded-xl border border-gray-200 bg-white p-4 text-sm text-gray-500">
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    Memuat data profil warga...
                 </div>
-                <div className="h-24 w-full rounded-xl bg-gray-200"></div>
-                <div className="h-64 w-full rounded-xl bg-gray-200"></div>
             </div>
         );
     }
 
     return (
-        <div className="mx-auto min-h-screen max-w-6xl space-y-8 p-6 md:p-10">
-            {/* Header / Profile & Quota Row */}
-            <div className="flex flex-col gap-6 md:flex-row">
+        <div className="mx-auto w-full max-w-[1440px] space-y-8 px-6 pt-10 pb-20 md:px-10">
+            {/* Profile & Quota Row */}
+            <div className="flex flex-col gap-6 lg:flex-row">
                 {/* Profile Card */}
-                <div className="flex flex-1 items-center gap-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-                    <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-full border-4 border-white bg-gray-100 shadow-sm">
-                        <User className="h-10 w-10 text-gray-400" />
+                <div className="relative flex flex-1 items-center gap-6 overflow-hidden rounded-2xl border border-gray-100 bg-[#FAFAFA] p-8 shadow-sm">
+                    {/* Hiasan latar belakang opsional seperti pada gambar */}
+                    <div className="absolute top-0 right-0 h-full w-48 bg-[#F3F5ED] opacity-50"></div>
+
+                    <div className="relative z-10 flex h-28 w-28 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-gray-200 shadow-sm">
+                        <User className="h-16 w-16 text-gray-400" />
                     </div>
-                    <div>
-                        {/* Nama bisa diambil dari user?.name jika ada di skema, jika tidak fallback ke NIK */}
-                        <h1 className="text-2xl font-bold text-gray-900">
-                            {user?.nik
-                                ? `Warga (${user.nik.slice(0, 6)}***)`
+                    <div className="relative z-10">
+                        <h1 className="text-3xl font-bold text-gray-900">
+                            {userInfo?.nik
+                                ? `Warga (${String(userInfo.nik).slice(0, 6)}***)`
                                 : "Budi Santoso"}
                         </h1>
-                        <div className="mt-2 flex flex-col gap-1.5 text-sm text-gray-500">
+                        <div className="mt-3 flex flex-col gap-2 text-sm text-gray-600">
                             <span className="flex items-center gap-2">
                                 <MapPin className="h-4 w-4 text-gray-400" />
-                                {user?.province
-                                    ? `${user.regency}, ${user.province}`
-                                    : "DKI Jakarta"}
+                                {userInfo?.province
+                                    ? `${userInfo.regency || "Kota"}, ${userInfo.province}`
+                                    : "Jakarta Selatan, DKI Jakarta"}
                             </span>
-                            <span className="flex items-center gap-2">
-                                <Calendar className="h-4 w-4 text-gray-400" />
+                            <span className="text-gray-500">
                                 Bergabung sejak{" "}
-                                {formatDate(user?.created_at || "2023-07-01")}
+                                {formatMonthYear(
+                                    userInfo?.created_at || "2023-01-01",
+                                )}
                             </span>
                         </div>
                     </div>
                 </div>
 
                 {/* Quota Card */}
-                <div className="bg-primary relative flex w-full flex-col justify-center overflow-hidden rounded-2xl p-6 text-white shadow-md md:w-80">
-                    <div className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-white/10 blur-2xl"></div>
+                <div className="bg-primary relative flex w-full flex-col justify-center overflow-hidden rounded-2xl p-8 text-white shadow-md lg:w-[450px]">
+                    <div className="absolute -top-10 -right-10 h-40 w-40 rounded-full bg-white/5 blur-3xl"></div>
                     <div className="relative z-10">
-                        <div className="mb-4 flex items-center gap-2 font-medium text-white/90">
-                            <FileText className="h-5 w-5" /> Kuota Aspirasi
+                        <div className="mb-6 flex items-center gap-2 text-xl font-semibold text-white/90">
+                            <PieChart className="h-6 w-6" /> Kuota Aspirasi
                         </div>
-                        <p className="mb-2 text-sm text-white/80">
-                            Aspirasi Kuota 3/5 Digunakan
+                        <p className="mb-8 text-sm text-white/80">
+                            Aspirasi Kuota: 3/5 Digunakan
                         </p>
-                        <div className="mb-1.5 flex items-center justify-between text-xs font-bold">
-                            <span>Sisa 2</span>
-                            <span>60%</span>
+                        <div className="mb-2 flex items-center justify-between text-sm font-medium">
+                            <span className="text-white/90">Tersisa 2</span>
+                            <span className="text-white/90">60%</span>
                         </div>
-                        <div className="h-2 w-full overflow-hidden rounded-full bg-black/20">
-                            <div className="bg-accent h-full w-[60%] rounded-full"></div>
+                        <div className="h-2.5 w-full overflow-hidden rounded-full bg-black/20">
+                            <div className="bg-muted h-full w-[60%] rounded-full"></div>
                         </div>
                     </div>
                 </div>
@@ -196,119 +218,121 @@ export default function ProfilePage() {
 
             {/* Stats Row */}
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
-                <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-                    <p className="mb-1 text-xs font-bold tracking-wider text-gray-400 uppercase">
+                <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+                    <p className="text-xs font-bold tracking-wider text-gray-600 uppercase">
                         TOTAL LAPORAN
                     </p>
-                    <h3 className="text-3xl font-bold text-gray-900">
+                    <h3 className="mt-4 text-5xl font-bold text-gray-900">
                         {stats.total}
                     </h3>
                 </div>
-                <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-                    <p className="mb-1 text-xs font-bold tracking-wider text-gray-400 uppercase">
+                <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+                    <p className="text-xs font-bold tracking-wider text-gray-600 uppercase">
                         DISETUJUI
                     </p>
-                    <h3 className="text-3xl font-bold text-emerald-600">
+                    <h3 className="text-muted-foreground mt-4 text-5xl font-bold">
                         {stats.disetujui}
                     </h3>
                 </div>
-                <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-                    <p className="mb-1 text-xs font-bold tracking-wider text-gray-400 uppercase">
+                <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+                    <p className="text-xs font-bold tracking-wider text-gray-600 uppercase">
                         DALAM PROSES
                     </p>
-                    <h3 className="text-3xl font-bold text-orange-500">
+                    <h3 className="mt-4 text-5xl font-bold text-[#7A5A29]">
                         {stats.dalamProses}
                     </h3>
                 </div>
-                <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-                    <p className="mb-1 text-xs font-bold tracking-wider text-gray-400 uppercase">
+                <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+                    <p className="text-xs font-bold tracking-wider text-gray-600 uppercase">
                         DITOLAK
                     </p>
-                    <h3 className="text-3xl font-bold text-red-600">
+                    <h3 className="mt-4 text-5xl font-bold text-red-600">
                         {stats.ditolak}
                     </h3>
                 </div>
             </div>
 
             {/* Aspirations History */}
-            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-                <h2 className="mb-6 text-xl font-bold text-gray-900">
+            <div>
+                <h2 className="mb-6 text-2xl font-bold text-gray-900">
                     Riwayat Aspirasi
                 </h2>
 
-                {aspirations.length === 0 && !isAspirasiLoading ? (
-                    <div className="rounded-xl border border-dashed border-gray-200 bg-gray-50 py-12 text-center">
-                        <FileText className="mx-auto mb-3 h-12 w-12 text-gray-300" />
-                        <h3 className="font-medium text-gray-900">
-                            Belum ada riwayat aspirasi
-                        </h3>
-                        <p className="mt-1 mb-4 text-sm text-gray-500">
-                            Anda belum pernah mengirimkan laporan atau aspirasi.
-                        </p>
-                        <Link
-                            href="/laporan"
-                            className="bg-primary hover:bg-primary/90 inline-block rounded-lg px-6 py-2 text-sm font-medium text-white transition-colors"
-                        >
-                            Buat Laporan Baru
-                        </Link>
-                    </div>
-                ) : (
-                    <div className="space-y-4">
-                        {aspirations.map((item) => {
+                <div className="space-y-4">
+                    {aspirations.length === 0 && !isAspirasiLoading ? (
+                        <div className="rounded-xl border border-dashed border-gray-200 bg-white p-12 text-center text-sm text-gray-400">
+                            <FileText className="mx-auto mb-4 h-10 w-10 text-gray-300" />
+                            <p className="mb-6 text-base">
+                                Belum ada riwayat aspirasi.
+                            </p>
+                            <button
+                                onClick={() => router.push("/laporan")}
+                                className="bg-primary hover:bg-primary/90 inline-block rounded-lg px-6 py-3 font-medium text-white transition-colors"
+                            >
+                                Buat Laporan Baru
+                            </button>
+                        </div>
+                    ) : (
+                        aspirations.map((rawItem) => {
+                            const item = rawItem as Record<string, any>;
                             const { title, body } = parseAspirationContent(
-                                item.description,
+                                item.description || "",
                             );
 
                             return (
                                 <div
                                     key={item.id}
-                                    className="group cursor-pointer rounded-xl border border-gray-100 p-5 transition-all hover:border-emerald-500/30 hover:shadow-md"
+                                    className="flex cursor-pointer flex-col justify-between gap-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-colors hover:border-gray-300 hover:shadow-md md:flex-row md:items-center"
                                 >
-                                    <div className="flex flex-col justify-between gap-4 md:flex-row md:items-start">
-                                        <div className="flex-1">
-                                            <div className="mb-2 flex items-center gap-3">
-                                                <span className="bg-accent/20 text-primary rounded px-2.5 py-0.5 text-xs font-bold">
-                                                    {item.category_user_input ||
-                                                        item.predicted_category ||
-                                                        "Umum"}
-                                                </span>
-                                                <span className="text-xs font-medium text-gray-400">
-                                                    {/* Fallback ID jika tidak ada properti nomor tiket */}
-                                                    {item.id
-                                                        .split("-")[0]
-                                                        .toUpperCase()}{" "}
-                                                    •{" "}
-                                                    {formatDate(
-                                                        item.submitted_at,
-                                                    )}
-                                                </span>
-                                            </div>
-                                            <h3 className="group-hover:text-primary text-base font-bold text-gray-900 transition-colors">
-                                                {title}
-                                            </h3>
-                                            <p className="mt-1.5 line-clamp-1 text-sm text-gray-500">
-                                                {body}
-                                            </p>
+                                    <div className="pr-4">
+                                        <div className="mb-3 flex items-center gap-3 text-sm">
+                                            <span className="bg-muted text-muted-foreground rounded-md px-2.5 py-1 font-bold">
+                                                {item.category_user_input ||
+                                                    item.predicted_category ||
+                                                    item.category ||
+                                                    "Umum"}
+                                            </span>
+                                            <span className="text-gray-500">
+                                                {item.id
+                                                    ? `#ASP-${String(item.id)
+                                                          .split("-")[0]
+                                                          .toUpperCase()}`
+                                                    : "#ASP-2024-001"}
+                                            </span>
+                                            <span className="text-gray-400">
+                                                •
+                                            </span>
+                                            <span className="text-gray-500">
+                                                {formatDate(
+                                                    item.submitted_at ||
+                                                        item.created_at,
+                                                )}
+                                            </span>
                                         </div>
-                                        <div className="flex shrink-0 items-center gap-4">
-                                            {renderStatusBadge(item.status)}
-                                            <ChevronRight className="group-hover:text-primary hidden h-5 w-5 text-gray-300 transition-colors md:block" />
-                                        </div>
+                                        <h3 className="text-lg font-bold text-gray-900">
+                                            {title}
+                                        </h3>
+                                        <p className="mt-2 line-clamp-1 text-gray-600">
+                                            {body}
+                                        </p>
+                                    </div>
+                                    <div className="flex shrink-0 items-center gap-4">
+                                        {renderStatusBadge(item.status)}
+                                        <ChevronRight className="hidden h-5 w-5 text-gray-400 md:block" />
                                     </div>
                                 </div>
                             );
-                        })}
+                        })
+                    )}
 
-                        {/* Pagination / Load More */}
-                        {aspirations.length >= 3 && (
-                            <div className="pt-4 text-center">
-                                <button className="rounded-lg border border-gray-300 px-6 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50">
-                                    Muat Lebih Banyak
-                                </button>
-                            </div>
-                        )}
-                    </div>
-                )}
+                    {aspirations.length >= 3 && (
+                        <div className="pt-6 text-center">
+                            <button className="rounded-lg border border-gray-300 bg-white px-8 py-3 text-sm font-medium text-gray-900 transition-colors hover:bg-gray-50">
+                                Muat Lebih Banyak
+                            </button>
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );
