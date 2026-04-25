@@ -6,6 +6,7 @@ from sqlalchemy import (
     DateTime,
     Float,
     ForeignKey,
+    Integer,
     String,
 )
 from sqlalchemy.dialects.postgresql import UUID
@@ -26,9 +27,12 @@ class ClusterScore(Base):
         nullable=False,
     )
 
-    volume_score = Column(Float, default=0)
-    spread_score = Column(Float, default=0)
+    gdi_score = Column(Float, default=0)
+    pavi_score = Column(Float, default=0)
     asta_cita_score = Column(Float, default=0)
+
+    reports_per_100k = Column(Float, default=0)
+    population = Column(Integer, default=0)
 
     total_score = Column(Float, default=0)
     priority_level = Column(String(30), default="low")

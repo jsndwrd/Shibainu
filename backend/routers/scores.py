@@ -17,13 +17,20 @@ router = APIRouter()
 
 @router.post("/priority", response_model=PriorityScoreResponse)
 async def calculate_priority(payload: PriorityScoreRequest):
+    """
+    Endpoint untuk menghitung priority score manual.
+
+    Formula:
+    Priority Score = 35% GDI + 35% PAVI + 30% Asta Cita
+    """
     return calculate_priority_score(
         report_count=payload.report_count,
+        population=payload.population,
         unique_regions=payload.unique_regions,
         asta_cita=payload.asta_cita,
         asta_confidence=payload.asta_confidence,
-        max_report_count=payload.max_report_count,
         max_regions=payload.max_regions,
+        max_reports_per_100k=payload.max_reports_per_100k,
     )
 
 
