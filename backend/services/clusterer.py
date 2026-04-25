@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 from sqlalchemy.orm import Session
 
@@ -43,6 +43,7 @@ class ClustererService:
         impact_scope,
         asta_cita,
         asta_confidence,
+        population: Optional[int] = None,
         similarity_threshold: float = 0.78,
     ):
         candidates = (
@@ -63,6 +64,7 @@ class ClustererService:
 
         if best_cluster and best_similarity >= similarity_threshold:
             old_count = best_cluster.member_count or 1
+
             best_cluster.centroid = update_centroid(
                 old_centroid=best_cluster.centroid or [],
                 new_embedding=embedding,
@@ -85,6 +87,10 @@ class ClustererService:
             if impact_scope:
                 best_cluster.dominant_impact_scope = impact_scope
 
+            if population:
+                current_population = best_cluster.population or 0
+                best_cluster.population = max(current_population, int(population))
+
             self.db.commit()
             self.db.refresh(best_cluster)
 
@@ -97,6 +103,7 @@ class ClustererService:
             embedding=embedding,
             asta_cita=asta_cita,
             asta_confidence=asta_confidence,
+            population=population,
         )
 
     def create_cluster(
@@ -107,6 +114,7 @@ class ClustererService:
         embedding,
         asta_cita,
         asta_confidence,
+        population: Optional[int] = None,
     ):
         cluster = Cluster(
             label=f"Cluster {category}",
@@ -114,6 +122,7 @@ class ClustererService:
             centroid=embedding,
             member_count=1,
             top_provinces=[province] if province else [],
+            population=population or 100000,
             dominant_asta_cita=asta_cita,
             asta_confidence=asta_confidence,
             sub_topics=[],
