@@ -99,10 +99,10 @@ const Step4Review = () => {
         </div>
 
         <div className="grid grid-cols-3 border-b border-gray-200 pb-3">
-          <span className="text-gray-500">Kategori & Instansi</span>
+          <span className="text-gray-500">Kategori</span>
           <span className="col-span-2 font-medium">
-            {formData.kategoriAspirasi} -{" "}
-            {formData.instansiTujuan || "Belum ditentukan"}
+            {formData.kategoriAspirasi}
+            {/* {formData.instansiTujuan || "Belum ditentukan"} */}
           </span>
         </div>
 

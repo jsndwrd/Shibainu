@@ -169,14 +169,14 @@ const Step3Lokasi = () => {
           </p>
         </div>
         <div>
-          <label className="mb-2 block text-sm font-medium text-gray-700">
+          {/* <label className="mb-2 block text-sm font-medium text-gray-700">
             Instansi Tujuan
-          </label>
+          </label> */}
 
           <input
+            type="hidden"
             {...register("instansiTujuan")}
-            placeholder="Contoh: Kementerian PUPR"
-            className="focus:ring-accent w-full rounded-lg border border-gray-300 p-3 outline-none focus:ring-2"
+            value="Kementerian PUPR"
           />
         </div>
       </div>
