@@ -13,29 +13,12 @@ import {
   XCircle,
   ChevronRight,
   Activity,
+  Brain,
 } from "lucide-react";
 
 import { useAuthStore } from "@/store/useAuthStore";
 import { useAspirasiStore } from "@/store/useAspirasiStore";
-
-type ProfileAspiration = {
-  id?: string | null;
-  description?: string | null;
-
-  category_user_input?: string | null;
-  predicted_category?: string | null;
-
-  policy_level?: string | null;
-  policy_level_confidence?: number | null;
-  policy_level_reason?: string | null;
-  routing_target?: string | null;
-
-  cluster_id?: string | null;
-  priority_score?: number | null;
-
-  status?: string | null;
-  submitted_at?: string | null;
-};
+import type { AspirationListItem } from "@/lib/apiContract";
 
 function getStoredToken(): string | null {
   if (typeof window === "undefined") return null;
@@ -52,9 +35,7 @@ function formatDate(dateString?: string | null): string {
 
   const date = new Date(dateString);
 
-  if (Number.isNaN(date.getTime())) {
-    return "-";
-  }
+  if (Number.isNaN(date.getTime())) return "-";
 
   return new Intl.DateTimeFormat("id-ID", {
     day: "numeric",
@@ -65,22 +46,26 @@ function formatDate(dateString?: string | null): string {
 
 function shortId(value?: string | null): string {
   if (!value) return "N/A";
-
   return value.split("-")[0].toUpperCase();
 }
 
-function getCategory(item: ProfileAspiration): string {
+function getCategory(item: AspirationListItem): string {
   return item.category_user_input || item.predicted_category || "Umum";
 }
 
 function getPolicyLevelLabel(policyLevel?: string | null): string {
   if (policyLevel === "strategic") return "Strategic";
   if (policyLevel === "operational") return "Operational";
-
   return "Belum diklasifikasikan";
 }
 
-function parseAspirationContent(item: ProfileAspiration) {
+function getPolicyLevelClass(policyLevel?: string | null): string {
+  if (policyLevel === "strategic") return "bg-purple-50 text-purple-700";
+  if (policyLevel === "operational") return "bg-emerald-50 text-emerald-700";
+  return "bg-gray-100 text-gray-600";
+}
+
+function parseAspirationContent(item: AspirationListItem) {
   const description = item.description?.trim();
 
   if (!description) {
@@ -163,7 +148,13 @@ export default function ProfilePage() {
 
   const [isPageLoading, setIsPageLoading] = useState(true);
 
-  const { user, hydrateAuth, fetchMe } = useAuthStore();
+  const {
+    user,
+    isAdmin,
+    hydrateAuth,
+    fetchMe,
+    isLoading: isAuthLoading,
+  } = useAuthStore();
 
   const {
     aspirations,
@@ -186,7 +177,16 @@ export default function ProfilePage() {
           return;
         }
 
-        await Promise.allSettled([fetchMe(), fetchMyAspirations()]);
+        const me = await fetchMe();
+
+        if (me.role === "admin") {
+          router.replace("/admin");
+          return;
+        }
+
+        await fetchMyAspirations();
+      } catch {
+        router.replace("/login");
       } finally {
         if (isActive) {
           setIsPageLoading(false);
@@ -201,22 +201,28 @@ export default function ProfilePage() {
     };
   }, [hydrateAuth, fetchMe, fetchMyAspirations, router]);
 
+  useEffect(() => {
+    if (isAdmin) {
+      router.replace("/admin");
+    }
+  }, [isAdmin, router]);
+
   const safeAspirations = useMemo(
-    () => (aspirations || []) as ProfileAspiration[],
+    () => (aspirations || []) as AspirationListItem[],
     [aspirations],
   );
 
   const stats = useMemo(() => {
     return {
       total: safeAspirations.length,
-      disetujui: safeAspirations.filter(
+      strategic: safeAspirations.filter(
+        (item) => item.policy_level === "strategic",
+      ).length,
+      operational: safeAspirations.filter(
+        (item) => item.policy_level === "operational",
+      ).length,
+      selesai: safeAspirations.filter(
         (item) => normalizeStatus(item.status) === "resolved",
-      ).length,
-      dalamProses: safeAspirations.filter(
-        (item) => normalizeStatus(item.status) === "in_review",
-      ).length,
-      ditolak: safeAspirations.filter(
-        (item) => normalizeStatus(item.status) === "rejected",
       ).length,
     };
   }, [safeAspirations]);
@@ -229,14 +235,7 @@ export default function ProfilePage() {
     Math.round((usedQuota / quotaLimit) * 100),
   );
 
-  const userData = user as {
-    nik?: string | null;
-    province?: string | null;
-    regency?: string | null;
-    created_at?: string | null;
-  } | null;
-
-  if (isPageLoading) {
+  if (isPageLoading || isAuthLoading) {
     return (
       <div className="mx-auto flex max-w-5xl animate-pulse flex-col gap-6 p-6 md:p-10">
         <div className="flex flex-col gap-6 md:flex-row">
@@ -259,30 +258,14 @@ export default function ProfilePage() {
 
           <div className="min-w-0">
             <h1 className="truncate text-2xl font-bold text-gray-900">
-              {userData?.nik
-                ? `Warga (${userData.nik.slice(0, 6)}***)`
+              {user?.nik
+                ? `Warga (${user.nik.slice(0, 6)}***)`
                 : "Warga Terverifikasi"}
             </h1>
-
-            <div className="mt-2 flex flex-col gap-1.5 text-sm text-gray-500">
-              <span className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 shrink-0 text-gray-400" />
-                <span className="truncate">
-                  {userData?.regency && userData?.province
-                    ? `${userData.regency}, ${userData.province}`
-                    : userData?.province || "Lokasi belum tersedia"}
-                </span>
-              </span>
-
-              <span className="flex items-center gap-2">
-                <Calendar className="h-4 w-4 shrink-0 text-gray-400" />
-                Bergabung sejak {formatDate(userData?.created_at)}
-              </span>
-            </div>
           </div>
         </div>
 
-        <div className="bg-primary relative flex w-full flex-col justify-center overflow-hidden rounded-2xl p-6 text-white shadow-md md:w-80">
+        <div className="relative flex w-full flex-col justify-center overflow-hidden rounded-2xl bg-green-700 p-6 text-white shadow-md md:w-80">
           <div className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-white/10 blur-2xl" />
 
           <div className="relative z-10">
@@ -297,12 +280,12 @@ export default function ProfilePage() {
 
             <div className="mb-1.5 flex items-center justify-between text-xs font-bold">
               <span>Sisa {remainingQuota}</span>
-              <span>{quotaPercent}%</span>
+              {/* <span>{quotaPercent}%</span> */}
             </div>
 
             <div className="h-2 w-full overflow-hidden rounded-full bg-black/20">
               <div
-                className="bg-accent h-full rounded-full transition-all"
+                className="h-full rounded-full bg-white transition-all"
                 style={{ width: `${quotaPercent}%` }}
               />
             </div>
@@ -312,13 +295,13 @@ export default function ProfilePage() {
 
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
         <StatCard title="Total Laporan" value={stats.total} />
-        <StatCard title="Disetujui" value={stats.disetujui} tone="success" />
+        <StatCard title="Strategic" value={stats.strategic} tone="purple" />
         <StatCard
-          title="Dalam Proses"
-          value={stats.dalamProses}
-          tone="warning"
+          title="Operational"
+          value={stats.operational}
+          tone="success"
         />
-        <StatCard title="Ditolak" value={stats.ditolak} tone="danger" />
+        <StatCard title="Selesai" value={stats.selesai} tone="warning" />
       </div>
 
       <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6">
@@ -334,7 +317,7 @@ export default function ProfilePage() {
 
           <Link
             href="/laporan"
-            className="bg-primary hover:bg-primary/90 inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium text-white transition-colors"
+            className="inline-flex items-center justify-center rounded-lg bg-green-700 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-green-800"
           >
             Buat Laporan Baru
           </Link>
@@ -360,7 +343,7 @@ export default function ProfilePage() {
 
             <Link
               href="/laporan"
-              className="bg-primary hover:bg-primary/90 inline-block rounded-lg px-6 py-2 text-sm font-medium text-white transition-colors"
+              className="inline-block rounded-lg bg-green-700 px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-green-800"
             >
               Buat Laporan Baru
             </Link>
@@ -378,8 +361,17 @@ export default function ProfilePage() {
                   <div className="flex flex-col justify-between gap-4 md:flex-row md:items-start">
                     <div className="min-w-0 flex-1">
                       <div className="mb-2 flex flex-wrap items-center gap-3">
-                        <span className="bg-accent/20 text-primary rounded px-2.5 py-0.5 text-xs font-bold">
+                        <span className="rounded bg-emerald-50 px-2.5 py-0.5 text-xs font-bold text-green-700">
                           {getCategory(item)}
+                        </span>
+
+                        <span
+                          className={`rounded px-2.5 py-0.5 text-xs font-bold ${getPolicyLevelClass(
+                            item.policy_level,
+                          )}`}
+                        >
+                          <Brain className="mr-1 inline h-3 w-3" />
+                          {getPolicyLevelLabel(item.policy_level)}
                         </span>
 
                         <span className="text-xs font-medium text-gray-400">
@@ -387,19 +379,25 @@ export default function ProfilePage() {
                         </span>
                       </div>
 
-                      <h3 className="group-hover:text-primary text-base font-bold text-gray-900 transition-colors">
+                      <h3 className="text-base font-bold text-gray-900 transition-colors group-hover:text-green-700">
                         {title}
                       </h3>
 
                       <p className="mt-1.5 line-clamp-2 text-sm text-gray-500">
                         {body}
                       </p>
+
+                      {/* {item.policy_level_reason && (
+                        <p className="mt-2 line-clamp-2 text-xs text-gray-400">
+                          {item.policy_level_reason}
+                        </p>
+                      )} */}
                     </div>
 
                     <div className="flex shrink-0 items-center gap-4">
                       {renderStatusBadge(item.status)}
 
-                      <ChevronRight className="group-hover:text-primary hidden h-5 w-5 text-gray-300 transition-colors md:block" />
+                      <ChevronRight className="hidden h-5 w-5 text-gray-300 transition-colors group-hover:text-green-700 md:block" />
                     </div>
                   </div>
                 </div>
@@ -430,13 +428,14 @@ function StatCard({
 }: {
   title: string;
   value: number;
-  tone?: "default" | "success" | "warning" | "danger";
+  tone?: "default" | "success" | "warning" | "danger" | "purple";
 }) {
   const toneClass = {
     default: "text-gray-900",
     success: "text-emerald-600",
     warning: "text-orange-500",
     danger: "text-red-600",
+    purple: "text-purple-600",
   }[tone];
 
   return (

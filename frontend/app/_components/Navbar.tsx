@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -20,9 +20,17 @@ type NavbarItem = {
 const baseNavbarItems: NavbarItem[] = [
   { item: "Beranda", link: "/" },
   { item: "Laporan", link: "/laporan" },
-  // { item: "Statistik", link: "/stats" },
-  // { item: "Peta Aspirasi", link: "/peta" },
 ];
+
+function getStoredToken(): string | null {
+  if (typeof window === "undefined") return null;
+
+  return (
+    localStorage.getItem("access_token") ||
+    localStorage.getItem("token") ||
+    null
+  );
+}
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -30,23 +38,53 @@ const Navbar = () => {
 
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const { user, isAuthenticated, isAdmin, hydrateAuth, logout, isLoading } =
-    useAuthStore();
+  const {
+    user,
+    role,
+    isAuthenticated,
+    isAdmin,
+    hydrateAuth,
+    fetchMe,
+    logout,
+    isLoading,
+  } = useAuthStore();
 
   useEffect(() => {
     hydrateAuth();
-  }, [hydrateAuth]);
 
-  const navItems: NavbarItem[] = baseNavbarItems.map((nav) => {
-    if (isAuthenticated && isAdmin && nav.item === "Laporan") {
-      return {
-        item: "Dashboard",
-        link: "/admin",
-      };
+    const token = getStoredToken();
+
+    if (token) {
+      fetchMe().catch(() => {});
     }
+  }, [hydrateAuth, fetchMe]);
 
-    return nav;
-  });
+  useEffect(() => {
+    if (isAuthenticated && isAdmin && pathname.startsWith("/laporan")) {
+      router.replace("/admin");
+    }
+  }, [isAuthenticated, isAdmin, pathname, router]);
+
+  const navItems = useMemo(() => {
+    return baseNavbarItems.map((nav) => {
+      if (isAuthenticated && isAdmin && nav.item === "Laporan") {
+        return {
+          item: "Dashboard",
+          link: "/admin",
+        };
+      }
+
+      return nav;
+    });
+  }, [isAuthenticated, isAdmin]);
+
+  const profileHref = isAdmin ? "/admin" : "/profile";
+
+  const displayName = user?.nik
+    ? `NIK: ${user.nik.slice(0, 4)}********${user.nik.slice(-4)}`
+    : isAdmin || role === "admin"
+      ? "Admin"
+      : "Warga";
 
   const handleLogout = async () => {
     await logout();
@@ -59,7 +97,6 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 border-b bg-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-10">
-        {/* LEFT */}
         <div className="flex items-center gap-8">
           <Link
             href="/"
@@ -72,10 +109,10 @@ const Navbar = () => {
               width={908}
               height={899}
               className="w-9"
+              priority
             />
           </Link>
 
-          {/* Desktop Menu */}
           <ul className="hidden md:flex md:gap-6">
             {navItems.map((nav) => {
               const isActive =
@@ -101,21 +138,20 @@ const Navbar = () => {
           </ul>
         </div>
 
-        {/* RIGHT DESKTOP */}
         <div className="hidden items-center gap-3 md:flex">
           {isAuthenticated ? (
             <>
-              <div className="flex items-center gap-2 rounded-md bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700">
+              <Link
+                href={profileHref}
+                className={`flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition ${
+                  pathname.startsWith(profileHref)
+                    ? "bg-green-50 text-green-700"
+                    : "bg-gray-100 text-gray-700 hover:bg-green-50 hover:text-green-700"
+                }`}
+              >
                 <UserCircle className="h-5 w-5 text-green-700" />
-
-                <span>
-                  {user?.nik
-                    ? `NIK: ${user.nik.slice(0, 4)}********${user.nik.slice(-4)}`
-                    : isAdmin
-                      ? "Admin"
-                      : "Warga"}
-                </span>
-              </div>
+                <span>{displayName}</span>
+              </Link>
 
               <button
                 onClick={handleLogout}
@@ -151,16 +187,15 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* MOBILE BUTTON */}
         <button
-          onClick={() => setMobileOpen(!mobileOpen)}
+          onClick={() => setMobileOpen((current) => !current)}
           className="rounded-md p-2 text-gray-700 md:hidden"
+          aria-label="Toggle menu"
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* MOBILE MENU */}
       {mobileOpen && (
         <div className="border-t bg-white px-4 py-4 md:hidden">
           <div className="space-y-3">
@@ -185,23 +220,38 @@ const Navbar = () => {
                 </Link>
               );
             })}
+
+            {isAuthenticated && !isAdmin && (
+              <Link
+                href="/profile"
+                onClick={closeMobile}
+                className={`block rounded-md px-3 py-2 text-sm font-medium ${
+                  pathname.startsWith("/profile")
+                    ? "bg-green-50 text-green-700"
+                    : "text-gray-700 hover:bg-gray-50"
+                }`}
+              >
+                Profil Saya
+              </Link>
+            )}
           </div>
 
           <div className="mt-5 border-t pt-4">
             {isAuthenticated ? (
               <div className="space-y-3">
-                <div className="rounded-md bg-gray-100 px-3 py-3 text-sm text-gray-700">
-                  {user?.nik
-                    ? `NIK: ${user.nik.slice(0, 4)}********${user.nik.slice(-4)}`
-                    : isAdmin
-                      ? "Admin"
-                      : "Warga"}
-                </div>
+                <Link
+                  href={profileHref}
+                  onClick={closeMobile}
+                  className="flex items-center gap-2 rounded-md bg-gray-100 px-3 py-3 text-sm text-gray-700"
+                >
+                  <UserCircle className="h-5 w-5 text-green-700" />
+                  <span>{displayName}</span>
+                </Link>
 
                 <button
                   onClick={handleLogout}
                   disabled={isLoading}
-                  className="flex w-full items-center justify-center gap-2 rounded-md border border-gray-300 px-4 py-3 text-sm font-medium text-gray-700"
+                  className="flex w-full items-center justify-center gap-2 rounded-md border border-gray-300 px-4 py-3 text-sm font-medium text-gray-700 disabled:opacity-60"
                 >
                   <LogOut className="h-4 w-4" />
                   {isLoading ? "Keluar..." : "Keluar"}
