@@ -117,9 +117,3 @@
 - FastAPI
 - PostgreSQL
 - NLP
-
-## CROSSCHECK LAGII
-
-2. embedder predict category kurang detail, predict urgency worse masih if-else clause, cek generateEmbedding juga
-3. recomputeCluster()
-4. generateBrief harus connect ke AI-side nunggu athilluy
