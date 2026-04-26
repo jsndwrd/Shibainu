@@ -130,7 +130,7 @@ function calculateStats(params: {
     clusters.length > 0 ? totalPriority / clusters.length : 0;
 
   const criticalReports = aspirations.filter(
-    (item) => Number(item.urgency) >= 4,
+    (item) => item.policy_level === "strategic",
   ).length;
 
   return {

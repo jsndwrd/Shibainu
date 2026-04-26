@@ -1,5 +1,6 @@
 "use client";
 
+import { AspirationListItem } from "@/lib/apiContract";
 import { getBriefTitle } from "@/lib/brief";
 import { useAdminStore } from "@/store/useAdminStore";
 import {
@@ -30,6 +31,33 @@ function safeDate(value?: string | null): string {
   }
 
   return date.toLocaleDateString("id-ID");
+}
+
+function getAspirationCategory(item: AspirationListItem): string {
+  return (
+    item.category_user_input ||
+    item.predicted_category ||
+    "Belum diklasifikasikan"
+  );
+}
+
+function getPolicyLevelLabel(policyLevel?: string | null): string {
+  if (policyLevel === "strategic") return "Strategic";
+  if (policyLevel === "operational") return "Operational";
+
+  return "Unclassified";
+}
+
+function getPolicyLevelClass(policyLevel?: string | null): string {
+  if (policyLevel === "strategic") {
+    return "bg-purple-50 text-purple-700";
+  }
+
+  if (policyLevel === "operational") {
+    return "bg-emerald-50 text-emerald-700";
+  }
+
+  return "bg-gray-100 text-gray-600";
 }
 
 export default function AdminOverviewPage() {
@@ -108,12 +136,12 @@ export default function AdminOverviewPage() {
           caption="Kelompok isu terdeteksi"
         />
 
-        {/* <StatCard
-          title="Aspirasi Kritis"
+        <StatCard
+          title="Isu Strategis"
           value={stats.criticalReports}
           icon={ShieldAlert}
-          caption="Urgensi tinggi dan kritis"
-        /> */}
+          caption="Isu Strategis"
+        />
 
         <StatCard
           title="Policy Brief"
@@ -142,12 +170,12 @@ export default function AdminOverviewPage() {
               </p>
             </div>
 
-            <Link
+            {/* <Link
               href="/admin/wilayah"
               className="text-primary text-sm font-medium hover:underline"
             >
               Lihat wilayah
-            </Link>
+            </Link> */}
           </div>
 
           <div className="space-y-3">
@@ -235,16 +263,31 @@ export default function AdminOverviewPage() {
                 className="flex items-center justify-between rounded-lg border border-gray-100 p-4"
               >
                 <div>
-                  <p className="font-semibold text-gray-900">{item.category}</p>
+                  <p className="font-semibold text-gray-900">
+                    {getAspirationCategory(item)}
+                  </p>
+
                   <p className="mt-1 text-xs text-gray-500">
-                    Cluster {shortId(item.cluster_id)} ·{" "}
-                    {safeDate(item.submitted_at)}
+                    {item.policy_level === "strategic"
+                      ? `Cluster ${shortId(item.cluster_id)}`
+                      : "Operational Ticket"}{" "}
+                    · {safeDate(item.submitted_at)}
                   </p>
                 </div>
 
-                <span className="rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-600">
-                  Urgency {item.urgency}
+                <span
+                  className={`rounded-full px-3 py-1 text-xs font-bold ${getPolicyLevelClass(
+                    item.policy_level,
+                  )}`}
+                >
+                  {getPolicyLevelLabel(item.policy_level)}
                 </span>
+                {/* {item.policy_level === "strategic" && (
+                  <p className="mt-1 text-xs font-medium text-purple-600">
+                    Priority Score:{" "}
+                    {Number(item.priority_score || 0).toFixed(2)}
+                  </p>
+                )} */}
               </div>
             ))}
 

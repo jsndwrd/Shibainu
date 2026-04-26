@@ -23,10 +23,11 @@ export interface MeResponse {
   role?: "user" | "admin";
 }
 
+export type PolicyLevel = "strategic" | "operational";
+
 export interface AspirationCreatePayload {
   description: string;
   category?: string | null;
-  urgency?: number | null;
   province: string;
   regency: string;
   impact_scope: string;
@@ -34,24 +35,50 @@ export interface AspirationCreatePayload {
 }
 
 export interface AspirationResponse {
-  id: UUID;
-  citizen_id: UUID;
+  id: string;
+  citizen_id: string;
   description: string;
-  cleaned_description: string;
-  predicted_category: string;
-  predicted_urgency: number;
-  cluster_id: UUID;
-  priority_score: number;
+  cleaned_description?: string | null;
+
+  category_user_input?: string | null;
+  predicted_category?: string | null;
+  category_confidence?: number | null;
+
+  predicted_asta_cita?: string | null;
+  asta_confidence?: number | null;
+
+  policy_level?: "strategic" | "operational" | string | null;
+  policy_level_confidence?: number | null;
+  policy_level_reason?: string | null;
+  routing_target?: string | null;
+
+  province?: string | null;
+  regency?: string | null;
+  impact_scope?: string | null;
+  target_level?: string | null;
+
+  cluster_id?: string | null;
+  priority_score?: number | null;
+
   status: string;
-  submitted_at: ISODateTime;
+  submitted_at: string;
 }
 
 export interface AspirationListItem {
-  id: UUID;
-  category: string;
-  urgency: number;
-  cluster_id: UUID;
-  submitted_at: ISODateTime;
+  id: string;
+
+  category_user_input?: string | null;
+  predicted_category?: string | null;
+
+  policy_level?: "strategic" | "operational" | string | null;
+  policy_level_confidence?: number | null;
+  routing_target?: string | null;
+
+  cluster_id?: string | null;
+  priority_score?: number | null;
+
+  status?: string | null;
+  submitted_at: string;
 }
 
 export interface ProvinceResponse {
@@ -78,27 +105,6 @@ export type RawCategoryResponse =
       value?: string;
       code?: string;
     };
-
-export interface AspirationListItem {
-  id: UUID;
-  category: string;
-  urgency: number;
-  cluster_id: UUID;
-  submitted_at: ISODateTime;
-}
-
-export interface AspirationResponse {
-  id: UUID;
-  citizen_id: UUID;
-  description: string;
-  cleaned_description: string;
-  predicted_category: string;
-  predicted_urgency: number;
-  cluster_id: UUID;
-  priority_score: number;
-  status: string;
-  submitted_at: ISODateTime;
-}
 
 export interface ClusterResponse {
   id: UUID;

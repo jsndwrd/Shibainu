@@ -1,56 +1,62 @@
+from pydantic import BaseModel, Field, ConfigDict
+from uuid import UUID
 from datetime import datetime
 from typing import Optional
-from uuid import UUID
-
-from pydantic import BaseModel, Field
 
 
 class AspirationCreate(BaseModel):
-    description: str = Field(min_length=15, max_length=1000)
+    description: str = Field(min_length=15, max_length=500)
     category: Optional[str] = None
     province: str
     regency: str
-    impact_scope: str = "Community"
-    target_level: str = "DPRD"
-    population: Optional[int] = Field(default=100000, ge=1)
+    impact_scope: str
+    target_level: str
 
 
 class AspirationResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: UUID
     citizen_id: UUID
     description: str
-    cleaned_description: Optional[str]
+    cleaned_description: Optional[str] = None
 
-    predicted_category: Optional[str]
-    category_confidence: Optional[float]
+    category_user_input: Optional[str] = None
+    predicted_category: Optional[str] = None
+    category_confidence: Optional[float] = 0
 
-    predicted_asta_cita: Optional[str]
-    asta_confidence: Optional[float]
+    predicted_asta_cita: Optional[str] = None
+    asta_confidence: Optional[float] = 0
 
-    policy_level: Optional[str]
-    policy_level_confidence: Optional[float]
-    policy_level_reason: Optional[str]
-    routing_target: Optional[str]
+    policy_level: Optional[str] = None
+    policy_level_confidence: Optional[float] = 0
+    policy_level_reason: Optional[str] = None
+    routing_target: Optional[str] = None
 
-    cluster_id: Optional[UUID]
+    province: Optional[str] = None
+    regency: Optional[str] = None
+    impact_scope: Optional[str] = None
+    target_level: Optional[str] = None
+
+    cluster_id: Optional[UUID] = None
+    priority_score: Optional[float] = 0
+
     status: str
     submitted_at: datetime
-
-    class Config:
-        from_attributes = True
 
 
 class AspirationListItem(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: UUID
-    predicted_category: Optional[str]
-    predicted_asta_cita: Optional[str]
+    category_user_input: Optional[str] = None
+    predicted_category: Optional[str] = None
 
-    policy_level: Optional[str]
-    routing_target: Optional[str]
+    policy_level: Optional[str] = None
+    policy_level_confidence: Optional[float] = 0
+    routing_target: Optional[str] = None
 
-    cluster_id: Optional[UUID]
-    status: str
+    cluster_id: Optional[UUID] = None
+    priority_score: Optional[float] = 0
+    status: Optional[str] = None
     submitted_at: datetime
-
-    class Config:
-        from_attributes = True

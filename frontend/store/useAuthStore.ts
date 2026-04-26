@@ -204,13 +204,13 @@ export const useAuthStore = create<AuthStoreState>((set, get) => ({
   },
 
   getDashboardPath: () => {
-    const role = get().role;
+    const role = get().isAdmin;
 
-    if (role === "admin") {
+    if (role) {
       return "/admin";
     }
 
-    return "/aspirasi";
+    return "/laporan";
   },
 
   clearError: () => set({ error: null }),

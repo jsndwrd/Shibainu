@@ -28,6 +28,7 @@ type MenuItem = {
 };
 
 const menuItems: MenuItem[] = [
+<<<<<<< HEAD
     {
         name: "Overview",
         icon: LayoutDashboard,
@@ -43,6 +44,18 @@ const menuItems: MenuItem[] = [
         icon: FileBarChart,
         href: "/admin/laporan",
     },
+=======
+  {
+    name: "Overview",
+    icon: LayoutDashboard,
+    href: "/admin",
+  },
+  {
+    name: "Laporan Analitik",
+    icon: FileBarChart,
+    href: "/admin/laporan",
+  },
+>>>>>>> main
 ];
 
 export default function AdminLayout({

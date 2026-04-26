@@ -166,9 +166,9 @@ export default function PolicyBriefDetailPage({
 
       <div className="rounded-xl border border-gray-200 bg-white p-8 shadow-sm md:p-12">
         <div className="mb-8 border-b-2 border-gray-900 pb-6 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-gray-200">
+          {/* <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-gray-200">
             <ShieldAlert className="h-8 w-8 text-gray-500" />
-          </div>
+          </div> */}
 
           <h2 className="text-xl font-bold tracking-wide text-gray-900 uppercase">
             Pemerintah Republik Indonesia

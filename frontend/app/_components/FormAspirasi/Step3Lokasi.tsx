@@ -4,7 +4,7 @@ import { step3Schema } from "@/schemas/aspirasiSchema";
 import { useAspirasiStore } from "@/store/useAspirasiStore";
 import { useReferenceStore } from "@/store/useReferenceStore";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { MapPin } from "lucide-react";
+import { Brain, MapPin } from "lucide-react";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import z from "zod";
@@ -33,16 +33,7 @@ const Step3Lokasi = () => {
     formState: { errors },
   } = useForm<Step3FormValues>({
     resolver: zodResolver(step3Schema),
-    defaultValues: {
-      ...(formData as Step3FormValues),
-      tingkatUrgensi:
-        (formData.tingkatUrgensi as
-          | "Sangat Rendah"
-          | "Rendah"
-          | "Sedang"
-          | "Tinggi"
-          | "Kritis") ?? "Sedang",
-    },
+    defaultValues: formData as Step3FormValues,
   });
 
   const selectedProvince = watch("provinsi");
@@ -76,7 +67,7 @@ const Step3Lokasi = () => {
     >
       <div className="text-primary mb-4 flex items-center gap-2 font-semibold">
         <MapPin className="h-5 w-5" />
-        <h3>Lokasi & Tingkat Urgensi</h3>
+        <h3>Lokasi & Klasifikasi Otomatis</h3>
       </div>
 
       {referenceError && (
@@ -163,49 +154,29 @@ const Step3Lokasi = () => {
         )}
       </div>
 
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <div>
-          <div className="mb-2 flex items-center justify-between">
-            <label className="block text-sm font-medium text-gray-700">
-              Tingkat Urgensi
-            </label>
-
-            <span className="rounded bg-red-100 px-2 py-1 text-[10px] font-bold text-red-700">
-              SKALA 1-5
-            </span>
+      <div className="grid grid-cols-1 gap-8">
+        <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4">
+          <div className="mb-2 flex items-center gap-2 font-semibold text-emerald-800">
+            <Brain className="h-5 w-5" />
+            Klasifikasi Otomatis
           </div>
 
-          <select
-            {...register("tingkatUrgensi")}
-            className="focus:ring-accent w-full rounded-lg border border-gray-300 bg-white p-3 outline-none focus:ring-2"
-          >
-            <option value="Sangat Rendah">Sangat Rendah</option>
-            <option value="Rendah">Rendah</option>
-            <option value="Sedang">Sedang</option>
-            <option value="Tinggi">Tinggi</option>
-            <option value="Kritis">Kritis</option>
-          </select>
-
-          <p className="mt-1 text-xs text-gray-500">
-            Pilih tingkat urgensi sesuai kondisi laporan.
+          <p className="text-sm leading-6 text-emerald-700">
+            Anda tidak perlu memilih tingkat urgensi. Sistem akan menentukan
+            apakah aspirasi ini bersifat <strong>strategis</strong> atau{" "}
+            <strong>operasional</strong> berdasarkan isi laporan, kategori,
+            lokasi, dan pola data yang tersedia.
           </p>
-
-          {errors.tingkatUrgensi && (
-            <p className="mt-1 text-xs text-red-500">
-              {errors.tingkatUrgensi.message as string}
-            </p>
-          )}
         </div>
-
         <div>
-          <label className="mb-2 block text-sm font-medium text-gray-700">
+          {/* <label className="mb-2 block text-sm font-medium text-gray-700">
             Instansi Tujuan
-          </label>
+          </label> */}
 
           <input
+            type="hidden"
             {...register("instansiTujuan")}
-            placeholder="Contoh: Kementerian PUPR"
-            className="focus:ring-accent w-full rounded-lg border border-gray-300 p-3 outline-none focus:ring-2"
+            value="Kementerian PUPR"
           />
         </div>
       </div>

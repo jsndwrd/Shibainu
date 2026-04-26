@@ -28,6 +28,9 @@ class Cluster(Base):
 
     sub_topics = Column(ARRAY(String), nullable=False, default=list)
     urgency_dist = Column(JSONB, nullable=False, default=dict)
+    centroid = Column(ARRAY(Float), nullable=False, default=list)
+    dominant_impact_scope = Column(String(100), nullable=True)
+    metadata_json = Column(JSONB, nullable=False, default=dict)
 
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     last_updated = Column(
