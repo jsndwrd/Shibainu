@@ -98,7 +98,8 @@ function normalizeUrgency(value: unknown): number | null {
 
 function buildDescription(data: Record<string, any>): string {
   const title = data.judulLaporan ?? "";
-  const description = data.deskripsi ?? data.deskripsiLaporan ?? "";
+  const description =
+    data.deskripsi ?? data.deskripsiLaporan ?? data.description ?? "";
 
   return `${title}\n\n${description}`.trim();
 }
@@ -111,7 +112,6 @@ function mapFormToPayload(
   return {
     description: data.description ?? buildDescription(data),
     category: data.category ?? data.kategoriAspirasi ?? data.kategori ?? null,
-    urgency: normalizeUrgency(data.urgency ?? data.tingkatUrgensi ?? "Sedang"),
     province: data.province ?? data.provinsi ?? "",
     regency: data.regency ?? data.kota ?? data.kabupatenKota ?? "",
     impact_scope: data.impact_scope ?? data.skalaDampak ?? "local",
@@ -145,14 +145,6 @@ function validateAspirationPayload(payload: AspirationCreatePayload) {
 
   if (payload.description.length > 500) {
     throw new Error("Deskripsi maksimal 500 karakter.");
-  }
-
-  if (
-    payload.urgency !== null &&
-    payload.urgency !== undefined &&
-    (payload.urgency < 1 || payload.urgency > 5)
-  ) {
-    throw new Error("Urgency harus bernilai 1 sampai 5.");
   }
 }
 

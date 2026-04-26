@@ -16,17 +16,10 @@ export const step2Schema = z.object({
 });
 
 export const step3Schema = z.object({
-  provinsi: z.string().min(1, "Pilih provinsi"),
-  kota: z.string().min(1, "Pilih kota/kabupaten"),
-  lokasiDetail: z.string().min(5, "Detail lokasi kejadian wajib diisi"), // Dari Panduan
-  instansiTujuan: z.string().optional(), // Dari Panduan (Opsional)
-  tingkatUrgensi: z.enum([
-    "Sangat Rendah",
-    "Rendah",
-    "Sedang",
-    "Tinggi",
-    "Kritis",
-  ]),
+  provinsi: z.string().min(1, "Provinsi wajib dipilih."),
+  kota: z.string().min(1, "Kota atau kabupaten wajib dipilih."),
+  lokasiDetail: z.string().min(3, "Lokasi detail wajib diisi."),
+  instansiTujuan: z.string().optional(),
 });
 
 export const finalSchema = step1Schema.merge(step2Schema).merge(step3Schema);
