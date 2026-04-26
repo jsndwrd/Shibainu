@@ -33,11 +33,6 @@ const menuItems: MenuItem[] = [
     href: "/admin",
   },
   {
-    name: "Wilayah",
-    icon: Map,
-    href: "/admin/wilayah",
-  },
-  {
     name: "Laporan Analitik",
     icon: FileBarChart,
     href: "/admin/laporan",
