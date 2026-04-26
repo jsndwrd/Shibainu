@@ -173,6 +173,8 @@ class ScorerService:
         return self.compute_priority_score(cluster)
 
     def score_cluster(self, cluster_id):
+        from models import Cluster, ClusterScore
+
         cluster = (
             self.db.query(Cluster)
             .filter(Cluster.id == cluster_id)
@@ -182,28 +184,56 @@ class ScorerService:
         if not cluster:
             return None
 
-        result = self.compute_priority_score(cluster)
-        components = result["components"]
-        raw_metrics = result["raw_metrics"]
+        member_count = int(cluster.member_count or 0)
+        province_count = len(cluster.top_provinces or [])
+        population = int(cluster.population or 100000)
 
-        score = ClusterScore(
-            cluster_id=cluster.id,
-            gdi_score=components["gdi_score"],
-            pavi_score=components["pavi_score"],
-            asta_cita_score=components["asta_cita_score"],
-            reports_per_100k=raw_metrics["reports_per_100k"],
-            population=raw_metrics["population"],
-            total_score=result["priority_score"],
-            priority_level=result["priority_level"],
-            should_generate_brief=result["should_generate_brief"],
+        volume_score = min(100, member_count * 10)
+        geo_score = min(100, province_count * 25)
+
+        reports_per_100k = 0
+        if population > 0:
+            reports_per_100k = (member_count / population) * 100000
+
+        pavi_score = min(100, reports_per_100k * 10)
+
+        asta_cita_score = min(
+            100,
+            float(cluster.asta_confidence or 0) * 100,
         )
 
-        self.db.add(score)
+        total_score = round(
+            volume_score * 0.35
+            + geo_score * 0.25
+            + pavi_score * 0.25
+            + asta_cita_score * 0.15,
+            2,
+        )
+
+        score = (
+            self.db.query(ClusterScore)
+            .filter(ClusterScore.cluster_id == cluster.id)
+            .first()
+        )
+
+        if not score:
+            score = ClusterScore(cluster_id=cluster.id)
+            self.db.add(score)
+
+        score.volume_score = volume_score
+        score.urgency_score = pavi_score
+        score.geo_score = geo_score
+        score.impact_score = asta_cita_score
+        score.total_score = total_score
+
+        cluster.priority_score = total_score
+
         self.db.commit()
         self.db.refresh(score)
+        self.db.refresh(cluster)
 
         return score
-
+    
     def scoreCluster(self, cluster_id):
         return self.score_cluster(cluster_id)
 
